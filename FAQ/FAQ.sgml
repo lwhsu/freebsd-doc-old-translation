@@ -1,12 +1,12 @@
 <!DOCTYPE linuxdoc PUBLIC "-//FreeBSD//DTD linuxdoc//EN">
-<!-- $Id: FAQ.sgml,v 1.59 1997/06/15 19:56:41 jfieber Exp $ -->
+<!-- $Id: FAQ.sgml,v 1.60 1997/06/24 13:00:57 pds Exp $ -->
 
   <article>
 
 <title>Frequently Asked Questions for FreeBSD 2.X
 <author>Maintainer: Peter da Silva <tt><htmlurl url='mailto:pds@FreeBSD.ORG'
   name='&lt;pds@FreeBSD.ORG&gt;'></tt>
-<date>$Date: 1997/06/15 19:56:41 $</date>
+<date>$Date: 1997/06/24 13:00:57 $</date>
 
 <abstract>
 This is the FAQ for FreeBSD systems version 2.X  All entries are
@@ -2597,7 +2597,7 @@ pseudo-device   vn   #Vnode driver (turns a file into a device)
         <p>
           Please take a look at:
 
-          <url url="../handbook/submitters.html"
+          <url url="../handbook/contrib.html"
             name="The Handbook entry on how to submit code.">
 
           And thanks for the thought!
