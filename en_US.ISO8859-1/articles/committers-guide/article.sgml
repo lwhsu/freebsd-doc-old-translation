@@ -677,10 +677,13 @@
           your source file. It is also an invaluable aid to deciding
           which changes to MFC and which not to MFC.</para>
 
-        <para>Do not waste space in the commit messages explaining
-          <emphasis>what</emphasis> you did.  That is what
-          <command>cvs diff</command> is for. Instead, tell us
-          <emphasis>why</emphasis> you did it.</para>
+	<para>Commit messages should be clear, concise and provide
+	  a reasonable summary to give an indication of what was
+	  changed and why.</para>
+
+	<para>Commit messages should provide enough information to
+	  enable a third party to decide if the change is relevant to
+	  them and if they need to read the change itself.</para>
 
         <para>Avoid committing several unrelated changes in one go. It
           makes merging difficult, and also makes it harder to determine
