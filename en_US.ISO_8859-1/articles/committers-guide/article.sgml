@@ -16,7 +16,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$Date$</pubdate>
+    <pubdate>$FreeBSD$</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -747,8 +747,8 @@ checkout -P</programlisting>
 	  and cvs/rcs logs. </para>
 
 	<screen>&prompt.user; <userinput> echo "syn on" >> ~/.vimrc </userinput>
-	<screen>&prompt.user; <userinput> cvs diff -Nu shazam | vim -</userinput> </screen>
-	<screen>&prompt.user; <userinput> cvs log shazam | vim -</userinput> </screen>
+&prompt.user; <userinput> cvs diff -Nu shazam | vim -</userinput>
+&prompt.user; <userinput> cvs log shazam | vim -</userinput> </screen>
       </listitem>
 
       <listitem>
