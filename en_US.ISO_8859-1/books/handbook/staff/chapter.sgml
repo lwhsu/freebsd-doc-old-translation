@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.59 1999/08/25 20:38:52 mtaylor Exp $
+     $Id: chapter.sgml,v 1.60 1999/09/03 05:33:48 phantom Exp $
 -->
 
 <!-- 
@@ -789,7 +789,7 @@
 	<term>User Groups Editor</term>
 	
 	<listitem>
-	  <para>-</para>
+	  <para>&a.grog;</para>
 	</listitem>
       </varlistentry>
       
