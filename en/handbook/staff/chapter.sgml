@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id$
+     $Id: chapter.sgml,v 1.13 1999/03/08 22:04:49 nik Exp $
 -->
 
 <!-- 
@@ -538,6 +538,10 @@
       
       <listitem>
 	<para>&a.karl;</para>
+      </listitem>
+      
+      <listitem>
+	<para>&a.taoka;</para>
       </listitem>
       
       <listitem>
