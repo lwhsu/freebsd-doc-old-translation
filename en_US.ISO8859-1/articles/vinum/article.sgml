@@ -253,7 +253,7 @@
 	and failure resilience--but this comes at a loss in capacity.</para>
 
       <note><para>Both concatenation and striping bring their benefits over a
-	single spindle at the cost of increased likelyhood of failure since
+	single spindle at the cost of increased likelihood of failure since
 	more than one spindle is now involved.</para></note>
 
       <para>When three or more spindles are present,
@@ -1262,7 +1262,7 @@ ok <userinput>boot -s</userinput</screen>
 &prompt.root; <userinput>disklabel -R ad0s1 disklabel.ad0s1</userinput>
 &prompt.root; <userinput>disklabel -R ad2s1 disklabel.ad2s1</userinput></screen>
 
-	    <note><para>If you have additional spindles, repeate the
+	    <note><para>If you have additional spindles, repeat the
 	      above commands as appropriate for them.</para></note>
 
 	  </step>

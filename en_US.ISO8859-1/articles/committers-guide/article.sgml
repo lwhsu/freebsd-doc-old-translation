@@ -566,7 +566,7 @@
           file the differences are and how many lines they span. This
           is followed by a number of lines; some (preceded by a blank)
           are context; some (preceded by a <literal>-</literal> sign)
-          are outtakes and some (preceded by a <literal>+</literal>) are
+          are out takes and some (preceded by a <literal>+</literal>) are
           additions.</para>
 
         <para>You can also diff against a different version
@@ -1097,7 +1097,7 @@ docs:Documentation Bug:nik:</programlisting>
 	    about these you are encouraged to send them via the
 	    <email>doc@FreeBSD.org</email> mailing list.  Committers
 	    interested in contributing to the documentation should familiarise
-	    themself with the
+	    themselves with the
 	    <ulink url="../../books/fdp-primer/index.html">Documentation Project Primer</ulink>.</para>
 	</listitem>
       </varlistentry>
@@ -1618,7 +1618,7 @@ docs:Documentation Bug:nik:</programlisting>
 	    developers, so allow some time to elapse before merging
 	    unless the &os.stable; fix is critical,
 	    time sensitive or so obvious as to make further testing
-	    unnecessary (spelling fixes to manpages, obvious bug/typo
+	    unnecessary (spelling fixes to man pages, obvious bug/typo
 	    fixes, etc.)  In other words, apply common sense.</para>
 	</listitem>
 
