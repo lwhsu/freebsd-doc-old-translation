@@ -1,9 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN" [
 <!ENTITY base CDATA "..">
-<!ENTITY date "$Date: 1997/04/07 13:51:15 $">
+<!ENTITY date "$Date: 1997/06/25 16:59:50 $">
 <!ENTITY title "FreeBSD Tutorials">
 <!ENTITY % includes SYSTEM "../includes.sgml"> %includes;
 ]>
+<!-- $Id$ -->
+
 <html>
 &header;
 

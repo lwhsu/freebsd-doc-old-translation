@@ -1,3 +1,5 @@
+# $Id$
+
 DOCS?=		index.sgml
 SUBDIR=		devel disklessx fonts mh multios newuser upgrade
 DOCSUBDIR=	ddwg ppp
