@@ -1,4 +1,4 @@
-<!-- $Id: kernelconfig.sgml,v 1.8 1998/10/08 07:11:57 andy Exp $ -->
+<!-- $Id: kernelconfig.sgml,v 1.1 1998/12/28 19:20:04 ache Exp $ -->
 <!-- The FreeBSD Russian Documentation Project -->
 
   <sect>
@@ -9,7 +9,7 @@
         Я хочу изменить настройки ядра. Это сложно?<label id="make-kernel">
       </heading>
 
-      <p>Вовсе нет! Обратитесь к <url url="../handbook/kernelconfig.html"
+      <p>Вовсе нет! Обратитесь к <url url="../../handbook/kernelconfig.html"
       name="соответствующему разделу"> Руководства, который посвящён этому
       вопросу.
 
