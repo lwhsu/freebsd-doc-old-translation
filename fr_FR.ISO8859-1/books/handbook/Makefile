@@ -41,8 +41,8 @@ INSTALL_ONLY_COMPRESSED?=
 
 #IMAGES_EN = advanced-networking/isdn-bus.eps
 #IMAGES_EN+= advanced-networking/isdn-twisted-pair.eps
-IMAGES_EN = advanced-networking/natd.eps
-IMAGES_EN+= install/userconfig.scr
+IMAGES = advanced-networking/natd.eps
+IMAGES_EN = install/userconfig.scr
 IMAGES_EN+= install/userconfig2.scr
 IMAGES_EN+= install/hdwrconf.scr
 IMAGES_EN+= install/probstart.scr
@@ -99,7 +99,7 @@ IMAGES_EN+= install/adduser1.scr
 IMAGES_EN+= install/adduser2.scr
 IMAGES_EN+= install/adduser3.scr
 IMAGES_EN+= install/mainexit.scr
-IMAGES = install/disk-layout.eps
+IMAGES+= install/disk-layout.eps
 IMAGES_EN+= install/edit-inetd-conf.scr
 
 IMAGES+= install/example-dir1.eps
