@@ -2057,7 +2057,7 @@ ok <userinput>boot -s</userinput</screen>
 	If your BIOS can boot from either, the fastest road to recovery
 	might be to boot directly from <filename>/dev/ad2</filename>
 	in single-user mode and
-	install <filename>/etc/fsatb_only_have_ad2s1</filename> as
+	install <filename>/etc/fstab_only_have_ad2s1</filename> as
 	<filename>/etc/fstab</filename>.
 	You would then have to adapt the <filename>/dev/ad2</filename>
 	failure recovery instructions from <xref linkend=ad2Recov> above.</para>
