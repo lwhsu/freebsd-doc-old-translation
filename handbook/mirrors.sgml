@@ -1,4 +1,4 @@
-<!-- $Id: mirrors.sgml,v 1.80 1998/04/01 17:05:29 wosch Exp $ -->
+<!-- $Id: mirrors.sgml,v 1.1 1998/04/13 15:48:19 wosch Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!--
@@ -794,6 +794,12 @@ repository is available from the following CVSup sites.
 <itemize>
 <item>cvsup.de.FreeBSD.ORG
 (<url url="mailto:cvsup@de.FreeBSD.ORG" name="maintainer">)
+</itemize>
+
+<tag>Russia</tag>
+<itemize>
+<item>mozilla.ru.freebsd.org
+(<url url="mailto:mishania@demos.su" name="maintainer">)
 </itemize>
 
 </descrip>
