@@ -1417,7 +1417,7 @@ docs:Documentation Bug:nik:</programlisting>
       &man.scp.1;.</para>
   </sect1>
 
-  <sect1>
+  <sect1 id="rules">
     <title>The FreeBSD Committers' Big List of Rules</title>
 
     <orderedlist>
@@ -1900,7 +1900,7 @@ docs:Documentation Bug:nik:</programlisting>
     </sect2>
   </sect1>
 
-  <sect1>
+  <sect1 id="ports">
     <title>Ports Specific FAQ</title>
 
     <qandaset>
@@ -2244,7 +2244,7 @@ docs:Documentation Bug:nik:</programlisting>
     </qandaset>
   </sect1>
 
-  <sect1>
+  <sect1 id="perks">
     <title>Perks of the Job</title>
 
     <para>Unfortunately, there aren't many perks involved with being a
@@ -2310,7 +2310,7 @@ docs:Documentation Bug:nik:</programlisting>
     </variablelist>
   </sect1>
 
-  <sect1>
+  <sect1 id="misc">
     <title>Miscellaneous Questions</title>
 
     <qandaset>
