@@ -2856,6 +2856,21 @@ bak/packages  packages from last complete &lt;major_version&gt; run on &lt;arch&
 
 	<qandaentry>
 	  <question>
+	    <para>I added a new port.  Do I need to add it to the
+	      <filename>INDEX</filename>?</para>
+	  </question>
+
+	  <answer>
+	    <para>No, <filename>INDEX</filename> is no longer stored
+	      in the CVS repository.  The file can either be generated
+	      by the <command>make index</command>, or a pre-generated
+	      version can be downloaded with <command>make
+	      fetchindex</command>.</para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry>
+	  <question>
 	    <para>Are there any other files I am not allowed to
 	      touch?</para>
 	  </question>
