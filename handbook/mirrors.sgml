@@ -1,4 +1,4 @@
-<!-- $Id: mirrors.sgml,v 1.82 1998/04/13 18:47:10 wosch Exp $ -->
+<!-- $Id: mirrors.sgml,v 1.83 1998/04/16 13:46:16 ache Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!--
@@ -678,6 +678,12 @@ the following sites:
 <itemize>
 <item>cvsup.ca.FreeBSD.ORG
 (<url url="mailto:james@ican.net" name="maintainer">)
+</itemize>
+
+<tag>Denmark</tag>
+<itemize>
+<item>cvsup.dk.FreeBSD.ORG
+(<url url="mailto:jesper@skriver.dk" name="maintainer">)
 </itemize>
 
 <tag>Estonia</tag>
