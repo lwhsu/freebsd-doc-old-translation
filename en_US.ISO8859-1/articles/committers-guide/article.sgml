@@ -1112,7 +1112,10 @@ docs:Documentation Bug:nik:</programlisting>
 
     <procedure>
       <step>
-	<para>Update and install one of the SSH ports.  In general,
+	<para>If you are using FreeBSD 4.0 or later,
+	  OpenSSH is included in the base system.
+	  If you are using an earlier release,
+	  update and install one of the SSH ports.  In general,
 	  you will probably want to get OpenSSH from the port in
 	  <filename>/usr/ports/security/openssh</filename>.  You
 	  may also wish to check out the original ssh1 in
