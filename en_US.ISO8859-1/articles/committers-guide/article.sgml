@@ -76,7 +76,7 @@
 	  
 	  <row>	  
 	    <entry><emphasis>Noteworthy CVS Tags</emphasis></entry>
-	    <entry><literal>RELENG_4</literal> (4.x-STABLE), <literal>HEAD</literal> (-CURRENT)</entry>
+	    <entry><literal>RELENG_4</literal> (4.X-STABLE), <literal>HEAD</literal> (-CURRENT)</entry>
 	  </row>
 	</tbody>
       </tgroup>
@@ -319,7 +319,7 @@
 
           <listitem>
             <para>Check out the <filename>miscfs</filename> module as
-              it is in the 4.x branch:</para>
+              it is in the 4.X branch:</para>
 
             <screen>&prompt.user; <userinput>cvs co -rRELENG_4 miscfs</userinput></screen>
 
