@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.17 1999/07/04 21:55:21 nik Exp $
+     $Id: chapter.sgml,v 1.18 1999/07/15 18:04:03 jlemon Exp $
 -->
 
 <chapter id="install">
@@ -593,6 +593,10 @@
 	    <listitem>
 	      <para>DEC DE435</para>
 	    </listitem>
+
+            <listitem>
+              <para>DEC DE450</para>
+            </listitem>
 	    
 	    <listitem>
 	      <para>Danpex EN-9400P3</para>
