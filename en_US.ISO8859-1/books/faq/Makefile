@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.1 1999/08/17 21:52:02 nik Exp $
+# $Id: Makefile,v 1.2 1999/08/28 19:49:31 jhb Exp $
 #
 # Build the FreeBSD FAQ
 #
@@ -23,4 +23,4 @@ SRCS=  book.sgml
 
 DOC_PREFIX?= ../../..
 
-.include "../../../share/mk/docproj.docbook.mk"
+.include "$(DOC_PREFIX)/share/mk/docproj.docbook.mk"
