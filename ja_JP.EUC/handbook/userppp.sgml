@@ -1,6 +1,6 @@
-<!-- $Id: userppp.sgml,v 1.10 1997/09/22 18:31:20 max Exp $ -->
+<!-- $Id: userppp.sgml,v 1.11 1997/09/24 14:46:06 hanai Exp $ -->
 <!-- The FreeBSD Japanese Documentation Project -->
-<!-- Original revision: 1.26 -->
+<!-- Original revision: 1.27 -->
 
 <sect>ユーザ ppp の設定<label id="userppp">
 
