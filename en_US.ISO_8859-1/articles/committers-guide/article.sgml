@@ -19,7 +19,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.44 2000/11/14 11:11:56 demon Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.45 2000/12/05 21:38:53 jim Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -154,7 +154,7 @@
 
     <para>CVS reference information, tutorials, and FAQs can also be found at:
       <ulink
-	url="http://www.cyclic.com/CVS/support">http://www.cyclic.com/CVS/support</ulink></para>
+	url="http://www.cvshome.org/docs/index.html">http://www.cvshome.org/docs/index.html</ulink></para>
 
     <para>&a.des; also supplied the following <quote>mini primer</quote> for
       CVS.</para>
