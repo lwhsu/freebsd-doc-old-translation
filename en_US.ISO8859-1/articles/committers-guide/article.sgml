@@ -2637,7 +2637,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		    <filename>Makefile</filename>.  Do not connect the
 		    new category to the build yet.</para>
 
-		  <para>To do this, you will need to:
+		  <para>To do this, you will need to:</para>
 		    <procedure>
 		      <step>
 			<para>Change the port's <makevar>CATEGORIES</makevar>
