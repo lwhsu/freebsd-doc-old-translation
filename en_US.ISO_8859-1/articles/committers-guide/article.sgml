@@ -16,7 +16,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.41 2000/10/09 17:08:39 obrien Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.42 2000/10/09 17:09:14 obrien Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -751,6 +751,16 @@ checkout -P</programlisting>
           to know its every quirk inside out, so don't be afraid to ask
           the resident AI (<email>cvs@FreeBSD.org</email>) for help when
           you screw up.</para>
+      </listitem>
+
+      <listitem>
+        <para>Don't leave the <command>cvs commit</command> command in commit
+          message editing mode for too long (more than 2-3 minutes).  It
+          locks the directory you are working with and will prevent other
+          developers from committing into the same directory.  If you have
+          to type a long commit message, type it before executing
+          <command>cvs commit</command>, and insert it into the commit
+          message.</para>
       </listitem>
     </orderedlist>
 
