@@ -19,7 +19,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.68 2001/05/29 19:29:25 gsutter Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.69 2001/06/02 05:45:59 dd Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -1047,7 +1047,8 @@ docs:Documentation Bug:nik:</programlisting>
 	<term>&a.ru;</term>
 	
 	<listitem>
-	  <para>Ruslan is Mr mdoc(7).  If you are writing a man page and need
+	  <para>Ruslan is Mister &man.mdoc.7;.  If you are writing a
+	    man page and need
 	    some advice on the structure, or the markup, ask Ruslan.</para>
 	</listitem>
       </varlistentry>
