@@ -3,6 +3,10 @@
 
 <!DOCTYPE article PUBLIC "-//FreeBSD//DTD DocBook V4.1-Based Extension//EN" [
 <!ENTITY % man PUBLIC "-//FreeBSD//ENTITIES DocBook Manual Page Entities//EN">
+
+<!ENTITY % trademarks PUBLIC "-//FreeBSD//ENTITIES DocBook Trademark Entities//EN">
+%trademarks;
+
 <!ENTITY vinum.ap "<application>Vinum</application>">
 %man;
 ]>
@@ -22,6 +26,10 @@
     </copyright>
     <pubdate>$Date: 2001/10/14 14:08:39 $ GMT</pubdate>
     <releaseinfo>$Id: VinumBootstrap.sgml,v 1.28 2001/10/14 14:08:39 bob Exp bob $</releaseinfo>
+    <legalnotice id="trademarks" role="trademarks">
+      &tm-attrib.freebsd;
+      &tm-attrib.general;
+    </legalnotice>
   </articleinfo>
 
   <abstract>
