@@ -220,6 +220,29 @@
       ones able to directly fiddle the repository bits on the repository hosts
       are the repomeisters.  To enforce this, there are no login shells
       available on the repository machines, except to the repomeisters.</para>
+    
+    <note><para>Depending on the affected area of the CVS repository,
+      you should send your request to one of the following email
+      addresses:</para>
+      
+      <itemizedlist>
+	<listitem><para>ncvs@ - regarding <filename role="directory">
+	    /home/ncvs</filename>, the src and
+	  src-sys repository</para></listitem>
+
+	<listitem><para>pcvs@ - regarding <filename role="directory">
+	    /home/pcvs</filename>, the ports
+	  repository</para></listitem>
+
+	<listitem><para>dcvs@ - regarding <filename role="directory">
+	    /home/dcvs</filename>, the doc
+	  repository</para></listitem>
+
+	<listitem><para>projcvs@ - regarding <filename role="directory">
+	    /home/projcvs</filename>, the
+	  third party projects repository</para></listitem>
+      </itemizedlist>
+    </note>
 
     <para>The CVS tree is currently split into four distinct repositories,
       namely <literal>doc</literal>, <literal>ports</literal>,
