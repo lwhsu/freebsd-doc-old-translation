@@ -2627,33 +2627,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>A Free DVD Subscription</term>
-
-	<listitem>
-	  <para>FreeBSD Services Limited offer a free DVD subscription to
-	    FreeBSD committers.  To take advantage of this offer, go to
-	    <ulink url="https://www.freebsd-services.com/cgi/index/sales/login"></ulink>
-	    and fill out their customer form,
-	    making sure that you tick the FreeBSD Committer and free
-	    subscription check-boxes.  A message will be sent to your
-	    <emphasis role="bold">FreeBSD.org</emphasis> email address asking
-	    for confirmation.  Just reply to the mail, quoting the message
-	    and updating the <quote>Membership Valid</quote> field with a
-	    <literal>Y</literal>.  You can confirm that the reply was sent
-	    successfully by <ulink
-	    url="https://www.freebsd-services.com/cgi/index/customer">logging
-	    in </ulink>to their site and checking that your <literal>Current
-	    Status</literal> is set to
-	    <emphasis role="bold">Associated</emphasis>.</para>
-
-	  <para>In addition to the free subscription, committers are also
-	    entitled to a <emphasis role="bold">10% discount</emphasis> on
-	    all products on the site.</para>
-	</listitem>
-      </varlistentry>
-
-      <varlistentry>
-	<term>A Free 4-CD Set Subscription</term>
+	<term>A Free 4-CD Set or DVD Subscription</term>
 
 	<listitem>
 	  <para><ulink url="http://www.freebsdmall.com">FreeBSD Mall,
