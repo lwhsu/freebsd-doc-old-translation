@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.15 1999/04/14 11:46:16 jkoshy Exp $
+     $Id: chapter.sgml,v 1.16 1999/04/28 21:10:09 billf Exp $
 -->
 
 <chapter id="cutting-edge">
@@ -829,7 +829,7 @@ ftp://ftp.FreeBSD.org/pub/FreeBSD/development/CVSup/cvsupit.tgz</userinput></scr
 	  time</title>
 	    
 	<para>Before you can start using <application>CTM</application>
-	  deltas, you will need to get a to a starting point for the deltas
+	  deltas, you will need to get to a starting point for the deltas
 	  produced subsequently to it.</para>
 	    
 	<para>First you should determine what you already have.  Everyone can
