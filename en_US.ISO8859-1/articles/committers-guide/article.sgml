@@ -2231,9 +2231,9 @@ docs:Documentation Bug:nik:</programlisting>
 
 	<qandaentry>
 	  <question>
-	    <para>What is proper procedure for updating checksum for a
-	      port's distfile when the file changes without a version
-	      change?</para>
+	    <para>What is the proper procedure for updating the checksum
+	      for a port's distfile when the file changes without a
+	      version change?</para>
 	  </question>
 
 	  <answer>
