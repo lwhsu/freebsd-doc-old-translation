@@ -1,4 +1,4 @@
-<!-- $Id: contrib.sgml,v 1.270 1998/02/22 23:55:02 hosokawa Exp $ -->
+<!-- $Id: contrib.sgml,v 1.271 1998/02/26 21:06:54 nik Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!-- Please try to keep the file 'avail' (from CVSROOT) 
@@ -171,6 +171,7 @@ groups of people:
 	    International (Crypto): &a.markm
         <tag/Ports Manager/ &a.asami 
         <tag/XFree86 Project, Inc. Liaison/ &a.rich 
-	<tag/Usenet Support/ &a.joerg;
+	<tag/Usenet Support/ &a.joerg
+	<tag/Problem Report Database Coordinator/ &a.steve;
       </descrip>
 
