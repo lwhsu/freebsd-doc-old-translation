@@ -2766,7 +2766,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 
 	  <answer>
 	    <para>First, go check
-	      <ulink url="http://bento.FreeBSD.org/errorlogs/"></ulink>.
+	      <ulink url="http://pointyhat.FreeBSD.org/errorlogs/"></ulink>.
 	      There you will find error logs from the latest package
 	      building runs on all supported platforms for the most
 	      recent branches.</para>
@@ -2774,7 +2774,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    <para>However, just because the port does not show up there
 	      does not mean it is building correctly.  (One of the
 	      dependencies may have failed, for instance.)  The relevant
-	      directories are available on <hostid>bento</hostid> under
+	      directories are available on <hostid>pointyhat</hostid> under
 	      <filename class="directory">/a/asami/portbuild/&lt;arch&gt;/&lt;major_version&gt;</filename>
 	      so feel free to dig around.  Each architecture and version has
 	      the following subdirectories:</para>
