@@ -316,7 +316,7 @@
 
 	    <para>You now have a directory named <filename>src</filename>,
 	      with subdirectories <filename>CVS</filename> and
-	      <filename>sys</filename>.  <filename>src/sys</filename> has
+	      <filename>sys</filename>.  The <filename>src/sys</filename> directory has
 	      subdirectories <filename>CVS</filename> and
 	      <filename>miscfs</filename>, etc.</para>
 	  </listitem>
