@@ -19,11 +19,12 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.46 2000/12/28 13:40:03 jedgar Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.47 2001/01/13 02:04:07 dannyboy Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
       <year>2000</year>
+      <year>2001</year>
       <holder>The FreeBSD Documentation Project</holder>
     </copyright>
 
@@ -790,6 +791,12 @@ checkout -P</programlisting>
 	  <filename>www/en/news/newsflash.sgml</filename>. Look for the other
 	  entries that look like <quote>A new committer</quote> and follow the
 	  format.</para>
+      </listitem>
+
+      <listitem>
+	<para>If you have a PGP or GnuPG key, you may want to add it to
+	  <filename>doc/en_US.ISO_8859-1/books/handbook/pgpkeys</filename>.
+	  </para>
       </listitem>
 
       <listitem>
