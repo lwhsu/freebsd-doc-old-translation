@@ -218,7 +218,7 @@
       the possibility of placing each on a separate machine in the future,
       there is a separate hostname for each that committers should use.
       Additionally, each repository is stored in a separate directory.  The
-      following table summarises the situation.</para>
+      following table summarizes the situation.</para>
 
     <table frame="none" id="cvs-repositories-and-hosts">
       <title>&os; CVS Repositories, Hosts and Directories</title>
@@ -1121,7 +1121,7 @@ SUCH DAMAGE.</programlisting>
 
     <para>The &os; project strongly discourages the so called
       advertising clause in new code.  Due to the large number of
-      contributers to the &os; project, complying with this clause for
+      contributors to the &os; project, complying with this clause for
       many commercial vendors has become difficult.  If you have code
       in the tree with the advertising clause, please consider
       removing it.  In fact, please consider using the above license
