@@ -1244,13 +1244,20 @@ docs:Documentation Bug:nik:</programlisting>
 	
 	<listitem>
 	  <para>developers is all committers.  This list was created to be a
-	    forum for the committers <quote>community</quote> issues.  Examples are Core
+	    forum for the committers <quote>community</quote> issues.
+	    Examples are Core
 	    voting, announcements, etc...  developers@FreeBSD.org is
 	    <emphasis>not</emphasis> intended as a place for code reviews or a
 	    replacement for arch@FreeBSD.org or audit@FreeBSD.org.  In fact
 	    using it as such hurts the FreeBSD Project as it gives a sense of a
 	    closed list where general decisions affecting all of the FreeBSD
-            using community are made with out being <quote>open</quote>.</para>
+	    using community are made with out being <quote>open</quote>.
+	    Last, but not least <emphasis>never, never ever, email
+	    developers@FreeBSD.org and CC:/BCC: another FreeBSD list</emphasis>.
+	    Never, ever email another FreeBSD email list and CC:/BCC:
+	    developers@FreeBSD.org.  Doing so can greatly deminish the benefits
+	    of this list.
+			</para>
 	</listitem>
       </varlistentry>
     </variablelist>
