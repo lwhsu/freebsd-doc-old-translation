@@ -1,4 +1,4 @@
-<!-- $Id: submitters.sgml,v 1.153 1998/02/22 23:55:04 hosokawa Exp $ -->
+<!-- $Id: submitters.sgml,v 1.154 1998/03/01 00:48:55 obrien Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <chapt><heading>Contributing to FreeBSD<label id="contrib"></heading>
@@ -620,6 +620,12 @@ like to publically thank them here!
 	name="ASCII Corp."> donated a portion of
 	their profits from several FreeBSD-related books to the
 	FreeBSD project.</item>
+
+	<item><url url="http://www.yokogawa.co.jp/"
+	name="Yokogawa Electric Corp"> has generously donated
+	significant funding to the FreeBSD project.</item>
+
+	<item><url url="http://www.buffnet.net/" name="BuffNET"></item>
 
    </itemize>
 
