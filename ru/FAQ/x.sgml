@@ -1,4 +1,4 @@
-<!-- $Id: x.sgml,v 1.2 1998/11/06 13:00:12 andy Exp $ -->
+<!-- $Id: x.sgml,v 1.3 1999/04/09 11:34:43 andy Exp $ -->
 <!-- The FreeBSD Russian Documentation Project -->
 
   <sect>
@@ -15,9 +15,9 @@
       name="xf86config">, которая предназначена для конфигурирования работы
       XFree86(tm) с вашим графическим адаптером/мышью/итд.
 
-      <p>Вы можете также попробовать сервер Xaccel, доступный по вполне
-      разумной цене.  Подробности находятся в главе о 
-      <ref id="xig" name="Xi Graphics">.
+      <p>Вы можете также попробовать сервер Xaccel.  За подробной информацией
+      обратитесь к разделу, посвящённому продуктам фирм <ref id="xig"
+      name="Xi Graphics"> и <ref id="metrox" name="Metro Link">.
 
     <sect1>
       <heading>
