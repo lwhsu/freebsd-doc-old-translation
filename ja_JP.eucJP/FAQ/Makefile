@@ -1,11 +1,12 @@
-# $Id: Makefile,v 1.5 1998/02/16 04:05:13 asami Exp $
+# $Id: Makefile,v 1.6 1998/07/24 05:31:24 hanai Exp $
 # Original revision: 1.7
 # The FreeBSD Japanese Documentation Project
 
 .NOTPARALLEL:
 
 DOC=    FAQ
-DOCDIR= ${SHAREDIR}/doc/ja
+VOLUME=	faq
+DOCDIR= /usr/local/share/doc/fdp/ja/books
 FORMATS?= html roff
 SGMLOPTS+=-e EUC-JP
 SGMLOPTS+=-links

@@ -1,9 +1,10 @@
-# $Id: Makefile,v 1.3 1998/11/26 22:33:32 nik Exp $
+# $Id: Makefile,v 1.4 1998/12/09 00:32:19 nik Exp $
 
 .NOTPARALLEL: 
 
 DOC=    FAQ
-DOCDIR= ${SHAREDIR}/doc/es
+VOLUME=	faq
+DOCDIR= /usr/local/share/doc/fdp/es_ES.ISO_8859-1/books
 FORMATS?= html roff
 SGMLOPTS+=-links
 

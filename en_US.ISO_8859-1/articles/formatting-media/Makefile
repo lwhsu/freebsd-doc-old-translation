@@ -1,7 +1,14 @@
-# $Id: Makefile,v 1.3 1997/07/01 05:38:15 max Exp $
+# $Id: Makefile,v 1.4 1997/07/01 05:38:13 max Exp $
 
-DOCS=	diskformat.docb
-INDEXLINK=	diskformat.html
+DOC?= article
 
-.include "../../web.mk"
+FORMATS?= html
 
+INSTALL_COMPRESSED?=gz
+INSTALL_ONLY_COMPRESSED?=
+
+SRCS= article.sgml
+
+DOC_PREFIX?= ../../..
+
+.include "../../../share/mk/docproj.docbook.mk"
