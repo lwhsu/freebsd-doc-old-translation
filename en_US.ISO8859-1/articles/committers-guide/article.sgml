@@ -2291,8 +2291,8 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	  <answer>
 	    <para>When you want to add a port that is related to
 	      any port that is already in the tree in a separate
-	      directory, please send mail to the ports manager asking
-	      about it.  Here <wordasword>related</wordasword> means
+	      directory, you have to do a repository copy.
+	      Here <wordasword>related</wordasword> means
 	      it is a different version or a slightly modified
 	      version.  Examples are
 	      <filename>print/ghostscript*</filename> (different
@@ -2328,11 +2328,13 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	  </question>
 
 	  <answer>
-	    <para>Send mail to &a.portmgr;, listing the reasons for
-	      the repository copy request.  If &a.portmgr approves
-	      it, &a.cvs; will do a repository copy from the old
-	      to the new location and/or name.  Once you receive
-	      notification that everything is done, perform the
+	    <para>File a PR in <application>GNATS</application>, listing the
+	      reasons for the repository copy request.  Assign it to
+	      <literal>portmgr</literal> and set <varname>state</varname> to
+	      <literal>repocopy</literal>.  If &a.portmgr; approves it,
+	      it will be reassigned to <literal>cvs</literal>.  &a.cvs; will
+	      do a repository copy from the old to the new location, and
+	      reassign the PR back to you.  Once everything is done, perform the
 	      following:</para>
 
 	    <itemizedlist>
