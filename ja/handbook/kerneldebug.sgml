@@ -1,6 +1,6 @@
-<!-- $Id: kerneldebug.sgml,v 1.7 1997/04/09 03:05:58 hanai Exp $ -->
+<!-- $Id: kerneldebug.sgml,v 1.8 1997/07/11 09:31:02 max Exp $ -->
 <!-- The FreeBSD Japanese Documentation Project -->
-<!-- Original revision: 1.15 -->
+<!-- Original revision: 1.16 -->
 
 <chapt><heading>カーネルデバッグ<label id="kerneldebug"></heading>
 
