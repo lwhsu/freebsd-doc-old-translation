@@ -61,7 +61,16 @@
 
   <sect1 id="serialconsole-setup">
     <title>Setting Up the Serial Console</title>
-    <para></para>
+
+    <sect2 id="serialconsole-tips">
+      <title>Tips for the Serial Console</title>
+
+      <sect3 id="serialconsole-ddb">
+	<title>Entering the DDB Debugger from the Serial Line</title>
+
+	<para></para>
+      </sect3>
+    </sect2>
   </sect1>
 </chapter>
 
