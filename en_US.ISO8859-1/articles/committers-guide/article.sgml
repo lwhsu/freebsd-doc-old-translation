@@ -1239,6 +1239,19 @@ docs:Documentation Bug:nik:</programlisting>
 	</listitem>
       </varlistentry>
 
+	  <varlistentry>
+	<term>&a.dfr;</term>
+	<term>&a.marcel;</term>
+	<term>&a.peter;</term>
+	<term>&a.ps;</term>
+
+	<listitem>
+	  <para>These are the primary developers and overseers of the
+	  Intel IA-64 platform, officially known as the Itanium Processor
+	  Family (IPF).</para>
+	</listitem>
+	  </varlistentry>
+
       <varlistentry>
 	<term>&a.murray;</term>
 	<term>&a.steve;</term>
