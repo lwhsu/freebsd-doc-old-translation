@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.15 1999/05/30 21:22:16 nik Exp $
+     $Id: chapter.sgml,v 1.16 1999/06/13 16:19:51 nik Exp $
 -->
 
 <chapter id="install">
@@ -488,8 +488,7 @@
 	</listitem>
 	
 	<listitem>
-	  <para>ATAPI IDE interface (experimental and should be considered
-	    ALPHA quality!)  (<literal>wcd</literal>)</para>
+	  <para>ATAPI IDE interface (<literal>wcd</literal>)</para>
 	</listitem>
       </itemizedlist>
       
