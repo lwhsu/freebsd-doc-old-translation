@@ -173,7 +173,7 @@
 	Both organizations are useful for spreading I/O requests across
 	spindles since plexes reside on distinct spindles.
 	A striped plex will switch spindles each time a multiple of the
-	strip size is reached.
+	stripe size is reached.
 	A concatenated plex will switch spindles only when the end of
 	a subdisk is reached.</para>
 
@@ -1023,7 +1023,7 @@ Not to scale</literallayout>
 
 <screen>&prompt.root; <userinput>fdformat -f 1440 /dev/fd0</userinput>
 &prompt.root; <userinput>newfs_msdos -f 1440 /dev/fd0</userinput>
-&prompt.root; <userinput>mount /dev/fd0 /mnt</userinput>
+&prompt.root; <userinput>mount_msdos /dev/fd0 /mnt</userinput>
 &prompt.root; <userinput>cp /usr/share/examples/vinum/bootvinum /mnt</userinput></screen>
 
 	  <para>XXX Someday, I would like this script to live in
