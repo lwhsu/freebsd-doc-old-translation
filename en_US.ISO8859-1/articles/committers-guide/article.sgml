@@ -1761,6 +1761,35 @@ docs:Documentation Bug:nik:</programlisting>
 	any style or whitespace changes in separate commits that are
 	clearly labeled as such in the commit message.</para>
     </sect2>
+
+    <sect2>
+      <title>Deprecating Features</title>
+
+      <para>When it is necessary to remove functionality from software
+	in the base system the following guidelines should be followed
+	whenever possible:</para>
+
+      <orderedlist>
+	<listitem>
+	  <para>Mention is made in the manual page and possibly the
+	    release notes that the option, utility, or interface is
+	    deprecated.  Use of the deprecated feature generates a
+	    warning.</para>
+	</listitem>
+ 
+	<listitem>
+	  <para>The option, utility, or interface is preserved until
+	    the next major (point zero) release.</para>
+	</listitem>
+
+	<listitem>
+	  <para>The option, utility, or interface is removed and no
+	    longer documented.  It is now obsolete.  It is also
+	    generally a good idea to note its removal in the release
+	    notes.</para>
+	</listitem>
+      </orderedlist>
+    </sect2>
   </sect1>
 
   <sect1>
