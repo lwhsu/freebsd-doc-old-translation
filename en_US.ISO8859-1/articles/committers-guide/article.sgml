@@ -2506,8 +2506,11 @@ docs:Documentation Bug:nik:</programlisting>
 	    to <hostid role="fqdn">cvsup-master.FreeBSD.org</hostid>,
 	    providing the public key output from <command>cvpasswd
 	    <replaceable>yourusername</replaceable>@FreeBSD.org
-	    cvsup-master.FreeBSD.org</command>.  Access to
-	    <hostid>cvsup-master</hostid> should not be over-used as it is
+	    freefall.FreeBSD.org</command>.  Please note: you must
+	    specify <hostid>freefall.FreeBSD.org</hostid> on the
+	    <command>cvpasswd</command> command line even though the
+	    actual server is <hostid>cvsup-master</hostid>.  Access to
+	    <hostid>cvsup-master</hostid> should not be overused as it is
 	    a busy machine.</para>
 	</listitem>
       </varlistentry>
