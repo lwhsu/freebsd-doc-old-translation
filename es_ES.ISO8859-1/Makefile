@@ -1,6 +1,6 @@
-#       $Id: Makefile,v 1.1 1999/03/08 21:43:32 nik Exp $
+#       $Id: Makefile,v 1.2 1999/08/16 22:09:13 nik Exp $
 
-SUBDIR = FAQ
+SUBDIR = books
 
 COMPAT_SYMLINK = es
 
