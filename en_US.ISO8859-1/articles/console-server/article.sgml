@@ -195,7 +195,7 @@
         can dial up and log into the server machine and run the
         console program locally.  For security, we will probably leave
         the modem powered off and ask the gopher in Sydney to turn on
-        the well-labelled button when we need it.</p></li>
+        the well-labeled button when we need it.</p></li>
 
       <li><p>A program called <a
         href="http://www.conserver.com/">conserver</a>.  This program
