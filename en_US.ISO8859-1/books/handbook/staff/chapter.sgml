@@ -1,3 +1,14 @@
+<!--
+     The FreeBSD Documentation Project
+
+     $Id$
+-->
+
+<!-- 
+     Please try to keep the CVSROOT/avail file in sync with the list of
+     FreeBSD developers.
+-->
+
 <chapter id="staff">
   <title>FreeBSD Project Staff</title>
   
