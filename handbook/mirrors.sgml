@@ -1,4 +1,4 @@
-<!-- $Id: mirrors.sgml,v 1.103 1999/01/30 14:47:14 mbarkah Exp $ -->
+<!-- $Id: mirrors.sgml,v 1.104 1999/02/03 03:27:59 jdp Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!--
@@ -936,6 +936,8 @@ the following sites:
 
 <tag>Sweden</tag>
 <verb>
+The path to the files are: /afs/stacken.kth.se/ftp/pub/FreeBSD
+
 stacken.kth.se                  #Stacken Computer Club, KTH, Sweden
 130.237.234.3                   #milko.stacken.kth.se              
 130.237.234.43                  #hot.stacken.kth.se              
