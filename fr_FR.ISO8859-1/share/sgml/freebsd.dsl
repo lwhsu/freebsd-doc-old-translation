@@ -54,6 +54,13 @@
                 (literal ">.")))))
 
       ]]>
+	<!-- Fix a problem with the French localisation. The bug was
+	submitted to authors of docbook project -->
+	(define (local-fr-label-title-sep)
+        (list
+          (list (normalize "warning")           "\U-00A0;: ")
+	))
+
     </style-specification-body>
   </style-specification>
 
