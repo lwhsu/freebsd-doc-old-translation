@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.19 1999/04/06 09:22:49 asami Exp $
+     $Id: chapter.sgml,v 1.20 1999/04/06 18:03:10 markm Exp $
 -->
 
 <chapter id="contrib">
@@ -2661,8 +2661,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       </listitem>
 
       <listitem>
-        <para>Jens Schweikhardt
-	  <email>schweikh@ito.uni-stuttgart.de</email></para>
+        <para>Jens Schweikhardt <email>schweikh@noc.dfn.d</email></para>
       </listitem>
 
       <listitem>
