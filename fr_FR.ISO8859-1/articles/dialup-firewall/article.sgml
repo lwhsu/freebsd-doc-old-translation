@@ -4,7 +4,7 @@
 
      $FreeBSD$
      $Id$
-     Original revision: 1.24
+     Original revision: 1.25
 -->
 
 <!DOCTYPE article PUBLIC "-//FreeBSD//DTD DocBook V4.1-Based Extension//EN" [
@@ -173,8 +173,10 @@ ppp_mode="auto"
 ppp_nat="YES"
 ppp_profile="<replaceable>profile</replaceable>"</programlisting>
 
-    <para>Si c'est le cas, retirez la ligne
-      <literal>ppp_nat="YES"</literal>.  Vous aurez aussi besoin de
+    <para>Si c'est le cas, vous devrez spécifiquement désactiver
+      <literal>ppp_nat</literal> en vous assurant que vous avez bien
+      la ligne <literal>ppp_nat="NO"</literal> dans
+      <filename>/etc/rc.conf</filename>. Vous devrez également
       retirer les lignes <literal>nat enable yes</literal> ou
       <literal>alias enable yes</literal> de
       <filename>/etc/ppp/ppp.conf</filename>.</para>
