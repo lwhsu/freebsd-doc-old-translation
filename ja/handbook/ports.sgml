@@ -1,4 +1,4 @@
-<!-- $Id: ports.sgml,v 1.11 1997/09/13 20:18:16 max Exp $ -->
+<!-- $Id: ports.sgml,v 1.12 1997/12/17 06:13:01 hanai Exp $ -->
 <!-- The FreeBSD Japanese Documentation Project -->
 <!-- Original revision: 1.28 -->
 
@@ -90,7 +90,7 @@ name="スケルトン"> を使用して収めているものです.
 提供していますので, ほとんどすべての ports は同じ手順でインストールすることが
 できます. 
 <p>
-もしあなたが (<htmlurl url="file://localhost/usr/ports/shells/bash" 
+もしあなたが (<htmlurl url="file://localhost/usr/ports/devel/ElectricFence" 
 name="あなたの FreeBSD システム"> または 
 <htmlurl url="ftp://ftp.freebsd.org/pub/FreeBSD/ports/devel/ElectricFence" 
 name="FTP サイト"> にある) ports スケルトンを見ていて, そこに潜んでいる
@@ -346,7 +346,7 @@ gnats スケルトンを展開したら, gnats ディレクトリへ移動して ports を構築します.
 # Date created: 	13 November 1997
 # Whom:			jraynard
 #
-# $Id: ports.sgml,v 1.28 1997/12/06 01:35:40 jraynard Exp $
+# $Id: ports.sgml,v 1.12 1997/12/17 06:13:01 hanai Exp $
 #
 
 DISTNAME=	ElectricFence-2.0.5
