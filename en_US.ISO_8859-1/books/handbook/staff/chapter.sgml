@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.34 1999/06/19 18:33:13 tom Exp $
+     $Id: chapter.sgml,v 1.35 1999/06/20 21:19:40 billf Exp $
 -->
 
 <!-- 
@@ -434,10 +434,6 @@
       
       <listitem>
 	<para>&a.max;</para>
-      </listitem>
-      
-      <listitem>
-	<para>&a.alex;</para>
       </listitem>
       
       <listitem>
