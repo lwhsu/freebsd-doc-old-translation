@@ -1,4 +1,4 @@
-<!-- $Id$ -->
+<!-- $Id: acknowledgments.sgml,v 1.1 1997/11/03 08:53:36 max Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
   <sect>
@@ -7,7 +7,7 @@
     <p>
     <verb>
       If you see a problem with this FAQ, or wish to submit an entry,
-      please mail us at <FAQ@FreeBSD.ORG>.  We appreciate your
+      please mail us at <FAQ@FreeBSD.org>.  We appreciate your
       feedback, and cannot make this a better FAQ without your help!
 
 
