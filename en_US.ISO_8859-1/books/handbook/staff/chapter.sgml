@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.58 1999/08/24 13:20:37 chris Exp $
+     $Id: chapter.sgml,v 1.59 1999/08/25 20:38:52 mtaylor Exp $
 -->
 
 <!-- 
@@ -688,6 +688,10 @@
 	<para>&a.yokota;</para>
       </listitem>
       
+      <listitem>
+	<para>&a.phantom;</para>
+      </listitem>
+
       <listitem>
 	<para>&a.jmz;</para>
       </listitem>
