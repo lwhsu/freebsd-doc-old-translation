@@ -1,6 +1,6 @@
-<!-- $Id: submitters.sgml,v 1.10 1997/05/09 03:52:17 max Exp $ -->
+<!-- $Id: submitters.sgml,v 1.58 1997/06/03 08:24:06 asami Exp $ -->
 <!-- The FreeBSD Japanese Documentation Project -->
-<!-- Original revision: 1.57 -->
+<!-- Original revision: 1.58 -->
 
 <chapt><heading>FreeBSD ¤Ø¤Î¹×¸¥<label id="contrib"></heading>
 
@@ -842,6 +842,7 @@ id="contrib:additional"></heading>
   <item>Marc van Kempen &lt;wmbfmk@urc.tue.nl&gt;
   <item>Mark Huizer &lt;xaa@stack.nl&gt;
   <item>Mark J. Taylor &lt;mtaylor@cybernet.com&gt;
+  <item>Mark Krentel &lt;krentel@rice.edu&gt;
   <item>Mark Tinguely &lt;tinguely@plains.nodak.edu&gt;
     &lt;tinguely@hookie.cs.ndsu.NoDak.edu&gt;
   <item>Martin Birgmeier
