@@ -2450,7 +2450,9 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	      reasons for the repository copy request.  Assign it to
 	      <literal>portmgr</literal> and set <varname>state</varname> to
 	      <literal>repocopy</literal>.  If &a.portmgr; approves it,
-	      it will be reassigned to <literal>cvs</literal>.  &a.cvsadm; will
+	      it will be reassigned to <literal>pcvs</literal>.
+	      If so inclined, <literal>portmgr</literal> may do
+	      the copy directly; otherwise, &a.pcvs; will
 	      do a repository copy from the old to the new location, and
 	      reassign the PR back to you.  Once everything is done, perform the
 	      following:</para>
