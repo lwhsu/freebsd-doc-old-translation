@@ -96,7 +96,7 @@
 
 	  <row>
 	    <entry><emphasis>Noteworthy CVS Tags</emphasis></entry>
-	    <entry><literal>RELENG_4</literal> (4.X-STABLE), <literal>HEAD</literal> (-CURRENT)</entry>
+	    <entry><literal>RELENG_4</literal> (4.X-STABLE), <literal>RELENG_5</literal> (5.X-STABLE), <literal>HEAD</literal> (-CURRENT)</entry>
 	  </row>
 	</tbody>
       </tgroup>
