@@ -76,7 +76,7 @@
 	  <row>
 	    <entry><emphasis>Mailing Lists</emphasis></entry>
 	    <entry>&a.developers;, &a.committers;
-	      (Both of these are private list; archives can be found
+	      (Both of these are private lists; archives can be found
 	      in <filename>/home/mail/developers-archive</filename>
 	      and <filename>/home/mail/committers-archive</filename>
 	      on the <hostid role="domainname">FreeBSD.org</hostid>
@@ -1052,7 +1052,7 @@ checkout -P</programlisting>
     <para>Accept correction.  We are all fallible.  When you have made
       a mistake, apologize and get on with life.  Do not beat up
       yourself, and certainly do not beat up others for your mistake.
-      Do not waste time on embarassment or recrimination, just fix
+      Do not waste time on embarrassment or recrimination, just fix
       the problem and move on.</para>
 
     <para>Ask for help.  Seek out (and give) peer reviews.  One of
