@@ -104,7 +104,7 @@ step_five () {
   # Setup time zone info; pretty much mandatory.
   cp ${DESTDIR}/usr/share/zoneinfo/${TIMEZONE} ${DESTDIR}/etc/localtime
   if test -r /etc/wall_cmos_clock; then
-     cp -p /etc/wall_cmos_clock ${DESTDIR}/etc/wall_cmos_clock
+    cp -p /etc/wall_cmos_clock ${DESTDIR}/etc/wall_cmos_clock
   fi
 }
 

@@ -100,7 +100,7 @@ while read CATEGORY NAME CMD; do
 	fi
 	LOG="${LOGDIR}/${CATEGORY}+${NAME}"
 	echo "===> Installing ${CATEGORY}/${NAME}; logging to ${LOG}"
-	test -n "${CMD}" || CMD="make install < /dev/null"
+	test -n "${CMD}" || CMD="make install BATCH=yes < /dev/null"
 	if test -n "${DRYRUN}"; then
 		if test -n "${PKG}"; then
 			echo pkg_add -v ${PKG}
