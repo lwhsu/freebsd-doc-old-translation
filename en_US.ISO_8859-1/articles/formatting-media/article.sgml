@@ -1,5 +1,5 @@
 <!DOCTYPE BOOK PUBLIC "-//Davenport//DTD DocBook V3.0//EN">
-<!-- $Id: makedisk.docb,v 1.4 1997/04/04 05:03:53 dwhite Exp $ -->
+<!-- $Id: makedisk.docb,v 1.6 1997/09/20 03:37:57 dwhite Exp $ -->
 <book>
 
 <bookinfo>
@@ -405,8 +405,8 @@ sysinstall useful for this type of task.</para></listitem>
 (<email>jfieber@indiana.edu</email>) for making
 information and examples of the DocBook DTD on which this document is
 based.</para></listitem>
-<listitem><para>Greg Lemis (<email>grog@lemis.de</email>) for checking my work
-and pointing out inaccuracies, as well as miscellaneous support.
+<listitem><para>Greg Lehey (<email>grog@freebsd.org</email>) for checking my 
+work and pointing out inaccuracies, as well as miscellaneous support.
 </para></listitem>
 </itemizedlist>
 </para>
