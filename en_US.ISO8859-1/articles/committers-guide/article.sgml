@@ -2343,6 +2343,11 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		  <step>
 		    <para>Add the new module entry.</para>
 		  </step>
+
+		  <step>
+		    <para>Add an entry to
+		      <filename>ports/MOVED</filename>.</para>
+		  </step>
 		</procedure>
 	      </listitem>
 
@@ -2364,6 +2369,11 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		    <para>Remove the old port, the old
 		      <makevar>SUBDIR</makevar> entry and the old module
 		      entry.</para>
+		  </step>
+
+		  <step>
+		    <para>Add an entry to
+		      <filename>ports/MOVED</filename>.</para>
 		  </step>
 		</procedure>
 	      </listitem>
