@@ -122,5 +122,11 @@ crw-rw-rw-  1 root  wheel   41,   1 Oct 15 22:14 spx
       <url url="http://www.cis.ohio-state.edu/~barr/INN.html"
       name="Dave Barr's INN Page"> donde encontraras las FAQ de INN.
 
+    <sect1>
+      <heading>Que version de Microsoft FrontPage debo usar?</heading>
+  
+      <p>Usa el Port. Una version pre-parcheada para Apache esta disponible
+      en la coleccion de ports
+
   </sect>
 

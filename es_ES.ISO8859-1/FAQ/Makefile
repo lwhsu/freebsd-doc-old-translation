@@ -1,8 +1,9 @@
-# $Id: Makefile,v 1.1.1.1 1998/07/20 17:09:45 nik Exp $
+# $Id: Makefile,v 1.7 1998/07/23 10:25:12 wosch Exp $
+
+.NOTPARALLEL: 
 
 SGMLOPTS=-links
 DOC=	FAQ
-DOCDIR=	${SHAREDIR}/doc/es
 SRCS= FAQ.sgml acknowledgments.sgml admin.sgml applications.sgml
 SRCS+= commercial.sgml hackers.sgml hardware.sgml install.sgml
 SRCS+= kernelconfig.sgml misc.sgml network.sgml preface.sgml

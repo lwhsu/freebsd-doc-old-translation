@@ -84,7 +84,7 @@
       lincador.
 
     <sect1>
-      <heading>Por que chmod no cambiar los permisos de los symlinks?</heading>
+      <heading>Por que chmod no puede cambiar los permisos de los links?</heading>
 
       <p>Tienes que usar <tt/-H/ o <tt/-L/ junto con la opcion <tt/-R/ para
       que funcione. Para mas informacion, mira la pagina de <htmlurl

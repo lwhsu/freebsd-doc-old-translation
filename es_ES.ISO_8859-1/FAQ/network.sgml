@@ -938,5 +938,20 @@ vat_nv_record	Recording tools for vat ftp.sics.se:archive/vat_nv_record.tar.Z
 
       </itemize>
 
+    <sect1>
+       <heading>Como puedo redirigir peticiones de una maquina a otra?<(/heading>
+
+       <p>Puedes redirigir peticiones FTP (y otros servicios) con el package
+       "socket", disponible en la coleccion de ports categoria "sysutils".
+       Simplemente tienes que reemplazar la linea del servicio correspondiente
+       en el fichero /etc/services de la siguiente manera:
+
+<verb>
+ftp stream tcp nowait nobody /usr/local/bin/socket socket ftp.foo.com ftp
+</verb>
+
+       <p>donde "ftp.foo.com" y "ftp" son la maquina y puerto de destino.
+
+
   </sect>
 
