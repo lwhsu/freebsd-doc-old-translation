@@ -1,4 +1,4 @@
-<!-- $Id: contrib.sgml,v 1.328 1998/11/30 20:30:58 billf Exp $ -->
+<!-- $Id: contrib.sgml,v 1.329 1998/11/30 21:04:03 billf Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!-- Please try to keep the file 'avail' (from CVSROOT) 
@@ -90,6 +90,7 @@ groups of people:
         <item>&a.erich;
 	<item>&a.nhibma;
         <item>&a.flathill;
+	<item>&a.foxfair;
         <item>&a.hosokawa; 
         <item>&a.hsu;
         <item>&a.mph;
