@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.50 1999/07/30 11:55:08 billf Exp $
+     $Id: chapter.sgml,v 1.51 1999/07/30 19:22:15 shin Exp $
 -->
 
 <!-- 
@@ -614,6 +614,10 @@
       
       <listitem>
 	<para>&a.karl;</para>
+      </listitem>
+      
+      <listitem>
+	<para>&a.sumikawa;</para>
       </listitem>
       
       <listitem>
