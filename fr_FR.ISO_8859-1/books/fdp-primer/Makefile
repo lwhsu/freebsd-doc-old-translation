@@ -4,7 +4,7 @@
 #
 #    Compilation de l'Introduction au Projet de Documentation de FreeBSD
 #
-#    $Id: Makefile,v 1.1 1999/09/05 17:07:53 fhaby Exp $
+#    $FreeBSD$
 #    Original revision: 1.6
 # 
 

@@ -2,7 +2,7 @@
 #    The FreeBSD Documentation Project
 #    The FreeBSD French Documentation Project
 #
-#    $Id: Makefile,v 1.1 1999/10/27 22:46:49 fhaby Exp $
+#    $FreeBSD$
 #    Original revision: 1.4
 #
 
