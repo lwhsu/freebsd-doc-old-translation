@@ -1,7 +1,8 @@
 <!-- This is an SGML document in the linuxdoc DTD describing
      Disks and FreeBSD.  By David O'Brien, 1998.
 
-     $Id: disks.sgml,v 1.3 1998/05/15 09:36:42 obrien Exp $
+     $Id: disks.sgml,v 1.1 1998/07/19 15:46:50 kuriyama Exp $
+     Original revision: 1.3
 
      The FreeBSD Documentation Project
 
