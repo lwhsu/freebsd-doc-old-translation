@@ -31,6 +31,8 @@
       <year>1999</year>
       <year>2000</year>
       <year>2001</year>
+      <year>2002</year>
+      <year>2003</year>
       <holder>The FreeBSD Documentation Project</holder>
     </copyright>
 
@@ -50,7 +52,7 @@
 	<tbody>
 	  <row>
 	    <entry><emphasis>Main Repository Host</emphasis></entry>
-	    <entry><hostid>ncvs.FreeBSD.org</hostid></entry>
+	    <entry><hostid role="fqdn">ncvs.FreeBSD.org</hostid></entry>
 	  </row>
 	  
 	  <row>
@@ -73,9 +75,23 @@
 	  
 	  <row>	  
 	    <entry><emphasis>Mailing Lists</emphasis></entry>
-	    <entry>&a.developers;, &a.committers;</entry>
+	    <entry>&a.developers;, &a.committers;
+	      (Both of these are private list; archives can be found
+	      in <filename>/home/mail/developers-archive</filename>
+	      and <filename>/home/mail/committers-archive</filename>
+	      on the <hostid role="domainname">FreeBSD.org</hostid>
+	      cluster.)
+	    </entry>
 	  </row>
 	  
+
+	  <row>
+	    <entry><emphasis>Core Team monthly reports</emphasis></entry>
+	    <entry><filename>/home/core/public/monthly-report</filename>
+	      on the <hostid role="domainname">FreeBSD.org</hostid> cluster.
+	    </entry>
+	  </row>
+
 	  <row>	  
 	    <entry><emphasis>Noteworthy CVS Tags</emphasis></entry>
 	    <entry><literal>RELENG_4</literal> (4.X-STABLE), <literal>HEAD</literal> (-CURRENT)</entry>
