@@ -1450,7 +1450,7 @@ home.p1.s0 is up</screen>
 	    <para>Next we do the new subdisk we
 	      added to <filename>/usr</filename>.</para>
 
-	    <screen>&prompt.root; <userinput>vinum -w start usr.p1.s0</userinput>
+	    <screen>&prompt.root; <userinput>vinum start -w usr.p1.s0</userinput>
 reviving usr.p1.s0
 <emphasis>(time passes . . . )</emphasis>
 usr.p1.s0 is up by force
