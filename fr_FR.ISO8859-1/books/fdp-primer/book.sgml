@@ -43,8 +43,8 @@
 <!ENTITY % mailing-lists PUBLIC "-//FreeBSD//ENTITIES DocBook Mailing List Entities//FR"> %mailing-lists;
 <!ENTITY rel.current CDATA "3.2">
 <!-- We need the followings until the translation is completed -->
-<!ENTITY sgml.in-progress SYSTEM "../handbook/in-progress.sgml">
-<!ENTITY sgml.todo SYSTEM "../handbook/todo.sgml">
+<!ENTITY sgml.in-progress SYSTEM "in-progress.sgml">
+<!ENTITY sgml.todo SYSTEM "todo.sgml">
 ]>
   
 <book lang="fr">
