@@ -2805,8 +2805,8 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 
 	  <answer>
 	    <para>No.  The ports manager will regenerate the
-	      <filename>INDEX</filename> and commit it every few
-	      days.</para>
+	      <filename>INDEX</filename> and commit it for each
+	      &os; release.</para>
 	  </answer>
 	</qandaentry>
 
