@@ -1,4 +1,4 @@
-<!-- $Id: mirrors.sgml,v 1.1 1998/04/13 15:48:19 wosch Exp $ -->
+<!-- $Id: mirrors.sgml,v 1.82 1998/04/13 18:47:10 wosch Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!--
@@ -391,6 +391,9 @@ for this domain.
 <item>
 <url url="ftp://ftp3.ru.freebsd.org/pub/FreeBSD"
 	name="ftp://ftp3.ru.freebsd.org/pub/FreeBSD"><newline>
+<item>
+<url url="ftp://ftp4.ru.freebsd.org/pub/FreeBSD"
+	name="ftp://ftp4.ru.freebsd.org/pub/FreeBSD"><newline>
 </itemize>
 
 <tag><label id="mirrors-za">South Africa</tag>
