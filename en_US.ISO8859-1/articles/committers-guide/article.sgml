@@ -1504,11 +1504,6 @@ docs:Documentation Bug:nik:</programlisting>
       </listitem>
 
       <listitem>
-	<para>Never touch the repository directly.  Ask a
-	  Repomeister.</para>
-      </listitem>
-
-      <listitem>
 	<para>Any disputed change must be backed out pending
 	  resolution of the dispute if requested by a maintainer.
 	  Security related changes may
