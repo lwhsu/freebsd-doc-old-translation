@@ -242,11 +242,10 @@
       change history, or logs.  We in the FreeBSD Project greatly
       value the change history that CVS gives to the project.</para>
 
-    <para>CVS reference information, tutorials, and FAQs can also be found at:
-      <ulink
-	url="http://www.cvshome.org/docs/">http://www.cvshome.org/docs/</ulink>,
-      and the information in <ulink url="http://cvsbook.red-bean.com/cvsbook.html">Karl Fogel's
-	chapters from <quote>Open Source Development with CVS</quote></ulink> are also very
+    <para>CVS reference information, tutorials, and FAQs can be found at:
+      <ulink url="http://www.cvshome.org/docs/">http://www.cvshome.org/docs/</ulink>.
+      The information in <ulink url="http://cvsbook.red-bean.com/cvsbook.html">Karl Fogel's
+	chapters from <quote>Open Source Development with CVS</quote></ulink> is also very
       useful.</para>
 
     <para>&a.des; also supplied the following <quote>mini primer</quote> for
