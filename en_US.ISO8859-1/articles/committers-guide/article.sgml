@@ -1421,7 +1421,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    ensuring that the FreeBSD website and documentation on the FTP
 	    site is up to date with respect to the CVS tree.  It is not a
 	    conflict resolution body.  The vast majority of documentation
-	    related discussion takes place on the &a.doc;. Committers
+	    related discussion takes place on the &a.doc;.  More details regarding the doceng team can be found in its <ulink url="http://www.FreeBSD.org/internal/doceng.html">charter</ulink>.  Committers
 	    interested in contributing to the documentation should familiarize
 	    themselves with the <ulink
 	    url="&url.books.fdp-primer;/index.html">Documentation Project
