@@ -1168,14 +1168,11 @@ docs:Documentation Bug:nik:</programlisting>
 	<term>&a.bmah;</term>
 
 	<listitem>
-	  <para>Bruce is keeper of the release notes
-	    (<filename>src/release/texts/*</filename> or
-	    <filename>src/release/doc/*</filename>,
-	    as appropriate).  If you commit a
+	  <para>Bruce is keeper of the release documentation
+	    (<filename>src/release/doc/*</filename>).  If you commit a
 	    change that you think is worthy of mention in the release notes,
 	    please make sure Bruce knows about it.  Better still, send him
-	    a patch with your suggested commentary for the release
-	    notes.</para>
+	    a patch with your suggested commentary.</para>
 	</listitem>
       </varlistentry>
 
