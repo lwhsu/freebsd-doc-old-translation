@@ -1,4 +1,4 @@
-<!-- $Id: admin.sgml,v 1.9 1998/08/14 15:24:02 nik Exp $ -->
+<!-- $Id: admin.sgml,v 1.10 1998/08/18 23:26:50 dwhite Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
   <sect>
@@ -845,7 +845,7 @@ perl -i.bak -pe 's/\r\n/\n/g' file ...
      </heading>
 
      <p>The error comes from the Kerberos distributed authentication system.  
-     The problem isn't fatal but annoying.  You can either run su with the -k
+     The problem isn't fatal but annoying.  You can either run su with the -K
      option, or uninstall Kerberos as described in the next question.
    
    <sect1>
