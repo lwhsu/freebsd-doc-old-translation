@@ -1,6 +1,6 @@
 # 
 #  Id: Makefile,v 1.17 1999/03/27 16:03:49 nik Exp
-# $Id: Makefile,v 1.30 1999/04/11 01:15:14 kuriyama Exp $
+# $Id: Makefile,v 1.31 1999/04/14 22:02:28 kuriyama Exp $
 #
 # Required ports (common):
 #	textproc/jade
@@ -36,6 +36,7 @@
 MAINTAINER=kuriyama@FreeBSD.ORG
 
 JADEOPTS=	-ilang.ja
+DOCDIR=		${SHAREDIR}/doc/ja
 
 #
 # DOC is the root name of file(s) that will be generated (i.e, for
