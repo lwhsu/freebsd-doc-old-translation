@@ -1159,6 +1159,15 @@ docs:Documentation Bug:nik:</programlisting>
       </varlistentry>
 
       <varlistentry>
+	<term>&a.jake;, &a.tmm;</term>
+
+	<listitem>
+	  <para>Jake and Thomas are the maintainers of the sparc64 hardware
+	    port.</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
 	<term>&a.nik;</term>
 	
 	<listitem>
@@ -1265,6 +1274,14 @@ docs:Documentation Bug:nik:</programlisting>
 	    to consult David if you need to make a non-import commit to
 	    something you maintain in <filename>src/contrib</filename> and
 	    you are new to how FreeBSD does things.)</para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>&a.benno;</term>
+
+	<listitem>
+	  <para>Benno is the official maintainer of the PowerPC port.</para>
 	</listitem>
       </varlistentry>
 
