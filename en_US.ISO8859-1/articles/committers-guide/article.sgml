@@ -1025,7 +1025,7 @@ checkout -P</programlisting>
 
 	<para>This is the fastest way of passing a commit message to CVS but
 	  you should be careful when editing the <filename>logmsg</filename>
-	  file before the commit, because CVS won't give you a chance to edit
+	  file before the commit, because CVS will not give you a chance to edit
 	  the message when you do the actual commit.</para>
       </listitem>
     </orderedlist>
