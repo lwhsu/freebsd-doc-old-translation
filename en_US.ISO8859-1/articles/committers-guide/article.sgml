@@ -2418,11 +2418,12 @@ docs:Documentation Bug:nik:</programlisting>
 
 	  <answer>
 	    <para>First, go check
-	      <ulink url="http://bento.FreeBSD.org/~asami/errorlogs/">
-	      http://bento.FreeBSD.org/~asami/errorlogs/</ulink>.
+	      <ulink url="http://bento.FreeBSD.org/errorlogs/">
+	      http://bento.FreeBSD.org/errorlogs/</ulink>.
 
 	      There you will find error logs from the latest package
-	      building runs on 3-stable, 4-stable and 5-current.</para>
+	      building runs on all supported platforms for the most
+	      recent branches.</para>
 
 	    <para>However, just because the port does not show up there
 	      does not mean it is building correctly.  (One of the
@@ -2430,24 +2431,12 @@ docs:Documentation Bug:nik:</programlisting>
 	      the relevant directories on bento, so feel free to dig
 	      around.</para>
 
-	    <programlisting> /a/asami/portbuild/3/errors        error logs from latest 3-stable run
-                     /logs          all logs from latest 3-stable run
-                     /packages      packages from latest 3-stable run
-                     /bak/errors    error logs from last complete 3-stable run
-                     /bak/logs      all logs from last complete 3-stable run
-                     /bak/packages  packages from last complete 3-stable run
-                   /4/errors        error logs from latest 4-stable run
-                     /logs          all logs from latest 4-stable run
-                     /packages      packages from latest 4-stable run
-                     /bak/errors    error logs from last complete 4-stable run
-                     /bak/logs      all logs from last complete 4-stable run
-                     /bak/packages  packages from last complete 4-stable run
-                   /5/errors        error logs from latest 5-current run
-                     /logs          all logs from latest 5-current run
-                     /packages      packages from latest 5-current run
-                     /bak/errors    error logs from last complete 5-current run
-                     /bak/logs      all logs from last complete 5-current run
-                     /bak/packages  packages from last complete 5-current run
+	    <programlisting> /a/asami/portbuild/&lt;arch&gt;/&lt;major_version&gt;/errors        error logs from latest &lt;major_version&gt; run on &lt;arch&gt;
+                     /logs          all logs from latest &lt;major_version&gt; run on &lt;arch&gt;
+                     /packages      packages from latest &lt;major_version&gt; run on &lt;arch&gt;
+                     /bak/errors    error logs from last complete &lt;major_version&gt; run on &lt;arch&gt;
+                     /bak/logs      all logs from last complete &lt;major_version&gt; run on &lt;arch&gt;
+                     /bak/packages  packages from last complete &lt;major_version&gt; run on &lt;arch&gt;
 	    </programlisting>
 
 	    <para>Basically, if the port shows up in
