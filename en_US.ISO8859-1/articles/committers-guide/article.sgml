@@ -91,12 +91,16 @@
 
 	  <row>
 	    <entry><emphasis>Mailing Lists</emphasis></entry>
-	    <entry>&a.developers;, &a.committers;
-	      (Both of these are private lists; archives can be found
-	      in <filename>/home/mail/developers-archive</filename>
-	      and <filename>/home/mail/committers-archive</filename>
-	      on the <hostid role="domainname">FreeBSD.org</hostid>
-	      cluster.)
+	    <entry>&a.doc-developers;, &a.doc-committers;;
+	    &a.ports-developers;, &a.ports-committers;;
+	    &a.src-developers;, &a.src-committers;.  (Each project
+	    repository has its own -developers and -committers mailing
+	    lists.  Archives for these lists may be found in files
+	    <filename>/home/mail/<replaceable>repository-name</replaceable>-developers-archive</filename>
+	    and
+	    <filename>/home/mail/<replaceable>repository-name</replaceable>-committers-archive</filename>
+	    on the <hostid role="domainname">FreeBSD.org</hostid>
+	    cluster.)
 	    </entry>
 	  </row>
 
