@@ -1,7 +1,7 @@
-<!-- $Id$ -->
+<!-- $Id: ppp.sgml,v 1.10 1997/02/22 12:59:08 peter Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
-<sect><heading>Setting up kernel PPP<label id="ppp"></heading>
+<sect><heading>Setting up Kernel PPP<label id="ppp"></heading>
 
 <p><em>Contributed by &a.gena;.</em>
 
