@@ -19,7 +19,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.64 2001/05/11 04:38:52 bmah Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.65 2001/05/12 02:07:27 obrien Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -1108,7 +1108,7 @@ docs:Documentation Bug:nik:</programlisting>
 	    maintainer / point of contact is.  (It is also not a bad idea
 	    to consult David if you need to make a non-import commit to
 	    something you maintain in <filename>src/contrib</filename> and
-	    you are new to how FreeBSD does things.</para>
+	    you are new to how FreeBSD does things.)</para>
 	</listitem>
       </varlistentry>
 
