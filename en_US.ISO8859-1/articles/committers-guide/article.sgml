@@ -2385,6 +2385,24 @@ Obtained from:      NetBSD
 MFC after:          1 month</programlisting>
 	</answer>
       </qandaentry>
+
+      <qandaentry>
+	<question>
+	  <para>How do I access <hostid
+	    role="fqdn">people.FreeBSD.org</hostid> to put up personal
+	    or project information?</para>
+	</question>
+
+	<answer>
+	  <para><hostid role="fqdn">people.FreeBSD.org</hostid> is the
+	    same as <hostid
+	    role="fqdn">freefall.FreeBSD.org</hostid>. Just create a
+	    <filename>public_html</filename> directory.  Anything you
+	    place in that directory will automatically be visible
+	    under <ulink
+	    url="http://people.FreeBSD.org">people.FreeBSD.org</ulink>.</para>
+	</answer>
+      </qandaentry>
     </qandaset>
   </sect1>
 </article>
