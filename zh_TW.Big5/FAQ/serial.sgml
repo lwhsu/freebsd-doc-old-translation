@@ -1,7 +1,7 @@
-<!-- $Id$ -->
+<!-- $Id: serial.sgml,v 1.1.1.1 1999/01/30 23:20:34 vanilla Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 <!-- Translate into Chinese by ijliao@dragon2.net -->
-<!-- English Version: 1.2 -->
+<!-- English Version: 1.4 -->
 
   <sect>
     <heading>Serial ³q°T<label id="serial"></heading>
