@@ -1057,7 +1057,10 @@ checkout -P</programlisting>
 	  <para>It is important to have an up-to-date PGP/GnuPG key in
 	    the Handbook, since the key may be required for positive
 	    identification of a committer, e.g. by the &a.admins; for
-	    account recovery.</para>
+	    account recovery.  A complete keyring of <hostid
+	    role="domainname">FreeBSD.org</hostid> users is available
+	    for download from <ulink
+	    url="&url.base;/doc/pgpkeyring.txt">http://www.FreeBSD.org/doc/pgpkeyring.txt</ulink>.</para>
 	</note>
       </listitem>
 
