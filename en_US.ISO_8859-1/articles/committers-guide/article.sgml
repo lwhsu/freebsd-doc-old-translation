@@ -1002,7 +1002,7 @@ docs:Documentation Bug:nik:</programlisting>
 	    </screen>
 
 	    <para>The 
-	      <ulink url="../porters-handbook/index.html">Porters
+	      <ulink url="http://www.freebsd.org/porters-handbook/index.html">Porters
 	      Handbook</ulink> contains more detailed
 	      instructions.</para>
 
