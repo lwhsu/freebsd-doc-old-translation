@@ -1,4 +1,4 @@
-<!-- $Id: memoryuse.sgml,v 1.10 1997/08/12 09:18:06 asami Exp $ -->
+<!-- $Id: memoryuse.sgml,v 1.11 1997/10/19 13:32:12 jraynard Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <sect><heading>PC Memory Utilization<label id="memoryuse"></heading>
@@ -37,7 +37,7 @@ paging will be enabled and the kernel will finally run at the address
 for which it was linked.
 
 
-<em>Contributed by &a.davidg;.<newline>
+<em>Contributed by &a.dg;.<newline>
   16 Apr 1995.</em>
 
 The physical pages immediately following the kernel BSS contain
