@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.2 1999/01/31 18:21:28 vanilla Exp $
+# $Id: Makefile,v 1.3 1999/02/02 06:44:38 vanilla Exp $
 
 .NOTPARALLEL: 
 
@@ -13,3 +13,4 @@ SRCS+= kernelconfig.sgml misc.sgml network.sgml preface.sgml
 SRCS+=	serial.sgml troubleshoot.sgml x.sgml
 
 .include <bsd.sgml.mk>
+

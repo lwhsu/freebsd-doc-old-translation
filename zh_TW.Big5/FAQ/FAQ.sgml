@@ -1,4 +1,4 @@
-<!-- $Id Exp$ -->
+<!-- $Id $ -->
 <!-- The FreeBSD Documentation Project -->
 <!-- Translate into Chinese by ijliao@dragon2.net -->
 <!-- English Version: 1.102 -->
@@ -28,7 +28,7 @@
     <name>FreeBSD 文件計畫</name>
   </author>
 
-  <date>$Date: 1999/05/06 16:39:21 $</date>
+  <date>$Date: 1999/06/26 09:13:27 $</date>
 
   <abstract>
     這份文件是 FreeBSD 2.X 的常見問答集。除非有特別加註，否則這些條目都適
