@@ -1334,8 +1334,11 @@ docs:Documentation Bug:nik:</programlisting>
 	    developers@FreeBSD.org and CC:/BCC: another FreeBSD list</emphasis>.
 	    Never, ever email another FreeBSD email list and CC:/BCC:
 	    developers@FreeBSD.org.  Doing so can greatly diminish the benefits
-	    of this list.
-			</para>
+	    of this list.  Also, never publically post or forward emails sent
+	    to developers@FreeBSD.org.  The act of sending to
+	    developers@FreeBSD.org vs. a public list means the information in
+	    the email is not for public consumption.
+	  </para>
 	</listitem>
       </varlistentry>
     </variablelist>
