@@ -2,8 +2,8 @@
 # The FreeBSD French Documentation Project
 #
 # $FreeBSD$
-# $Id: Makefile,v 1.9 2002/09/21 17:08:03 marc Exp $
-# Original revision: 1.61
+# $Id: Makefile,v 1.12 2003/07/07 13:18:47 marc Exp $
+# Original revision: 1.64
 #
 # Build the FreeBSD Handbook.
 #
