@@ -1,6 +1,7 @@
-#       $Id: Makefile,v 1.1 1999/03/08 21:43:32 nik Exp $
+#       $Id: Makefile,v 1.2 1999/08/17 21:35:53 nik Exp $
 
-SUBDIR = fdp-primer
+SUBDIR = faq
+SUBDIR+= fdp-primer
 SUBDIR+= handbook
 
 .include <bsd.subdir.mk>
