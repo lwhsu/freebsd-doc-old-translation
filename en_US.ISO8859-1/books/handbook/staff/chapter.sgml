@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.36 1999/06/22 23:24:19 alex Exp $
+     $Id: chapter.sgml,v 1.37 1999/06/27 14:09:13 wosch Exp $
 -->
 
 <!-- 
@@ -102,6 +102,10 @@
     <itemizedlist>
       <listitem>
 	<para>&a.ugen;</para>
+      </listitem>
+
+      <listitem>
+	<para>&a.dbaker;</para>
       </listitem>
       
       <listitem>
