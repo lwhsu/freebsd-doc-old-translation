@@ -1072,9 +1072,9 @@ checkout -P</programlisting>
       <literal>Approved by:</literal> line in the commit
       message.</para>
 
-    <para>All <filename>src</filename> commits should go to &os.current; first
-      before being merged to &os.stable;.  No major new
-      features or high-risk modifications should be made to the
+    <para>All <filename>src</filename> commits should go to
+      &os.current; first before being merged to &os.stable;.  No major
+      new features or high-risk modifications should be made to the
       &os.stable; branch.</para>
   </sect1>
 
