@@ -739,6 +739,16 @@ checkout -P</programlisting>
         <para>Simply use instead of &man.more.1; or &man.less.1;:</para>
 
         <screen>&prompt.user; <userinput>cvs diff -Nu shazam | cdiff</userinput></screen>
+
+	<para>Alternatively some editors like &man.vim.1;
+	  (ports/editors/vim5) have color support and when used as
+	  a pager with color syntax highlighting switched on will
+	  highlight many types of file, including diffs, patches,
+	  and cvs/rcs logs. </para>
+
+	<screen>&prompt.user; <userinput> echo "syn on" >> ~/.vimrc </userinput>
+	<screen>&prompt.user; <userinput> cvs diff -Nu shazam | vim -</userinput> </screen>
+	<screen>&prompt.user; <userinput> cvs log shazam | vim -</userinput> </screen>
       </listitem>
 
       <listitem>
