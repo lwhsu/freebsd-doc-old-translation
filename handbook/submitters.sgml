@@ -1,4 +1,4 @@
-<!-- $Id: submitters.sgml,v 1.79 1997/07/20 16:57:02 max Exp $ -->
+<!-- $Id: submitters.sgml,v 1.80 1997/07/28 02:02:25 chuckr Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <chapt><heading>Contributing to FreeBSD<label id="contrib"></heading>
@@ -828,7 +828,6 @@ id="contrib:additional"></heading>
   <item>Peter Haight &lt;peterh@prognet.com&gt;
   <item>Peter Stubbs &lt;PETERS@staidan.qld.edu.au&gt;
   <item>R. Kym Horsell &lt;?&gt;
-  <item>Ralf S. Engelschall &lt;rse@engelschall.com&gt;
   <item>Randall Hopper &lt;rhh@stealth.ct.picker.com&gt;
   <item>Richard Hwang &lt;rhwang@bigpanda.com&gt;
   <item>Richard Stallman &lt;rms@gnu.ai.mit.edu&gt;
