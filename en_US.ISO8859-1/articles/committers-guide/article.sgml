@@ -2082,7 +2082,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	2 status as the availability of resources to continue to maintain
 	the system in a Production Quality state diminishes.</para>
 
-      <para>Current Tier 2 platforms are PowerPC and ia64.</para>
+      <para>Current Tier 2 platforms are PowerPC, ia64 and AMD64.</para>
     </sect2>
 
     <sect2>
@@ -2102,7 +2102,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	providing source control and easier change integration from the
 	main FreeBSD tree.</para>
 
-      <para>Current Tier 3 platforms are S/390 and x86-64.</para>
+      <para>Current Tier 3 platforms are S/390.</para>
     </sect2>
 
     <sect2>
