@@ -2060,7 +2060,7 @@ docs:Documentation Bug:nik:</programlisting>
 	providing source control and easier change integration from the
 	main FreeBSD tree.</para>
 
-      <para>There are currently no Tier 3 platforms.</para>
+      <para>Currently, the only Tier 3 platform is x86-64.</para>
     </sect2>
 
     <sect2>
