@@ -16,6 +16,9 @@
 
 <!ENTITY % trademarks PUBLIC "-//FreeBSD//ENTITIES DocBook Trademark Entities//EN">
 %trademarks;
+
+<!ENTITY % urls PUBLIC "-//FreeBSD//ENTITIES DocBook URL Entities//EN">
+%urls;
 ]>
 
 <article>
@@ -1228,7 +1231,7 @@ SUCH DAMAGE.</programlisting>
       </listitem>
 
       <listitem>
-	<para><ulink url="../../../../support.html">http://www.FreeBSD.org/support.html</ulink></para>
+	<para><ulink url="&url.main;/support.html">http://www.FreeBSD.org/support.html</ulink></para>
       </listitem>
 
       <listitem>
@@ -1498,7 +1501,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 
 	<listitem>
 	  <para>Jacques is the
-	  <ulink url="../../../../security/">FreeBSD Security
+	  <ulink url="&url.main;/security/">FreeBSD Security
 	  Officer</ulink>
 	  and oversees the &a.security-officer;.
 	  </para>
@@ -2736,7 +2739,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 
 		<step>
 		  <para>The procedure to update the <ulink
-		    url="../../../../ports/index.html">ports web pages</ulink>
+		    url="&url.main;/ports/index.html">ports web pages</ulink>
 		    to reflect the new category is not yet defined.</para>
 		</step>
 
