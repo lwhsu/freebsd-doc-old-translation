@@ -1,6 +1,6 @@
 # 
 #  Id: Makefile,v 1.17 1999/03/27 16:03:49 nik Exp
-# $Id: Makefile,v 1.14 1999/04/05 22:13:52 kuriyama Exp $
+# $Id: Makefile,v 1.29 1999/04/08 15:45:06 kuriyama Exp $
 #
 # Required ports (common):
 #	textproc/jade
@@ -123,7 +123,7 @@ SRCS+= mailing-lists.ent
 
 VOLUME?=	ja/${.CURDIR:T}
 DOC?=		${.CURDIR:T}
-DISTRIBUTION?=	doc/ja
+DISTRIBUTION?=	doc
 
 JADE=		/usr/local/bin/jade
 DSLHTML=	../../share/sgml/freebsd.dsl
