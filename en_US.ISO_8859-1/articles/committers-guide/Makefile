@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.22 1999/08/17 21:35:54 nik Exp $
+# $Id: Makefile,v 1.1 1999/09/03 17:10:42 nik Exp $
 #
 # Build the FreeBSD New Committers Guide
 #
@@ -21,5 +21,5 @@ INSTALL_ONLY_COMPRESSED?=
 # SGML content
 SRCS=  article.sgml
 
-DOC_PREFIX?= ../../..
+DOC_PREFIX?= ${.CURDIR}/../../..
 .include "${DOC_PREFIX}/share/mk/doc.project.mk"
