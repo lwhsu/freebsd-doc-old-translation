@@ -36,6 +36,10 @@
   <email>thomas.seyrat@ulp.u-strasbg.fr</email>">
 <!ENTITY a.praca "Fr&eacute;d&eacute;ric Praca
   <email>frederic.praca@freebsd-fr.org</email>">
+<!ENTITY a.fonvieille "Marc Fonvieille
+  <email>marc@blackend.org</email>">
+
+
 
 <!-- Traductions -->
 
@@ -65,4 +69,6 @@
   "<para><emphasis>Version fran&ccedil;aise de &a.seyrat;.</emphasis></para>">
 <!ENTITY trans.a.praca
   "<para><emphasis>Version fran&ccedil;aise de &a.praca;.</emphasis></para>">
-  
+<!ENTITY trans.a.fonvieille
+  "<para><emphasis>Version fran&ccedil;aise de &a.fonvieille;.</emphasis></para>">
+
