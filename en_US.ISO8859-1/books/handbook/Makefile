@@ -1,12 +1,10 @@
 # 
-# $Id: Makefile,v 1.19 1999/04/12 21:40:25 nik Exp $
+# $Id: Makefile,v 1.20 1999/04/15 22:51:18 nik Exp $
 #
 # Build the FreeBSD Handbook.
 #
 
 MAINTAINER=nik@FreeBSD.ORG
-
-JADEOPTS=
 
 DOC?= handbook
 
