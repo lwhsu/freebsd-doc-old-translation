@@ -755,7 +755,7 @@
           and also makes it harder to understand just what functional
           changes were made.  In the case of documentation files, it
           can make the job of the translation teams more complicated,
-          as it becomes difficult for them to detemrine exactly what
+          as it becomes difficult for them to determine exactly what
           content changes need to be translated.</para>
 
         <para>Avoid committing changes to multiple files in one go
