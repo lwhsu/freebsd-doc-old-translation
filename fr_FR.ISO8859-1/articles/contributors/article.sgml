@@ -14,6 +14,8 @@
 %authors;
 <!ENTITY % teams PUBLIC "-//FreeBSD//ENTITIES DocBook Team Entities//EN">
 %teams;
+<!ENTITY % freebsd PUBLIC "-//FreeBSD//ENTITIES DocBook Miscellaneous FreeBSD Entities//EN">
+%freebsd;
 <!ENTITY % not.published "IGNORE">
 ]>
 
@@ -23,7 +25,7 @@
 	adding your entity to the list of developers.
 -->
 
-<article>
+<article lang="fr">
   <articleinfo>
     <title>Contributeurs au projet FreeBSD</title>
 
