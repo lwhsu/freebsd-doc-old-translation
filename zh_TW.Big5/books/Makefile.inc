@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile.inc,v 1.1 1999/08/16 22:09:05 nik Exp $
+# $Id: Makefile.inc,v 1.1 1999/08/19 03:56:49 foxfair Exp $
 #
 
-DESTDIR?=	${DOC_INSTALL_PREFIX}/zh_TW.Big5/books/${.CURDIR:T}
+DESTDIR?=	${DOCDIR}/zh_TW.Big5/books/${.CURDIR:T}

@@ -3,8 +3,7 @@
 .NOTPARALLEL:
 
 DOC=	FAQ
-VOLUME=	faq
-DOCDIR=	/usr/local/share/doc/fdp/ru_SU.KOI8-R/books
+DESTDIR=	${DOCDIR}/ru_RU.KOI8-R
 FORMATS?= html roff
 SGMLOPTS+=-e koi8-r
 SGMLOPTS+=-links
