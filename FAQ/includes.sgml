@@ -1,0 +1,6 @@
+<!-- $Id: includes.sgml,v 1.16 1998/04/22 03:03:19 jkh Exp $ -->
+
+<!-- book stores -->
+<!ENTITY isbn.amazon 'http://www.amazon.com/exec/obidos/ASIN'>
+
+
