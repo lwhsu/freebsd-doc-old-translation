@@ -1,4 +1,4 @@
-<!-- $Id: porting.sgml,v 1.95 1998/04/28 04:55:12 mph Exp $ -->
+<!-- $Id: porting.sgml,v 1.96 1998/05/07 05:42:39 mph Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <sect1><heading>Porting an existing piece of free software<label id="porting"></heading>
@@ -50,7 +50,7 @@ well commented, and you will still gain much knowledge from it.
 	is already included; if not, add the code:
 
 <tscreen><verb>
-#ifdef (defined(__unix__) || defined(unix)) && !defined(USG)
+#if (defined(__unix__) || defined(unix)) && !defined(USG)
 #include <sys/param.h>
 #endif
 </verb></tscreen>
