@@ -1331,12 +1331,12 @@ docs:Documentation Bug:nik:</programlisting>
 	    closed list where general decisions affecting all of the FreeBSD
 	    using community are made without being <quote>open</quote>.
 	    Last, but not least <emphasis>never, never ever, email
-	    developers@FreeBSD.org and CC:/BCC: another FreeBSD list</emphasis>.
+	    &a.developers; and CC:/BCC: another FreeBSD list</emphasis>.
 	    Never, ever email another FreeBSD email list and CC:/BCC:
-	    developers@FreeBSD.org.  Doing so can greatly diminish the benefits
+	    &a.developers;.  Doing so can greatly diminish the benefits
 	    of this list.  Also, never publically post or forward emails sent
-	    to developers@FreeBSD.org.  The act of sending to
-	    developers@FreeBSD.org vs. a public list means the information in
+	    to &a.developers;.  The act of sending to
+	    &a.developers; vs. a public list means the information in
 	    the email is not for public consumption.
 	  </para>
 	</listitem>
