@@ -1,4 +1,4 @@
-<!-- $Id: hardware.sgml,v 1.3 1998/11/26 22:33:33 nik Exp $ -->
+<!-- $Id: hardware.sgml,v 1.2 1999/01/29 16:18:14 jesusr Exp $ -->
 <!-- The FreeBSD Documentation Spanish Project -->
   <sect>
     <heading>Compatibilidad hardware <label id="hardware"></heading>
@@ -546,6 +546,6 @@
 
     <sect1>
       <heading>Soporta FreeBSD "Symmetric Multiproccessing (SMP)?</heading>
-      <p>SMP solo esta soportado en la versi&oacute;n 3.0-CURRENT
+      <p>SMP est&aacute; soportado a partir de la versi&oacute;n 3.0-STABLE
   </sect>
 
