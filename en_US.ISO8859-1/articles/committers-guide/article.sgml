@@ -2003,11 +2003,9 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    make sure your testing occurs with a machine which is
 	    running that code.  If you have a change which also may
 	    break another architecture, be sure and test on all
-	    supported architectures.  Currently, this is only the x86
-	    and the Alpha so it is pretty easy to do.  If you need to
-	    test on the AXP, your account on <hostid
-	    role="fqdn">beast.FreeBSD.org</hostid> will let you
-	    compile and test Alpha binaries/kernels/etc.  As other
+	    supported architectures.  Please refer to the <ulink
+	    url="http://www.FreeBSD.org/internal/">FreeBSD Internal
+	    Page</ulink> for a list of available resources.  As other
 	    architectures are added to the FreeBSD supported platforms
 	    list, the appropriate shared testing resources will be
 	    made available.</para>
