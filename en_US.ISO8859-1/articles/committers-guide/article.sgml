@@ -2457,28 +2457,34 @@ cvs add: use 'cvs commit' to add this file permanently
 		<row>
 		  <entry><literal>Submitted by:</literal></entry>
 		  <entry>The name and e-mail address of the person that
-		    submitted the fix.</entry>
+		    submitted the fix; for committers, just the username on
+		    the FreeBSD cluster.</entry>
 		</row>
 
 		<row>
 		  <entry><literal>Reviewed by:</literal></entry>
 		  <entry>The name and e-mail address of the person or people
-		    that reviewed the change.  If a patch was submitted to a
-		    mailing list for review, and the review was favorable,
-		    then just include the list name.</entry>
+		    that reviewed the change; for committers, just the
+		    username on the FreeBSD cluster. If a patch was
+		    submitted to a mailing list for review, and the review
+		    was favorable, then just include the list name.</entry>
 		</row>
 
 		<row>
 		  <entry><literal>Approved by:</literal></entry>
 		  <entry>The name and e-mail address of the person or people
-		    that approved the change.  It is customary to get prior
-		    approval for a commit if it is to an area of the tree to
-		    which you do not usually commit.  In addition, during the
-		    run up to a new release all commits
+		    that approved the change; for committers, just the
+		    username on the FreeBSD cluster. It is customary to get
+		    prior approval for a commit if it is to an area of the
+		    tree to which you do not usually commit.  In addition,
+		    during the run up to a new release all commits
 		    <emphasis>must</emphasis> be approved by the release
-		    engineer.  If these are your first commits then you should
-		    have passed them past your mentor first for approval, and
-		    you should list your mentor.</entry>
+		    engineering team.  If these are your first commits then
+		    you should have passed them past your mentor first, and
+		    you should list your mentor, as in
+		    ``<replaceable>username-of-mentor</replaceable>
+		    <literal>(mentor)</literal>''.
+                 </entry>
 		</row>
 
 		<row>
