@@ -36,6 +36,7 @@
       <year>2001</year>
       <year>2002</year>
       <year>2003</year>
+      <year>2004</year>
       <holder>The FreeBSD Documentation Project</holder>
     </copyright>
 
@@ -1000,15 +1001,22 @@ checkout -P</programlisting>
       </listitem>
 
       <listitem>
-	<para>If you have a PGP or GnuPG key, you may want to add it to
-	  <filename>doc/share/pgpkeys</filename>.
-	  </para>
+	<para>You should add your PGP or GnuPG key to
+	  <filename>doc/share/pgpkeys</filename> (and if you do not
+	  have a key, you should create one).</para>
 
 	<para>&a.des; has
 	  written a shell script to make this extremely simple.  See the
 	  <ulink
 	  url="http://cvsweb.FreeBSD.org/doc/share/pgpkeys/README">README</ulink>
 	  file for more information.</para>
+
+	<note>
+	  <para>It is important to have an up-to-date PGP/GnuPG key in
+	    the Handbook, since the key may be required for positive
+	    identification of a committer, e.g. by the &a.admins; for
+	    account recovery.</para>
+	</note>
       </listitem>
 
       <listitem>
