@@ -16,7 +16,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.42 2000/10/09 17:09:14 obrien Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.43 2000/11/03 19:01:27 sobomax Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -1122,7 +1122,7 @@ docs:Documentation Bug:nik:</programlisting>
       </step>
 
       <step>
-	<para>If you do not wish to to type your password in every
+	<para>If you do not wish to type your password in every
 	  time you use &man.ssh.1;, and you use RSA keys to
 	  authenticate, &man.ssh-agent.1; is there for your
 	  convenience.  If you want to use &man.ssh-agent.1;, make
