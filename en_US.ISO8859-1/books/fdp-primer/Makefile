@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.1 1999/04/20 20:59:49 nik Exp $
+# $Id: Makefile,v 1.2 1999/04/26 21:45:04 nik Exp $
 #
 # Build the FreeBSD Documentation Project Primer.
 #
@@ -30,6 +30,7 @@ SRCS+= the-faq/chapter.sgml
 SRCS+= the-handbook/chapter.sgml 
 SRCS+= the-website/chapter.sgml 
 SRCS+= tools/chapter.sgml 
+SRCS+= translations/chapter.sgml
 SRCS+= writing-style/chapter.sgml 
 
 # Entities
