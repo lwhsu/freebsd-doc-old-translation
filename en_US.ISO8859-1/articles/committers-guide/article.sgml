@@ -2828,6 +2828,18 @@ MFC after:          1 month</programlisting>
 	    url="http://people.FreeBSD.org">people.FreeBSD.org</ulink>.</para>
 	</answer>
       </qandaentry>
+      
+      <qandaentry>
+        <question>
+	  <para>Where are the mailing list archives stored?</para>
+	</question>
+
+	<answer>
+	  <para>The mailing lists are archived under <filename>/g/mail</filename>
+	    which will show up as <filename>/hub/g/mail</filename> with &man.pwd.1;.
+	    This location is accessable from any machine on the FreeBSD cluster.</para>
+	</answer>
+      </qandaentry>
     </qandaset>
   </sect1>
 </article>
