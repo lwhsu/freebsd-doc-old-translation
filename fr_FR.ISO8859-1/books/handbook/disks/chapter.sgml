@@ -3,7 +3,7 @@
      The FreeBSD French Documentation Project
 
      $FreeBSD$
-     $Id: chapter.sgml,v 1.1 2002/07/14 10:20:26 marc Exp $
+     $Id: chapter.sgml,v 1.2 2002/09/11 20:15:41 marc Exp $
 -->
 
 <chapter id="disks">
@@ -44,6 +44,11 @@
 
     <sect2 id="cdrecord">
       <title>cdrecord</title>
+      <para></para>
+    </sect2>
+
+    <sect2 id="duplicating-audiocds">
+      <title>Duplicating Audio CDs</title>
       <para></para>
     </sect2>
 
