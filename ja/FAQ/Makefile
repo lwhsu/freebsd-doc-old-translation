@@ -1,6 +1,8 @@
-# $Id: Makefile,v 1.4 1998/02/13 12:36:56 hanai Exp $
-# Original revision: 1.6
+# $Id: Makefile,v 1.5 1998/02/16 04:05:13 asami Exp $
+# Original revision: 1.7
 # The FreeBSD Japanese Documentation Project
+
+.NOTPARALLEL:
 
 DOC=    FAQ
 DOCDIR= ${SHAREDIR}/doc/ja
