@@ -351,8 +351,8 @@
       <para>All mailing lists live on <hostid
 	  role="fqdn">FreeBSD.ORG</hostid>, so to post to a given list you
 	simply mail to
-	&lt;<replaceable>listname</replaceable>@FreeBSD.ORG&gt;.  It
-	will then be redistributed to mailing list members world-wide.</para>
+	&lt;<replaceable>listname</replaceable>@FreeBSD.ORG&gt;.  It will then
+	be redistributed to mailing list members world-wide.</para>
 	  
       <para>To subscribe to a list, send mail to &a.majordomo; and include
 	
