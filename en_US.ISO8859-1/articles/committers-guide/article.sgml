@@ -1208,6 +1208,18 @@ docs:Documentation Bug:nik:</programlisting>
       </varlistentry>
 
       <varlistentry>
+        <term>&a.nectar;</term>
+
+        <listitem>
+          <para>Jacques is the 
+          <ulink url="../../../../security/">FreeBSD Security 
+          Officer</ulink> 
+          and oversees the Security Officer Team.
+          </para>
+        </listitem>
+      </varlistentry>
+ 
+      <varlistentry>
 	<term>&a.wollman;</term>
 	
 	<listitem>
