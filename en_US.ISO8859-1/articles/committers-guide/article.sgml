@@ -2206,8 +2206,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	with respects to all aspects of the FreeBSD operating system,
 	including installation and development environments.</para>
 
-      <para>Current Tier 1 platforms are i386, Sparc64, AMD64, PC98,
-        and Alpha.</para>
+      <para>Current Tier 1 platforms are i386, Sparc64, AMD64, and PC98.</para>
     </sect2>
 
     <sect2>
@@ -2235,7 +2234,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	2 status as the availability of resources to continue to maintain
 	the system in a Production Quality state diminishes.</para>
 
-      <para>Current Tier 2 platforms are PowerPC and ia64.</para>
+      <para>Current Tier 2 platforms are Alpha, PowerPC and ia64.</para>
     </sect2>
 
     <sect2>
