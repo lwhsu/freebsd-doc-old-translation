@@ -227,8 +227,8 @@
       
       <itemizedlist>
 	<listitem><para>ncvs@ - regarding <filename role="directory">
-	    /home/ncvs</filename>, the src and
-	  src-sys repository</para></listitem>
+	    /home/ncvs</filename>, the src
+	  repository</para></listitem>
 
 	<listitem><para>pcvs@ - regarding <filename role="directory">
 	    /home/pcvs</filename>, the ports
