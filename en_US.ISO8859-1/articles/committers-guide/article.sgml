@@ -2822,7 +2822,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	      does not mean it is building correctly.  (One of the
 	      dependencies may have failed, for instance.)  The relevant
 	      directories are available on <hostid>pointyhat</hostid> under
-	      <filename class="directory">/a/asami/portbuild/&lt;arch&gt;/&lt;major_version&gt;</filename>
+	      <filename class="directory">/a/portbuild/&lt;arch&gt;/&lt;major_version&gt;</filename>
 	      so feel free to dig around.  Each architecture and version has
 	      the following subdirectories:</para>
 
