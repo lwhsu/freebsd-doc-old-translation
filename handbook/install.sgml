@@ -1,4 +1,4 @@
-<!-- $Id: install.sgml,v 1.57 1997/09/20 04:45:40 jkh Exp $ -->
+<!-- $Id: install.sgml,v 1.58 1997/10/11 11:20:14 jraynard Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!--
@@ -267,7 +267,7 @@ Boot:
                    (<tt>wcd</tt>)
 	  </itemize>
 
-      <sect1><heading>Ethernet cards</heading>
+      <sect1><heading>Ethernet cards<label id="install:nics"></heading>
 
 	<p>
 	  <itemize>
@@ -338,7 +338,7 @@ Boot:
           cards.  If your card has PnP and is giving you problems,
           try disabling its PnP features.
 
-      <sect1><heading>Miscellaneous devices</heading>
+      <sect1><heading>Miscellaneous devices<label id="install:misc"></heading>
 
 	<p>
 	  <itemize>
