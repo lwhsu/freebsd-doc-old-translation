@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.26 1999/05/19 09:40:31 wosch Exp $
+     $Id: chapter.sgml,v 1.27 1999/05/28 18:20:45 ru Exp $
 -->
 
 <!-- 
@@ -282,6 +282,10 @@
       
       <listitem>
 	<para>&a.jhay;</para>
+      </listitem>
+      
+      <listitem>
+	<para>&a.sheldonh;</para>
       </listitem>
       
       <listitem>
