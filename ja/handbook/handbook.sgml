@@ -3,10 +3,10 @@
      The FreeBSD Japanese Documentation Project
 
      Original revision: 1.75
-     $Id: handbook.sgml,v 1.42 1999/04/08 15:45:06 kuriyama Exp $
+     $Id: handbook.sgml,v 1.43 1999/05/06 19:12:18 motoyuki Exp $
 -->
 
-<!DOCTYPE BOOK PUBLIC "-//FreeBSD//DTD DocBook V3.0-Based Extension//EN" [
+<!DOCTYPE BOOK PUBLIC "-//FreeBSD//DTD DocBook V3.1-Based Extension//EN" [
 <!ENTITY % man PUBLIC "-//FreeBSD//ENTITIES DocBook Manual Page Entities//EN">
 %man;
 
