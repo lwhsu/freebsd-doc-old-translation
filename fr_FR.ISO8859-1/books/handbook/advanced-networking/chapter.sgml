@@ -3,7 +3,7 @@
      The FreeBSD French Documentation Project
 
      $FreeBSD$
-     $Id: chapter.sgml,v 1.1 2002/07/14 10:20:20 marc Exp $
+     $Id: chapter.sgml,v 1.2 2003/05/25 14:04:56 marc Exp $
 -->
 
 <chapter id="advanced-networking">
@@ -24,7 +24,7 @@
     <para></para>
   </sect1>
  
-  <sect1 id="nfs">
+  <sect1 id="network-nfs">
     <title>NFS</title>
     <para></para>
   </sect1>
@@ -44,7 +44,7 @@
     <para></para>
   </sect1>
 
-  <sect1 id="dhcp">
+  <sect1 id="network-dhcp">
     <title>DHCP</title>
     <para></para>
   </sect1>
@@ -64,10 +64,10 @@
     <para></para>
   </sect1>
 
-  <sect1 id="inetd">
+  <sect1 id="network-inetd">
     <title>inetd <quote>Super-Server</quote></title>
 
-    <sect2 id="inetd-overview">
+    <sect2 id="network-inetd-overview">
       <title>Overview</title>
       <para></para>
     </sect2>
