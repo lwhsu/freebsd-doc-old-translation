@@ -53,6 +53,14 @@
                   (literal "doc@FreeBSD.org"))
                 (literal ">.")))))
 
+	<!-- Generate links to HTML man pages -->                        
+        (define %refentry-xref-link% #t)                                 
+                                                                         
+        <!-- Specify how to generate the man page link HREF -->          
+        (define ($create-refentry-xref-link$ refentrytitle manvolnum)    
+	  (string-append "http://www.FreeBSD.org/cgi/man.cgi?query="
+		 refentrytitle "&" "sektion=" manvolnum))
+
       ]]>
 	<!-- Fix a problem with the French localisation. The bug was
 	submitted to authors of docbook project -->
