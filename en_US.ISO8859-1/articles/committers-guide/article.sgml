@@ -19,7 +19,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.57 2001/04/05 20:34:32 obrien Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.58 2001/04/05 20:35:49 obrien Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -2180,8 +2180,8 @@ cvs add: use 'cvs commit' to add this file permanently
 	  <example>
 	    <title>Commit log for a commit based on a PR</title>
 
-	    <para>Fix the problem where the foo device driver would fail to
-		attach if the bar device was present due to a clash in resources.</para>
+	    <para>John Smith has submitted a PR containing a patch, which has
+	      been applied.</para>
 
 	    <programlisting>...
 
