@@ -1078,7 +1078,7 @@ Not to scale</literallayout>
 	      <devicename>/dev/ad0s1f</devicename>
 	      by default.)</para>
 
-	    <note><para>If you prefer soft updates as I do and you are
+	    <note><para>If you prefer Soft Updates as I do and you are
 	      using 4.4-RELEASE or better, this is a good time to enable
 	      them.</para></note>
 
