@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.54 1999/06/23 08:22:35 yokota Exp $
+     $Id: chapter.sgml,v 1.55 1999/06/23 20:03:45 cpiazza Exp $
 -->
 
 <chapter id="contrib">
@@ -1064,7 +1064,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       </listitem>
       
       <listitem>
-	<para>Aaron Smith <email>aaron@tau.veritas.com</email></para>
+	<para>Aaron Smith <email>aaron@mutex.org</email></para>
       </listitem>
 
       <listitem>
