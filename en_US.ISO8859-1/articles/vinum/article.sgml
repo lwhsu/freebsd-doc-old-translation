@@ -533,7 +533,7 @@
       <title>Hardware for Vinum</title>
 
       <para>These instructions may be timely since commodity PC hardware
-	can now easily host several hundred megabytes of reasonably
+	can now easily host several hundred gigabytes of reasonably
 	high-performance disk space at a low price.  Many disk
 	drive manufactures now sell 7,200 RPM disk drives with quite
 	low seek times and high transfer rates through ATA-100
