@@ -1,4 +1,4 @@
-<!-- $Id: contrib.sgml,v 1.294 1998/07/08 18:32:06 ejc Exp $ -->
+<!-- $Id: contrib.sgml,v 1.295 1998/07/19 05:47:45 thepish Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!-- Please try to keep the file 'avail' (from CVSROOT) 
@@ -80,7 +80,6 @@ groups of people:
         <item>&a.rgrimes;
 	<item>&a.jmg;
         <item>&a.hanai;
-	<item>&a.ahasty;
 	<item>&a.jhay;
 	<item>&a.ghelmer;
 	<item>&a.helbig;
