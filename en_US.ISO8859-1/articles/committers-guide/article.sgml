@@ -837,6 +837,12 @@ checkout -P</programlisting>
 	<para>If you have a PGP or GnuPG key, you may want to add it to
 	  <filename>doc/en_US.ISO8859-1/books/handbook/pgpkeys</filename>.
 	  </para>
+
+	<para>&a.des; has
+	  written a shell script to make this extremely simple.  See the
+	  <ulink
+	  url="http://cvsweb.FreeBSD.org/doc/en_US.ISO8859-1/books/handbook/pgpkeys/README">README</ulink>
+	  file for more information.</para>
       </listitem>
 
       <listitem>
