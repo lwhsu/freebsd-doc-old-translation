@@ -2293,6 +2293,20 @@ docs:Documentation Bug:nik:</programlisting>
 	    all products on the site.</para>
 	</listitem>
       </varlistentry>
+
+      <varlistentry>
+	<term>A Free 4-CD Set Subscription</term>
+
+	<listitem>
+	  <para><ulink url="http://www.freebsdmall.com">FreeBSD Mall,
+            Inc.</ulink> offers a free subscription of the official
+            4-CD set to all FreeBSD committers.  Information about how
+            to obtain your free CD is mailed to
+            <email>developers@FreeBSD.org</email> following each major
+            release.</para>
+        </listitem>
+      </varlistentry>
+
     </variablelist>
   </sect1>
 
