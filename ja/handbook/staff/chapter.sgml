@@ -3,7 +3,7 @@
      The FreeBSD Japanese Documentation Project
 
      Original revision: 1.45
-     $Id: chapter.sgml,v 1.4 1999/05/12 05:10:24 motoyuki Exp $
+     $Id: chapter.sgml,v 1.5 1999/07/25 11:49:01 kuriyama Exp $
 -->
 
 <chapter id="staff">
@@ -647,6 +647,10 @@
 
       <listitem>
 	<para>&a.jmz;</para>
+      </listitem>
+
+      <listitem>
+	<para>&a.shin;</para>
       </listitem>
     </itemizedlist>
   </sect1>
