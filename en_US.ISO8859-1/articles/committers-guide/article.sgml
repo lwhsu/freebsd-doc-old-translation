@@ -1460,7 +1460,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	<term>&a.steve;</term>
 	<term>&a.rwatson;</term>
 	<term>&a.jhb;</term>
-	<term>&a.bmah;</term>
 	<term>&a.scottl;</term>
 	<term>&a.kensmith;</term>
 	<term>&a.hrs;</term>
@@ -1475,10 +1474,10 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    &os.stable; (whatever values those may have at any given
 	    time), these are the people to talk to about it.</para>
 
-	  <para>Bruce is also the keeper of the release documentation
+	  <para>Hiroki is also the keeper of the release documentation
 	    (<filename>src/release/doc/*</filename>).  If you commit a
 	    change that you think is worthy of mention in the release notes,
-	    please make sure Bruce knows about it.  Better still, send him
+	    please make sure he knows about it.  Better still, send him
 	    a patch with your suggested commentary.</para>
 	</listitem>
       </varlistentry>
