@@ -1,4 +1,4 @@
-<!-- $Id: contrib.sgml,v 1.292 1998/06/22 02:58:48 jfieber Exp $ -->
+<!-- $Id: contrib.sgml,v 1.293 1998/07/04 17:59:22 nectar Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!-- Please try to keep the file 'avail' (from CVSROOT) 
@@ -54,6 +54,7 @@ groups of people:
 	<item>&a.dburr;
 	<item>&a.danny;
 	<item>&a.charnier;
+	<item>&a.ejc;
 	<item>&a.kjc;
         <item>&a.gclarkii;
 	<item>&a.cracauer;
