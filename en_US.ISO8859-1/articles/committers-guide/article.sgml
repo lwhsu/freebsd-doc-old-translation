@@ -611,6 +611,11 @@
               </row>
 
               <row>
+                <entry><option>-c</option></entry>
+                <entry>Uses the context diff format.</entry>
+              </row>
+
+              <row>
                 <entry><option>-N</option></entry>
                 <entry>Shows missing or added files.</entry>
               </row>
@@ -620,7 +625,7 @@
 
         <para>You always want to use <option>-u</option>, since
           unified diffs are much easier to read than almost any other
-          diff format (in some circumstances, context diffs may be
+          diff format (in some circumstances, context diffs generated with the <option>-c</option> option may be
           better, but they are much bulkier). A unified diff consists of
           a series of hunks. Each hunk begins with a line that starts
           with two <literal>@</literal> signs and specifies where in the
