@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id$
+     $Id: chapter.sgml,v 1.11 1999/03/08 22:04:44 nik Exp $
 -->
 
 <chapter id="linuxemu">
@@ -615,7 +615,7 @@ multi on</programlisting>
 	</listitem>
 	
 	<listitem>
-	  <para><filename>slakware/x6/oldlibs/tgz</filename></para>
+	  <para><filename>slakware/x6/oldlibs.tgz</filename></para>
 	</listitem>
 	
 	<listitem>
