@@ -1,4 +1,4 @@
-<!-- $Id: FAQ.sgml,v 1.1 1997/11/17 15:48:59 max Exp $ -->
+<!-- $Id: FAQ.sgml,v 1.2 1998/07/20 04:55:54 hanai Exp $ -->
 <!-- The FreeBSD Japanese Documentation Project -->
 <!-- Original revision: 1.98 -->
 
@@ -29,7 +29,7 @@
   <author>
     <name>The FreeBSD Documentation Project</name>
   </author>
-  <date>$Date: 1998/06/12 13:01:18 $</date>
+  <date>$Date: 1998/07/20 04:55:54 $</date>
 
   <abstract>
     これは FreeBSD システムバージョン 2.X についての FAQ です. 
@@ -45,7 +45,7 @@
     見ることができます. また, 
     <url url="FAQ.latin1" name="プレーンテキスト"> や 
     <url url="FAQ.ps" name="postscript">,
-    <url url="http://ftp.freebsd.org/pub/FreeBSD/docs/FAQ.pdf" name="PDF">,
+    <url url="ftp://ftp.freebsd.org/pub/FreeBSD/docs/FAQ.pdf" name="PDF">,
     <url url="FAQ-html.tar.gz" name="HTML"> 形式のものを HTTP で
     ダウンロードすることもできます. 
     これらを gzip で圧縮したものが <url 
