@@ -566,7 +566,7 @@
           file the differences are and how many lines they span. This
           is followed by a number of lines; some (preceded by a blank)
           are context; some (preceded by a <literal>-</literal> sign)
-          are out takes and some (preceded by a <literal>+</literal>) are
+          are outtakes and some (preceded by a <literal>+</literal>) are
           additions.</para>
 
         <para>You can also diff against a different version
