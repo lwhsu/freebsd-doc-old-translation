@@ -1,0 +1,10 @@
+<!--
+     Names of FreeBSD newsgroups
+
+     $Id: mailing-lists.ent,v 1.1 1998/11/03 23:46:32 nik Exp $
+-->
+
+<!ENTITY ng.misc "the
+ <ulink url='news:comp.unix.bsd.freebsd.misc'>comp.unix.bsd.freebsd.misc</ulink>
+ newsgroup">
+
