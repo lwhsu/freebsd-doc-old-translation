@@ -1,10 +1,12 @@
 # 
-# $Id: Makefile,v 1.1 1999/08/17 21:52:02 nik Exp $
+# $Id: Makefile,v 1.1 1999/08/19 03:56:59 foxfair Exp $
 #
 # Build the FreeBSD Chinese-Big5 FAQ
 #
 
 MAINTAINER=foxfair@FreeBSD.org
+
+TIDYFLAGS=      -raw
 
 DOC?= book
 
