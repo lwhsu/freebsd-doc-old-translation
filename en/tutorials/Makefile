@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.14 1998/07/24 13:31:04 nik Exp $
+# $Id: Makefile,v 1.15 1998/08/03 14:44:26 wosch Exp $
 
 DOCS?=		index.sgml
 SUBDIR=		devel diskformat disklessx fonts mh multios newuser
@@ -13,6 +13,6 @@ SUBDIR=
 DOCSUBDIR=
 .endif
 
-WEBBASE?=	/data/tutorials
+WEBBASE?=	/data/
 
 .include "../web.mk"
