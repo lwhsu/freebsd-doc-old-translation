@@ -1,6 +1,6 @@
-<!-- $Id: applications.sgml,v 1.1.1.1 1997/11/17 15:48:59 max Exp $ -->
+<!-- $Id: applications.sgml,v 1.2 1997/11/21 18:54:39 jfieber Exp $ -->
 <!-- The FreeBSD Japanese Documentation Project -->
-<!-- Original revision: 1.1 --> 
+<!-- Original revision: 1.2 --> 
 
   <sect>
     <heading>ユーザアプリケーション<label id="applications"></heading>
