@@ -45,7 +45,7 @@
   <sect1 id="admin">
     <title>Administrative Details</title>
 
-    <informaltable frame="none" orient="port">
+    <informaltable frame="none" orient="port" pgwide="1">
       <tgroup cols="2">
 	<tbody>
 	  <row>
@@ -130,7 +130,7 @@
       and possibly getting a mentor for that area for some period of time.
       </para>
 
-    <informaltable frame="none">
+    <informaltable frame="none" pgwide="1">
       <tgroup cols="3">
 	<tbody>
 	  <row>
@@ -523,7 +523,7 @@ alias scvs env CVS_RSH=ssh cvs -d <replaceable>user</replaceable>@ncvs.FreeBSD.o
 	  <filename>shazam</filename> directory. For every file, the
 	  status is given as one of:</para>
 
-	<informaltable frame="none">
+	<informaltable frame="none" pgwide="1">
 	  <tgroup cols=2>
 	    <tbody>
 	      <row>
@@ -580,7 +580,7 @@ alias scvs env CVS_RSH=ssh cvs -d <replaceable>user</replaceable>@ncvs.FreeBSD.o
 	<para>Useful options, in addition to those listed above for
 	  <command>checkout</command>:</para>
 
-	<informaltable frame="none">
+	<informaltable frame="none" pgwide="1">
 	  <tgroup cols=2>
 	    <tbody>
 	      <row>
@@ -637,7 +637,7 @@ alias scvs env CVS_RSH=ssh cvs -d <replaceable>user</replaceable>@ncvs.FreeBSD.o
 	  update</command> with care.</emphasis> The letter in front of
 	  each filename indicates what was done with it:</para>
 
-	<informaltable frame="none">
+	<informaltable frame="none" pgwide="1">
 	  <tgroup cols=2>
 	    <tbody>
 	      <row>
@@ -3035,7 +3035,7 @@ cvs add: use 'cvs commit' to add this file permanently
 
 	  <para>The key words or phrases are:</para>
 
-	  <informaltable frame="none">
+	  <informaltable frame="none" pgwide="1">
 	    <tgroup cols="2">
 	      <tbody>
 		<row>
