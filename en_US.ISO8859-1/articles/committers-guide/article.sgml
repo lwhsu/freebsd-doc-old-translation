@@ -884,7 +884,7 @@ checkout -P</programlisting>
 	<para>Add yourself to the <quote>Developers</quote> section of
 	  the <ulink url="../contributors/index.html">Contributors List</ulink>
 	  and remove yourself from the <quote>Additional
-	  Contributors</quote> section.</para>
+	  Contributors</quote> section.  Once you have done that, do not forget to add your author entity to <filename>doc/en_US.ISO8859-1/share/sgml/authors.ent</filename>; use the other entries as example.</para>
 
 	<para>This is a relatively easy task, but remains a good first test of 
 	  your CVS skills.</para>
