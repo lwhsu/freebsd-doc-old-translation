@@ -716,7 +716,7 @@ alias scvs env CVS_RSH=ssh cvs -d <replaceable>user</replaceable>@ncvs.FreeBSD.o
 	    <para>Check out the &os.stable; version of the
 	      <filename>shazam</filename> module:</para>
 
-	    <screen>&prompt.user; <userinput>cvs co -rRELENG_4 shazam</userinput></screen>
+	    <screen>&prompt.user; <userinput>cvs co -rRELENG_5 shazam</userinput></screen>
 	  </listitem>
 
 	  <listitem>
@@ -983,7 +983,7 @@ checkout -P</programlisting>
 	  properly (tabs often look wrong in diffs because of the extra
 	  character in front of each line).</para>
 
-	<para><ulink url="http://people.FreeBSD.org/~eivind/cdiff"></ulink></para>
+	<para><filename role="package">textproc/cdiff</filename></para>
 
 	<para>Simply use it instead of &man.more.1; or &man.less.1;:</para>
 
