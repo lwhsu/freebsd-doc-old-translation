@@ -2863,7 +2863,7 @@ bak/packages  packages from last complete &lt;major_version&gt; run on &lt;arch&
 	  <answer>
 	    <para>No, <filename>INDEX</filename> is no longer stored
 	      in the CVS repository.  The file can either be generated
-	      by the <command>make index</command>, or a pre-generated
+	      by running <command>make index</command>, or a pre-generated
 	      version can be downloaded with <command>make
 	      fetchindex</command>.</para>
 	  </answer>
