@@ -1,4 +1,7 @@
-#       $Id: Makefile,v 1.8 1999/08/26 19:42:11 nik Exp $
+#       $Id: Makefile,v 1.9 1999/08/28 10:15:02 nik Exp $
+#
+# Original revision: 1.5
+#
 
 SUBDIR = books
 SUBDIR+= man
@@ -18,5 +21,5 @@ afterinstall:
 
 .include <bsd.subdir.mk>
 
-DOC_PREFIX = ..
-.include "../share/mk/docproj.docbook.mk"
+DOC_PREFIX?= ..
+.include "${DOC_PREFIX}/share/mk/docproj.docbook.mk"
