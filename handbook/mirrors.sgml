@@ -1,4 +1,4 @@
-<!-- $Id: mirrors.sgml,v 1.87 1998/05/27 08:18:22 wosch Exp $ -->
+<!-- $Id: mirrors.sgml,v 1.88 1998/08/02 21:40:38 jdp Exp $ -->
 <!-- The FreeBSD Documentation Project -->
 
 <!--
@@ -819,7 +819,7 @@ outside the USA or Canada.
 </descrip>
 
 <label id="mirrors-mozilla">
-The <url url="../mozilla.html" name="FreeBSD Mozilla">
+The <url url="../projects/mozilla.html" name="FreeBSD Mozilla">
 repository is available from the following CVSup sites.
 
 <descrip>
