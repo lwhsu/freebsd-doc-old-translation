@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.19 1999/07/19 22:16:32 nik Exp $
+     $Id: chapter.sgml,v 1.20 1999/07/28 20:23:24 nik Exp $
 -->
 
 <chapter id="install">
@@ -631,11 +631,11 @@
 	    </listitem>
 	    
 	    <listitem>
-	      <para>Zynx ZX314</para>
+	      <para>Znyx ZX314</para>
 	    </listitem>
 	    
 	    <listitem>
-	      <para>Zynx ZX342</para>
+	      <para>Znyx ZX342</para>
 	    </listitem>
 	  </itemizedlist>
 	</listitem>
