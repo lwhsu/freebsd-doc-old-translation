@@ -1261,25 +1261,6 @@ docs:Documentation Bug:nik:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>&a.obrien;</term>
-	
-	<listitem>
-	  <para>David is the unofficial <filename>src/contrib</filename>-Meister.
-	    If you have something
-	    significant you would like to do there, you should probably
-	    coordinate it with David first.  Please consult him before
-	    importing into <filename>src/contrib</filename> if you have
-	    never done this before in the FreeBSD CVS repository.  Also
-	    if you need to commit to something you do not maintain in
-	    <filename>src/contrib</filename> and it is unclear who the
-	    maintainer / point of contact is.  (It is also not a bad idea
-	    to consult David if you need to make a non-import commit to
-	    something you maintain in <filename>src/contrib</filename> and
-	    you are new to how FreeBSD does things.)</para>
-	</listitem>
-      </varlistentry>
-
-      <varlistentry>
 	<term>&a.benno;</term>
 
 	<listitem>
