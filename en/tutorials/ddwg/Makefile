@@ -1,3 +1,5 @@
+# $Id$
+
 DOC=		ddwg
 SRCS=		ddwg.sgml
 

@@ -1,3 +1,5 @@
+# $Id$
+
 DOC=	ppp
 SRCS=	ppp.sgml
 

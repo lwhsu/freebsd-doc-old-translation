@@ -1,3 +1,5 @@
+# $Id$
+
 DOCS=	devel.docb
 INDEXLINK=	devel.html
 

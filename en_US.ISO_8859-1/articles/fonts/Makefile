@@ -1,3 +1,5 @@
+# $Id$
+
 DOCS=	fonts.docb
 INDEXLINK=	fonts.html
 

@@ -1,3 +1,5 @@
+# $Id$
+
 DOCS=	newuser.docb
 INDEXLINK=	newuser.html
 

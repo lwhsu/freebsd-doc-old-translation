@@ -1,3 +1,5 @@
+# $Id$
+
 DOCS=	mh.docb
 INDEXLINK=	mh.html
 
