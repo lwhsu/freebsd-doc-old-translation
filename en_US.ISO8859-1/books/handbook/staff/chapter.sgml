@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.42 1999/07/02 02:58:49 deischen Exp $
+     $Id: chapter.sgml,v 1.43 1999/07/04 19:51:47 marcel Exp $
 -->
 
 <!-- 
@@ -245,10 +245,6 @@
       </listitem>
       
       <listitem>
-	<para>&a.lile;</para>
-      </listitem>
-      
-      <listitem>
         <para>&a.dirk;</para>
       </listitem>
       
@@ -404,6 +400,10 @@
 	<para>&a.truckman;</para>
       </listitem>
       
+      <listitem>
+	<para>&a.lile;</para>
+      </listitem>
+
       <listitem>
 	<para>&a.imp;</para>
       </listitem>
