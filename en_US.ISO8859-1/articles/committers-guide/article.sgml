@@ -1360,7 +1360,7 @@ docs:Documentation Bug:nik:</programlisting>
 	    the &a.developers; and CC:/BCC: another FreeBSD list</emphasis>.
 	    Never, ever email another FreeBSD email list and CC:/BCC:
 	    the &a.developers;.  Doing so can greatly diminish the benefits
-	    of this list.  Also, never publically post or forward emails sent
+	    of this list.  Also, never publicly post or forward emails sent
 	    to the &a.developers;.  The act of sending to
 	    the &a.developers; vs. a public list means the information in
 	    the email is not for public consumption.
@@ -1883,7 +1883,7 @@ docs:Documentation Bug:nik:</programlisting>
 	</blockquote>
 
       <para>The i386 and sparc64 platforms were chosen due to being more
-	readily availabile to developers and as representatives of more
+	readily available to developers and as representatives of more
 	diverse processor and system designs - big vs little endian,
 	register file vs register stack, different DMA and cache
 	implementations, hardware page tables vs software TLB management
@@ -2049,7 +2049,7 @@ docs:Documentation Bug:nik:</programlisting>
 	under development by hardware vendors, but not yet available to
 	the project.</para>
 
-      <para>Tier 2 architectures are usually systems targetted at Tier 1
+      <para>Tier 2 architectures are usually systems targeted at Tier 1
 	support, but that are still under development.  Architectures
 	reaching end of life may also be moved from Tier 1 status to Tier
 	2 status as the availability of resources to continue to maintain
@@ -2094,7 +2094,7 @@ docs:Documentation Bug:nik:</programlisting>
       <para>Systems may only be moved from one tier to another tier by
 	approval of the FreeBSD Core Team, which shall make that
 	decision in collaboration with the Security Officer, Release
-	Enginering, and toolchain maintenance teams.</para>
+	Engineering, and toolchain maintenance teams.</para>
     </sect2>
   </sect1>
 
