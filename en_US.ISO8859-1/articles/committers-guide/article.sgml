@@ -1141,6 +1141,23 @@ docs:Documentation Bug:nik:</programlisting>
     and by no means all-inclusively, these are:</para>
 
     <variablelist>
+
+      <varlistentry>
+	<term>&a.jhb;</term>
+
+	<listitem>
+	  <para>John is the manager of the SMPng Project, and has
+	    authority over the architectural design and implementation
+	    of the move to fine-grained kernel threading and locking.
+	    He's also the editor of the SMPng Architecture Document.
+	    If you're working on fine-grained SMP and locking, please
+	    coordinate with John.  You can learn more about the
+	    SMPng Project on its home page: <ulink
+	    url="http://www.FreeBSD.org/smp/">
+	    http://www.FreeBSD.org/smp/</ulink></para>
+	</listitem>
+      </varlistentry>
+
       <varlistentry>
 	<term>&a.nik;</term>
 	
