@@ -1026,10 +1026,11 @@ Not to scale</literallayout>
 &prompt.root; <userinput>mount /dev/fd0 /mnt</userinput>
 &prompt.root; <userinput>cp /usr/share/examples/vinum/bootvinum /mnt</userinput></screen>
 
-	  <para>XXX need to find a way to distribute this script. FTP?
-	    Could DN host it?
-	    Maybe Greg can commit it?
-	    <filename>/usr/share/examples/vinum</filename>?</para>
+	  <para>XXX Someday, I would like this script to live in
+	    <filename>/usr/share/examples/vinum</filename>.
+	    Till then, please use this
+	    <ulink url="http://www.BGPBook.Com/vinum/bootvinum">link</ulink>
+	    to get a copy.</para>
 	</section>
       </section>
     </section>
