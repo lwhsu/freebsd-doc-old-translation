@@ -2796,18 +2796,19 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		</step>
 
 		<step>
-		  <para>The procedure to update the <ulink
-		    url="&url.base;/ports/index.html">ports web pages</ulink>
-		    to reflect the new category is not yet defined.</para>
-		</step>
-
-		<step>
 		  <para>Only once all the above have been done, and
 		    no one is any longer reporting problems with the
 		    new ports, should the old ports be deleted from
 		    their previous locations in the repository.</para>
 		</step>
 	      </procedure>
+
+	     <para>It is not necessary to manually update the <ulink
+	      url="&url.base;/ports/index.html">ports web pages</ulink>
+	      to reflect the new category.  This is now done automatically
+	      via your change to <filename>www/en/ports/categories</filename>
+	      and the daily automated rebuild of <filename>INDEX</filename>.
+	    </para>
 	  </answer>
 	</qandaentry>
       </qandadiv>
