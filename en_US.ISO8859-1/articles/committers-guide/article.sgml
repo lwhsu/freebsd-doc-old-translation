@@ -1234,19 +1234,19 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>&a.nik;</term>
+	<term>&a.doceng;</term>
 
 	<listitem>
-	  <para>Nik oversees the
-	    <ulink url="../../../../docproj/index.html">Documentation Project</ulink>.
-	    As well as writing documentation he put together the
-	    infrastructure under <filename>doc/share/mk</filename> and the
-	    stylesheets and related code under
-	    <filename>doc/share/sgml</filename>.  If you have questions
-	    about these you are encouraged to send them via the &a.doc;.
-	    Committers interested in contributing to the documentation should
-	    familiarize themselves with the
-	    <ulink url="../../books/fdp-primer/index.html">Documentation Project Primer</ulink>.</para>
+	  <para>doceng is the group responsible for the documentation build
+	    infrastructure, approving new documentation committers, and
+	    ensuring that the FreeBSD website and documentation on the FTP
+	    site is up to date with respect to the CVS tree.  It is not a
+	    conflict resolution body.  The vast majority of documentation
+	    related discussion takes place on the &a.doc;. Committers
+	    interested in contributing to the documentation should familiarize
+	    themselves with the <ulink
+	    url="../../books/fdp-primer/index.html">Documentation Project
+	    Primer</ulink>.</para>
 	</listitem>
       </varlistentry>
 
