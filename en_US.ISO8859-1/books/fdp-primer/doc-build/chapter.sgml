@@ -282,7 +282,7 @@ DOC_PREFIX?= ${.CURDIR}/../../..
 MAINTAINER?=	doc@FreeBSD.org
 
 PREFIX?=	/usr/local
-PRI_LANG?=	en_US.ISO_8859-1
+PRI_LANG?=	en_US.ISO8859-1
 
 .if defined(DOC)
 .if ${DOCFORMAT} == "docbook"
