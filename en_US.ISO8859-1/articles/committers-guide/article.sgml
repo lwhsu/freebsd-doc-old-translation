@@ -16,7 +16,7 @@
       </author>
     </authorgroup>
 
-    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.38 2000/09/30 14:25:53 alex Exp $</pubdate>
+    <pubdate>$FreeBSD: doc/en_US.ISO_8859-1/articles/committers-guide/article.sgml,v 1.39 2000/10/02 04:23:21 obrien Exp $</pubdate>
 
     <copyright>
       <year>1999</year>
@@ -1829,7 +1829,7 @@ docs:Documentation Bug:nik:</programlisting>
 
 	  <answer>
 	    <para>First, go check
-	      <ulink url="http://onigiri.FreeBSD.org/errorlogs/">http://onigiri.FreeBSD.org/errorlogs/</ulink>.
+	      <ulink url="http://bento.FreeBSD.org/~asami/errorlogs/">http://bento.FreeBSD.org/~asami/errorlogs/</ulink>.
 
 	      There you will find error logs from the latest package
 	      building runs on 3-stable, 4-stable and 5-current.</para>
