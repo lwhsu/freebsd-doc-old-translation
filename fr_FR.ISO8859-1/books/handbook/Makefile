@@ -41,8 +41,8 @@ INSTALL_ONLY_COMPRESSED?=
 
 #IMAGES_EN = advanced-networking/isdn-bus.eps
 #IMAGES_EN+= advanced-networking/isdn-twisted-pair.eps
-#IMAGES_EN+= advanced-networking/natd.eps
-IMAGES_EN = install/userconfig.scr
+IMAGES_EN = advanced-networking/natd.eps
+IMAGES_EN+= install/userconfig.scr
 IMAGES_EN+= install/userconfig2.scr
 IMAGES_EN+= install/hdwrconf.scr
 IMAGES_EN+= install/probstart.scr
