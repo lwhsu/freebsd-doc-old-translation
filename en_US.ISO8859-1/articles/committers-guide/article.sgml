@@ -2228,6 +2228,27 @@ docs:Documentation Bug:nik:</programlisting>
 	      wra(i)th.</para>
 	  </answer>
 	</qandaentry>
+
+	<qandaentry>
+	  <question>
+	    <para>What is proper procedure for updating checksum for a
+	      port's distfile when the file changes without a version
+	      change?</para>
+	  </question>
+
+	  <answer>
+	    <para>When the checksum for a port's distfile is updated due
+	      to the author updating the file without changing the port's
+	      revision, the commit message should include a summary of
+	      the relevant diffs between the original and new distfile to
+	      ensure that the distfile has not been corrupted or
+	      maliciously altered.  If the current version of the port
+	      has been in the ports tree for a while, a copy of the old
+	      distfile will usually be available on the ftp servers;
+	      otherwise the author or maintainer should be contacted to
+	      find out why the distfile has changed.</para>
+	  </answer>
+	</qandaentry>
       </qandadiv>
     </qandaset>
   </sect1>
