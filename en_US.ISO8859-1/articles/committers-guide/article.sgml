@@ -215,12 +215,19 @@
       are responsible for direct modification of it for the purposes of
       cleanup or fixing some grievous abuse of CVS by a committer.
       Should you cause some repository accident, say a bad <command>cvs
-      import</command> or <command>cvs tag</command> operation, mail the &a.cvsadm;
-      (or call one of them) and report the problem to one of them.  The only
-      ones able to directly fiddle the repository bits on the repository hosts
-      are the repomeisters.  To enforce this, there are no login shells
-      available on the repository machines, except to the repomeisters.</para>
-    
+      import</command> or <command>cvs tag</command> operation, mail the
+      responsible part of &a.cvsadm;, as stated in the table below,
+      (or call one of them) and report the problem.
+      For very important issues affecting the entire CVS tree&mdash;not
+      just a specific area&mdash;you can contact the &a.cvsadm;.
+      Please do <emphasis>not</emphasis> contact the &a.cvsadm; for repocopies
+      or other things that the more specific teams can handle.</para>
+
+    <para>The only ones able to directly fiddle the repository bits on the
+      repository hosts are the repomeisters.  To enforce this, there are
+      no login shells available on the repository machines, except to
+      the repomeisters.</para>
+
     <note><para>Depending on the affected area of the CVS repository,
       you should send your request to one of the following email
       addresses:</para>
