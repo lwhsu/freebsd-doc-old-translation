@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.24 1999/08/09 10:04:54 wosch Exp $
+     $Id: chapter.sgml,v 1.25 1999/08/23 21:23:56 nik Exp $
 -->
 
 <chapter id="eresources">
@@ -1279,7 +1279,7 @@ help
       
       <listitem>
 	<para><ulink
-	    url="http://freebsd.advansys.net/">http://freebsd.advansys.net/</ulink> &mdash; USA/Indiana.</para>
+	    url="http://freebsd.advansys.net/">http://FreeBSD.advansys.net/</ulink> &mdash; USA/Indiana.</para>
       </listitem>
       
       <listitem>
