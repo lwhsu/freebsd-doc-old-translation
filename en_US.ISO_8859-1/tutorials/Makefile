@@ -1,7 +1,7 @@
-# $Id: Makefile,v 1.12 1998/01/18 22:27:43 jfieber Exp $
+# $Id: Makefile,v 1.13 1998/04/16 08:53:48 wosch Exp $
 
 DOCS?=		index.sgml
-SUBDIR=		devel diskformat disklessx fonts mh multios newuser upgrade
+SUBDIR=		devel diskformat disklessx fonts mh multios newuser
 DOCSUBDIR=	ddwg ppp
 SGMLOPTS+=      -links -hdr ${.CURDIR}/doc.hdr -ftr ${.CURDIR}/doc.ftr
 
