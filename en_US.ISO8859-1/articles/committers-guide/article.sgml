@@ -2026,7 +2026,7 @@ docs:Documentation Bug:nik:</programlisting>
 	with respects to all aspects of the FreeBSD operating system,
 	including installation and development environments.</para>
 
-      <para>Current Tier 1 platforms are i386, sparc65, PC98, and
+      <para>Current Tier 1 platforms are i386, sparc64, PC98, and
 	Alpha.</para>
     </sect2>
 
