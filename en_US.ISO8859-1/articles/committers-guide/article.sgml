@@ -314,7 +314,7 @@
             <para>Check out the directory <filename>miscfs</filename>, but
               none of the subdirectories:</para>
 
-            <screen>&prompt.root; <userinput>cvs co -l miscfs</userinput></screen>
+            <screen>&prompt.user; <userinput>cvs co -l miscfs</userinput></screen>
 
             <para>You now have a directory named <filename>miscfs</filename>
               with just one subdirectory named
