@@ -1,8 +1,7 @@
-#       $Id: Makefile,v 1.7 1999/08/19 20:35:58 nik Exp $
+#       $Id: Makefile,v 1.8 1999/08/26 19:42:11 nik Exp $
 
 SUBDIR = books
 SUBDIR+= man
-SUBDIR+= FAQ
 
 COMPAT_SYMLINK = ja_JP.eucJP
 
