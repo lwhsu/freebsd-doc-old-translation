@@ -1,10 +1,10 @@
 # 
-# $Id: Makefile,v 1.3 1999/07/14 22:31:29 nik Exp $
+# $Id: Makefile,v 1.1 1999/08/17 21:52:02 nik Exp $
 #
 # Build the FreeBSD FAQ
 #
 
-MAINTAINER=nik@FreeBSD.ORG
+MAINTAINER=nik@FreeBSD.org
 
 DOC?= book
 
