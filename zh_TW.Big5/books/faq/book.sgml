@@ -3,7 +3,7 @@
 	FreeBSD Chinese Documentation Project
 
   	Original revision: 1.6
-	$Id: book.sgml,v 1.5 1999/08/27 14:55:49 foxfair Exp $
+	$FreeBSD$
 -->
 
 <!DOCTYPE BOOK PUBLIC "-//FreeBSD//DTD DocBook V3.1-Based Extension//EN">

@@ -4,7 +4,7 @@
 <!ENTITY title "FreeBSD Tutorials">
 <!ENTITY % includes SYSTEM "../includes.sgml"> %includes;
 ]>
-<!-- $Id: index.sgml,v 1.19 1999/02/01 18:50:51 wosch Exp $ -->
+<!-- $FreeBSD$ -->
 
 <html>
 &header;

@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.2 1997/07/01 05:38:12 max Exp $
+# $FreeBSD$
 
 DOCS=	disklessx.docb
 

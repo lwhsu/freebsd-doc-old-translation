@@ -1,7 +1,7 @@
 <!--
      Names of FreeBSD newsgroups
 
-     $Id: mailing-lists.ent,v 1.1 1998/11/03 23:46:32 nik Exp $
+     $FreeBSD$
 -->
 
 <!ENTITY ng.misc "the

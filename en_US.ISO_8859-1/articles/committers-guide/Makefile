@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.1 1999/09/03 17:10:42 nik Exp $
+# $FreeBSD$
 #
 # Build the FreeBSD New Committers Guide
 #

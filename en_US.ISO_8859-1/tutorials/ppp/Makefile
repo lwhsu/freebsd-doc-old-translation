@@ -1,4 +1,4 @@
-# $Id$
+# $FreeBSD$
 
 DOC=	ppp
 SRCS=	ppp.sgml

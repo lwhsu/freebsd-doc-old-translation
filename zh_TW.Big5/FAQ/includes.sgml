@@ -1,4 +1,4 @@
-<!-- $Id: includes.sgml,v 1.1.1.1 1999/05/06 16:39:21 foxfair Exp $ -->
+<!-- $FreeBSD$ -->
 
 <!-- book stores -->
 <!ENTITY isbn.amazon 'http://www.amazon.com/exec/obidos/ASIN'>

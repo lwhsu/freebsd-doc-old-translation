@@ -1,4 +1,4 @@
-<!-- $Id: serial.sgml,v 1.6 1999/04/18 18:40:48 jesusr Exp $ -->
+<!-- $FreeBSD$ -->
 <!-- The FreeBSD Documentation Spanish Project -->
   <sect>
     <heading>Comunicaciones serie<label id="serial"></heading>

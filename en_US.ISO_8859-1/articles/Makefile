@@ -1,4 +1,4 @@
-#       $Id: Makefile,v 1.2 1999/08/17 21:35:52 nik Exp $
+# $FreeBSD$
 
 SUBDIR = committers-guide
 SUBDIR+= diskless-x

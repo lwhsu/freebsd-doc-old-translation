@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.4 1999/07/04 15:26:05 foxfair Exp $
+# $FreeBSD$
 
 .NOTPARALLEL: 
 

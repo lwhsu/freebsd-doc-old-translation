@@ -7,7 +7,7 @@
 
      Please keep this list in alphabetical order by entity names.
 
-     $Id: authors.ent,v 1.48 1999/09/05 23:44:01 imura Exp $
+     $FreeBSD$
 -->
 
 <!ENTITY a.abial "Andrzej Bialecki <email>abial@FreeBSD.org</email>">

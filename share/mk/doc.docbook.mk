@@ -1,5 +1,5 @@
 #
-# $Id$
+# $FreeBSD$
 #
 # This include file <doc.docbook.mk> handles building and installing of
 # DocBook documentation in the FreeBSD Documentation Project.

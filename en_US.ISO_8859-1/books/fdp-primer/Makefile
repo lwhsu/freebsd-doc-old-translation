@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.5 1999/08/29 00:02:22 jhb Exp $
+# $FreeBSD$
 #
 # Build the FreeBSD Documentation Project Primer.
 #

@@ -3,7 +3,7 @@
      The FreeBSD Japanese Documentation Project
 
      Original revision: 1.5
-     $Id: chapter.sgml,v 1.7 1999/03/30 16:07:09 kuriyama Exp $
+     $FreeBSD$
 -->
 
 <chapter id="x11">

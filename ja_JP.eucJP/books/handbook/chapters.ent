@@ -3,7 +3,7 @@
      The FreeBSD Japanese Documentation Project
 
      Original revision: 1.3
-     $Id: chapters.ent,v 1.5 1999/03/22 15:08:16 kuriyama Exp $
+     $FreeBSD$
 
      Creates entities for each chapter in the FreeBSD Handbook. Each entity
      is named chap.foo, where foo is the value of the id attribute on that

@@ -1,4 +1,4 @@
-<!-- $Id: x.sgml,v 1.7 1999/06/09 01:04:57 jesusr Exp $ -->
+<!-- $FreeBSD$ -->
 <!-- The FreeBSD Documentation Spanish Project -->
   <sect>
     <heading>El sistema X Windows y las c&oacute;nsolas virtuales<label id="x"></heading>

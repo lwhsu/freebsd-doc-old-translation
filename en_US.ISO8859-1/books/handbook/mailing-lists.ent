@@ -1,7 +1,7 @@
 <!--
      Names of FreeBSD mailing lists and related software.
 
-     $Id: mailing-lists.ent,v 1.2 1999/03/04 22:14:05 nik Exp $
+     $FreeBSD$
 -->
 
 <!ENTITY a.advocacy "FreeBSD advocacy mailing list

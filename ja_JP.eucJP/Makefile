@@ -1,4 +1,4 @@
-#       $Id: Makefile,v 1.10 1999/08/31 15:00:01 kuriyama Exp $
+# $FreeBSD$
 #
 # Original revision: 1.5
 #

@@ -6,7 +6,7 @@
    
      Chapters should be listed in the order in which they are referenced.
  
-     $Id: chapters.ent,v 1.2 1999/07/14 22:31:29 nik Exp $
+     $FreeBSD$
 -->
 
 <!ENTITY chap.overview		SYSTEM "overview/chapter.sgml">

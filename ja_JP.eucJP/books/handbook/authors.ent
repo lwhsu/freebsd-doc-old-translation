@@ -3,7 +3,7 @@
      The FreeBSD Japanese Documentation Project
 
      Original revision: 1.35
-     $Id: authors.ent,v 1.9 1999/07/30 10:17:47 shin Exp $
+     $FreeBSD$
 
      Names and email address of contributing authors and CVS committers.
      Entity names for committers should be the same as their login names on

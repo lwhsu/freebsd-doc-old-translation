@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.1 1999/08/18 13:04:30 jesusr Exp $
+# $FreeBSD$
 #
 # Build the FreeBSD FAQ
 #

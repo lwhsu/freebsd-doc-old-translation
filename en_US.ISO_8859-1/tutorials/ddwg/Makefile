@@ -1,4 +1,4 @@
-# $Id$
+# $FreeBSD$
 
 DOC=		ddwg
 SRCS=		ddwg.sgml

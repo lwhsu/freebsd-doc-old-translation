@@ -7,7 +7,7 @@
 
      The FPI for this DTD is "-//FreeBSD//DTD DocBook V3.1-Based Extension//EN"
 
-     $Id: freebsd.dtd,v 1.1 1999/01/25 21:58:59 nik Exp $
+     $FreeBSD$
 -->
 
 <!-- ..................................................................... -->

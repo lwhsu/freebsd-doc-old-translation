@@ -1,5 +1,5 @@
 #
-# $Id$
+# $FreeBSD$
 #
 #
 # This include file <doc.install.mk> provides variables defining the default

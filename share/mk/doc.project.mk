@@ -1,5 +1,5 @@
 #
-# $Id$
+# $FreeBSD$
 #
 # This include file <doc.project.mk> is the FreeBSD Documentation Project 
 # co-ordination make file.

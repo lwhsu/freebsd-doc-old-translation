@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.2 1999/08/25 05:29:44 foxfair Exp $
+# $FreeBSD$
 #
 # Build the FreeBSD Chinese-Big5 FAQ
 #

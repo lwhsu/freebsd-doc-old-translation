@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.11 1999/08/05 20:48:13 nik Exp $
+     $FreeBSD$
 -->
 
 <chapter id="internals">

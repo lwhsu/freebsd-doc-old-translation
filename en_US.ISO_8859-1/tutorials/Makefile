@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.17 1999/04/26 21:45:30 nik Exp $
+# $FreeBSD$
 
 DOCS?=		index.sgml
 SUBDIR=		devel 
