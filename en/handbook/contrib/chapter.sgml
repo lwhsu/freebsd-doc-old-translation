@@ -1,7 +1,7 @@
 <!--
      The FreeBSD Documentation Project
 
-     $Id: chapter.sgml,v 1.76 1999/07/30 20:59:55 nik Exp $
+     $Id: chapter.sgml,v 1.77 1999/07/30 21:02:59 nik Exp $
 -->
 
 <chapter id="contrib">
@@ -2775,7 +2775,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       </listitem>
 
       <listitem>
-        <para>Jim Mock <email>jim@phrantic.phear.net</email></para>
+        <para>Jim Mock <email>jim@blues.ghis.net</email></para>
       </listitem>
 
       <listitem>
