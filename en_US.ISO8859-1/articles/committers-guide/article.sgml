@@ -3109,6 +3109,15 @@ cvs add: use 'cvs commit' to add this file permanently
 		    number of days, weeks, or months after which an
 		    <acronym>MFC</acronym> is planned.</entry>
 		</row>
+
+		<row>
+		  <entry><literal>Security:</literal></entry>
+
+		  <entry>If the change is related to a security
+		    vulnerability or security exposure, include one or
+		    more references or a description of the
+		    issue.</entry>
+		</row>
 	      </tbody>
 	    </tgroup>
 	  </informaltable>
