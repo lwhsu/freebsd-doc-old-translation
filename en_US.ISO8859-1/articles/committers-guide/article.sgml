@@ -1410,8 +1410,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
     probably get to know in your role as a committer.  Briefly,
     and by no means all-inclusively, these are:</para>
 
-    <!-- XXX The TRB are missing -->
-
     <variablelist>
 
       <varlistentry>
@@ -2027,7 +2025,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    to resolve the dispute.  All parties involved must then
 	    agree to be bound by the decision reached by this 3rd
 	    party.</para>
-	    <!-- XXX Mention TRB here too -->
 	</listitem>
 
 	<listitem>
