@@ -2,9 +2,9 @@
 <!--
      The FreeBSD Russian Documentation Project
 
-     $FreeBSDru: frdp/doc/ru_RU.KOI8-R/articles/committers-guide/article.sgml,v 1.20 2005/08/07 15:34:58 marck Exp $
+     $FreeBSDru: frdp/doc/ru_RU.KOI8-R/articles/committers-guide/article.sgml,v 1.21 2005/08/18 11:19:45 marck Exp $
 
-     Original revision: 1.225
+     Original revision: 1.226
 -->
 
 <!ENTITY % articles.ent PUBLIC "-//FreeBSD//ENTITIES DocBook FreeBSD Articles Entity Set//EN">
@@ -1426,8 +1426,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       общаться.  Краткий и ни в коем случае не полный список приводится ниже.
     </para>
 
-    <!-- XXX The TRB are missing -->
-
     <variablelist>
 
       <varlistentry>
@@ -2006,7 +2004,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    независимого участника для разрешения вопроса.  В этом случае
 	    все участники конфликта должны согласиться принять решение,
 	    вынесенное третьей стороной.</para>
-	    <!-- XXX Mention TRB here too -->
 	</listitem>
 
 	<listitem>
