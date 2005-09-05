@@ -1539,10 +1539,10 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>&a.benno;</term>
+	<term>&a.grehan;</term>
 
 	<listitem>
-	  <para>Benno is the official maintainer of the &powerpc; port.</para>
+	  <para>Peter is the official maintainer of the &powerpc; port.</para>
 	</listitem>
       </varlistentry>
 
@@ -1556,10 +1556,10 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>&a.nectar;</term>
+	<term>&a.cperciva;</term>
 
 	<listitem>
-	  <para>Jacques is the
+	  <para>Colin is the
 	  <ulink url="&url.base;/security/">FreeBSD Security
 	  Officer</ulink>
 	  and oversees the &a.security-officer;.
