@@ -2805,7 +2805,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		    <listitem>
 		      <para>
 		    adding the following files into
-		    <filename>cvsup/sup/ports-<replaceable>categoryname</replaceable></filename>:
+		    <filename>distrib/cvsup/sup/ports-<replaceable>categoryname</replaceable></filename>:
 		    <filename>list.cvs</filename> and
 		    <filename>releases</filename>.</para>
 		    </listitem>
