@@ -2792,12 +2792,34 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		</step>
 
 		<step>
-		  <para>Update the instructions for &man.cvsup.1; by
-		    modifying <filename>distrib/cvsup/sup/README</filename>
-		    and adding the following files into
-		    <filename>cvsup/sup/ports-categoryname</filename>:
+		  <para>Update the instructions for &man.cvsup.1;:</para>
+
+		  <itemizedlist>
+		    <listitem>
+		      <para>
+			add the category to
+			<filename>distrib/cvsup/sup/README</filename>
+		      </para>
+		    </listitem>
+
+		    <listitem>
+		      <para>
+		    adding the following files into
+		    <filename>cvsup/sup/ports-<replaceable>categoryname</replaceable></filename>:
 		    <filename>list.cvs</filename> and
-		    <filename>releases</filename>.  (Note: these are
+		    <filename>releases</filename>.</para>
+		    </listitem>
+
+		    <listitem>
+		      <para>
+			add the category to
+			<filename>src/share/examples/cvsup/ports-supfile</filename>
+		      </para>
+		    </listitem>
+		  </itemizedlist>
+
+		  <para>
+		    (Note: these are
 		    in the src, not the ports, repository).  If you
 		    are not a src committer, you will need to submit
 		    a PR for this.</para>
