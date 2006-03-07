@@ -2,9 +2,9 @@
 <!--
      The FreeBSD Russian Documentation Project
 
-     $FreeBSDru: frdp/doc/ru_RU.KOI8-R/articles/committers-guide/article.sgml,v 1.23 2006/02/05 17:43:21 marck Exp $
+     $FreeBSDru: frdp/doc/ru_RU.KOI8-R/articles/committers-guide/article.sgml,v 1.24 2006/03/07 15:37:52 marck Exp $
 
-     Original revision: 1.235
+     Original revision: 1.236
 -->
 
 <!ENTITY % articles.ent PUBLIC "-//FreeBSD//ENTITIES DocBook FreeBSD Articles Entity Set//EN">
@@ -1533,6 +1533,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	<term>&a.scottl;</term>
 	<term>&a.kensmith;</term>
 	<term>&a.hrs;</term>
+	<term>&a.mux;</term>
 
 	<listitem>
 	  <para>Таков состав группы &a.re;.  Эта группа отвечает за сроки
