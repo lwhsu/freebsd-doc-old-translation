@@ -1030,6 +1030,31 @@ checkout -P</programlisting>
 	  file before the commit, because CVS will not give you a chance to edit
 	  the message when you do the actual commit.</para>
       </listitem>
+
+      <listitem>
+	<para>Speed up your CVS operation considerably by using a persistent
+	  ssh connection to the repository machine.  First, put this
+	  configuration into your <filename>~/.ssh/config</filename>:</para>
+
+	<programlisting>Host ncvs.FreeBSD.org
+      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath
+Host dcvs.FreeBSD.org
+      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath
+Host projcvs.FreeBSD.org
+      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath
+Host pcvs.FreeBSD.org
+      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath</programlisting>
+
+	<para>Now open the persistent connection to the repoman:</para>
+
+	<screen>&prompt.user; <userinput>ssh -fNM ncvs.FreeBSD.org</userinput></screen>
+
+	<para>The CVS commands should now respond faster, as they are reusing
+	  existing connection with the repository.  Note that all
+	  the hostnames are case sensitive.</para>
+
+      </listitem>
+
     </orderedlist>
 
   </sect1>
