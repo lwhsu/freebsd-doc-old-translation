@@ -992,7 +992,7 @@ checkout -P</programlisting>
 	<screen>&prompt.user; <userinput>cvs diff -Nu shazam | cdiff</userinput></screen>
 
 	<para>Alternatively some editors like &man.vim.1;
-	  (<filename role="package">editors/vim5</filename>) have color support and when used as
+	  (<filename role="package">editors/vim</filename>) have color support and when used as
 	  a pager with color syntax highlighting switched on will
 	  highlight many types of file, including diffs, patches,
 	  and CVS/RCS logs. </para>
