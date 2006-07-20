@@ -2599,7 +2599,8 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		  </step>
 
 		  <step>
-		    <para>Add the new module entry.</para>
+		    <para>Add the new module entry to
+		      <filename>CVSROOT/modules</filename>.</para>
 		  </step>
 
 		  <step>
