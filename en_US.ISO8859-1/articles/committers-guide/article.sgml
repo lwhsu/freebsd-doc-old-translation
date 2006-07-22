@@ -1502,18 +1502,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>&a.gallatin;</term>
-	<term>&a.mjacob;</term>
-	<term>&a.dfr;</term>
-	<term>&a.obrien;</term>
-
-	<listitem>
-	  <para>These are the primary developers and overseers of the
-	  DEC Alpha AXP platform.</para>
-	</listitem>
-      </varlistentry>
-
-      <varlistentry>
 	<term>&a.dg;</term>
 
 	<listitem>
@@ -2326,7 +2314,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	2 status as the availability of resources to continue to maintain
 	the system in a Production Quality state diminishes.</para>
 
-      <para>Current Tier 2 platforms are Alpha, PowerPC and ia64.</para>
+      <para>Current Tier 2 platforms are PowerPC and ia64.</para>
     </sect2>
 
     <sect2>
