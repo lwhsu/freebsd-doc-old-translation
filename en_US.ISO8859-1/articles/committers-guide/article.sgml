@@ -1085,7 +1085,7 @@ Host pcvs.FreeBSD.org
 
       <listitem>
 	<para>Add an entry for yourself to
-	  <filename>www/en/news/news.xml</filename>. Look for the other
+	  <filename>www/share/sgml/news.xml</filename>. Look for the other
 	  entries that look like <quote>A new committer</quote> and follow the
 	  format.</para>
       </listitem>
