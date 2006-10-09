@@ -1077,6 +1077,11 @@ Host pcvs.FreeBSD.org
       </listitem>
 
       <listitem>
+	<para>Also add your author entity to
+	  <filename>www/en/developers.sgml</filename>.</para>
+      </listitem>
+
+      <listitem>
 	<para>Add yourself to the <quote>Developers</quote> section of
 	  the <ulink url="&url.articles.contributors;/index.html">Contributors List</ulink>
 	  and remove yourself from the <quote>Additional
