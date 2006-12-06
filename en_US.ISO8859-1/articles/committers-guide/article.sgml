@@ -23,6 +23,7 @@
       <year>2003</year>
       <year>2004</year>
       <year>2005</year>
+      <year>2006</year>
       <holder>The FreeBSD Documentation Project</holder>
     </copyright>
 
@@ -1657,13 +1658,8 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	<para>If you are using FreeBSD 4.0 or later,
 	  OpenSSH is included in the base system.
 	  If you are using an earlier release,
-	  update and install one of the SSH ports.  In general,
-	  you will probably want to get OpenSSH from the
-	  <filename role="package">security/openssh</filename> port.  You
-	  may also wish to check out the original ssh1 in the
-	  <filename role="package">security/ssh</filename> port, but make
-	  certain you pay attention to its license.  Note that both
-	  of these ports cannot be installed at the same time.</para>
+	  update and install OpenSSH from the
+	  <filename role="package">security/openssh</filename> port.</para>
       </step>
 
       <step>
