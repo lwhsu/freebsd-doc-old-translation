@@ -3389,6 +3389,20 @@ MFC after:          1 month</programlisting>
 	    This location is accessible from any machine on the FreeBSD cluster.</para>
 	</answer>
       </qandaentry>
+
+      <qandaentry>
+	<question>
+	  <para>I would like to mentor a new committer.  What process
+	    do I need to follow?</para>
+	</question>
+
+	<answer>
+	  <para>See the <ulink
+	    url="http://www.freebsd.org/internal/new-account.html">New
+	      Account Creation Procedure</ulink> document on the internal
+	    pages.</para>
+	</answer>
+      </qandaentry>
     </qandaset>
   </sect1>
 </article>
