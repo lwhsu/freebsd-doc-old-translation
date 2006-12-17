@@ -301,7 +301,7 @@
       </para>
 
       <para>Compar&eacute; au mode miroir, <acronym>RAID-5</acronym> a pour
-	avantage de demander un espace de strockage significativement
+	avantage de demander un espace de stockage significativement
 	plus faible.  L'acc&egrave;s en lecture est semblable &agrave; celui de
 	l'organisation segment&eacute;e, mais l'acc&egrave;s en &eacute;criture
 	est bien plus lent, approximativement 25% des performances en lecture.
