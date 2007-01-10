@@ -1245,7 +1245,7 @@ Host pcvs.FreeBSD.org
       in some cases, compilation must be conditional or even disabled
       by default.  For example, the GENERIC kernel must be compiled
       under only licenses identical to or substantially similar to the
-      BSD license.  GPL, APSL, CDSL, etc, licensed software must not be
+      BSD license.  GPL, APSL, CDDL, etc, licensed software must not be
       compiled into GENERIC.</para>
 
     <para>Developers are reminded that in open source, getting "open"
