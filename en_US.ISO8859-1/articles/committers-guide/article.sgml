@@ -2942,6 +2942,12 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 		</step>
 
 		<step>
+		  <para>
+		    Update the list of categories used by &man.sysinstall.8;
+		    in <filename>src/usr.sbin/sysinstall</filename>.</para>
+		</step>
+
+		<step>
 		  <para>Update the documentation by modifying the
 		    following:</para>
 
