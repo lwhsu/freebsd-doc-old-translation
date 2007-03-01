@@ -24,6 +24,7 @@
       <year>2004</year>
       <year>2005</year>
       <year>2006</year>
+      <year>2007</year>
       <holder>The FreeBSD Documentation Project</holder>
     </copyright>
 
@@ -1479,15 +1480,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>&a.jake;, &a.tmm;</term>
-
-	<listitem>
-	  <para>Jake and Thomas are the maintainers of the &sparc64; hardware
-	    port.</para>
-	</listitem>
-      </varlistentry>
-
-      <varlistentry>
 	<term>&a.doceng;</term>
 
 	<listitem>
@@ -1527,29 +1519,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
       </varlistentry>
 
       <varlistentry>
-	<term>&a.dg;</term>
-
-	<listitem>
-	  <para>David is the overseer of the
-	    VM system.  If you have a VM system change in mind,
-	    coordinate it with David.</para>
-	</listitem>
-      </varlistentry>
-
-	  <varlistentry>
-	<term>&a.dfr;</term>
-	<term>&a.marcel;</term>
-	<term>&a.peter;</term>
-	<term>&a.ps;</term>
-
-	<listitem>
-	  <para>These are the primary developers and overseers of the
-	  Intel IA-64 platform, officially known as the &itanium; Processor
-	  Family (IPF).</para>
-	</listitem>
-	  </varlistentry>
-
-      <varlistentry>
 	<term>&a.murray;</term>
 	<term>&a.dwhite;</term>
 	<term>&a.rwatson;</term>
@@ -1573,23 +1542,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    change that you think is worthy of mention in the release notes,
 	    please make sure he knows about it.  Better still, send him
 	    a patch with your suggested commentary.</para>
-	</listitem>
-      </varlistentry>
-
-      <varlistentry>
-	<term>&a.grehan;</term>
-
-	<listitem>
-	  <para>Peter is the official maintainer of the &powerpc; port.</para>
-	</listitem>
-      </varlistentry>
-
-      <varlistentry>
-	<term>&a.brian;</term>
-
-	<listitem>
-	  <para>Official maintainer of
-	    <filename>/usr/sbin/ppp</filename>.</para>
 	</listitem>
       </varlistentry>
 
