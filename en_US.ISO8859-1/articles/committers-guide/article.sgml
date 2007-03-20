@@ -1039,13 +1039,13 @@ checkout -P</programlisting>
 	  configuration into your <filename>~/.ssh/config</filename>:</para>
 
 	<programlisting>Host ncvs.FreeBSD.org
-      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath
+      ControlPath /home/<replaceable>user</replaceable>/.ssh/cvs.cpath
 Host dcvs.FreeBSD.org
-      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath
+      ControlPath /home/<replaceable>user</replaceable>/.ssh/cvs.cpath
 Host projcvs.FreeBSD.org
-      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath
+      ControlPath /home/<replaceable>user</replaceable>/.ssh/cvs.cpath
 Host pcvs.FreeBSD.org
-      ControlPath /home/<replaceable>pav</replaceable>/.ssh/cvs.cpath</programlisting>
+      ControlPath /home/<replaceable>user</replaceable>/.ssh/cvs.cpath</programlisting>
 
 	<para>Now open the persistent connection to the repoman:</para>
 
