@@ -1121,6 +1121,13 @@ Host pcvs.FreeBSD.org
       </listitem>
 
       <listitem>
+	<para>Add an entry for yourself to
+	  <filename>src/share/misc/committers-<replaceable>repository</replaceable>.dot</filename>,
+	  where repository is either doc, ports or src, depending on the commit privileges
+	  you obtained.</para>
+      </listitem>
+
+      <listitem>
 	<para>Some people add an entry for themselves to
 	  <filename>ports/astro/xearth/files/freebsd.committers.markers</filename>.</para>
       </listitem>
