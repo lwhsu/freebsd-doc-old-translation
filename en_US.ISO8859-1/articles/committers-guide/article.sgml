@@ -1086,8 +1086,10 @@ Host pcvs.FreeBSD.org
       <listitem>
 	<para>Add yourself to the <quote>Developers</quote> section of
 	  the <ulink url="&url.articles.contributors;/index.html">Contributors List</ulink>
-	  and remove yourself from the <quote>Additional
-	  Contributors</quote> section.</para>
+	  (<filename>doc/en_US.ISO8859-1/articles/contributors/contrib.committers.sgml
+	  </filename>) and remove yourself from the <quote>Additional
+	  Contributors</quote> section(<filename>
+	  doc/en_US.ISO8859-1/articles/contributors/contrib.additional.sgml</filename>).</para>
       </listitem>
 
       <listitem>
