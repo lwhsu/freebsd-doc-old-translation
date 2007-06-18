@@ -2547,6 +2547,11 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 
 		<procedure>
 		  <step>
+		    <para>Do a force commit on the files of the copied port,
+		      stating repository copy was performed.</para>
+		  </step>
+
+		  <step>
 		    <para>Upgrade the copied port to the new version.
 		      Remember to change the <makevar>LATEST_LINK</makevar>
 		      so there are no duplicate ports with the same name.
