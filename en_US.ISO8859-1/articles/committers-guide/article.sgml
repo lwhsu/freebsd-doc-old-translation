@@ -1179,6 +1179,11 @@ Host pcvs.FreeBSD.org
       </listitem>
     </itemizedlist>
 
+    <para>All <filename>src</filename> commits should go to
+      &os.current; first before being merged to &os.stable;.  No major
+      new features or high-risk modifications should be made to the
+      &os.stable; branch.</para>
+
     <para>All new committers also have a mentor assigned to them for
       the first few months.  Your mentor is responsible for teaching
       you the rules and conventions of the project and guiding your
@@ -1191,11 +1196,6 @@ Host pcvs.FreeBSD.org
       approval, and you should document that approval with an
       <literal>Approved by:</literal> line in the commit
       message.</para>
-
-    <para>All <filename>src</filename> commits should go to
-      &os.current; first before being merged to &os.stable;.  No major
-      new features or high-risk modifications should be made to the
-      &os.stable; branch.</para>
   </sect1>
 
   <sect1 id="pref-license">
