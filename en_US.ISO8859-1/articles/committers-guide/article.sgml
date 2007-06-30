@@ -2972,6 +2972,12 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 
 		  <itemizedlist>
 		    <listitem>
+		      <para>the section of the Handbook that lists the
+			<ulink url="&url.books.handbook;/cvsup.html#CVSUP-COLLEC">
+			cvsup collections</ulink>.</para>
+		    </listitem>
+
+		    <listitem>
 		      <para>the
 		    <ulink url="&url.books.porters-handbook;/makefile-categories.html#PORTING-CATEGORIES">
 		    list of categories</ulink> in the Porter's Handbook</para>
@@ -2984,12 +2990,6 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 			as specified in
 			<filename>www/en/ports/categories.descriptions</filename>.
 		      </para>
-		    </listitem>
-
-		    <listitem>
-		      <para>the section of the Handbook that lists the
-			<ulink url="&url.books.handbook;/cvsup.html#CVSUP-COLLEC">
-			cvsup collections</ulink>.</para>
 		    </listitem>
 		  </itemizedlist>
 		  <para>(Note: these are
