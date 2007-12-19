@@ -2472,8 +2472,8 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	      It will also add an entry to the
 	      <filename>CVSROOT/modules</filename> file and the port's
 	      category <filename>Makefile</filename>.  It was
-	      written by &a.mharo; and &a.will;, but Will is the current
-	      maintainer so please send questions/patches about
+	      written by &a.mharo; and &a.will;, and is currently maintained
+	      by &a.garga;, so please send questions/patches about
 	      <command>addport</command> to him.</para>
 	  </answer>
 	</qandaentry>
