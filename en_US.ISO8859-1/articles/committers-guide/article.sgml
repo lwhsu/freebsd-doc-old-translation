@@ -107,7 +107,7 @@
 
 	  <row>
 	    <entry><emphasis>Core Team monthly reports</emphasis></entry>
-	    <entry><filename>/home/core/public/monthly-report</filename>
+	    <entry><filename>/home/core/public/monthly-reports</filename>
 	      on the <hostid role="domainname">FreeBSD.org</hostid> cluster.
 	    </entry>
 	  </row>
