@@ -256,19 +256,19 @@
       to the appropriate repomeisters.</para>
       
       <itemizedlist>
-	<listitem><para>ncvs@ - regarding <filename role="directory">
+	<listitem><para>ncvs@ - regarding <filename class="directory">
 	    /home/ncvs</filename>, the src
 	  repository</para></listitem>
 
-	<listitem><para>pcvs@ - regarding <filename role="directory">
+	<listitem><para>pcvs@ - regarding <filename class="directory">
 	    /home/pcvs</filename>, the ports
 	  repository</para></listitem>
 
-	<listitem><para>dcvs@ - regarding <filename role="directory">
+	<listitem><para>dcvs@ - regarding <filename class="directory">
 	    /home/dcvs</filename>, the doc
 	  repository</para></listitem>
 
-	<listitem><para>projcvs@ - regarding <filename role="directory">
+	<listitem><para>projcvs@ - regarding <filename class="directory">
 	    /home/projcvs</filename>, the
 	  third party projects repository</para></listitem>
       </itemizedlist>
@@ -2627,7 +2627,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    </itemizedlist>
 
 	    <para>Alternatively, you can use the <command>rmport</command>
-	      script, from <filename role="directory">ports/Tools/scripts</filename>.
+	      script, from <filename class="directory">ports/Tools/scripts</filename>.
 	      This script has been written by &a.vd;, who is also its current
 	      maintainer, so please send questions, patches or suggestions
 	      about <command>rmport</command> to him.</para>
