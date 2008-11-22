@@ -2020,7 +2020,8 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	    someone who manages an overall category of FreeBSD
 	    evolution, such as internationalization or networking.
 	    See <ulink
-	    url="&url.base;/administration.html"></ulink>
+	      url="&url.base;/administration.html">
+	      http://www.FreeBSD.org/administration.html</ulink>
 	    for more information on this.</para>
 	</listitem>
 
