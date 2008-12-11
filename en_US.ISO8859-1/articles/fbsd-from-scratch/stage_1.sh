@@ -85,7 +85,7 @@ step_four () {
   # The loader.conf and device.hints are required by the installkernel target.
   # If you have not copied them in Step 2, cp them as shown in the next 2 lines.
   #   cp sys/boot/forth/loader.conf ${DESTDIR}/boot/defaults
-  #   cp sys/i386/conf/GENERIC.hints ${DESTDIR}/boot/device.hints
+  #   cp sys/${TARGET}/conf/GENERIC.hints ${DESTDIR}/boot/device.hints
   make installkernel DESTDIR=${DESTDIR} KERNCONF=${KERNCONF} TARGET=${TARGET}
 }
 
