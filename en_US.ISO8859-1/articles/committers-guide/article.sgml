@@ -2216,10 +2216,10 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	mandate:</para>
 
 	<blockquote>
-	  <para>Our 32 bit reference platform is i386, and our 64 bit
+	  <para>Our 32-bit reference platform is i386, and our 64-bit
 	    reference platform is Sparc64.  Major design work (including
 	    major API and ABI changes) must prove itself on at least one
-	    32 bit and at least one 64 bit platform, preferably the
+	    32-bit and at least one 64-bit platform, preferably the
 	    primary reference platforms, before it may be committed
 	    to the source tree.</para>
 	</blockquote>
@@ -2236,7 +2236,7 @@ docs:Documentation Bug:freebsd-doc:</programlisting>
 	developers.</para>
 
       <para>We will continue to re-evaluate this policy as cost and
-	availability of the 64 bit platforms change.</para>
+	availability of the 64-bit platforms change.</para>
 
       <para>Developers should also be aware of our Tier Policy for
 	the long term support of hardware architectures.  The rules
