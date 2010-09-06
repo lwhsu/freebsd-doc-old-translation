@@ -346,7 +346,7 @@
 	    peuvent avoir qu'un nombre limit&eacute;s de partitions.
 	    Au lieu de cela Vinum subdivise une simple partition
 	    UNIX&trade; (le <emphasis>disque</emphasis>) en zones
-	    contig&uuml;es appel&eacute;es <emphasis>sous-disques</emphasis>,
+	    contigu&euml;s appel&eacute;es <emphasis>sous-disques</emphasis>,
 	    qui sont utilis&eacute;s comme bloc pour construire les
 	    plexes.</para>
 	</listitem>
