@@ -1166,7 +1166,7 @@ EndSection</programlisting>
 &prompt.root; <userinput>chmod 0660 /dev/vboxnetctl</userinput></screen>
 
       <para>To make the permissions change permanent, add these
-	lines to <filename>/etc/devfs.conf</filename>:
+	lines to <filename>/etc/devfs.conf</filename>:</para>
 
       <programlisting>own     vboxnetctl root:vboxusers
 perm    vboxnetctl 0660</programlisting>
