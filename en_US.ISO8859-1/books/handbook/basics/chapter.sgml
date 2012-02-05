@@ -682,7 +682,7 @@ total 530
 	or starts the process.  The effective <acronym>UID</acronym>
 	is the user ID the process runs as.  As an example, the
 	&man.passwd.1; utility runs with the real user ID as the
-	user changing their password; however, to manipulate the
+	user changing his/her password; however, to manipulate the
 	password database, it runs as the effective ID of the
 	<username>root</username> user.  This is what allows normal
 	users to change their passwords without seeing a
