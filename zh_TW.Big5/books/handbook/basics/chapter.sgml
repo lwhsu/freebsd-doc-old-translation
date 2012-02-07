@@ -1,8 +1,8 @@
 <!--
-     The FreeBSD Documentation Project
+     The FreeBSD Traditional Chinese Documentation Project
 
      $FreeBSD$
-     Original revision: 1.152
+     Original revision: 1.158
 -->
 
 <chapter id="basics">
@@ -523,7 +523,7 @@ total 530
       </tgroup>
     </informaltable>
 
-    <para>如先前同樣使用 &man.chmod.1; 指令來設定，但使用的參數為這些字元。
+    <para>如先前同樣使用 &man.chmod.1; 指令來設定，但改用這些字元當作參數。
       例如，您可以使用下列指令禁止其他使用者存取檔案
       <replaceable>FILE</replaceable>:</para>
 
@@ -576,8 +576,7 @@ total 530
       <para>使用 &man.ls.1; 及參數 <option>-lo</option>
 	可檢視檔案目前的旗標：</para>
 
-      <screen>&prompt.root; <userinput>ls -lo <filename>file1</filename>
-	</userinput></screen>
+      <screen>&prompt.root; <userinput>ls -lo <filename>file1</filename></userinput></screen>
 
       <para>輸出的結果如下:</para>
 
@@ -587,6 +586,120 @@ total 530
 	使用者來標示或移除，而部份旗標可由檔案所有者設定。
 	我們建議系統管理者可閱讀 &man.chflags.1; 及 &man.chflags.2; 
 	說明以瞭解相關細節。</para>
+    </sect2>
+
+    <sect2>
+      <sect2info>
+	<authorgroup>
+	  <author>
+	    <firstname>Tom</firstname>
+	    <surname>Rhodes</surname>
+	    <contrib>Contributed by </contrib>
+	  </author>
+	</authorgroup>
+      </sect2info>
+
+      <title>setuid、setgid、sticky 權限</title>
+
+      <para>除了之前討論過的權限外，有三個系統管理者都應該知道的特殊設定，就是
+	<literal>setuid</literal>、 <literal>setgid</literal>、<literal>sticky</literal>
+	權限。</para>
+
+      <para>這些設定提供平常不授權一般使用者的功能，在一些 &unix; 操作上舉足輕重。
+	要搞懂它們, 也得知道真實使用者 ID (real user ID) 和有效使用者 ID (effective user ID) 的差異。</para>
+
+      <para>真實使用者 ID 是程序所有者或啟動者的 <acronym>UID</acronym>。
+	有效 <acronym>UID</acronym> 是程序運行時實際身分的使用者 ID。
+	舉例來說，使用者更改密碼時，以他的真實使用者 ID 運行 &man.passwd.1;
+	工具；然而為了操作密碼資料庫，它是以
+	<username>root</username> 使用者身分的有效 ID 運行。
+	因此一般使用者更改密碼時不會遇到
+	<errorname>Permission Denied</errorname> 錯誤。</para>
+
+      <note>
+	<para>&man.mount.8; 的 <literal>nosuid</literal> 選項會使
+	  這些 binaries 失效且不警告使用者。這選項也非萬無一失，根據
+	  &man.mount.8; manual page，<literal>nosuid</literal> 
+	  軟體層 (wrapper) 或許可以規避限制。</para>
+      </note>
+
+      <para>setuid 權限可在一般權限數值前面加上數字 4 來設定，如下面的例子：</para>
+
+      <screen>&prompt.root; <userinput>chmod 4755 suidexample.sh</userinput></screen>
+
+      <para><filename><replaceable>suidexample.sh</replaceable></filename>
+	檔案權限現在應該如下所示:</para>
+
+      <programlisting>-rwsr-xr-x   1 trhodes  trhodes    63 Aug 29 06:36 suidexample.sh</programlisting>
+
+      <para>這個例子該注意的是檔案所有者的權限值，執行位元現在換成了
+	<literal>s</literal> 。藉此，像 <command>passwd</command>
+	這類需要提升權限的工具才能順利運作。</para>
+
+      <para>開兩個終端機以便即時觀察。
+	在其一以一般使用者身分啟動
+	<command>passwd</command> 程序。當它等著輸入新密碼時，
+	檢查程序表及看看 <command>passwd</command>
+	指令的使用者資訊。</para>
+
+      <para>終端機甲：</para>
+
+      <screen>Changing local password for trhodes
+Old Password:</screen>
+
+      <para>終端機乙：</para>
+
+      <screen>&prompt.root; <userinput>ps aux | grep passwd</userinput></screen>
+
+      <screen>trhodes  5232  0.0  0.2  3420  1608   0  R+    2:10AM   0:00.00 grep passwd
+root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
+
+      <para>如上所示，由一般使用者運行
+	<command>passwd</command>，但它使用的是
+	<username>root</username> 的有效 <acronym>UID</acronym>。</para>
+
+      <para><literal>setgid</literal> 權限展現的功能如同
+	<literal>setuid</literal> 權限，不過更動的是群組設定。
+	當應用程式或工具依此設定運行，將被授予此檔案所屬群組的權限，
+	而非啟動此程序的使用者權限。</para>
+
+      <para>要設定檔案的 <literal>setgid</literal> 權限，
+	<command>chmod</command> 指令參數以 2 開頭，如下面的例子：</para>
+
+      <screen>&prompt.root; <userinput>chmod 2755 sgidexample.sh</userinput></screen>
+
+      <para>新設定看起來差不多, 注意現在顯示群組權限設定的欄位有了
+	<literal>s</literal>：<para>
+
+      <screen>-rwxr-sr-x   1 trhodes  trhodes    44 Aug 31 01:49 sgidexample.sh</screen>
+
+      <note>
+	<para>即使 shell script 是否為執行檔仍未有定論，在這些例子中並不會以不同的
+	  <acronym>EUID</acronym>　——有效使用者 ID ——運行。
+	  因為 shell script 不能使用
+	  &man.setuid.2; 系統呼叫。</para>
+      </note>
+
+      <para>由於我們討論過的前兩個特殊權限位元 （<literal>setuid</literal>
+	和 <literal>setgid</literal>　權限位元）能提升權限，
+	或許會削弱系統安全。有第三個特殊權限位元能加強系統安全：
+	<literal>sticky bit</literal>。</para>
+
+      <para>當 <literal>sticky bit</literal> 設定在目錄時，
+	檔案只能由檔案擁有者刪除。這種權限設定十分有用，可避免像在
+	<filename class="directory">/tmp</filename> 這樣的公用目錄中，
+	使用者刪除非他所有的檔案。要利用此權限，權限值前加個 1，例如：</para>
+
+      <screen>&prompt.root; <userinput>chmod 1777 /tmp</userinput></screen>
+
+      <para>現在可用 <command>ls</command> 指令看到效果：</para>
+
+      <screen>&prompt.root; <userinput>ls -al / | grep tmp</userinput></screen>
+
+      <screen>drwxrwxrwt  10 root  wheel         512 Aug 31 01:49 tmp</screen>
+
+      <para><literal>sticky bit</literal> 可從設定值結尾的
+	<literal>t</literal> 辨別。</para>
     </sect2>
   </sect1>
   
@@ -776,7 +889,7 @@ total 530
 	    </row>
 	    
 	    <row>
-	      <entry><filename class="directory">/usr/ports</filename></entry>
+	      <entry><filename class="directory">/usr/ports/</filename></entry>
 	      <entry>FreeBSD Ports Collection (optional)。</entry>
 	    </row>
 	    
@@ -837,7 +950,7 @@ total 530
 	    </row>
 	    
 	    <row>
-	      <entry><filename>/var/yp</filename></entry>
+	      <entry><filename class="directory">/var/yp/</filename></entry>
 	      <entry>記錄 NIS maps。</entry>
 	    </row>
 
@@ -1485,8 +1598,8 @@ total 530
             
 	  <listitem>
 	    <para>用唯讀的方式掛載檔案系統。 這個選項和在 <option>-o</option>
-	      選項中指定 <option>ro</option> (在 &os; 5.2之前的版本是用
-	      <option>rdonly</option>) 參數是一樣的。</para>
+	      選項中指定 <option>ro</option>
+	      參數是一樣的。</para>
 	  </listitem>
 	</varlistentry>
           
@@ -1596,7 +1709,7 @@ total 530
         
     <para>要看系統執行中的程序，有兩個相當有用的指令可用：
       &man.ps.1; 以及 &man.top.1;。<command>ps</command> 
-      指令是用來列出正在執行之程序，而且可以秀它們的
+      指令是用來列出正在執行之程序，而且可以顯示它們的
       PID、用了多少記憶體、執行的指令名稱及其後之參數是什麼等等。
       <command>top</command> 指令則是顯示所有正在執行的程序，
       並且數秒鐘更新一次。因此您可以互動式的觀看您的電腦正在做什麼。</para>
@@ -2088,6 +2201,12 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       然而若要從事大量文字編輯工作，
       那麼花點時間來學習這些好用的編輯器，
       會在日後為您省下更多的時間。</para>
+
+    <para>Many applications which modify files or require typed input
+      will automatically open a text editor.  To alter the default
+      editor used, set the <envar>EDITOR</envar> environment
+      variable.  See <link linkend="shells">shells</link>
+      section for more details.</para>
   </sect1>
 
   <sect1 id="basics-devices">
