@@ -1,5 +1,5 @@
 <!--
-     The FreeBSD Documentation Project
+     The FreeBSD Traditional Chinese Documentation Project
 
      $FreeBSD$
      Original revision: 1.158
@@ -523,7 +523,7 @@ total 530
       </tgroup>
     </informaltable>
 
-    <para>如先前同樣使用 &man.chmod.1; 指令來設定，但使用的參數為這些字元。
+    <para>如先前同樣使用 &man.chmod.1; 指令來設定，但改用這些字元當作參數。
       例如，您可以使用下列指令禁止其他使用者存取檔案
       <replaceable>FILE</replaceable>:</para>
 
@@ -601,122 +601,105 @@ total 530
 
       <title>setuid、setgid、sticky 權限</title>
 
-      <para>除了之前討論過的權限之外，有三個系統管理者都應該知道的
-	特殊設定。 它們是 <literal>setuid</literal>、
-	<literal>setgid</literal>、<literal>sticky</literal>
+      <para>除了之前討論過的權限外，有三個系統管理者都應該知道的特殊設定，就是
+	<literal>setuid</literal>、 <literal>setgid</literal>、<literal>sticky</literal>
 	權限。</para>
 
-      <para>對一些 &unix; 操作而言這些設定很重要，它們提供平常不授權
-	一般使用者的功能。要搞懂它們, 也得知道真實使用者 ID
-	(real user ID) 和有效使用者 ID (effective user ID) 的差異。</para>
+      <para>這些設定提供平常不授權一般使用者的功能，在一些 &unix; 操作上舉足輕重。
+	要搞懂它們, 也得知道真實使用者 ID (real user ID) 和有效使用者 ID (effective user ID) 的差異。</para>
 
-      <para>真實使用者 ID 是程序擁有者或啟動者的 <acronym>UID</acronym>。
-	有效 <acronym>UID</acronym> 是程序運行時使用的使用者 ID。
-	舉個例子，使用者更改密碼時，&man.passwd.1; 工具是以他的
-	真實使用者 ID 啟動；然而為了操作密碼資料庫，它以
-	<username>root</username> 使用者的有效 ID 運行。
-	因此一般使用者更改密碼時不會看到
+      <para>真實使用者 ID 是程序所有者或啟動者的 <acronym>UID</acronym>。
+	有效 <acronym>UID</acronym> 是程序運行時實際身分的使用者 ID。
+	舉例來說，使用者更改密碼時，以他的真實使用者 ID 運行 &man.passwd.1;
+	工具；然而為了操作密碼資料庫，它是以
+	<username>root</username> 使用者身分的有效 ID 運行。
+	因此一般使用者更改密碼時不會遇到
 	<errorname>Permission Denied</errorname> 錯誤。</para>
 
       <note>
 	<para>&man.mount.8; 的 <literal>nosuid</literal> 選項會使
-	  這些執行檔失效且不警告使用者。這選項也非萬無一失，
-	  as a <literal>nosuid</literal>
-	  wrapper may be able to circumvent it; according to the
-	  &man.mount.8; manual page.</para>
+	  這些 binaries 失效且不警告使用者。這選項也非萬無一失，根據
+	  &man.mount.8; manual page，<literal>nosuid</literal> 
+	  軟體層 (wrapper) 或許可以規避限制。</para>
       </note>
 
-      <para>setuid 權限可在一般權限前面加上數字 "4" 來設定，如下面的例子：</para>
+      <para>setuid 權限可在一般權限數值前面加上數字 4 來設定，如下面的例子：</para>
 
       <screen>&prompt.root; <userinput>chmod 4755 suidexample.sh</userinput></screen>
 
       <para><filename><replaceable>suidexample.sh</replaceable></filename>
-	檔案權限應該變得如下所示:</para>
+	檔案權限現在應該如下所示:</para>
 
       <programlisting>-rwsr-xr-x   1 trhodes  trhodes    63 Aug 29 06:36 suidexample.sh</programlisting>
 
-      <para>It should be noticeable from this example that an
-	<literal>s</literal> is now part of the permission set
-	designated for the file owner, replacing the executable
-	bit.  This allows utilities which need elevated permissions,
-	such as <command>passwd</command>.</para>
+      <para>這個例子該注意的是檔案所有者的權限值，執行位元現在換成了
+	<literal>s</literal> 。藉此，像 <command>passwd</command>
+	這類需要提升權限的工具才能順利運作。</para>
 
-      <para>To view this in real time, open two terminals.  On
-	one, start the <command>passwd</command> process as a normal
-	user.  While it waits for a new password, check the process
-	table and look at the user information of the
-	<command>passwd</command> command.</para>
+      <para>開兩個終端機以便即時觀察。
+	在其一以一般使用者身分啟動
+	<command>passwd</command> 程序。當它等著輸入新密碼時，
+	檢查程序表及看看 <command>passwd</command>
+	指令的使用者資訊。</para>
 
-      <para>In terminal A:</para>
+      <para>終端機甲：</para>
 
       <screen>Changing local password for trhodes
 Old Password:</screen>
 
-      <para>In terminal B:</para>
+      <para>終端機乙：</para>
 
       <screen>&prompt.root; <userinput>ps aux | grep passwd</userinput></screen>
 
       <screen>trhodes  5232  0.0  0.2  3420  1608   0  R+    2:10AM   0:00.00 grep passwd
 root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
-      <para>As stated above, the <command>passwd</command> is run
-	by a normal user, but is using the effective
-	<acronym>UID</acronym> of <username>root</username>.</para>
+      <para>如上所示，由一般使用者運行
+	<command>passwd</command>，但它使用的是
+	<username>root</username> 的有效 <acronym>UID</acronym>。</para>
 
-      <para>The <literal>setgid</literal> permission performs the
-	same function as the <literal>setuid</literal> permission;
-	except that it alters the group settings.  When an application
-	or utility is ran with this setting, it will be granted the
-	permissions based on the group that owns the file, not
-	the user who started the process.</para>
+      <para><literal>setgid</literal> 權限展現的功能如同
+	<literal>setuid</literal> 權限，不過更動的是群組設定。
+	當應用程式或工具依此設定運行，將被授予此檔案所屬群組的權限，
+	而非啟動此程序的使用者權限。</para>
 
-      <para>To set the <literal>setgid</literal> permission on a
-	file, provide the <command>chmod</command> command with a
-	leading two (2) as in the following example:</para>
+      <para>要設定檔案的 <literal>setgid</literal> 權限，
+	<command>chmod</command> 指令參數以 2 開頭，如下面的例子：</para>
 
       <screen>&prompt.root; <userinput>chmod 2755 sgidexample.sh</userinput></screen>
 
-      <para>The new setting may be viewed as before, notice the
-	<literal>s</literal> is now in the field designated for the
-	group permission settings:<para>
+      <para>新設定看起來差不多, 注意現在顯示群組權限設定的欄位有了
+	<literal>s</literal>：<para>
 
       <screen>-rwxr-sr-x   1 trhodes  trhodes    44 Aug 31 01:49 sgidexample.sh</screen>
 
       <note>
-	<para>In these examples, even though the shell script in
-	  question is an executable file, it will not run with
-	  a different <acronym>EUID</acronym> or effective user ID.
-	  This is because shell scripts may not access the
-	  &man.setuid.2; system calls.</para>
+	<para>即使 shell script 是否為執行檔仍未有定論，在這些例子中並不會以不同的
+	  <acronym>EUID</acronym>　——有效使用者 ID ——運行。
+	  因為 shell script 不能使用
+	  &man.setuid.2; 系統呼叫。</para>
       </note>
 
-      <para>The first two special permission bits we discussed
-	(the <literal>setuid</literal> and <literal>setgid</literal>
-	permission bits) may lower system security, by allowing for
-	elevated permissions.  There is a third special permission bit
-	that can strengthen the security of a system: the
-	<literal>sticky bit</literal>.</para>
+      <para>由於我們討論過的前兩個特殊權限位元 （<literal>setuid</literal>
+	和 <literal>setgid</literal>　權限位元）能提升權限，
+	或許會削弱系統安全。有第三個特殊權限位元能加強系統安全：
+	<literal>sticky bit</literal>。</para>
 
-      <para>The <literal>sticky bit</literal>, when set on a directory,
-	allows file deletion only by the file owner.  This
-	permission set is useful to prevent file deletion in public
-	directories, such as
-	<filename class="directory">/tmp</filename>, by users who do
-	not own the file.  To utilize this permission, prefix the
-	permission with a one (1).  For example:</para>
+      <para>當 <literal>sticky bit</literal> 設定在目錄時，
+	檔案只能由檔案擁有者刪除。這種權限設定十分有用，可避免像在
+	<filename class="directory">/tmp</filename> 這樣的公用目錄中，
+	使用者刪除非他所有的檔案。要利用此權限，權限值前加個 1，例如：</para>
 
       <screen>&prompt.root; <userinput>chmod 1777 /tmp</userinput></screen>
 
-      <para>Now, it is possible to see the effect by using the
-	<command>ls</command> command:</para>
+      <para>現在可用 <command>ls</command> 指令看到效果：</para>
 
       <screen>&prompt.root; <userinput>ls -al / | grep tmp</userinput></screen>
 
       <screen>drwxrwxrwt  10 root  wheel         512 Aug 31 01:49 tmp</screen>
 
-      <para>The <literal>sticky bit</literal> permission is
-	distinguishable from the <literal>t</literal> at the very
-	end of the set.</para>
+      <para><literal>sticky bit</literal> 可從設定值結尾的
+	<literal>t</literal> 辨別。</para>
     </sect2>
   </sect1>
   
@@ -1726,7 +1709,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
         
     <para>要看系統執行中的程序，有兩個相當有用的指令可用：
       &man.ps.1; 以及 &man.top.1;。<command>ps</command> 
-      指令是用來列出正在執行之程序，而且可以秀它們的
+      指令是用來列出正在執行之程序，而且可以顯示它們的
       PID、用了多少記憶體、執行的指令名稱及其後之參數是什麼等等。
       <command>top</command> 指令則是顯示所有正在執行的程序，
       並且數秒鐘更新一次。因此您可以互動式的觀看您的電腦正在做什麼。</para>
