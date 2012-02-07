@@ -2,7 +2,7 @@
      The FreeBSD Documentation Project
 
      $FreeBSD$
-     Original revision: 1.152
+     Original revision: 1.158
 -->
 
 <chapter id="basics">
@@ -610,34 +610,28 @@ total 530
 	一般使用者的功能。要搞懂它們, 也得知道真實使用者 ID
 	(real user ID) 和有效使用者 ID (effective user ID) 的差異。</para>
 
-      <para>真實使用者 ID is the <acronym>UID</acronym> who owns
-	or starts the process.  The effective <acronym>UID</acronym>
-	is the user ID the process runs as.  As an example, the
-	&man.passwd.1; utility runs with the real user ID as the
-	user changing their password; however, to manipulate the
-	password database, it runs as the effective ID of the
-	<username>root</username> user.  This is what allows normal
-	users to change their passwords without seeing a
-	<errorname>Permission Denied</errorname> error.</para>
+      <para>真實使用者 ID 是程序擁有者或啟動者的 <acronym>UID</acronym>。
+	有效 <acronym>UID</acronym> 是程序運行時使用的使用者 ID。
+	舉個例子，使用者更改密碼時，&man.passwd.1; 工具是以他的
+	真實使用者 ID 啟動；然而為了操作密碼資料庫，它以
+	<username>root</username> 使用者的有效 ID 運行。
+	因此一般使用者更改密碼時不會看到
+	<errorname>Permission Denied</errorname> 錯誤。</para>
 
       <note>
-	<para>The <literal>nosuid</literal> &man.mount.8; option will
-	  cause these binaries to silently fail.  That is, they will
-	  fail to execute without ever alerting the user.  That option
-	  is also not completely reliable as a <literal>nosuid</literal>
+	<para>&man.mount.8; 的 <literal>nosuid</literal> 選項會使
+	  這些執行檔失效且不警告使用者。這選項也非萬無一失，
+	  as a <literal>nosuid</literal>
 	  wrapper may be able to circumvent it; according to the
 	  &man.mount.8; manual page.</para>
       </note>
 
-      <para>The setuid permission may be set by prefixing a permission
-	set with the number four (4) as shown in the following
-	example:</para>
+      <para>setuid 權限可在一般權限前面加上數字 "4" 來設定，如下面的例子：</para>
 
       <screen>&prompt.root; <userinput>chmod 4755 suidexample.sh</userinput></screen>
 
-      <para>The permissions on the
-	<filename><replaceable>suidexample.sh</replaceable></filename>
-	file should now look like the following:</para>
+      <para><filename><replaceable>suidexample.sh</replaceable></filename>
+	檔案權限應該變得如下所示:</para>
 
       <programlisting>-rwsr-xr-x   1 trhodes  trhodes    63 Aug 29 06:36 suidexample.sh</programlisting>
 
@@ -912,7 +906,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	    </row>
 	    
 	    <row>
-	      <entry><filename class="directory">/usr/ports</filename></entry>
+	      <entry><filename class="directory">/usr/ports/</filename></entry>
 	      <entry>FreeBSD Ports Collection (optional)。</entry>
 	    </row>
 	    
@@ -973,7 +967,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	    </row>
 	    
 	    <row>
-	      <entry><filename>/var/yp</filename></entry>
+	      <entry><filename class="directory">/var/yp/</filename></entry>
 	      <entry>記錄 NIS maps。</entry>
 	    </row>
 
@@ -1621,8 +1615,8 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
             
 	  <listitem>
 	    <para>用唯讀的方式掛載檔案系統。 這個選項和在 <option>-o</option>
-	      選項中指定 <option>ro</option> (在 &os; 5.2之前的版本是用
-	      <option>rdonly</option>) 參數是一樣的。</para>
+	      選項中指定 <option>ro</option>
+	      參數是一樣的。</para>
 	  </listitem>
 	</varlistentry>
           
@@ -2224,6 +2218,12 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       然而若要從事大量文字編輯工作，
       那麼花點時間來學習這些好用的編輯器，
       會在日後為您省下更多的時間。</para>
+
+    <para>Many applications which modify files or require typed input
+      will automatically open a text editor.  To alter the default
+      editor used, set the <envar>EDITOR</envar> environment
+      variable.  See <link linkend="shells">shells</link>
+      section for more details.</para>
   </sect1>
 
   <sect1 id="basics-devices">
