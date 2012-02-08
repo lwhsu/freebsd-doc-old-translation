@@ -22,10 +22,10 @@
   <sect1 id="basics-synopsis">
     <title>概述</title>
 
-    <para>接下來的這一章將涵蓋 FreeBSD 作業系統的基本指令及功能。
+    <para>以下章節將涵蓋 FreeBSD 作業系統的基本指令及功能。
       大部份的內容在 &unix;-like 作業系統中都是相通的。
-      如果您對這些內容熟悉的話，可以放心的跳過。
-      如果您剛接觸 FreeBSD，那您一定要仔細的讀完這章。</para>
+      如果您對這些內容熟悉的話，可以放心跳過。
+      若您剛接觸 FreeBSD，那一定要仔細讀完這章。</para>
 
     <para>讀完這章，您將了解：</para>
 
@@ -75,14 +75,14 @@
     <para>有很多方法可以操作 FreeBSD ，其中一種就是在文字終端機上打字。
       如此使用 FreeBSD 即可輕易的體會到 &unix; 作業系統的威力和彈性。
       這一節描述什麼是<quote>終端機</quote>和 <quote>console</quote>
-      ，以及可以如何在 FreeBSD 中運用它們。</para>
+      ，以及在 FreeBSD 中能夠如何運用。</para>
 
     <sect2 id="consoles-intro">
       <title>The Console</title>
       <indexterm><primary>console</primary></indexterm>
 
-      <para>如果您沒有將 FreeBSD 設定成開機時自動進入圖形化模式，系統會在啟動的
-	script 跑完之後顯示登入的提示符號。 您將會看到像是這樣的東西：</para>
+      <para>如果您沒有設定 FreeBSD 開機時要自動進入圖形化環境，系統會在啟動的
+	script 跑完之後顯示登入的提示，您會看到像這樣：</para>
 
       <screen>Additional ABI support:.
 Local package initialization:.
@@ -94,104 +94,104 @@ FreeBSD/i386 (pc3.example.org) (ttyv0)
 
 login:</screen>
 
-      <para>這個訊息在您的系統上會有些許的不同，但是應該會看到類似的東西。
-	    我們感興趣的是最後兩行，最後兩行是：</para>
+      <para>您的系統出現的訊息可能略有不同，但應該會看到類似的東西。
+	    我們有興趣的是最後兩行，倒數第二行是：</para>
 
       <programlisting>FreeBSD/i386 (pc3.example.org) (ttyv0)</programlisting>
 
-      <para>這行包含了剛開機完系統的資訊。 您看到的是在 Intel 或相容處理器的
+      <para>這行包含了剛開機完系統的資訊。您看到的是在 Intel 或相容處理器的
 	x86 架構上執行的 <quote>FreeBSD</quote>的 console<footnote>
           <para>這就是 <literal>i386</literal> 的意義。 注意即使您不是在
-	    Intel 的 386 處理器上執行 FreeBSD ，一樣是<literal>i386</literal>。
-            這不是指你的處理器的型號，這裡顯示的是你處理器的<quote>架構</quote>
+	    Intel 的 386 處理器上執行 FreeBSD ，一樣是 <literal>i386</literal>。
+            這裡顯示的並非您的處理器型號，而是您的處理器<quote>架構</quote>
 	    </para>
-        </footnote>。 這台機器的名字(每台 &unix; 機器都有一個名字)是 
-        <hostid>pc3.example.org</hostid>，而您現在看到的是它的系統 
+        </footnote>。這台機器的名字（每台 &unix; 機器都有一個名字）是 
+        <hostid>pc3.example.org</hostid>，而您正看著它的系統 
         console&mdash; <devicename>ttyv0</devicename>終端機。</para>
 
-      <para>最後的一行應該都會是：</para>
+      <para>最後一行都會是：</para>
 
       <programlisting>login:</programlisting>
 
-      <para>這是您應該要輸入您的<quote>帳號名稱</quote>的地方。
-        下一小節將告訴您如何登入 FreeBSD。</para>
+      <para>要在此處要輸入您的<quote>使用者名稱</quote>，才能登入
+	FreeBSD ，下一小節將會說明步驟。</para>
     </sect2>
 
     <sect2 id="consoles-login">
       <title>登入 FreeBSD</title>
 
-      <para>FreeBSD 是一個 multiuser、multiprocessing 的系統。
-	這是一個正式的名稱，指的是在單一機器上可以同時被不同人使用，
-	但同時可以執行很多程式的系統。</para>
+      <para>FreeBSD 是一個多人共用 (multiuser)、多工 (multiprocessing) 的系統。
+	這是一個正式的名稱，指的是在單一機器上可以讓許多人使用，且他們
+	同時可以執行大量程式的系統。</para>
 
-      <para>每一種多使用者系統都需要可以分辨不同<quote>使用者</quote>的方法。
-        在 FreeBSD (以及所有的 &unix;-like 作業系統) 
-        中，所有的使用者在執行程式之前必須先<quote>登入</quote>系統。
-	每個使用者都有一組獨特的帳號名稱
-        (<quote>username</quote>)及密碼(<quote>password</quote>)。
-        FreeBSD 在允許使用者執行程式前將會先問這兩個問題。</para>
+      <para>每個多人共用系統都需要有分辨不同<quote>使用者</quote>的方法。
+        在 FreeBSD（以及所有的 &unix;-like 作業系統）中，
+	作法就是每位使用者必須<quote>登入</quote>系統才能執行程式。
+	每位使用者有獨特的使用者名稱
+        (<quote>username</quote>) 及密碼 (<quote>password</quote>)，
+        FreeBSD 會先問這兩樣東西，才允許使用者執行任何程式。</para>
 
       <indexterm><primary>startup scripts</primary></indexterm>
-      <para>在 FreeBSD 開機並跑完啟動的 script 之後<footnote>
-        <para>這些啟動的 script 是在開機的時候 FreeBSD 會自動執行的程式。
-	  他們主要的功能是將所有該執行的東西設定好，
-	  並將您設定成背景執行的服務啟動。</para>
-      </footnote>，它將會印出提示字元要求您輸入正確的帳號名稱：</para>
+      <para>在 FreeBSD 開機並執行完啟動的 script 之後<footnote>
+        <para>這些啟動的 script 是開機時 FreeBSD 會自動執行的程式。
+	  他們主要功能是設定好將所有其他該執行的東西，
+	  並啟動您已設定成背景執行的服務。</para>
+      </footnote>，它將會印出提示要求您輸入正確的使用者名稱：</para>
 
       <screen>login:</screen>
 
-      <para>在這個範例裡，我們假設您的帳號是<username>john</username>。
-        在提示字元處輸入 <literal>john</literal> 並按下 <keycap>Enter</keycap>
-	。  接著您應該會看到另一個提示字元要您輸入<quote>密碼</quote>：</para>
+      <para>在這個範例裡，我們假設您的使用者名稱為是<username>john</username>。
+        在提示處輸入 <literal>john</literal> 並按下 <keycap>Enter</keycap>。
+	接著您應該會看到要您輸入<quote>密碼</quote>的提示：</para>
 
       <screen>login: <userinput>john</userinput>
 Password:</screen>
 
-      <para>輸入 <username>john</username> 的密碼，再按下
-	<keycap>Enter</keycap>。  輸入的密碼
-	<emphasis>不會顯示在螢幕上</emphasis>。
-	您不需要為此擔心，這樣做是為了安全上的問題。</para>
+      <para>現在輸入 <username>john</username> 的密碼，再按下
+	<keycap>Enter</keycap>。輸入的密碼
+	<emphasis>完全不會顯示！</emphasis>
+	您不用擔心，這樣做是安全上的考量。</para>
 
-      <para>如果您輸入了正確的密碼，您應該已經登入 FreeBSD。
-	現在就可以嘗試所有可用的指令了。</para>
+      <para>如果打了正確的密碼，您現在應該已經登入 FreeBSD，
+	可以去嘗試所有可用的指令了。</para>
 
-      <para>您應該會看到<acronym>MOTD</acronym>
-        (即今日訊息、Messages Of The Day)，後面接著命令提示字元
-        (一個 <literal>#</literal>,<literal>$</literal>, 或是
-	<literal>%</literal> 字元)。 這就表示您已經成功登入
+      <para>您應該會看到 <acronym>MOTD</acronym>
+        ——今日訊息 (messages of the day) ——後面接著命令提示字元
+        （<literal>#</literal>,<literal>$</literal> 或是
+	<literal>%</literal>）。 這就表示您已經成功登入
 	FreeBSD 了。</para>
     </sect2>
 
     <sect2 id="consoles-virtual">
       <title>多重 Console</title>
 
-      <para>在一個 Console 下執行 &unix; 當然是沒有問題，然而 FreeBSD
-	是可以同時執行很多程式的。  像 FreeBSD
+      <para>在一個 console 下執行 &unix; 指令當然不錯，然而 FreeBSD
+	可以同時執行很多程式。像 FreeBSD
 	這樣可以同時執行一大堆程式的作業系統，只有一個
-        console 可以輸入指令實在是有點浪費。  因此
+        console 可以輸入指令實在有點浪費，因此
 	<quote>virtual consoles</quote> 就顯得相當好用。</para>
 
       <para>可以設定讓 FreeBSD 同時有很多 virtual console，
 	用幾個按鍵的組合就可以從一個 virtual console 跳到別的 virtual console
-	。  每一個 console 都有自已不同的輸出頻道，當從某一個 virtual console
-	切換到下一個的時候，FreeBSD 會自動處理鍵盤輸入及螢幕輸出。</para>
+	。每個 console 都有自己不同的輸出頻道，當從某個 virtual console
+	切換到下一個時，FreeBSD 會自動處理鍵盤輸入及顯示器輸出。</para>
           
       <para>FreeBSD 保留了特別的按鍵組合來切換 console <footnote>
-        <para>在 &man.syscons.4;、&man.atkbd.4;、&man.vidcontrol.1;、以及
-          &man.kbdcontrol.1;等 manual page 中，對於 FreeBSD 的 console
-          及鍵盤驅動程式有詳細的技術說明。  我們在這裡不討論細節，
-	  有興趣的讀者隨時可以在 manual pages
-	  中查到關於運作方式的更詳細且完整的解釋。</para></footnote>。
+        <para>在 &man.syscons.4;、&man.atkbd.4;、&man.vidcontrol.1;、 &man.kbdcontrol.1;
+	  等 manual page 中，對於 FreeBSD 的 console
+          及鍵盤驅動程式有詳細的技術說明。我們在這裡不討論細節，
+	  有興趣的讀者隨時可以在 manual page
+	  中查到關於運作方式的更詳盡的解釋。</para></footnote>。
 	您可以用 <keycombo><keycap>Alt</keycap><keycap>F1</keycap></keycombo>、
-        <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>、到
+        <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>，一直到
         <keycombo><keycap>Alt</keycap><keycap>F8</keycap></keycombo>
 	來切換 FreeBSD 的不同 console。</para>
     
       <para>當您從一個 console 切換到下一個的時候，FreeBSD 
 	會處理螢幕輸出的儲存及回復。
 	這就<quote>好像</quote>有很多<quote>虛擬</quote>的螢幕和鍵盤，
-	可以讓您輸入指令到 FreeBSD 執行。  在某一個 console
-	上執行的程式並不會因為切到別的 console 而停止執行，切換到另一個
+	可以讓您輸入指令到 FreeBSD 執行。在某個虛擬 console
+	上執行的程式並不會因為切到別的 console 而停止執行，切換到另一個虛擬
 	console 時，它們仍會繼續執行。</para>
     </sect2>
 
@@ -199,15 +199,15 @@ Password:</screen>
       <title><filename>/etc/ttys</filename> 檔</title>
 
       <para>FreeBSD 預設的虛擬 console 總共有 8 個，
-        但這並非硬性規定，您可輕鬆設定這些虛擬 console 的數量增減。
+        但這並非硬性規定，您可輕易自訂開機時啟動的虛擬 console 數量多寡。
 	有關虛擬 console 的編號跟設定都在
 	<filename>/etc/ttys</filename> 這檔案內設定。</para>
 
       <para>可以用 <filename>/etc/ttys</filename> 檔案來設定
-	FreeBSD 的虛擬 console。 檔案內每行非註解文字(該行開頭沒有
-	<literal>#</literal> 這字)都是設定終端機或虛擬 console。
-	FreeBSD 預設有 9 個虛擬 console 但只啟動 8 個，也就是以下以
-	<literal>ttyv</literal>	開頭的那幾行設定。</para>
+	FreeBSD 的虛擬 console。 檔案內每行非註解文字（該行開頭沒有
+	<literal>#</literal> 字號）都是設定單一終端機或虛擬 console。
+	FreeBSD 預設有 9 個虛擬 console 但只啟動 8 個，也就是以下
+	<literal>ttyv</literal>	開頭的那幾行設定：</para>
 
       <programlisting># name  getty                           type    status          comments
 #
@@ -222,18 +222,19 @@ ttyv6   "/usr/libexec/getty Pc"         cons25  on  secure
 ttyv7   "/usr/libexec/getty Pc"         cons25  on  secure
 ttyv8   "/usr/X11R6/bin/xdm -nodaemon"  xterm   off secure</programlisting>
 
-      <para>有關各欄位的設定以及其他選項，請參閱 &man.ttys.5; 說明。</para>
+      <para>有關檔案內各欄位的詳細介紹及所有設定虛擬 console 的選項，請參閱 &man.ttys.5;
+	manual page。</para>
     </sect2>
 
     <sect2 id="consoles-singleuser">
       <title>Single User 模式的 Console</title>
 
-      <para>有關 <quote>single user 模式</quote> 的介紹在 
+      <para><quote>single user 模式</quote> 在 
 	<xref linkend="boot-singleuser">
-        這邊有詳盡介紹。  在 single user 模式時，能夠使用的 console
-	只有一個，並無虛擬 console 可用。  而 single user 模式相關設定值可以在
-	<filename>/etc/ttys</filename> 檔做調整。  下面以 
-	<literal>console</literal> 開頭的那行，就是了：</para>
+        有詳盡介紹。FreeBSD 在 single user 模式時只能使用一個 console，
+	並無虛擬 console 可用。Single user 模式的 console 也能在
+	<filename>/etc/ttys</filename> 檔設定，找
+	<literal>console</literal> 開頭的那行：</para>
 
       <programlisting># name  getty                           type    status          comments
 #
@@ -245,11 +246,11 @@ console none                            unknown off secure</programlisting>
 	<para>在 <literal>console</literal> 那行前面的註解有提到，可以把那行的
 	  <literal>secure</literal> 改為 <literal>insecure</literal>，
 	  如此一來，即使 FreeBSD 進入 single user 模式，
-	  仍會要求您輸入 <username>root</username> 的密碼。</para>
+	  仍會要求輸入 <username>root</username> 的密碼。</para>
 
-	<para><emphasis>請審慎考慮是否要改為
-	  <literal>insecure</literal></emphasis>。 因為萬一忘記
-	  <username>root</username> 密碼的話，若要登入 single user
+	<para><emphasis>請慎重考慮是否要改為
+	  <literal>insecure</literal></emphasis>。一旦忘記
+	  <username>root</username> 密碼，要登入 single user
 	  模式就有些麻煩了。儘管還有其他方式可以登入，但對不熟 FreeBSD
 	  開機程序的人而言，就會相當棘手。</para>
       </note>
@@ -258,26 +259,26 @@ console none                            unknown off secure</programlisting>
     <sect2 id="consoles-vidcontrol">
       <title>更改 console 的顯示畫面</title>
 
-      <para>FreeBSD console 預設顯示大小可以調整為 1024x768、1280x1024
-	或其他顯示卡與螢幕有支援的解析度大小。  要切換顯示大小，必須要重新編譯
-	kernel 並加入下面這兩項設定：</para>
+      <para>FreeBSD console 預設顯示模式可以調整為 1024x768、1280x1024
+	或其他顯示卡與顯示器支援的解析度大小。要切換顯示模式，
+	必須先重新編譯加入下面這兩個選項的 kernel：</para>
 
       <programlisting>options VESA
 options SC_PIXEL_MODE</programlisting>
 
-      <para>一旦 kernel 有加入這兩項並重新編譯完畢，就可以用 &man.vidcontrol.1;
-	來偵測目前所支援的模式有哪些。  若要查看支援的模式，可以打：</para>
+      <para>一旦 kernel 有加入這兩項並重新編譯完畢，就能用 &man.vidcontrol.1;
+	工具來偵測您的硬體支援哪些顯示模式，要列出支援的顯示模式就打：</para>
 
       <screen>&prompt.root; <userinput>vidcontrol -i mode</userinput></screen>
 
-      <para>該指令會顯示該機器所支援的顯示模式清單。  然後可以在
+      <para>該指令會顯示此硬體支援的顯示模式清單。然後可以在
 	<username>root</username> console 內透過 &man.vidcontrol.1; 指令，
-	來更改顯示模式：</para>
+	選擇模式：</para>
 
       <screen>&prompt.root; <userinput>vidcontrol MODE_279</userinput></screen>
 
-      <para>若對新的顯示模式覺得還不錯，可以在 <filename>/etc/rc.conf</filename>
-	設定之，以讓每次重開機後會自動生效。  以上面這情況為例，就是：</para>
+      <para>若對新的顯示模式覺得還不錯，想要每次開機時自動生效，可以在
+	<filename>/etc/rc.conf</filename> 裡這樣設定：</para>
 
       <programlisting>allscreens_flags="MODE_279"</programlisting>
   </sect1>
@@ -988,7 +989,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	(root directory)</firstterm>。
 	然後在這個根目錄下面才能有其他的目錄。</para>
 
-      <para>到目前為止大概和其他您用過的的作業系統都差不多。
+      <para>到目前為止大概和其他您用過的作業系統都差不多。
 	還是有些不一樣的地方就是了，例如 &ms-dos; 用 <literal>\</literal>
 	當檔案和目錄名稱的分隔符號，而 &macos; 則是用 <literal>:</literal>
         符號。</para>
@@ -1137,14 +1138,14 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
       </mediaobject>
 
       <para>如果您熟悉 &ms-dos; 的話，這和 <command>join</command>
-	指令很類似 (雖然不儘相同)。</para>
+	指令很類似——雖然不盡相同。</para>
 
       <para>一般情況下您不需要擔心這些東西。
 	除非您要安裝新的磁碟，不然通常在您安裝 FreeBSD
         時建立好檔案系統並決定好要掛載在何處之後就不會再做任何更動了。</para>
 
-      <para>您完全可以使用單一的一個大的根檔案系統 (root file system)
-	而不建立其他的檔案系統。 這樣有好處也有有壞處。</para>
+      <para>您完全可以使用單一個大型根檔案系統 (root file system)
+	而不建立其他的檔案系統。這作法有好有壞。</para>
 
       <itemizedlist>
 	<title>使用多個檔案系統的好處</title>
@@ -1165,7 +1166,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	  <para>FreeBSD 會自動根據您檔案系統的使用方式來做最佳的檔案配置方式。
 	    因此，一個有很多小檔案、
 	    常常寫入的檔案系統跟只有幾個較大的檔案的檔案系統配置是不一樣的。
-	    如果您只有單一一個大的檔案系統，這部分就沒用了。</para>
+	    如果您只有單一個大型檔案系統，這部分就沒用了。</para>
 	</listitem>
 	
 	<listitem>
@@ -1195,7 +1196,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
     
       <para>檔案系統包含在分割區裡面。
 	因為 &os; 承襲 &unix 架構，這邊講的分割區和一般提到的分割區
-	(例如 &ms-dos; 分割區) 不同。 每一個分割區由一個代號(字母)表示，從
+	(例如 &ms-dos; 分割區) 不同。每一個分割區由一個代號(字母)表示，從
 	<literal>a</literal> 到 <literal>h</literal>。
 	每個分割區只能包含一個檔案系統。
 	因此除了說常見到用檔案系統同的掛載點來表示檔案系統外，
@@ -1675,13 +1676,13 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	  <option>-A</option> 等選項。</para>
 
 	<para>加上 <option>-f</option> 可以強制卸載，加上 <option>-v</option>
-	  則是會顯示詳細資訊。  要注意的是一般來說用 <option>-f</option>
+	  則是會顯示詳細資訊。要注意的是一般來說用 <option>-f</option>
 	  並不是個好主意，強制卸載檔案系統有可能會造成電腦當機，
 	  或者損壞檔案系統內的資料。</para>
         
 	<para><option>-a</option> 和 <option>-A</option>
 	  是用來卸載所有已掛載的檔案系統，另外還可以用 <option>-t</option>
-	  來指定要卸載的是哪些種類的檔案系統。  要注意的是 <option>-A</option>
+	  來指定要卸載的是哪些種類的檔案系統。要注意的是 <option>-A</option>
 	  並不會試圖卸載根檔案系統。</para>
 
     </sect2>
@@ -1715,7 +1716,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
       並且數秒鐘更新一次。因此您可以互動式的觀看您的電腦正在做什麼。</para>
 
     <para>在預設的情況下，<command>ps</command>
-      指令只會顯示您所擁有的的程序。 例如：</para>
+      指令只會顯示您所擁有的程序。例如：</para>
         
     <screen>&prompt.user; <userinput>ps</userinput>
   PID  TT  STAT      TIME COMMAND
@@ -1969,7 +1970,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 
     <para>您用哪個 shell 呢？ 其實每個人的喜好都不一樣。
       如果您是一個 C 程式設計師，那對於使用像是 <command>tcsh</command>
-      這種 C-like 的 shell 可能會感到相當愉快。 如果你是從 Linux
+      這種 C-like 的 shell 可能會感到相當愉快。如果您是從 Linux
       跳過來的，或者您是一個 &unix; 新手，那您也許會想要用
       <command>bash</command> 來當作文字介面。
       每一個 shell 都有自已獨特之處，至於這些特點能不能配合您的工作環境？
@@ -2039,8 +2040,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 
 	  <row>
 	    <entry><envar>TERMCAP</envar></entry>
-	    <entry>Database entry of the terminal escape codes to perform
-	      various terminal functions.</entry>
+	    <entry>表現各種終端機功能的跳脫代碼 (escape code) 資料庫項目。</entry>
 	  </row>
 
 	  <row>
@@ -2074,7 +2074,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
     <indexterm><primary>Bourne shells</primary></indexterm>
     <para>在不同的 shell 底下設定環境變數的方式也有所不同。
       舉例來說，在 C-Style 的 shell 底下，像是
-      <command>tcsh</command> 和 <command>csh</command>，你必須使用
+      <command>tcsh</command> 和 <command>csh</command>，您必須使用
       <command>setenv</command> 來設定環境變數。
       但在 Bourne shells 底下，像是 <command>sh</command> 和
       <command>bash</command>，你則必須使用 
@@ -2117,7 +2117,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 
       <para>變更 shell 最簡單的方法就是透過 <command>chsh</command> 命令。 
         執行 <command>chsh</command> 將會呼叫環境變數中 <envar>EDITOR</envar>
-	指定的文字編輯器。  如果沒有設定，則預設是 <command>vi</command>。
+	指定的文字編輯器。如果沒有設定，則預設是 <command>vi</command>。
 	請依照需求去修改 <quote>Shell:</quote> 的值。
 
       <para>你也可以透過 <command>chsh</command> 的參數 <option>-s</option>，
@@ -2162,7 +2162,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       <secondary><command>ee</command></secondary>
     </indexterm>
     <para>最簡單易學的文字編輯器叫做 <application>ee</application>，
-      代表了其全名 easy editor。  要開始使用 <application>ee</application>，
+      代表了其全名 easy editor。要開始使用 <application>ee</application>，
       必須在命令列上輸入
       <command>ee <replaceable>filename</replaceable></command>，
       這邊的 <replaceable>filename</replaceable> 代表你想要編輯的檔案名稱。
@@ -2202,11 +2202,9 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       那麼花點時間來學習這些好用的編輯器，
       會在日後為您省下更多的時間。</para>
 
-    <para>Many applications which modify files or require typed input
-      will automatically open a text editor.  To alter the default
-      editor used, set the <envar>EDITOR</envar> environment
-      variable.  See <link linkend="shells">shells</link>
-      section for more details.</para>
+    <para>許多應用軟體修改檔案或需要打字輸入時會自動開啟文字編輯器。
+      要更改預設編輯器，可設定 <envar>EDITOR</envar> 環境變數。
+      欲知詳情參見 <link linkend="shells">shells</link> 一節。</para>
   </sect1>
 
   <sect1 id="basics-devices">
@@ -2233,7 +2231,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	<title><literal>DEVFS</literal> (DEVice File System)</title>
 
 	<para>設備檔案系統(或稱為 <literal>DEVFS</literal>) 是指在整體檔案系統
-	  namespace 提供 kernel 的設備 namespace。  <literal>DEVFS</literal>
+	  namespace 提供 kernel 的設備 namespace。<literal>DEVFS</literal>
 	  乃是維護這些檔案系統，而不能新增或修改這些設備節點。</para>
 
 	<para>細節請參閱 &man.devfs.5; 說明。</para>
@@ -2244,7 +2242,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
   <sect1 id="binary-formats">
     <title>Binary 的格式</title>
 
-    <para>若要知道為何 &os; 是採用 &man.elf.5; 格式，必先瞭解當前 &unix;
+    <para>要瞭解為何 &os; 採用 &man.elf.5; 格式，必先知道當前 &unix;
       系統中三種<quote>影響最為重大</quote>的可執行檔相關背景：</para>
 
     <itemizedlist> 
@@ -2262,7 +2260,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       <listitem>
         <para><acronym>COFF</acronym></para>
 
-        <para>The SVR3 object format.  The header now comprises a
+        <para>SVR3 object 格式。 The header now comprises a
           section table, so you can have more than just .text, .data,
           and .bss sections.</para>
       </listitem>
@@ -2270,7 +2268,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       <listitem>
         <para>&man.elf.5;</para>
 
-        <para>The successor to <acronym>COFF</acronym>, featuring
+        <para><acronym>COFF</acronym> 的繼承者， featuring
           multiple sections and 32-bit or 64-bit possible values.  One
           major drawback: <acronym>ELF</acronym> was also designed
           with the assumption that there would be only one ABI per
@@ -2308,7 +2306,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       &sunos; style shared library mechanism
       and, as such, is very easy to use.</para>
 
-    <para>So, why are there so many different formats?</para>
+    <para>那為何有這麼多不同的格式？</para>
 
     <para>Back in the dim, dark past, there was simple hardware.  This
       simple hardware supported a simple, small system. <filename>a.out</filename> was
@@ -2352,7 +2350,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       <filename>a.out</filename> than it was to migrate to
       <acronym>ELF</acronym>.</para>
 
-    <para>However, as time passed, the build tools that FreeBSD
+    <para>然而，時光流逝, the build tools that FreeBSD
       derived their build tools from (the assembler and loader
       especially) evolved in two parallel trees. The FreeBSD tree
       added shared libraries and fixed some bugs. The GNU folks that
@@ -2395,8 +2393,8 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 
       <screen>&prompt.user; <userinput>man <replaceable>command</replaceable></userinput></screen>
 
-      <para><literal>command</literal> 處就是想要知道的指令。  舉個例子，
-	若要知道 <command>ls</command> 的詳細用法，就可以打：</para>
+      <para><literal>command</literal> 處就是想要知道的指令。例如想知道
+	<command>ls</command> 的詳細用法就打：</para>
 
       <screen>&prompt.user; <userinput>man ls</userinput></screen>
 
@@ -2408,7 +2406,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	</listitem>
 
 	<listitem>
-	  <para>系統呼叫(System call) 及錯誤代號。</para>
+	  <para>系統呼叫 (System call) 及錯誤代號。</para>
 	</listitem>
 
 	<listitem>
@@ -2440,9 +2438,9 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	</listitem>
       </orderedlist>
 
-      <para>有些情況會有同樣主題但不同章節。  舉個例子，系統內會有
+      <para>有些情況會有同樣主題但不同章節。舉個例子，系統內會有
 	<command>chmod</command> 指令，但也有 <function>chmod()</function>
-	系統呼叫。  在這種情況，<command>man</command>
+	系統呼叫。在這種情況，<command>man</command>
 	應該要指定所要查詢的章節：</para>
 
       <screen>&prompt.user; <userinput>man 1 chmod</userinput></screen>
@@ -2453,7 +2451,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	&man.chmod.2; 則是指系統呼叫的部分。</para>
 
       <para>如果您已經知道命令的名稱，只是不知道要怎樣使用的話，那就比較好辦。
-	但若不知道要用哪個指令時，該怎麼辦呢？  這個時候，就可以利用
+	但若不知道要用哪個指令時，該怎麼辦呢？這個時候，就可以利用
 	<command>man</command> 的搜尋關鍵字功能，
 	以在各說明的介紹部分搜尋相關字眼。，它的選項是 <option>-k</option>：
 	</para>
@@ -2464,7 +2462,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	事實上該功能與 <command>apropos</command> 指令是一樣的。</para>
 
       <para>而有時你會看到像是 <filename>/usr/bin</filename>
-	有許多看起來頗炫的指令，但不知其用途？  只要簡單輸入：</para>
+	有許多看起來頗炫的指令，但不知其用途？只要簡單輸入：</para>
 
 	<screen>&prompt.user; <userinput>cd /usr/bin</userinput>
 &prompt.user; <userinput>man -f *</userinput></screen>
@@ -2481,9 +2479,9 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       <title>GNU Info 檔案</title>
       <indexterm><primary>Free Software Foundation</primary></indexterm>
 
-      <para>FreeBSD 有許多程式跟工具來自於自由軟體基金會(FSF)。  除了 man
+      <para>FreeBSD 有許多程式跟工具來自於自由軟體基金會(FSF)。除了 man
 	線上說明之外，這些程式提供了另外一種更具有彈性的 hypertext 格式文件，
-	叫做 <literal>info</literal>。  可以用 <command>info</command>
+	叫做 <literal>info</literal>。可以用 <command>info</command>
 	指令來閱讀，或者若有裝 <application>emacs</application> 亦可透過
 	<application>emacs</application> 的 info 模式閱讀。</para>
 
