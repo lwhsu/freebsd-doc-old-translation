@@ -555,7 +555,7 @@ total 530
 	</authorgroup>
       </sect2info>
 
-      <title>&os; 檔案旗標(Flag)</title>
+      <title>&os; 檔案旗標 (Flag)</title>
 
       <para>除了前面提到的檔案權限外，&os; 支援使用 <quote>檔案旗標</quote>。
 	這些旗標增加了檔案的安全性及管理性，但不包含目錄。</para>
@@ -829,7 +829,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/tmp/</filename></entry>
-	      <entry>臨時檔案。  一般而言，重開機之後
+	      <entry>臨時檔案。一般而言，重開機之後
 		<filename class="directory">/tmp</filename> 內的東西會被清除掉。
 		而通常會將 memory-based 檔案系統掛載在 
 		<filename class="directory">/tmp</filename> 上。
@@ -1240,7 +1240,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	      <entry><literal>c</literal></entry>
 
 	      <entry>通常和整個 slice 的大小一樣，給一些會用到整個 slice
-		的工具程式 (例如硬碟壞軌檢查工具) 來使用。
+		的工具程式（例如硬碟壞軌檢查工具）來使用。
 		一般來說您應該不會把檔案系統建立在這個分割區。</entry>
 	    </row>
 
@@ -2131,7 +2131,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	<para>你所使用的 shell <emphasis>必須</emphasis> 列於
 	  <filename>/etc/shells</filename> 裡頭。  如果是由 
 	  <link linkend="ports">Ports Collection</link> 來裝 shell，
-	  那這個步驟已經完成了。  但若是手動安裝了一個 shell，
+	  那這個步驟已經完成了。但若是手動安裝了一個 shell，
 	  那麼就必須為新安裝的 shell 進行設定。</para>
      
       <para>舉例來說，若手動安裝了 <command>bash</command> 並將它置於
@@ -2173,7 +2173,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       其中的插入符號(<literal>^</literal>)代表鍵盤上的 <keycap>Ctrl</keycap>
       鍵，所以 <literal>^e</literal> 就等同於
       <keycombo action="simul"><keycap>Ctrl</keycap><keycap>e</keycap></keycombo>
-      。  若要結束 <application>ee</application>，請按下 <keycap>Esc</keycap>
+      。若要結束 <application>ee</application>，請按下 <keycap>Esc</keycap>
       鍵，接著選擇 leave editor 即可。
       此時如果該檔案有修改過，編輯器會提醒你是否要存檔。</para>
 
@@ -2240,143 +2240,108 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
   </sect1>
 
   <sect1 id="binary-formats">
-    <title>Binary 的格式</title>
+    <title>Binary 格式</title>
 
-    <para>要瞭解為何 &os; 採用 &man.elf.5; 格式，必先知道當前 &unix;
-      系統中三種<quote>影響最為重大</quote>的可執行檔相關背景：</para>
+    <para>要瞭解為何 &os; 採用 &man.elf.5; 格式，必先稍懂當前 &unix;
+      中三種<quote>最主要的</quote>可執行檔格式：</para>
 
     <itemizedlist> 
       <listitem>
         <para>&man.a.out.5;</para>
 
-        <para>最古老、<quote>經典</quote> 的 &unix; object 檔格式。
-          It uses a short and compact header with a magic
-          number at the beginning that is often used to characterize
-          the format (see &man.a.out.5; for more details).  It
-          contains three loaded segments: .text, .data, and .bss plus
-          a symbol table and a string table.</para>
+        <para>最古老的<quote>典型</quote> &unix; object 格式，
+	  使用由魔術數字 (magic number) 開頭的簡短 header，該數字往往
+	  標示格式的特性（詳情請見 &man.a.out.5;）。此格式包含了三個
+	  要載入記憶體的區段 (segment)：.text、.data、.bss，外加符號表
+	  (symbol table) 及字串表 (string table)。</para>
       </listitem>
 
       <listitem>
         <para><acronym>COFF</acronym></para>
 
-        <para>SVR3 object 格式。 The header now comprises a
-          section table, so you can have more than just .text, .data,
-          and .bss sections.</para>
+        <para>SVR3 object 格式。現在 header 包含了區段表
+	  (section table), 因此除了 .text、.data、.bss
+	  外還能有更多的區段。</para>
       </listitem>
 
       <listitem>
         <para>&man.elf.5;</para>
 
-        <para><acronym>COFF</acronym> 的繼承者， featuring
-          multiple sections and 32-bit or 64-bit possible values.  One
-          major drawback: <acronym>ELF</acronym> was also designed
-          with the assumption that there would be only one ABI per
-          system architecture.  That assumption is actually quite
-          incorrect, and not even in the commercial SYSV world (which
-          has at least three ABIs: SVR4, Solaris, SCO) does it hold
-          true.</para>
+        <para><acronym>COFF</acronym> 的繼承者，特色是多重區段，
+	  甚至可用到 32 位元或 64 位元的數值。主要的缺陷是：
+	  <acronym>ELF</acronym> 設計時也假定每個系統架構只有一個
+	  ABI (Application binary interface)。這假設大錯特錯，甚至在商業的
+	  SYSV 世界 (SVR4、Solaris、SCO 都至少有三個 ABI) 都無法成立。</para>
 
-        <para>FreeBSD tries to work around this problem somewhat by
-          providing a utility for <emphasis>branding</emphasis> a
-          known <acronym>ELF</acronym> executable with information
-          about the ABI it is compliant with.  See the manual page for
-          &man.brandelf.1; for more information.</para>
+        <para>FreeBSD 試圖稍微解決這個問題，作法是提供可將已知的
+	  <acronym>ELF</acronym> 檔<emphasis>標示</emphasis>上
+	  相容的 ABI 資訊以便執行的工具。詳情可參見
+	  &man.brandelf.1; 的 manual page。</para>
       </listitem>
     </itemizedlist>
 
-    <para>FreeBSD comes from the <quote>classic</quote> camp and used
-      the &man.a.out.5; format, a technology tried and proven through
-      many generations of BSD releases, until the beginning of the 3.X
-      branch. Though it was possible to build and run native
-      <acronym>ELF</acronym> binaries (and kernels) on a FreeBSD
-      system for some time before that, FreeBSD initially resisted the
-      <quote>push</quote> to switch to <acronym>ELF</acronym> as the
-      default format. Why?  Well, when the Linux camp made their
-      painful transition to <acronym>ELF</acronym>, it was not so much
-      to flee the <filename>a.out</filename> executable format as it
-      was their inflexible jump-table based shared library mechanism,
-      which made the construction of shared libraries very difficult
-      for vendors and developers alike. Since the
-      <acronym>ELF</acronym> tools available offered a solution to the
-      shared library problem and were generally seen as <quote>the way
-      forward</quote> anyway, the migration cost was accepted as
-      necessary and the transition made.  FreeBSD's shared library
-      mechanism is based more closely on Sun's
-      &sunos; style shared library mechanism
-      and, as such, is very easy to use.</para>
+    <para>FreeBSD 來自<quote>古典派的</quote>陣營，在 3.X 分支開始前是使用
+      &man.a.out.5; 這個通過許多 BSD 發行世代技術考驗所保證的格式。
+      雖然在那之前一段時間，FreeBSD 系統上就有辦法運行原生 (native) 的
+      <acronym>ELF</acronym> binary（以及核心），但 FreeBSD
+      一開始抗拒<quote>推動</quote>將預設格式改為
+      <acronym>ELF</acronym>。原因為何？來看 Linux 陣營歷經千辛萬苦轉換成
+      <acronym>ELF</acronym> 後，還是無法拋棄因有著基於 jump-table
+      而毫無彈性的共享函式庫機制，造成廠商及開發者等建構共享函式庫時極度困難的
+      <filename>a.out</filename> 執行格式。
+      自從有了能解決共享記憶體問題且普遍看來算是<quote>進步</quote>的
+      <acronym>ELF</acronym> 工具，大家才同意真有轉換的價值進而實行。
+      FreeBSD 的共享記憶體機制比較接近 Sun 的 &sunos; 風格，一樣非常容易使用。</para>
 
     <para>那為何有這麼多不同的格式？</para>
 
-    <para>Back in the dim, dark past, there was simple hardware.  This
-      simple hardware supported a simple, small system. <filename>a.out</filename> was
-      completely adequate for the job of representing binaries on this
-      simple system (a PDP-11). As people ported &unix; from this simple
-      system, they retained the <filename>a.out</filename> format because it was sufficient
-      for the early ports of &unix; to architectures like the Motorola
-      68k, VAXen, etc.</para>
+    <para>回到那黑暗的過去來看吧，那時只有簡單的硬體，
+      這種簡單的硬體就支援簡單的小型系統。在這種小型系統 (PDP-11) 上
+      <filename>a.out</filename> 就完全足以表達 binary 。當 &unix;
+      從這種小型系統移植出去時，因為在早期移植到像 Motorola 68k、VAXen
+      等架構的 &unix; 上 <filename>a.out</filename>
+      格式就夠用了，得以保留下來。</para>
 
-    <para>Then some bright hardware engineer decided that if he could
-      force software to do some sleazy tricks, then he would be able
-      to shave a few gates off the design and allow his CPU core to
-      run faster. While it was made to work with this new kind of
-      hardware (known these days as <acronym>RISC</acronym>), <filename>a.out</filename>
-      was ill-suited for this hardware, so many formats were developed
-      to get to a better performance from this hardware than the
-      limited, simple <filename>a.out</filename> format could
-      offer. Things like <acronym>COFF</acronym>,
-      <acronym>ECOFF</acronym>, and a few obscure others were invented
-      and their limitations explored before things seemed to settle on
-      <acronym>ELF</acronym>.</para>
+    <para>後來有點聰明的硬體工程師判斷若能強迫軟體運用點小技巧，
+      就能在設計中去掉一些閘 (gate) 讓處理器核心加快運行。然而依此作出了新款硬體
+      （現在叫 <acronym>RISC</acronym>）後，<filename>a.out</filename>
+      卻不適用，為了突破簡單的 <filename>a.out</filename> 格式造成的限制
+      讓此硬體發揮更高的效能，於是開發了眾多格式。像 <acronym>COFF</acronym>、
+      <acronym>ECOFF</acronym> 及一些其他沒沒無名的格式相繼發明，但各有新的侷限，
+      似乎到了 <acronym>ELF</acronym> 出現才解決問題。</para>
 
-    <para>In addition, program sizes were getting huge and disks (and
-      physical memory) were still relatively small so the concept of a
-      shared library was born. The VM system also became more
-      sophisticated. While each one of these advancements was done
-      using the <filename>a.out</filename> format, its usefulness was
-      stretched more and more with each new feature.  In addition,
-      people wanted to dynamically load things at run time, or to junk
-      parts of their program after the init code had run to save in
-      core memory and swap space. Languages became more sophisticated
-      and people wanted code called before main automatically. Lots of
-      hacks were done to the <filename>a.out</filename> format to
-      allow all of these things to happen, and they basically worked
-      for a time. In time, <filename>a.out</filename> was not up to
-      handling all these problems without an ever increasing overhead
-      in code and complexity. While <acronym>ELF</acronym> solved many
-      of these problems, it would be painful to switch from the system
-      that basically worked. So <acronym>ELF</acronym> had to wait
-      until it was more painful to remain with
-      <filename>a.out</filename> than it was to migrate to
-      <acronym>ELF</acronym>.</para>
+    <para>另外，程式大小逐漸增長但磁碟（及實體記憶體）相對上仍然很小，
+      因此產生了共享函式庫的概念。虛擬機器 (VM) 系統也變得更複雜。
+      當利用 <filename>a.out</filename> 格式完成這兩個改良時，
+      它也竭盡所能用在每個新功能上。接著大家想在執行時期 (run time) 動態載入，
+      或是在初始化程式碼 (init code) 執行後捨棄程式部分內容以便存在核心記憶體及
+      swap 空間。程式語言更是高度發展，大家想在 main 之前就先呼叫程式碼。
+      為了達成這些功能，<filename>a.out</filename> 格式作了大量改造，
+      且一度達到基本要求。這時 <filename>a.out</filename> 的 code 及
+      複雜度必須不斷擴張才能處理這所有的問題。即使 <acronym>ELF</acronym>
+      解決了大部份的問題，要從運作基本功能的系統切換過去還是很辛苦。所以
+      <acronym>ELF</acronym> 得等到當延用 <filename>a.out</filename> 
+      比轉移到 <acronym>ELF</acronym> 還累時才行。</para>
 
-    <para>然而，時光流逝, the build tools that FreeBSD
-      derived their build tools from (the assembler and loader
-      especially) evolved in two parallel trees. The FreeBSD tree
-      added shared libraries and fixed some bugs. The GNU folks that
-      originally wrote these programs rewrote them and added simpler
-      support for building cross compilers, plugging in different
-      formats at will, and so on. Since many people wanted to build cross
-      compilers targeting FreeBSD, they were out of luck since the
-      older sources that FreeBSD had for <application>as</application> and <application>ld</application> were not up to the
-      task. The new GNU tools chain (<application>binutils</application>) does support cross
-      compiling, <acronym>ELF</acronym>, shared libraries, C++
-      extensions, etc. In addition, many vendors are releasing
-      <acronym>ELF</acronym> binaries, and it is a good thing for
-      FreeBSD to run them.</para>
+    <para>然而隨著時光流逝, FreeBSD 使用的程式編寫工具 ( build
+      tool) 的來源（特別是組譯器和 loader）在兩條路上平行發展。FreeBSD
+      路線增加了共享函式庫及修正一些 bug。原本撰寫這些程式的 GNU 成員們
+      又重寫它們，並對編寫跨平臺編譯器、任意外掛不同格式、其他等等增加了更簡易的支援。
+      雖然很多人都想編寫針對 FreeBSD 使用的跨平臺編譯器，可惜因為
+      FreeBSD 上 <application>as</application> 及 <application>ld</application>
+      的原始碼比較舊而無法辦到。新的 GNU tools chain (<application>binutils</application>)
+      就支援了跨平臺編譯、<acronym>ELF</acronym>、共享函式庫、C++ extensions
+      等等。再說，許多廠商釋出的是 <acronym>ELF</acronym> binary，FreeBSD
+      能執行當然是好事。</para>
 
-    <para><acronym>ELF</acronym> is more expressive than <filename>a.out</filename> and
-      allows more extensibility in the base system. The
-      <acronym>ELF</acronym> tools are better maintained, and offer
-      cross compilation support, which is important to many people.
-      <acronym>ELF</acronym> may be a little slower than <filename>a.out</filename>, but
-      trying to measure it can be difficult. There are also numerous
-      details that are different between the two in how they map
-      pages, handle init code, etc. None of these are very important,
-      but they are differences. In time support for
-      <filename>a.out</filename> will be moved out of the <filename>GENERIC</filename>
-      kernel, and eventually removed from the kernel once the need to
-      run legacy <filename>a.out</filename> programs is past.</para>
+    <para><acronym>ELF</acronym> 比 <filename>a.out</filename> 表達的資訊更多，
+      讓基本系統更好擴充。<acronym>ELF</acronym> 的工具比較好維護，
+      且提供對許多人很重要的跨平臺編譯支援。
+      <acronym>ELF</acronym> 可能比 <filename>a.out</filename> 稍慢，
+      但很難算出到底慢多少。這兩者在對應分頁 (page) 、處理初始化程式碼等等時的許多細節也不同。
+      這些事情都不太重要，但畢竟有所不同。適時 <filename>GENERIC</filename> 核心將不支援
+      <filename>a.out</filename>，且一旦不再需要執行代代相傳的 <filename>a.out</filename>
+      程式，核心終將不再支援。</para>
   </sect1>
 
   <sect1 id="basics-more-information">
