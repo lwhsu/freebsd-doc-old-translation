@@ -2,7 +2,7 @@
      The FreeBSD Traditional Chinese Documentation Project
 
      $FreeBSD$
-     Original revision: 1.158
+     Original revision: 1.159
 -->
 
 <chapter id="basics">
@@ -43,7 +43,7 @@
 	<para>&os; 的磁碟結構。</para>
       </listitem>
       <listitem>
-	<para>如何掛載(mount)、卸載(umount)檔案系統</para>
+	<para>如何掛載 (mount)、卸載 (umount) 檔案系統</para>
       </listitem>
       <listitem>
 	<para>什麼是processes、daemons 以及 signals 。</para>
@@ -288,14 +288,15 @@ options SC_PIXEL_MODE</programlisting>
     <indexterm><primary>UNIX</primary></indexterm>
 
     <para>FreeBSD 源自於 BSD &unix;，繼承了幾個重要的 &unix; 概念。
-      首先也最明顯，它是一款 multi-user 作業系統。 它可以同時處理多人多工，
-      負責徹底的分享與管理來自每位使用者對硬碟裝置、週邊設備、記憶體及
+      首先也最明顯，FreeBSD 是多人共用的作業系統。
+      它可以讓多人同時處理各個完全不相干的工作，
+      負責合理地分享與管理來自每位使用者對硬碟裝置、週邊設備、記憶體及
       CPU 時間的要求。</para>
 
     <para>也因為系統能夠支援多使用者，
-      所以系統管理的一切都有權限來決定誰可以讀取、寫入或執行資源。
+      所以系統管理的一切都有權限來決定誰可以讀取、寫入、執行資源。
       這些權限分別使用三組八進位的數字儲存，一組代表檔案的所有者，
-      一組代表檔案所屬的群組，而最後一組則代表其他所有人。
+      一組代表檔案所屬的群組，而最後一組則代表其他人。
       表示這些數字的方式如下:</para>
 
     <indexterm><primary>permissions</primary></indexterm>
@@ -368,11 +369,10 @@ options SC_PIXEL_MODE</programlisting>
     </indexterm>
     <indexterm><primary>directories</primary></indexterm>
 
-    <para>使用 &man.ls.1; 指令時，可以加上 <option>-l</option> 參數，
-      來檢視詳細的目錄清單。
-      清單中欄位的資訊包含檔案對所有者、群組及其他人的權限。
-      在任一個目錄底下執行 <command>ls -l</command>，會顯示如下的結果:
-      </para>
+    <para>使用 &man.ls.1; 指令時可以加上 <option>-l</option>
+      參數來檢視詳細的目錄清單。
+      此清單中的欄位有檔案所有者、所屬群組及其他人的權限資訊。
+      例如在任一目錄底下執行 <command>ls -l</command>，會顯示：</para>
 
     <screen>&prompt.user; <userinput>ls -l</userinput>
 total 530
@@ -381,44 +381,43 @@ total 530
 -rw-r--r--  1 root  wheel    7680 Sep  5 12:31 email.txt
 ...</screen>
 
-    <para>在這裡告所您該如何區分 <command>ls -l</command> 
+    <para>在這裡說明如何區分 <command>ls -l</command> 
       第一欄當中的資訊:</para>
 
     <screen>-rw-r--r--</screen>
 
     <para>第一個 (最左邊) 的字元用來表示這個檔案的類型為何，
-      除標準檔案以外，尚有目錄、特殊字元裝置 (Special character device)、
-      Socket 及其他特殊虛擬檔案裝置 (Special pseudo-file device)，
-      在此例當中，<literal>-</literal> 表示該檔案為一個標準的檔案。
-      範例中接下來的三個字元中，<literal>rw-</literal>
-      代表所有者對檔案擁有的權限。 再接下來的三個字元，
-      <literal>r--</literal> 則代表群組對檔案擁有的權限，
-      最後三個字元，<literal>r--</literal> 則代表其他人對檔案擁有的權限。
-      破折號 (-) 表示沒有權限，範例中的這個檔案的權限，
+      除標準檔案 (regular file) 以外，尚有目錄、特殊字元裝置
+      (Special character device)、Socket 及其他特殊虛擬檔案裝置
+      (Special pseudo-file device)。
+      在此例當中，<literal>-</literal> 表示標準檔案。
+      範例裡接下來的三個字元中，<literal>rw-</literal>
+      代表檔案所有者擁有的權限。再接下來的三個字元，
+      <literal>r--</literal> 則代表檔案所屬群組擁有的權限，
+      最後三個字元，<literal>r--</literal> 則代表其他人擁有的權限。
+      破折號 (-) 表示沒有權限。範例中的這個檔案的權限，
       只允許所有者讀取、寫入檔案，群組以及其他人僅能讀取檔案。
-      根據以上的表格，此種權限的檔案可以使用 <literal>644</literal> 來表示，
+      根據以上的表格，此檔案的權限可以表示為 <literal>644</literal>，
       每組數字分別代表檔案的三種權限。</para>
 
     <para>以上是不錯的方式，但系統該如何控制裝置的權限？ 實際上 FreeBSD
-      對大多的硬碟裝置就如同檔案，程式可以開啟、讀取以及寫入資料如一般檔案。
-      這些特殊裝置檔案 (Special device file) 都儲存於 <filename>/dev</filename> 
-      目錄中。</para>
+      把大多的硬體裝置當作檔案，就像其他檔案一樣讓程式程式可以開啟、
+      讀取及寫入資料。這些特殊裝置檔案 (Special device file)
+      都儲存於 <filename>/dev</filename> 目錄中。</para>
 
-    <para>
-      目錄也同如檔案，擁有讀取、寫入及執行的權限，
-      但在執行權限上與檔案有明顯的差異。 當目錄被標示為可執行時，代表可以使用
-      <quote>cd</quote> (更改目錄) 進入該目錄。
+    <para>目錄也同如檔案，擁有讀取、寫入及執行的權限，
+      但在執行權限上與檔案有明顯的差異。當目錄標示為可執行時，代表可以使用
+      <quote>cd</quote> (change directory) 進入該目錄，
       也代表能夠存取在此目錄之中的已知檔名的檔案
-      (當然，檔案仍擁有自己的權限)</para>
+      (當然，檔案仍擁有自己的權限)。</para>
 
-    <para>尤其，要能夠列出目錄內容，必須擁有目錄的讀取權限。
+    <para>尤其，要列出目錄內容，必須擁有目錄的讀取權限。
       而當要刪除已知檔名的檔案時，也必須擁有檔案所在目錄的寫入
       <emphasis>以及</emphasis> 執行的權限。</para>
 
-    <para>還有一些權限，但這些權限主要在特殊情況使用，如
-      setuid binaries 及 sticky directories。
-      如果您還想知道更多檔案權限的資訊及使用方法，請務必參閱
-      &man.chmod.1; 說明文件。</para>
+    <para>還有一些權限主要在特殊情況使用，如 setuid binaries 及
+      sticky 目錄。如果您還想知道更多檔案權限的資訊及使用方法，請務必參閱
+      &man.chmod.1; manual page。</para>
 
     <sect2>
       <sect2info>
@@ -435,8 +434,8 @@ total 530
       <indexterm><primary>permissions</primary><secondary>symbolic</secondary></indexterm>
 
       <para>權限符號可稱做符號表示，
-	使用字元的方式來取代使用數值來設定檔案或目錄的權限。
-	符號表示的格式依序為 (某人)(動作)(權限)，可使用的符號如下:</para>
+	使用字元取代八進位數值來設定檔案或目錄的權限。
+	符號表示的格式依序為 (某人) (動作) (權限)，可使用的符號如下:</para>
 
       <informaltable frame="none" pgwide="1">
 	<tgroup cols="3">
@@ -470,7 +469,7 @@ total 530
 	  <row>
 	    <entry>(某人)</entry>
 	    <entry>a</entry>
-	    <entry>全部(<quote>world</quote>)</entry>
+	    <entry>全部 (<quote>world</quote>)</entry>
 	  </row>
 
 	  <row>
@@ -524,14 +523,14 @@ total 530
       </tgroup>
     </informaltable>
 
-    <para>如先前同樣使用 &man.chmod.1; 指令來設定，但改用這些字元當作參數。
+    <para>如同先前使用 &man.chmod.1; 指令來設定，但改用這些字元當作參數。
       例如，您可以使用下列指令禁止其他使用者存取檔案
       <replaceable>FILE</replaceable>:</para>
 
     <screen>&prompt.user; <userinput>chmod go= FILE</userinput></screen>
 
     <para>若有兩個以上的符號表示可以使用逗號 (,) 區隔。
-      例如，下列指令將會移除群組及其他人對檔案 
+      例如下列指令將會移除群組及其他人對檔案 
       <replaceable>FILE</replaceable> 的寫入權限，
       並使全部人(<quote>world</quote>)對該檔有執行權限。</para>
 
@@ -557,19 +556,19 @@ total 530
 
       <title>&os; 檔案旗標 (Flag)</title>
 
-      <para>除了前面提到的檔案權限外，&os; 支援使用 <quote>檔案旗標</quote>。
-	這些旗標增加了檔案的安全性及管理性，但不包含目錄。</para>
+      <para>除了前面提到的檔案權限外，&os; 支援使用<quote>檔案旗標</quote>。
+	這些旗標增加了檔案額外的安全及管理等級，但不包含目錄。</para>
 
-      <para>檔案旗標增加了管理性，確保在某些時候 <username>root</username>
-	不會意外將檔案修改或移除。</para>
+      <para>檔案旗標增加了控管等級，確保在某些時候 <username>root</username>
+	也無法移除或修改檔案。</para>
 
-      <para>修改的檔案 flag 僅需要使用擁有簡易的介面的 &man.chflags.1; 工具。
+      <para>修改檔案旗標僅需要使用有簡單介面的 &man.chflags.1; 工具。
 	例如，標示系統禁止刪除的旗標於檔案
 	<filename>file1</filename>，使用下列指令：</para>
 
       <screen>&prompt.root; <userinput>chflags sunlink <filename>file1</filename></userinput></screen>
 
-      <para>若要移除系統禁止刪除的旗標，只需要簡單在 <option>sunlink</option>
+      <para>若要移除系統禁止刪除的旗標，在 <option>sunlink</option>
 	前加上 <quote>no</quote>，例如：</para>
 
       <screen>&prompt.root; <userinput>chflags nosunlink <filename>file1</filename></userinput></screen>
@@ -579,14 +578,14 @@ total 530
 
       <screen>&prompt.root; <userinput>ls -lo <filename>file1</filename></userinput></screen>
 
-      <para>輸出的結果如下:</para>
+      <para>輸出的結果如下：</para>
 
       <programlisting>-rw-r--r--  1 trhodes  trhodes  sunlnk 0 Mar  1 05:54 file1</programlisting>
 
       <para>多數的旗標僅能由 <username>root</username>
 	使用者來標示或移除，而部份旗標可由檔案所有者設定。
-	我們建議系統管理者可閱讀 &man.chflags.1; 及 &man.chflags.2; 
-	說明以瞭解相關細節。</para>
+	建議系統管理者仔細閱讀 &man.chflags.1; 及 &man.chflags.2; 
+	manual page 以瞭解詳情節。</para>
     </sect2>
 
     <sect2>
@@ -669,20 +668,20 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
       <screen>&prompt.root; <userinput>chmod 2755 sgidexample.sh</userinput></screen>
 
-      <para>新設定看起來差不多, 注意現在顯示群組權限設定的欄位有了
+      <para>新設定看起來差不多，注意現在顯示群組權限設定的欄位有了
 	<literal>s</literal>：<para>
 
       <screen>-rwxr-sr-x   1 trhodes  trhodes    44 Aug 31 01:49 sgidexample.sh</screen>
 
       <note>
 	<para>即使 shell script 是否為執行檔仍未有定論，在這些例子中並不會以不同的
-	  <acronym>EUID</acronym>　——有效使用者 ID ——運行。
+	  <acronym>EUID</acronym> ——有效使用者 ID ——運行。
 	  因為 shell script 不能使用
 	  &man.setuid.2; 系統呼叫。</para>
       </note>
 
       <para>由於我們討論過的前兩個特殊權限位元 （<literal>setuid</literal>
-	和 <literal>setgid</literal>　權限位元）能提升權限，
+	和 <literal>setgid</literal> 權限位元）能提升權限，
 	或許會削弱系統安全。有第三個特殊權限位元能加強系統安全：
 	<literal>sticky bit</literal>。</para>
 
@@ -710,23 +709,23 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
     <para>認識 FreeBSD 的目錄架構，就可對系統有概略的基礎理解。
       最重要的莫過於整個目錄的根目錄，就是 <quote>/</quote> 目錄，
-      該目錄會在開機時最先掛載 (mount)，裡面會有開機所會用到必備檔案。
-      此外，根目錄還有紀錄其他檔案系統的掛載點相關設定。</para>
+      該目錄會在開機時最先掛載 (mount)，裡面包含給多人作業的必要基礎系統。
+      此外，根目錄還放了過渡到多人作業時要掛載的其他檔案系統的掛載點。</para>
 
-    <para>「掛載點」就是讓新增的檔案系統，能接到上層的檔案系統
-      (通常就是「根目錄」檔案系統) 的目錄。
-      在 <xref linkend="disk-organization"> 這邊對此有更詳細介紹。
+    <para>掛載點就是讓新增的檔案系統，能接到上層的檔案系統
+      (通常就是根目錄檔案系統) 的目錄，在
+      <xref linkend="disk-organization"> 有對此更詳細的介紹。
       標準的掛載點包括了 <filename>/usr</filename>、<filename>/var</filename>、
-      <filename>/tmp</filename>、<filename>/mnt</filename> 以及
-      <filename>/cdrom</filename>。 這些目錄通常會記錄在
-      <filename>/etc/fstab</filename> 設定檔內。
-      <filename>/etc/fstab</filename> 是記錄各檔案系統及相關掛載點的表格。
+      <filename>/tmp</filename>、<filename>/mnt</filename>、
+      <filename>/cdrom</filename>。這些目錄通常是參照
+      <filename>/etc/fstab</filename> 檔案內的紀錄。
+      <filename>/etc/fstab</filename> 是系統參照各檔案系統及掛載點的表格。
       大部分在 <filename>/etc/fstab</filename> 有記錄的檔案系統，會在開機時由
       &man.rc.8; script 來自動掛載，除非它們有設定 <option>noauto</option>
-      選項。 其中細節說明可參閱 <xref linkend="disks-fstab">。</para>
+      選項，其中細節說明可參閱 <xref linkend="disks-fstab">。</para>
 
-    <para>有關檔案系統架構的完整說明可參閱 &man.hier.7;。
-      現在呢，讓我們大致先一窺常見的目錄有哪些吧。</para>
+    <para>檔案系統架構的完整說明都在 &man.hier.7;。
+      現在大致看過那些最常見的目錄就夠了。</para>
 
     <para>
       <informaltable frame="none" pgwide="1">
@@ -745,7 +744,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/bin/</filename></entry>
-	      <entry>single-user、multi-user 兩種模式皆可使用的基本工具
+	      <entry>single-user、multi-user 兩種環境皆可使用的基本工具
 		。</entry>
 	    </row>
 
@@ -756,13 +755,13 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/boot/defaults/</filename></entry>
-	      <entry>預設的開機啟動設定檔，詳情請參閱 &man.loader.conf.5;
+	      <entry>預設的開機啟動設定檔，請看 &man.loader.conf.5;
 		。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename class="directory">/dev/</filename></entry>
-	      <entry>Device nodes，詳情請參閱 &man.intro.4;。</entry>
+	      <entry>Device nodes，請看 &man.intro.4;。</entry>
 	    </row>
 
 	    <row>
@@ -772,25 +771,25 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/etc/defaults/</filename></entry>
-	      <entry>預設的系統設定檔，詳情請參閱 &man.rc.8;。</entry>
+	      <entry>預設的系統設定檔，請看 &man.rc.8;。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename class="directory">/etc/mail/</filename></entry>
-	      <entry>MTA(Mail Transport Agent)的相關設定檔，像是
+	      <entry>郵件傳送代理程式 (Mail Transport Agent) 的相關設定檔，像是
 		&man.sendmail.8;。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename class="directory">/etc/namedb/</filename></entry>
-	      <entry><command>named</command> 設定檔，詳情請參閱
+	      <entry><command>named</command> 設定檔，請看
 		&man.named.8;。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename class="directory">/etc/periodic/</filename></entry>
 	      <entry>每日、每週、每月透過 &man.cron.8;; 執行的定期排程 script，
-		詳情請參閱 &man.periodic.8;。</entry>
+		請見 &man.periodic.8;。</entry>
 	    </row>
 
 	    <row>
@@ -806,13 +805,13 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/proc/</filename></entry>
-	      <entry>Process 檔案系統，詳情請參閱 &man.procfs.5; 及
+	      <entry>Process 檔案系統，請看 &man.procfs.5; 及
 		&man.mount.procfs.8;。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename class="directory">/rescue/</filename></entry>
-	      <entry>緊急救援用途的一些 statically linked 程式，詳情請參閱 
+	      <entry>緊急救援用途的一些 statically linked 程式，請看
 		&man.rescue.8;。</entry>
 	    </row>
 
@@ -829,18 +828,18 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/tmp/</filename></entry>
-	      <entry>臨時檔案。一般而言，重開機之後
-		<filename class="directory">/tmp</filename> 內的東西會被清除掉。
-		而通常會將 memory-based 檔案系統掛載在 
+	      <entry>臨時檔案。重開機之後
+		<filename class="directory">/tmp</filename> 內的東西通常「不會」保留。
+		而常常會將 memory-based 檔案系統掛載在 
 		<filename class="directory">/tmp</filename> 上。
 		這些瑣事可透過 tmpmfs 相關的 &man.rc.conf.5; 環境變數來自動完成
-		。(或是在 <filename>/etc/fstab</filename> 內做設定，
-		詳情請參閱 &man.mdmfs.8;。)</entry>
+		(或是在 <filename>/etc/fstab</filename> 內做設定，
+		請看 &man.mdmfs.8;)。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename class="directory">/usr/</filename></entry>
-	      <entry>主要是使用者所安裝的工具程式、應用程式存放處。</entry>
+	      <entry>主要的使用者工具及應用程式。</entry>
 	    </row>
 
 	    <row>
@@ -850,12 +849,12 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/usr/include/</filename></entry>
-	      <entry>標準 C include 的相關 header 檔案庫。</entry>
+	      <entry>標準 C include 的檔案。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename class="directory">/usr/lib/</filename></entry>
-	      <entry>函式庫存放處。</entry>
+	      <entry>函式庫。</entry>
 	    </row>
 
 	    <row>
@@ -865,20 +864,20 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 
 	    <row>
 	      <entry><filename class="directory">/usr/libexec/</filename></entry>
-	      <entry>系統 daemons 及系統工具程式(透過其他程式來執行)。</entry>
+	      <entry>系統 daemons 及系統工具程式 (透過其他程式來執行)。</entry>
 	    </row>
 
 	    <row>
 	      <entry><filename
 	      class="directory">/usr/local/</filename></entry>
 
-	      <entry>存放一些自行安裝的執行檔、函式庫等等。 同時，也是 FreeBSD
-		ports 架構的預設安裝目錄。 <filename>/usr/local</filename>
+	      <entry>自行安裝的執行檔、函式庫等等。同時也是 FreeBSD
+		ports 架構的預設安裝目錄。<filename>/usr/local</filename>
 		內的目錄架構大致與 <filename>/usr</filename> 相同，詳情請參閱
-		&man.hier.7; 說明。 但 man 目錄例外，它們是直接放在
-		<filename>/usr/local</filename> 底下，而非
+		&man.hier.7; 說明。但 man 目錄例外，它是直接放在
+		<filename>/usr/local</filename> 底下而非
 		<filename>/usr/local/share</filename>，而 ports 
-		所安裝的說明文件則在
+		所安裝的文件則在
 		<filename>share/doc/<replaceable>port</replaceable></filename>。
 	      </entry>
 	    </row>
@@ -891,12 +890,12 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	    
 	    <row>
 	      <entry><filename class="directory">/usr/ports/</filename></entry>
-	      <entry>FreeBSD Ports Collection (optional)。</entry>
+	      <entry>FreeBSD Ports Collection (不一定有)。</entry>
 	    </row>
 	    
 	    <row>
 	      <entry><filename class="directory">/usr/sbin/</filename></entry>
-	      <entry>系統 daemon 及系統工具(直接由使用者執行)。</entry>
+	      <entry>系統 daemon 及系統工具 (由使用者執行的)。</entry>
 	    </row>
 	    
 	    <row>
@@ -906,24 +905,24 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	    
 	    <row>
 	      <entry><filename class="directory">/usr/src/</filename></entry>
-	      <entry>BSD 本身的原始碼(或自行新增的)。</entry>
+	      <entry>BSD 本身及／或自行新增的原始碼。</entry>
 	    </row>
 	    
 	    <row>
 	      <entry><filename
 	      class="directory">/usr/X11R6/</filename></entry>
-	      <entry>X11R6 相關套件的執行檔、函式庫等(optional)。</entry>
+	      <entry>X11R6 相關套件的執行檔、函式庫等 (不一定有)。</entry>
 	    </row>
 	    
 	    <row>
 	      <entry><filename class="directory">/var/</filename></entry>
-	      <entry>存放各種用途的 log 檔、臨時或暫時存放、列印或郵件的 
-		spool 檔案。有時候，memory-based 檔案系統也會掛載在
+	      <entry>各種用途的 log 檔、臨時或暫時存放、列印或郵件的 
+		spool 檔案。有時 memory-based 檔案系統也會掛載在
 		<filename class="directory">/var</filename>。
 		這些瑣事可透過 varmfs 相關的 &man.rc.conf.5 
-		環境變數來自動完成。(或是在 
-		<filename>/etc/fstab</filename> 內做設定，相關細節請參閱 
-		&man.mdmfs.8;。)</entry>
+		環境變數來自動完成 (或是在 
+		<filename>/etc/fstab</filename> 內做設定，請看
+		&man.mdmfs.8;)。</entry>
 	    </row>
 	    
 	    
@@ -945,14 +944,14 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	    <row>
 	      <entry><filename class="directory">/var/tmp/</filename></entry>
 	      <entry>臨時檔案。
-		這些檔案在重開機後通常仍會保留，除非
+		這些檔案在重開機後通常會保留，除非
 		<filename class="directory">/var</filename>
-		是屬於 memory-based 檔案系統。</entry>
+		是 memory-based 檔案系統。</entry>
 	    </row>
 	    
 	    <row>
 	      <entry><filename class="directory">/var/yp/</filename></entry>
-	      <entry>記錄 NIS maps。</entry>
+	      <entry>NIS maps。</entry>
 	    </row>
 
 	  </tbody>
@@ -965,15 +964,14 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
   <sect1 id="disk-organization">
       <title>磁碟組織</title>
 
-      <para>FreeBSD 用來尋找檔案的最小單位就是檔案的名稱了。
-	檔案的名稱有大小寫之分，所以說 <filename>readme.txt</filename>
+      <para>FreeBSD 用來尋找檔案的最小單位就是檔案名稱了。
+	檔案名稱有大小寫之分，所以說 <filename>readme.txt</filename>
 	和 <filename>README.TXT</filename> 是兩個不同的檔案。
 	FreeBSD 並不使用副檔名 (<filename>.txt</filename>)
-        來判別這是一個程式檔、文件檔或是其他類型的檔案。</para>
+        來判別這是程式、文件或是其他類型的檔案。</para>
 
-      <para>檔案存在目錄裡面。
-	一個目錄中可能沒有任何檔案，也可能有好幾百個檔案。
-	目錄之中也可以包含其他的目錄；
+      <para>檔案存在目錄裡面。目錄中可能沒有檔案，也可能有好幾百個檔案。
+	目錄也可以包含其他的目錄；
 	您可以建立階層式的目錄以便資料的管理。</para>
 
       <para>檔案或目錄的對應是藉由給定的檔案或目錄名稱，然後加上正斜線符號
@@ -1006,14 +1004,14 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	系統上有多少顆硬碟，每一個目錄看起來就像在同一個磁碟上。</para>
 
       <para>假設您有三個檔案系統，分別叫作 <literal>A</literal>、
-	<literal>B</literal> 及 <literal>C</literal>。
+	<literal>B</literal>、<literal>C</literal>。
 	每個檔案系統都包含兩個目錄，叫做
 	<literal>A1</literal>、<literal>A2</literal> (依此類推得
 	<literal>B1</literal>、<literal>B2</literal> 及
 	<literal>C1</literal>、<literal>C2</literal>)。</para>
 
       <para>稱 <literal>A</literal> 為主要的檔案系統；如果您用
-	<command>ls</command> 指令查看此目錄的內容，您會看到兩個子目錄：
+	<command>ls</command> 指令查看此目錄的內容，會看到兩個子目錄：
 	<literal>A1</literal> 及 <literal>A2</literal>，如下所示：</para>
 
       <mediaobject>
@@ -2323,7 +2321,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       <acronym>ELF</acronym> 得等到當延用 <filename>a.out</filename> 
       比轉移到 <acronym>ELF</acronym> 還累時才行。</para>
 
-    <para>然而隨著時光流逝, FreeBSD 使用的程式編寫工具 ( build
+    <para>然而隨著時光流逝，FreeBSD 使用的程式編寫工具 (build
       tool) 的來源（特別是組譯器和 loader）在兩條路上平行發展。FreeBSD
       路線增加了共享函式庫及修正一些 bug。原本撰寫這些程式的 GNU 成員們
       又重寫它們，並對編寫跨平臺編譯器、任意外掛不同格式、其他等等增加了更簡易的支援。
@@ -2415,8 +2413,8 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	所以 &man.chmod.1; 就是指 <command>chmod</command> 指令，而
 	&man.chmod.2; 則是指系統呼叫的部分。</para>
 
-      <para>如果您已經知道命令的名稱，只是不知道要怎樣使用的話，那就比較好辦。
-	但若不知道要用哪個指令時，該怎麼辦呢？這個時候，就可以利用
+      <para>如果您已經知道命令的名稱，只是想知道要用法的話還好辦，
+	但若想不起來是哪個指令時，該怎麼辦呢？這個時候，就可以利用
 	<command>man</command> 的搜尋關鍵字功能，
 	以在各說明的介紹部分搜尋相關字眼。，它的選項是 <option>-k</option>：
 	</para>
@@ -2427,7 +2425,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	事實上該功能與 <command>apropos</command> 指令是一樣的。</para>
 
       <para>而有時你會看到像是 <filename>/usr/bin</filename>
-	有許多看起來頗炫的指令，但不知其用途？只要簡單輸入：</para>
+	有許多看起來頗炫的指令，但不知其用途？打：</para>
 
 	<screen>&prompt.user; <userinput>cd /usr/bin</userinput>
 &prompt.user; <userinput>man -f *</userinput></screen>
@@ -2450,7 +2448,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
 	指令來閱讀，或者若有裝 <application>emacs</application> 亦可透過
 	<application>emacs</application> 的 info 模式閱讀。</para>
 
-      <para>要用 &man.info.1; 指令，只需打：</para>
+      <para>要用 &man.info.1; 指令，打：</para>
 
       <screen>&prompt.user; <userinput>info</userinput></screen>
 
