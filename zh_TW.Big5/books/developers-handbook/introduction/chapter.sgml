@@ -2,7 +2,7 @@
      The FreeBSD Documentation Project
 
      $FreeBSD$
-     Original revision: 1.18
+     Original revision: 1.20
 -->
 
 <chapter id="introduction">
@@ -73,7 +73,7 @@
   <sect1 id="introduction-layout">
     <title><filename class="directory">/usr/src</filename> 的架構</title>
 
-    <para>完整的 FreeBSD 原始碼都在公開的 CVS repository 中。
+    <para>完整的 FreeBSD 原始碼都在公開的 nrepository 中。
       通常 FreeBSD 原始碼都會裝在 <filename class="directory">/usr/src</filename>，
       而且包含下列子目錄：</para>
 
@@ -82,123 +82,112 @@
         <tgroup cols="2">
 	  <thead>
 	    <row>
-	      <entry>Directory</entry>
-	      <entry>Description</entry>
+	      <entry>目錄</entry>
+	      <entry>敘述</entry>
 	    </row>
 	  </thead>
 	  
 	  <tbody>
 	    <row>
 	    <entry><filename class="directory">bin/</filename></entry>
-            <entry>Source for files in
-            <filename>/bin</filename></entry>
+        <entry><filename>/bin</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
-	    
+
+	    <row>
+	      <entry><filename class="directory">cddl/</filename></entry>
+	      <entry>使用 Common Development and Distribution License 授權的功能。</entry>
+	    </row>	    
+
 	    <row>
 	    <entry><filename class="directory">contrib/</filename></entry>
-	    <entry>Source for files from contributed software.</entry>
+	    <entry>由其他貢獻軟體 (contributed software) 提供的原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">crypto/</filename></entry>
-	    <entry>Cryptographical sources</entry>
+	    <entry>加解密相關原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">etc/</filename></entry>
-	    <entry>Source for files in <filename
-	    class="directory">/etc</filename></entry>
+	    <entry><filename class="directory">/etc</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">games/</filename></entry>
-	    <entry>Source for files in <filename
-	    class="directory">/usr/games</filename></entry>
+	    <entry><filename class="directory">/usr/games</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">gnu/</filename></entry>
-	    <entry>Utilities covered by the GNU Public License</entry>
+	    <entry>使用 GNU Public License 授權的功能。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">include/</filename></entry>
-            <entry>Source for files in <filename
-            class="directory">/usr/include</filename></entry>
+        <entry><filename class="directory">/usr/include</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
 
 	    <row>
-	    <entry><filename
- class="directory">kerberos5/</filename></entry>
-            <entry>Source for Kerberos version 5</entry>
+	    <entry><filename class="directory">kerberos5/</filename></entry>
+            <entry>Kerberos 第 5 版相關原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">lib/</filename></entry>
-	    <entry>Source for files in <filename
-	    class="directory">/usr/lib</filename></entry>
+	    <entry><filename class="directory">/usr/lib</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
 	    
 	    <row>
 	    <entry><filename class="directory">libexec/</filename></entry>
-	    <entry>Source for files in <filename
-	    class="directory">/usr/libexec</filename></entry>
+	    <entry><filename class="directory">/usr/libexec</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
 
 	    <row>
-	    <entry><filename
- class="directory">release/</filename></entry>
-            <entry>Files required to produce a FreeBSD release</entry>
+	    <entry><filename class="directory">release/</filename></entry>
+            <entry>建置一份 FreeBSD release 所需的檔案。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">rescue/</filename></entry>
-	    <entry>Build system for the
-	      <filename class="directory">/rescue</filename> utilities</entry>
+	    <entry>建置 <filename class="directory">/rescue</filename> 下的急救功能。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">sbin/</filename></entry>
-	    <entry>Source for files in <filename
-	    class="directory">/sbin</filename></entry>
+	    <entry><filename class="directory">/sbin</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">secure/</filename></entry>
-	    <entry>FreeSec sources</entry>
+	    <entry>FreeSec 相關原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">share/</filename></entry>
-	    <entry>Source for files in <filename
-	    class="directory">/usr/share</filename></entry>
+	    <entry><filename class="directory">/usr/share</filename> 目錄下檔案的原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">sys/</filename></entry>
-	    <entry>Kernel source files</entry>
+	    <entry>Kernel 核心相關原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">tools/</filename></entry>
-	    <entry>Tools used for maintenance and testing of
-	    FreeBSD</entry>
+	    <entry>FreeBSD 測試與維護工具。</entry>
 	    </row>
 
 	    <row>
-	    <entry><filename
- class="directory">usr.bin/</filename></entry>
-            <entry>Source for files in <filename
- class="directory">/usr/bin</filename></entry>
-            </row>
+	    <entry><filename class="directory">usr.bin/</filename></entry>
+        <entry><filename class="directory">/usr/bin</filename> 目錄下檔案的原始碼。</entry>
+        </row>
 
 	    <row>
-	    <entry><filename
- class="directory">usr.sbin/</filename></entry>
-            <entry>Source for files in <filename
- class="directory">/usr/sbin</filename></entry>
-            </row>
-          </tbody>
+	    <entry><filename class="directory">usr.sbin/</filename></entry>
+        <entry><filename class="directory">/usr/sbin</filename> 目錄下檔案的原始碼。</entry>
+        </row>
+        </tbody>
 	</tgroup>
       </informaltable>
     </para>
