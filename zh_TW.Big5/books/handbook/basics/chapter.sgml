@@ -294,7 +294,7 @@ options SC_PIXEL_MODE</programlisting>
       CPU 時間的要求。</para>
 
     <para>也因為系統能夠支援多使用者，
-      所以系統管理的一切都有權限來決定誰可以讀取、寫入、執行資源。
+      所以系統管理的一切都有權限來決定誰可以讀取、寫入以及執行資源。
       這些權限分別使用三組八進位的數字儲存，一組代表檔案的所有者，
       一組代表檔案所屬的群組，而最後一組則代表其他人。
       表示這些數字的方式如下:</para>
@@ -395,23 +395,23 @@ total 530
       代表檔案所有者擁有的權限。再接下來的三個字元，
       <literal>r--</literal> 則代表檔案所屬群組擁有的權限，
       最後三個字元，<literal>r--</literal> 則代表其他人擁有的權限。
-      破折號 (-) 表示沒有權限。範例中的這個檔案的權限，
+      減號 (-) 表示沒有權限。範例中的這個檔案的權限，
       只允許所有者讀取、寫入檔案，群組以及其他人僅能讀取檔案。
       根據以上的表格，此檔案的權限可以表示為 <literal>644</literal>，
       每組數字分別代表檔案的三種權限。</para>
 
     <para>以上是不錯的方式，但系統該如何控制裝置的權限？ 實際上 FreeBSD
       把大多的硬體裝置當作檔案，就像其他檔案一樣讓程式程式可以開啟、
-      讀取及寫入資料。這些特殊裝置檔案 (Special device file)
+      讀取及寫入資料。這些特殊裝置檔案 (special device file)
       都儲存於 <filename>/dev</filename> 目錄中。</para>
 
     <para>目錄也同如檔案，擁有讀取、寫入及執行的權限，
-      但在執行權限上與檔案有明顯的差異。當目錄標示為可執行時，代表可以使用
+      但目錄與檔案的執行權限位元有些許的差異。當一個目錄標示為可執行時，代表可以使用
       <quote>cd</quote> (change directory) 進入該目錄，
       也代表能夠存取在此目錄之中的已知檔名的檔案
-      (當然，檔案仍擁有自己的權限)。</para>
+      (當然，對於該檔案仍擁有自己的權限)。</para>
 
-    <para>尤其，要列出目錄內容，必須擁有目錄的讀取權限。
+    <para>特別是要列出目錄內容，必須擁有目錄的讀取權限。
       而當要刪除已知檔名的檔案時，也必須擁有檔案所在目錄的寫入
       <emphasis>以及</emphasis> 執行的權限。</para>
 
@@ -832,7 +832,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 		<filename class="directory">/tmp</filename> 內的東西通常「不會」保留。
 		而常常會將 memory-based 檔案系統掛載在 
 		<filename class="directory">/tmp</filename> 上。
-		這些瑣事可透過 tmpmfs 相關的 &man.rc.conf.5; 環境變數來自動完成
+		這可透過 tmpmfs 相關的 &man.rc.conf.5; 環境變數來自動完成
 		(或是在 <filename>/etc/fstab</filename> 內做設定，
 		請看 &man.mdmfs.8;)。</entry>
 	    </row>
@@ -1004,7 +1004,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	系統上有多少顆硬碟，每一個目錄看起來就像在同一個磁碟上。</para>
 
       <para>假設您有三個檔案系統，分別叫作 <literal>A</literal>、
-	<literal>B</literal>、<literal>C</literal>。
+	<literal>B</literal>和<literal>C</literal>。
 	每個檔案系統都包含兩個目錄，叫做
 	<literal>A1</literal>、<literal>A2</literal> (依此類推得
 	<literal>B1</literal>、<literal>B2</literal> 及
@@ -2321,7 +2321,7 @@ Swap: 256M Total, 38M Used, 217M Free, 15% Inuse
       <acronym>ELF</acronym> 得等到當延用 <filename>a.out</filename> 
       比轉移到 <acronym>ELF</acronym> 還累時才行。</para>
 
-    <para>然而隨著時光流逝，FreeBSD 使用的程式編寫工具 (build
+    <para>然而隨著時光流逝，FreeBSD 使用的建構工具 (build
       tool) 的來源（特別是組譯器和 loader）在兩條路上平行發展。FreeBSD
       路線增加了共享函式庫及修正一些 bug。原本撰寫這些程式的 GNU 成員們
       又重寫它們，並對編寫跨平臺編譯器、任意外掛不同格式、其他等等增加了更簡易的支援。
