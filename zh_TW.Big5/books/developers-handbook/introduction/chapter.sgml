@@ -100,12 +100,12 @@
 
 	    <row>
 	    <entry><filename class="directory">contrib/</filename></entry>
-	    <entry>由其他貢獻軟體 (contributed software) 提供的原始碼。</entry>
+	    <entry>由外部軟體 (contributed software) 提供的原始碼。</entry>
 	    </row>
 
 	    <row>
 	    <entry><filename class="directory">crypto/</filename></entry>
-	    <entry>加解密相關原始碼。</entry>
+	    <entry>密碼學相關原始碼。</entry>
 	    </row>
 
 	    <row>
