@@ -154,6 +154,8 @@
 
 <!ENTITY a.bf "Brendan Fabeny <email>bf@FreeBSD.org</email>">
 
+<!ENTITY a.bgray "Ben Gray <email>bgray@FreeBSD.org</email>">
+
 <!ENTITY a.billf "Bill Fumerola <email>billf@FreeBSD.org</email>">
 
 <!ENTITY a.blackend "Marc Fonvieille <email>blackend@FreeBSD.org</email>">
@@ -337,6 +339,8 @@
 <!ENTITY a.dinoex "Dirk Meyer <email>dinoex@FreeBSD.org</email>">
 
 <!ENTITY a.dirk "Dirk Fr&ouml;mberg <email>dirk@FreeBSD.org</email>">
+
+<!ENTITY a.dmarion "Damjan Marion <email>dmarion@FreeBSD.org</email>">
 
 <!ENTITY a.dmlb "Duncan Barclay <email>dmlb@FreeBSD.org</email>">
 

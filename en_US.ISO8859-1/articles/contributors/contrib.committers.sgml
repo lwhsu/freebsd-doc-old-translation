@@ -463,6 +463,10 @@
     </listitem>
 
     <listitem>
+      <para>&a.bgray;</para>
+    </listitem>
+
+    <listitem>
       <para>&a.dg;</para>
     </listitem>
 
@@ -848,6 +852,10 @@
 
     <listitem>
       <para>&a.amdmi3;</para>
+    </listitem>
+
+    <listitem>
+      <para>&a.dmarion;</para>
     </listitem>
 
     <listitem>
