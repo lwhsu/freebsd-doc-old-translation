@@ -294,7 +294,7 @@ options SC_PIXEL_MODE</programlisting>
       CPU 時間的要求。</para>
 
     <para>也因為系統能夠支援多使用者，
-      所以系統管理的一切都有權限來決定誰可以讀取、寫入以及執行資源。
+      所以系統管理的一切都有權限來決定誰可以讀取、寫入、執行資源。
       這些權限分別使用三組八進位的數字儲存，一組代表檔案的所有者，
       一組代表檔案所屬的群組，而最後一組則代表其他人。
       表示這些數字的方式如下:</para>
@@ -406,7 +406,7 @@ total 530
       都儲存於 <filename>/dev</filename> 目錄中。</para>
 
     <para>目錄也同如檔案，擁有讀取、寫入及執行的權限，
-      但目錄與檔案的執行權限位元有些許的差異。當一個目錄標示為可執行時，代表可以使用
+      但目錄與檔案的執行權限位元有些許的差異。當目錄標示為可執行時，代表可以使用
       <quote>cd</quote> (change directory) 進入該目錄，
       也代表能夠存取在此目錄之中的已知檔名的檔案
       (當然，對於該檔案仍擁有自己的權限)。</para>
@@ -1004,7 +1004,7 @@ root     5211  0.0  0.2  3620  1724   2  I+    2:09AM   0:00.01 passwd</screen>
 	系統上有多少顆硬碟，每一個目錄看起來就像在同一個磁碟上。</para>
 
       <para>假設您有三個檔案系統，分別叫作 <literal>A</literal>、
-	<literal>B</literal>和<literal>C</literal>。
+	<literal>B</literal>、<literal>C</literal>。
 	每個檔案系統都包含兩個目錄，叫做
 	<literal>A1</literal>、<literal>A2</literal> (依此類推得
 	<literal>B1</literal>、<literal>B2</literal> 及
