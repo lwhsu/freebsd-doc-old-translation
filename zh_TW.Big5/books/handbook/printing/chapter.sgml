@@ -301,7 +301,8 @@
 		RS-232 序列界面都來得快，而且 USB 排線單純又便宜。
 		對列印工作而言，USB 比 RS-232 
 		序列埠或是並列埠都來得好，但是在 
-		&unix; 系統上的支援度較差。 購買同時具有 USB 
+		&unix; 
+		系統上的支援度較差。 購買同時具有 USB 
 		及並列埠兩種界面的印表機可以避免掉這種問題。</para>
 	    </listitem>
 	  </itemizedlist>
@@ -316,38 +317,37 @@
 	  <para>電腦和印表機之間藉由並列埠行進雙向溝通的方式有兩種。
 	    第一種是使用特製的、能和特定印表機溝通的 FreeBSD 印表機驅動程式。
 	    這種方式在噴墨印表機上很常見，用來回報墨水存量以及其他狀態資訊等。
-	    第二種方法是用 &postscript;，如果印表機有支援的話。</para>
+	    第二種方法是用 &postscript; ，
+	    如果印表機有支援的話。</para>
 
-	  <para>&postscript; jobs are
-	    actually programs sent to the printer; they need not produce
-	    paper at all and may return results directly to the computer.
-	    &postscript; also uses two-way communication to tell the
-	    computer about problems, such as errors in the &postscript;
-	    program or paper jams.  Your users may be appreciative of such
-	    information.  Furthermore, the best way to do effective
-	    accounting with a &postscript; printer requires two-way
-	    communication: you ask the printer for its page count (how
-	    many pages it has printed in its lifetime), then send the
-	    user's job, then ask again for its page count.  Subtract the
-	    two values and you know how much paper to charge to the
-	    user.</para>
+          <para> &postscript; 工作是送到印表機的程式；它們不指能夠印出紙本
+            ，也能直接回傳資訊給電腦。 
+	    &postscript; 能以雙向溝通向電腦回報異常狀況，
+	    比如說 &postscript; 程式中的錯誤或卡紙。
+	    你的使用者會感謝這些資訊。
+	    此外，計算 &postscript; 印表機使用量最好的辦法也需要透過雙向溝通：
+	    您向印表機查詢其頁計數（該印表機出廠迄今總共列印的張數），
+	    然後送出使用者的列印工作，再重新詢問印表機之頁計數。
+	    將此兩讀數相減您便知道該向使用者收取多少張紙的費用了。
+          </para>
 	</sect4>
 	  
 	<sect4 id="printing-parallel">
-	  <title>Parallel Ports</title>
+	  <title>並列埠</title>
 
-	  <para>To hook up a printer using a parallel interface, connect
-	    the Centronics cable between the printer and the computer.
-	    The instructions that came with the printer, the computer, or
-	    both should give you complete guidance.</para>
-
-	  <para>Remember which parallel port you used on the computer.
-	    The first parallel port is <filename>ppc0</filename> to
-	    FreeBSD; the second is <filename>ppc1</filename>, and so
-	    on.  The printer device name uses the same scheme:
-	    <filename>/dev/lpt0</filename> for the printer on the first
-	    parallel ports etc.</para>
-	</sect4>
+	  <para>
+	    欲連接提供並列埠介面的印表機，
+	    您可以使用 Centronics 纜線連接您的電腦與印表機。
+	    隨附於您的電腦或印表機的使用手冊應該能提供您完整的指引
+	    （或兩者皆可）。
+          </para>
+          <para>
+            請牢記您使用的是電腦上的哪一個並列埠。第一個並列埠在 FreeBSD 
+	    上的代號是 <filename>ppc0</filename>；第二個並列埠代號為
+	    <filename>ppc1</filename>，以此類推。印表機代號也遵循此命名規範：
+	    比如說，接在第一個序列埠上的印表機號為
+	    <filename>/dev/lpt0</filename>。
+	  </para>
 
 	<sect4 id="printing-serial">
 	  <title>Serial Ports</title>
