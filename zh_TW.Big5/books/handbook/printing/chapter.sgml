@@ -352,82 +352,52 @@
             請牢記您使用的是電腦上的哪一個並列埠。第一個並列埠在 FreeBSD 
 	    上的設備節點名稱為是 <filename>ppc0</filename>；第二個並列埠為
 	    <filename>ppc1</filename>，以此類推。印表機代號也遵循此命名規範：
-	    比如說，接在第一個序列埠上的印表機號為
+	    比如說，接在第一個並列埠上的印表機號為
 	    <filename>/dev/lpt0</filename>。
 	  </para>
 
 
 	<sect4 id="printing-serial">
-	  <title>Serial Ports</title>
+	  <title>序列埠</title>
 
-	  <para>To hook up a printer using a serial interface, connect the
-	    proper serial cable between the printer and the computer.  The
-	    instructions that came with the printer, the computer, or both
-	    should give you complete guidance.</para>
+	  <para>欲連接使用序列埠的印表機，請使用正確的序列埠排線。隨附於您的電腦或印表機的使用手冊應該能提供您完整的指引（或兩者皆可）。</para>
 
-	  <para>If you are unsure what the <quote>proper serial
-	    cable</quote> is, you may wish to try one of the following
-	    alternatives:</para>
+	  <para>如果您不確定您手上的排線是正確的，您可以參考下面幾個替代方案:</para>
 
 	  <itemizedlist>
 	    <listitem>
-	      <para>A <emphasis>modem</emphasis> cable connects each pin
-		of the connector on one end of the cable straight through
-		to its corresponding pin of the connector on the other
-		end.  This type of cable is also known as a
-		<quote>DTE-to-DCE</quote> cable.</para>
+	      <para><emphasis>數據機</emphasis>排線將一端的 pin 腳直接連接到排線另一端的 pin 腳。這類排線又稱為<quote>DTE-to-DCE</quote>線。</para>
 	    </listitem>
 
-	    <indexterm><primary>null-modem cable</primary></indexterm>
+	    <indexterm><primary>虛數據機排線</primary></indexterm>
 	    <listitem>
-	      <para>A <emphasis>null-modem</emphasis> cable connects some
-		pins straight through, swaps others (send data to receive
-		data, for example), and shorts some internally in each
-		connector hood.  This type of cable is also known as a
-		<quote>DTE-to-DTE</quote> cable.</para>
+	      <para>虛擬<emphasis>數據機</emphasis>排線（null-modem cable)僅有部份 pin 腳是直接相連，有些 pin 會被對調或在接頭內被短路。這類排線又被稱為<quote>DTE-to-DTE</quote>排線。
 	    </listitem>
-
 	    <listitem>
-	      <para>A <emphasis>serial printer</emphasis> cable, required
-		for some unusual printers, is like the null-modem cable,
-		but sends some signals to their counterparts instead of
-		being internally shorted.</para>
+	      <para>有些不常見的印表機需要<emphasis>序列印表機</emphasis>排線。這些排線類似 null-modem 排線，但會傳輸特別的信號。</para>
 	    </listitem>
 	  </itemizedlist>
 
 	  <indexterm><primary>baud rate</primary></indexterm>
 	  <indexterm><primary>parity</primary></indexterm>
 	  <indexterm><primary>flow control protocol</primary></indexterm>
-	  <para>You should also set up the communications parameters for
-	    the printer, usually through front-panel controls or DIP
-	    switches on the printer.  Choose the highest
-	    <literal>bps</literal> (bits per second, sometimes
-	    <emphasis>baud rate</emphasis>) that both your computer
-	    and the printer can support.  Choose 7 or 8 data bits; none,
-	    even, or odd parity; and 1 or 2 stop bits.  Also choose a flow
-	    control protocol: either none, or XON/XOFF (also known as
-	    <quote>in-band</quote> or <quote>software</quote>) flow control.
-	    Remember these settings for the software configuration that
-	    follows.</para>
+	  <para>也請您設定印表機的連接參數，通常要調整印表機上的面板或 DIP switches 。請調整您的電腦與印表機到能同時支援的最高 <literal>bps</literal>(bits per second, 又稱<emphasis>鮑率</emphasis>)。請設定資料位元為 7 位元或 8 位元；同位檢查：不檢查、奇同位、偶同位； and 1 or 2 stop bits. 也請選擇流量控制協定：無協定，或是 XON/XOFF (又稱<quote>in-band</quote>或<quote>software</quote>)流量控制協定。請牢記這些設定，設定軟體時會派上用場。</para>
 	</sect4>
       </sect3>
 
       <sect3 id="printing-software">
-	<title>Software Setup</title>
+	<title>軟體設定</title>
 
-	<para>This section describes the software setup necessary to print
-	  with the <application>LPD</application> spooling system in &os;.
-	</para>
+	<para>本節闡釋在 &os; 上使用<application>LPD</application>列印所需的軟體設定。</para>
 
-	<para>Here is an outline of the steps involved:</para>
-
+	<para>概略的步驟如下：</para>
 	<procedure>
 	  <step>
-	    <para>Configure your kernel, if necessary, for the port you
-	      are using for the printer; section <link
-		linkend="printing-kernel">Kernel Configuration</link> tells
-	      you what you need to do.</para>
+	    <para>若有需要，請設定您的kernel。<link linkend="printing-kernel">Kernel設定</link>一節將告訴您如何得知印表機使用的連接埠。</para>
 	  </step>
+        </procedure>
+
+	<procedure>
 
 	  <step>
 	    <para>Set the communications mode for the parallel port, if
