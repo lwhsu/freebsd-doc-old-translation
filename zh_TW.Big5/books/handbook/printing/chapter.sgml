@@ -391,13 +391,11 @@
 	<para>本節闡釋在 &os; 上使用<application>LPD</application>列印所需的軟體設定。</para>
 
 	<para>概略的步驟如下：</para>
-	<procedure>
-	  <step>
-	    <para>若有需要，請設定您的kernel。<link linkend="printing-kernel">Kernel設定</link>一節將告訴您如何得知印表機使用的連接埠。</para>
-	  </step>
-        </procedure>
 
 	<procedure>
+ 	  <step>
+	    <para>若有需要，請設定您的kernel。<link linkend="printing-kernel">Kernel設定</link>一節將告訴您如何得知印表機使用的連接埠。</para>
+	  </step>
 
 	  <step>
 	    <para>Set the communications mode for the parallel port, if
