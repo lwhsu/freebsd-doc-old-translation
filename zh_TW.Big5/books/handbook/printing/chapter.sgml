@@ -40,9 +40,9 @@
   
     <para>也可以把 &os; 設定成一台網路列印伺服器；這時候的 &os;
       能接收其他電腦送來的列印工作，包括其他 &os; 的電腦、&windows;
-      的電腦以及 &macos; 的電腦。 &os; 
+      的電腦以及 &macos; 的電腦。 &os;
       會確保同時只有一件文件正在列印，而且可以統計哪個使用者及機器印得最多，
-      還有就是印出接下來是誰的文件這類的<quote>標題</quote>頁等。</para>
+      還有就是印出接下來是誰的文件這類的<quote>header pages</quote>等。</para>
 
     <para>讀完這章，您將了解：</para>
 
@@ -152,7 +152,7 @@
 
     <para>藉由設定檔 (<filename>/etc/printcap</filename>) 以及過濾程式的幫助，
       您可以讓大多數的印表機配合 <application>LPD</application>
-      達成上述全部或部份的功能。</para>
+      達成上述的功能。</para>
 
     <sect2 id="printing-intro-why">
       <title>為什麼需要使用多工緩衝處理器</title>
@@ -238,7 +238,7 @@
 	印表機及網路資料傳輸介面</link>。</para>
 
       <para>這個章節雖然叫做<quote>簡易印表機設定</quote>，
-        實際上還是有點複雜的。 最困難的部份是讓你的印表機和電腦上的
+        實際上還是有點複雜的。最困難的部份是讓你的印表機和電腦上的
 	<application>LPD</application> 緩衝器能夠正常運作。
 	  一旦印表機可以正常工作之後，
 	  像是印首頁或是做列印統計這些進階的功能就不難做到了。
@@ -249,13 +249,12 @@
 
 	<para>本章節討論各種連接印表機到 PC 的方式。
 	  這裡會提到不同種類的連接埠和連接線，
-	  以及為了讓 &os; 能和印表機溝通您可能會需要開啟的核心參數等。
+	  以及為了讓 &os; 能和印表機溝通，而可能會需要開啟的核心參數等。
         </para>
 
 	<para>如果您已經把印表機接上電腦，
-	  而且在其他作業系統上有成功列印過的話，您可直接跳到
-	  <link linkend="printing-software">軟體設定</link>。
-        </para>
+	  而且在其他作業系統上曾經成功列印過的話，您可直接跳到
+	  <link linkend="printing-software">軟體設定</link>。</para>
 
 	<sect4 id="printing-ports">
 	  <title>連接埠和排線</title>
@@ -275,13 +274,17 @@
 		所以排線容易取得，要設定連線並不困難。
 		然而序列介面有時候會需要使用較特別的排線，
 		這時候就有可能需要設定一些較為複雜的通訊參數了。
-		大部份 PC 序列埠的傳輸速度最高只到 115200&nbsp;bps，
+		大部份 PC 序列埠的傳輸速度最高只到 115200 bps，
 		因此想要用序列埠來列印大圖是不切實際的。</para>
 	    </listitem>
 
 	    <indexterm>
               <primary>printers</primary>
               <secondary>parallel</secondary>
+	    </indexterm>
+	    <indexterm>
+	      <primary>印表機</primary>
+	      <secondary>並列埠</secondary>
 	    </indexterm>
 	    <listitem>
 	      <para><emphasis>並列 (Parallel)</emphasis>
@@ -309,7 +312,7 @@
 		對列印工作而言，USB 比 RS-232 
 		序列埠或是並列埠都來得好，但是在 
 		&unix; 
-		系統上的支援度較差。 購買同時具有 USB 
+		系統上的支援度較差。購買同時具有 USB 
 		及並列埠兩種界面的印表機可以避免掉這種問題。</para>
 	    </listitem>
 	  </itemizedlist>
@@ -327,34 +330,28 @@
 	    第二種方法是用 &postscript; 
 	    ，如果印表機有支援的話。</para>
 
-          <para> &postscript; 是送到印表機的程式；它們不只能夠印出紙本
-            ，也能直接回傳資訊給電腦。 
+          <para>&postscript; 是送到印表機的程式；它們不只能夠印出紙本
+            ，也能直接回傳資訊給電腦。
 	    &postscript; 能以雙向溝通向電腦回報異常狀況，
 	    比如說 &postscript; 中的錯誤或卡紙。
 	    您的使用者會感謝這些資訊。
 	    此外，計算 &postscript; 印表機使用量最好的辦法也需要透過雙向溝通：
 	    您向印表機查詢其頁計數（該印表機出廠迄今總共列印的張數），
 	    然後送出使用者的列印工作，再重新詢問印表機之頁計數。
-	    將此兩讀數相減您便知道該向使用者收取多少張紙的費用了。
-          </para>
+	    將此兩讀數相減您便知道該向使用者收取多少張紙的費用了。</para>
 	</sect4>
 	  
 	<sect4 id="printing-parallel">
 	  <title>並列埠</title>
 
-	  <para>
-	    欲連接提供並列埠介面的印表機，
-	    您可以使用 Centronics 纜線連接您的電腦與印表機。
-	    隨附於您的電腦或印表機的使用手冊應該能提供您完整的指引
-	    （或兩者皆可）。
-          </para>
-          <para>
-            請牢記您使用的是電腦上的哪一個並列埠。第一個並列埠在 FreeBSD 
+	  <para>欲連接提供並列埠介面的印表機，
+	    您可以使用 Centronics 排線連接您的電腦與印表機。
+	    隨附於您的電腦或印表機的使用手冊應該能提供您完整的指引（或兩者皆可）。</para>
+          <para>請牢記您使用的是電腦上的哪一個並列埠。第一個並列埠在 FreeBSD 
 	    上的設備節點名稱為是 <filename>ppc0</filename>；第二個並列埠為
 	    <filename>ppc1</filename>，以此類推。印表機代號也遵循此命名規範：
 	    比如說，接在第一個並列埠上的印表機號為
-	    <filename>/dev/lpt0</filename>。
-	  </para>
+	    <filename>/dev/lpt0</filename>。</para>
 
 
 	<sect4 id="printing-serial">
