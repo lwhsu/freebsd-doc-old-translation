@@ -1,8 +1,8 @@
 <!--
-     The FreeBSD Documentation Project
+     The FreeBSD Traditional Chinese Documentation Project
 
      $FreeBSD$
-     Original revision: 1.180
+     Original revision: 1.205
 -->
 
 <chapter id="kernelconfig">
@@ -19,7 +19,7 @@
       <author>
 	<firstname>Jake</firstname>
 	<surname>Hamby</surname>
-	<contrib>  原作為：</contrib>
+	<contrib>原作：</contrib>
 	<!-- 6 Oct 1995 -->
       </author>
     </authorgroup>
@@ -86,7 +86,7 @@
       結合的相當複雜緊密，而無法將它們弄成可動態載入的 module
       ；而有時候，則是因為沒有人有空來弄那些 kernel module 的實作。</para>
 
-    <para>重新調配、編譯 kernel 幾乎是每位 BSD 使用者所必須經歷的過程。
+    <para>重新調配、編譯 kernel 是進階 BSD 使用者的極重要歷程。
       儘管這項工作可能比較耗時，但在 &os; 的使用上會有許多好處。
       跟必須支援大多數各式硬體的 <filename>GENERIC</filename> kernel 相比的話，
       自行調配 kernel 不同處在於：可以更『體貼』，只支援『自己硬體』的部分就好。
@@ -99,11 +99,12 @@
       </listitem>
 
       <listitem>
-	<para>佔用的記憶體更少：自行調配的 kernel 通常會比 
-	  <filename>GENERIC</filename> 核心使用更少的記憶體，由於 kernel 
-	  必須一直存放在記憶體內，因此這就顯得更加重要。因此，
-	  對於記憶體較小的系統來說，
-	  自行調配的 kernel 就可發揮更多的作用、揮灑空間。</para>
+	<para>佔用的記憶體更少：自行調配的 kernel
+	  省去了用不到的特別功能與驅動程式，通常會比
+	  <filename>GENERIC</filename> 核心使用更少的記憶體，這點很重要，
+	  由於 kernel code 一直常駐實體記憶體，該段記憶體無法給應用程式使用。
+	  因此，對於記憶體較小的系統來說，
+	  自行調配的 kernel 特別有用。</para>
       </listitem>
 
       <listitem>
@@ -185,12 +186,63 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
       打造過程更為順利。</para>
   </sect1>
 
+  <sect1 id="kernelconfig-modules">
+    <title>Kernel Drivers, Subsystems, and Modules</title>
+    <indexterm>
+      <primary>kernel</primary>
+      <secondary>drivers / modules / subsystems</secondary>
+    </indexterm>
+
+    <para>Before building a custom kernel, consider the reasons for
+      doing so.  If there is a need for specific hardware support,
+      it may already exist as a module.</para>
+
+    <para>Kernel modules exist in the
+      <filename class="directory">/boot/kernel</filename> directory
+      and may be dynamically loaded into the running kernel using
+      &man.kldload.8;.  Most, if not all kernel drivers have a
+      specific module and manual page.  For example, the last section
+      noted the <devicename>ath</devicename> wireless Ethernet driver.
+      This device has the following information in its manual
+      page:</para>
+
+    <programlisting>Alternatively, to load the driver as a module at boot time, place the
+following line in &man.loader.conf.5;:
+
+    if_ath_load="YES"</programlisting>
+
+    <para>As instructed, adding the <literal>if_ath_load="YES"</literal>
+      line to the <filename>/boot/loader.conf</filename> file will
+      enable loading this module dynamically at boot time.</para>
+
+    <para>In some cases; however, there is no associated module.  This
+      is mostly true for certain subsystems and very important drivers,
+      for instance, the fast file system (<acronym>FFS</acronym>) is a
+      required option in the kernel.  As is network support (INET).
+      Unfortunately the only way to tell if a driver is required is to
+      check for the module itself.</para>
+
+    <warning>
+      <para>It is easy to remove support for a
+        device or option and end up with a broken kernel.  For example, if
+        the &man.ata.4; driver is removed from the kernel configuration
+        file, a system using <acronym>ATA</acronym> disk drivers may
+        not boot without the module added to
+        <filename>loader.conf</filename>.  When in doubt, check for
+        the module and then just leave support in the kernel.</para>
+    </warning>
+  </sect1>
+
   <sect1 id="kernelconfig-building">
     <title>重新調配、編譯 kernel</title>
     <indexterm>
       <primary>kernel</primary>
       <secondary>building / installing</secondary>
     </indexterm>
+
+    <note>
+      <para>要編譯 kernel 必先安裝完整的 &os; source tree。</para>
+    </note>
 
     <para>首先對 kernel 相關目錄作快速介紹。
       這裡所提到的所有目錄都在 <filename>/usr/src/sys</filename> 內，
@@ -202,37 +254,29 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
       此外，還有在編譯 kernel 過程中會暫時擺放的 <filename>compile</filename> 
       目錄。
       剛講到的 <replaceable>arch</replaceable> 可以是右列架構之一：
-      <filename>i386</filename>、<filename>alpha</filename>、
+      <filename>i386</filename>、
       <filename>amd64</filename>、<filename>ia64</filename>、
       <filename>powerpc</filename>、<filename>sparc64</filename>、
-      <filename>pc98</filename>(在日本較流行的另一種 PC 硬體架構)。
+      <filename>pc98</filename> (在日本較流行的另一種 PC 硬體架構)。
       在各特定硬體架構目錄的東西，只搭配相對應的硬體架構而已。
       而其餘的原始碼則是與硬體架構無關，可以在所有 &os; 可裝的平台上共用。
       整體目錄架構都是有邏輯可循，像是各項有支援的硬體設備、檔案系統，
       以及相關選項通常都會擺在它們自己的子目錄內。</para>
 
-    <para>本章所用到的例子，都是你使用 i386 架構的機器。
-      請依實際情況，對相關目錄作調整即可。</para>
+    <para>本章的例子假定您使用 i386 架構的機器。若您系統架構不同，
+      請依實際情況調整路徑名稱。</para>
 
     <note>
-      <para>若您系統上 <emphasis>沒裝</emphasis> 
-	<filename>/usr/src/sys</filename> 目錄，
-	也就是說沒裝 kernel source code 的話，那麼最簡單安裝方式就是以
-	<username>root</username> 權限來執行 <command>sysinstall</command>，
+      <para>若您系統上沒有 <filename>/usr/src</filename> 目錄 (或是空的)，
+	表示沒安裝 source。安裝完整 source tree 最簡單的方法是用
+	<username>root</username> 權限執行 <command>sysinstall</command>，
 	接著請選 <guimenuitem>Configure</guimenuitem>，然後選
 	<guimenuitem>Distributions</guimenuitem> 接著為
-	<guimenuitem>src</guimenuitem> 再選
-	<guimenuitem>base</guimenuitem> 最後選
-	<guimenuitem>sys</guimenuitem>。  若不喜歡用 
-	<application>sysinstall</application> 而且手邊有
-	<quote>正式的</quote> &os; 光碟可以用的話，
-        那麼也可以用以下指令來安裝：</para>
+	<guimenuitem>src</guimenuitem> 最後選
+	<guimenuitem>ALL</guimenuitem>。若還是沒有，
+	還要建立連結到 <filename>/usr/src/sys/</filename>：</para>
 
-      <screen>&prompt.root; <userinput>mount /cdrom</userinput>
-&prompt.root; <userinput>mkdir -p /usr/src/sys</userinput>
-&prompt.root; <userinput>ln -s /usr/src/sys /sys</userinput>
-&prompt.root; <userinput>cat /cdrom/src/ssys.[a-d]* | tar -xzvf -</userinput>
-&prompt.root; <userinput>cat /cdrom/src/sbase.[a-d]* | tar -xzvf -</userinput></screen>
+	<screen>&prompt.root; <userinput>ln -s /usr/src/sys /sys</userinput></screen>
     </note>
 
     <para>接下來，切換到
@@ -241,10 +285,10 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
       例如：</para>
 
     <screen>&prompt.root; <userinput>cd /usr/src/sys/<replaceable>i386</replaceable>/conf</userinput>
-&prompt.root; <userinput>cp GENERIC MYKERNEL</userinput></screen>
+&prompt.root; <userinput>cp GENERIC <replaceable>MYKERNEL</replaceable></userinput></screen>
 
-    <para>通常，命名方式都是大寫。如果你負責維護許多不同硬體架構的 &os; 
-      機器的話，那麼照該機器名稱(hostname)來命名會是比較明智。
+    <para>慣例命名方式都是大寫。如果你負責維護許多不同硬體架構的 &os; 
+      機器的話，那麼照該機器名稱 (hostname) 來命名會是比較明智。
       上面例子中之所以命名為 <filename>MYKERNEL</filename> 
       就是因為這緣故。</para>
 
@@ -256,7 +300,7 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
 	一旦真的砍了之後，你可能幾秒之後才會醒悟到：
 	你同時也砍掉自己改的 kernel 設定檔。
 	此外，也不要直接修改 <filename>GENERIC</filename>，因為下次你
-	<link linkend="cutting-edge">更新 source tree</link>時，
+	<link linkend="updating-upgrading">更新 source tree</link>時，
 	它會被新版覆蓋，而相關修改也將隨之而逝。</para>
 
       <para>你也可考慮把 kernel 設定檔改放到其他地方，然後再到
@@ -271,9 +315,10 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
 &prompt.root; <userinput>ln -s /root/kernels/<replaceable>MYKERNEL</replaceable></userinput></screen>
     </tip>
 
-    <para>現在，就開始用自己喜歡的編輯器來修改 <filename>MYKERNEL</filename>。
-      若才剛裝好 FreeBSD 而已，唯一可用的編輯器很可能是 
-      <application>vi</application> 了，由於它的用法很多種，礙於篇幅將不詳細介紹，
+    <para>現在，就開始用自己喜歡的編輯器來修改
+      <filename><replaceable>MYKERNEL</replaceable></filename>。若才剛裝好
+      FreeBSD 而已，唯一可用的編輯器很可能是 <application>vi</application>
+      了，由於它的用法很多種，礙於篇幅將不詳細介紹，
       你可在 <link linkend="bibliography">參考書目</link> 內找到相關書籍。
       不過，&os; 也提供另一個更好用的編輯器，它叫做 
       <application>ee</application>，對新手而言，這可能是蠻好的選擇。
@@ -290,7 +335,7 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
 
     <note>
       <para>若有從 &os; 計劃去 <link 
-	linkend="cutting-edge">更新你的 source tree</link> 的話，
+	linkend="updating-upgrading">更新你的 source tree</link> 的話，
         則切記在進行任何升級之前，務必要察看 
 	<filename>/usr/src/UPDATING</filename>。
 	這檔會介紹在更新過程中的重大議題或要注意的事項。
@@ -303,9 +348,13 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
     <procedure>
       <title>編譯 Kernel</title>
 
+      <note>
+	<para>要編譯 kernel 必先安裝完整的 &os; source tree。</para>
+      </note>
+
       <step>
 	<para>請切換至 <filename
-	  role="directory">/usr/src</filename> 目錄：</para>
+	  class="directory">/usr/src</filename> 目錄：</para>
 
 	<screen>&prompt.root; <userinput>cd /usr/src</userinput></screen>
       </step>
@@ -323,10 +372,6 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
       </step>
     </procedure>
 
-    <note>
-      <para>要有完整的 &os; source tree 才能編譯 kernel。</para>
-    </note>
-
     <tip>
       <para>預設情況下，在編譯自訂 kernel 時，<emphasis>全部的</emphasis> 
 	kernel modules 也會一起重編。  若要快速升級 kernel，
@@ -335,11 +380,11 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
 
       <programlisting>MODULES_OVERRIDE = linux acpi sound/sound sound/driver/ds1 ntfs</programlisting>
 
-      <para>上面該設定值為所希望重編的 kernel module 列表。</para>
+      <para>上面該設定值為所希望重編的 module 列表。</para>
 
-      <programlisting>WITHOUT_MODULES = linux acpi sound/sound sound/driver/ds1 ntfs</programlisting>
+      <programlisting>WITHOUT_MODULES = linux acpi sound ntfs</programlisting>
 
-      <para>而上面這設定值則為不要編入的 kernel module 列表。  若想更瞭解其他
+      <para>而上面這設定值則為不要編入的 top level module 列表。若想更瞭解其他
 	kernel 編譯的相關變數，請參閱 &man.make.conf.5; 說明。</para>
     </tip>
 
@@ -348,7 +393,7 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
     </indexterm> 
 
     <para>新的 kernel 會複製到 <filename 
-      class="directory">/boot/kernel</filename> 目錄內的
+	class="directory">/boot/kernel</filename> 目錄內的
       <filename>/boot/kernel/kernel</filename>，而舊的則移至
       <filename>/boot/kernel.old/kernel</filename>。  
       現在呢，先關機，然後就會以新 kernel 重開機
@@ -373,11 +418,11 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
 	<author>
 	  <firstname>Joel</firstname>
 	  <surname>Dahl</surname>
-	  <contrib>Updated for &os; 6.X by </contrib>
+	  <contrib>Updated by </contrib>
 	</author>
       </authorgroup>
     </sect1info>
-    <title>kernel 設定檔解說</title>
+    <title>設定檔解說</title>
     <indexterm>
       <primary>kernel</primary>
       <secondary>NOTES</secondary>
@@ -398,6 +443,34 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
       請參閱與 <filename>GENERIC</filename> 檔同目錄的 <filename>NOTES</filename>
       檔。  而與平台架構差異較無關的通用部份，則可參閱
       <filename>/usr/src/sys/conf/NOTES</filename>。</para>
+
+    <para>An <literal>include</literal> directive is
+      available for use in configuration files.  This allows another
+      configuration file to be logically included in the current one, making
+      it easy to maintain small changes relative to an existing file.  For
+      example, if you require a <filename>GENERIC</filename> kernel with
+      only a small number of additional options or drivers, this allows you
+      to maintain only a delta with respect to GENERIC:</para>
+
+    <programlisting>include GENERIC
+ident MYKERNEL
+
+options         IPFIREWALL
+options         DUMMYNET
+options         IPFIREWALL_DEFAULT_TO_ACCEPT
+options         IPDIVERT
+</programlisting>
+
+    <para>Many administrators will find that this model offers significant
+      benefits over the historic writing of configuration files from scratch:
+      the local configuration file will express only local differences from
+      a <filename>GENERIC</filename> kernel and as upgrades are performed,
+      new features added to <filename>GENERIC</filename> will be added to the
+      local kernel unless specifically prevented using
+      <literal>nooptions</literal> or <literal>nodevice</literal>.  The
+      remainder of this chapter addresses the contents of a typical
+      configuration file and the role various options and devices
+      play.</para>
 
     <note>
       <para>若為了測試，而需要一份含有所有可用設定的設定檔，那麼請以
@@ -424,7 +497,7 @@ ath_hal(4)               - Atheros Hardware Access Layer (HAL)</programlisting>
     <programlisting>machine		i386</programlisting>
 
     <para>此處是指機器架構，必須為
-      <literal>alpha</literal>、<literal>amd64</literal>、
+      <literal>amd64</literal>、
       <literal>i386</literal>、<literal>ia64</literal>、
       <literal>pc98</literal>、<literal>powerpc</literal>、
       <literal>sparc64</literal> 其中之一。</para>
@@ -446,14 +519,14 @@ cpu          I686_CPU</programlisting>
 
     <indexterm>
       <primary>kernel options</primary>
-
       <secondary>ident</secondary>
     </indexterm>
 
     <programlisting>ident          GENERIC</programlisting>
 
     <para>這是設定該 kernel 名稱為何，可以隨意命名之，像是取名為
-      <literal>MYKERNEL</literal>，若是有照先前說明來作大概會取這樣名字。
+      <literal><replaceable>MYKERNEL</replaceable></literal>，
+      若是有照先前說明來作大概會取這樣名字。
       <literal>ident</literal> 後面的字串會在開機時顯示，因此若要辨認新 kernel
       與常用 kernel 的話，就設定不同組名稱即可(比如在自訂實驗用的
       kernel)。</para>
@@ -476,9 +549,9 @@ cpu          I686_CPU</programlisting>
       用的資訊，透過這選項會讓 &man.gcc.1; 啟用 debug
       所會用到的相關資訊。</para>
 
-    <programlisting>options          SCHED_4BSD         # 4BSD scheduler</programlisting>
+    <programlisting>options          SCHED_ULE         # ULE scheduler</programlisting>
 
-    <para>&os;. 傳統所用(並且是預設)的系統 CPU scheduler。  若您不清楚要如何設定
+    <para>&os;. 預設的系統 scheduler。若您不清楚要如何設定
       ，請保留這設定。</para>
 
     <programlisting>options          PREEMPTION         # Enable kernel thread preemption</programlisting>
@@ -578,7 +651,7 @@ options          NFS_ROOT          # NFS usable as /, requires NFSCLIENT</progra
       will be dynamically loaded the first time you mount a data CD).
       Audio CDs do not need this file system.</para>
 
-    <programlisting>options          PROCFS            # Process filesystem(requires PSEUDOFS)</programlisting>
+    <programlisting>options          PROCFS            # Process filesystem (requires PSEUDOFS)</programlisting>
 
     <para>The process file system.  This is a <quote>pretend</quote>
       file system mounted on <filename>/proc</filename> which allows
@@ -591,10 +664,10 @@ options          NFS_ROOT          # NFS usable as /, requires NFSCLIENT</progra
 
     <programlisting>options          PSEUDOFS          # Pseudo-filesystem framework</programlisting>
 
-    <para>6.X kernels making use of <literal>PROCFS</literal> must also
-      include support for <literal>PSEUDOFS</literal>.</para>
+      <para>Kernels making use of <literal>PROCFS</literal> must also
+	include support for <literal>PSEUDOFS</literal>.</para>
 
-    <programlisting>options          GEOM_GPT          # GUID Partition Tables.</programlisting>
+    <programlisting>options          GEOM_PART_GPT     # GUID Partition Tables.</programlisting>
 
     <para>This option brings the ability to have a large number of
       partitions on a single disk.</para>
@@ -606,18 +679,29 @@ options          NFS_ROOT          # NFS usable as /, requires NFSCLIENT</progra
 
     <programlisting>options          COMPAT_FREEBSD4   # Compatible with &os;4</programlisting>
 
-    <para>This option is required on &os;&nbsp;5.X &i386; and Alpha systems
+    <para>This option is required
       to support applications compiled on older versions of &os;
       that use older system call interfaces.  It is recommended that
-      this option be used on all &i386; and Alpha systems that may
+      this option be used on all &i386; systems that may
       run older applications; platforms that gained support only in
       5.X, such as ia64 and &sparc64;, do not require this option.</para>
 
-    <programlisting>options          COMPAT_FREEBSD5   # 與 &os;5 相容</programlisting>
+    <programlisting>options          COMPAT_FREEBSD5   # Compatible with &os;5</programlisting>
 
-    <para>此行是 &os;&nbsp;6.X 及更新的版本若需支援 &os;&nbsp;5.X
-      系統呼叫才需要設定。</para>
-    
+    <para>要支援在 &os;&nbsp;5.X 上編譯而用到
+      &os;&nbsp;5.X 系統呼叫介面的應用程式，必須使用這選項。</para>
+
+    <programlisting>options          COMPAT_FREEBSD6   # Compatible with &os;6</programlisting>
+
+    <para>要支援在 &os;&nbsp;6.X 上編譯而用到
+      &os;&nbsp;6.X 系統呼叫介面的應用程式，必須使用這選項。</para>
+
+    <programlisting>options          COMPAT_FREEBSD7   # Compatible with &os;7</programlisting>
+
+    <para>&os;&nbsp;8 暨之後版本要支援在 &os;&nbsp;7.X 上編譯而用到
+      &os;&nbsp;7.X 系統呼叫介面的應用程式，必須使用這選項。</para>
+
+
     <programlisting>options          SCSI_DELAY=5000  # Delay (in ms) before probing SCSI</programlisting>
 
     <para>This causes the kernel to pause for 5 seconds before probing
@@ -681,14 +765,13 @@ options          NFS_ROOT          # NFS usable as /, requires NFSCLIENT</progra
       leave this in.</para>
 
     <note>
-      <para>Note that on &os; 8.0-CURRENT and later versions, all mutexes are
+      <para>Note that on &os; 8.0-RELEASE and later versions, all mutexes are
 	adaptive by default, unless explicitly set to non-adaptive by
 	compiling with the <literal>NO_ADAPTIVE_MUTEXES</literal> option.  As
 	a result, Giant is adaptive by default now, and the
 	<literal>ADAPTIVE_GIANT</literal> option has been removed from the
 	kernel configuration.</para>
     </note>
-
 
     <indexterm>
       <primary>kernel options</primary>
@@ -770,7 +853,7 @@ options         AHD_REG_PRETTY_PRINT    # Print register bitfields in debug
 				        # output.  Adds ~215k to driver.
 device          amd        # AMD 53C974 (Teckram DC-390(T))
 device          isp        # Qlogic family
-device          ispfw      # Firmware for QLogic HBAs- normally a module
+#device         ispfw      # Firmware for QLogic HBAs- normally a module
 device          mpt        # LSI-Logic MPT-Fusion
 #device         ncr        # NCR/Symbios Logic
 device          sym        # NCR/Symbios Logic (newer chipsets + those of `ncr')
@@ -817,7 +900,7 @@ device          asr        # DPT SmartRAID V, VI and Adaptec SCSI RAID
 device          ciss       # Compaq Smart RAID 5*
 device          dpt        # DPT Smartcache III, IV - See NOTES for options
 device          hptmv      # Highpoint RocketRAID 182x
-device          rr232x     # Highpoint RocketRAID 232x
+device          hptrr      # Highpoint RocketRAID 17xx, 22xx, 23xx, 25xx
 device          iir        # Intel Integrated RAID
 device          ips        # IBM (Adaptec) ServeRAID
 device          mly        # Mylex AcceleRAID/eXtremeRAID
@@ -913,7 +996,7 @@ device          sc</programlisting>
 #device          apm</programlisting>
 
     <para>Advanced Power Management support.  Useful for laptops,
-      although in &os; 5.X and above this is disabled in
+      although this is disabled in
       <filename>GENERIC</filename> by default.</para>
 
     <programlisting># Add suspend/resume support for the i8254.
@@ -1035,7 +1118,7 @@ device          re         # RealTek 8139C+/8169/8169S/8110S
 device          rl         # RealTek 8129/8139
 device          sf         # Adaptec AIC-6915 (<quote>Starfire</quote>)
 device          sis        # Silicon Integrated Systems SiS 900/SiS 7016
-device          sk         # SysKonnect SK-984x & SK-982x gigabit Ethernet
+device          sk         # SysKonnect SK-984x &amp; SK-982x gigabit Ethernet
 device          ste        # Sundance ST201 (D-Link DFE-550TX)
 device          stge       # Sundance/Tamarack TC9021 gigabit Ethernet
 device          ti         # Alteon Networks Tigon I/II gigabit Ethernet
@@ -1064,12 +1147,11 @@ device          xe         # Xircom pccard Ethernet
 #device         le</programlisting>
 
     <para>ISA Ethernet drivers.  See
-      <filename>/usr/src/sys/<replaceable>i386</replaceable>/conf/NOTES</filename> for details
-of which cards are
-      supported by which driver.</para>
+      <filename>/usr/src/sys/<replaceable>i386</replaceable>/conf/NOTES</filename>
+      for details of which cards are supported by which driver.</para>
 
     <programlisting># Wireless NIC cards
-device          wlan       # 802.11 support</programlisting>
+device          wlan            # 802.11 support</programlisting>
 
     <para>對 802.11 標準的支援。  若要無線上網，則需加上這行。</para>
 
@@ -1084,7 +1166,6 @@ device          wlan_tkip       # 802.11 TKIP support</programlisting>
 device          ath             # Atheros pci/cardbus NIC's
 device          ath_hal         # Atheros HAL (Hardware Access Layer)
 device          ath_rate_sample # SampleRate tx rate control for ath
-device          an         # Aironet 4500/4800 802.11 wireless NICs.
 device          awi        # BayStack 660 and others
 device          ral        # Ralink Technology RT2500 wireless NICs.
 device          wi         # WaveLAN/Intersil/Symbol 802.11 wireless NICs.
@@ -1096,7 +1177,7 @@ device          wi         # WaveLAN/Intersil/Symbol 802.11 wireless NICs.
 device   loop          # Network loopback</programlisting>
 
     <para>This is the generic loopback device for TCP/IP.  If you telnet
-      or FTP to <hostid>localhost</hostid> (a.k.a. <hostid
+      or FTP to <hostid>localhost</hostid> (aka <hostid
       role="ipaddr">127.0.0.1</hostid>) it will come back at you through
       this device.  This is <emphasis>mandatory</emphasis>.</para>
 
@@ -1209,13 +1290,13 @@ device          fwe           # Ethernet over FireWire (non-standard!)</programl
       &os;, see
       <filename>/usr/src/sys/<replaceable>i386</replaceable>/conf/NOTES</filename>.</para>
 
-      <sect2>
-        <title>Large Memory Configurations (<acronym>PAE</acronym>)</title>
-	<indexterm>
+    <sect2>
+      <title>Large Memory Configurations (<acronym>PAE</acronym>)</title>
+      <indexterm>
 	  <primary>Physical Address Extensions
 	    (<acronym>PAE</acronym>)</primary>
 	  <secondary>large memory</secondary>
-	</indexterm>
+      </indexterm>
 
 	<para>Large memory configuration machines require access to
 	  more than the 4 gigabyte limit on User+Kernel Virtual
@@ -1257,21 +1338,14 @@ device          fwe           # Ethernet over FireWire (non-standard!)</programl
 	  </listitem>
 
 	  <listitem>
-	    <para><acronym>KLD</acronym> modules cannot be loaded into
-	      a <acronym>PAE</acronym> enabled kernel, due to the
-	      differences in the build framework of a module and the
-	      kernel.</para>
-	  </listitem>
-
-	  <listitem>
 	    <para>Device drivers that do not use the &man.bus.dma.9;
 	      interface will cause data corruption in a
 	      <acronym>PAE</acronym> enabled kernel and are not
 	      recommended for use.  For this reason, a
 	      <filename>PAE</filename> kernel
 	      configuration file is provided in &os; which
-	      excludes all drivers not known to work in a <acronym>PAE</acronym> enabled
-	      kernel.</para>
+	      excludes all drivers not known to work in a
+	      <acronym>PAE</acronym> enabled kernel.</para>
 	  </listitem>
 
 	  <listitem>
@@ -1303,11 +1377,10 @@ device          fwe           # Ethernet over FireWire (non-standard!)</programl
     </sect2>
   </sect1>
 
-
   <sect1 id="kernelconfig-trouble">
     <title>If Something Goes Wrong</title>
 
-    <para>There are five categories of trouble that can occur when
+    <para>There are four categories of trouble that can occur when
       building a custom kernel.  They are:</para>
 
     <variablelist>
@@ -1355,13 +1428,11 @@ device          fwe           # Ethernet over FireWire (non-standard!)</programl
 	    kernels.  Simply choose the kernel you want to boot from at
 	    the &os; boot loader. You can access this when the system
 	    boot menu appears.  Select the <quote>Escape to a loader
-            prompt</quote> option, number six.  At the prompt, type
-            <command>unload kernel</command>
-            and then type
-	    <command>boot /boot/<replaceable>kernel.old</replaceable>/kernel</command>,
-            or the filename of any other kernel that will boot properly.
-            When reconfiguring a kernel, it is always a good idea to keep
-            a kernel that is known to work on hand.</para>
+	    prompt</quote> option, number six.  At the prompt, type
+	    <command>boot <replaceable>kernel.old</replaceable></command>,
+	    or the name of any other kernel that will boot properly.
+	    When reconfiguring a kernel, it is always a good idea to keep
+	    a kernel that is known to work on hand.</para>
 
 	  <para>After booting with a good kernel you can check over your
 	    configuration file and try to build it again.  One helpful
@@ -1384,9 +1455,8 @@ device          fwe           # Ethernet over FireWire (non-standard!)</programl
 	      as &man.ps.1; may not work properly.  To do this, simply
 	      rename the directory containing the good kernel:</para>
 
-	    <screen>&prompt.root; <userinput>mv /boot/kernel /boot/kernel.bad</userinput>
+	    <screen>&prompt.root; <userinput>mv /boot/kernel <replaceable>/boot/kernel.bad</replaceable></userinput>
 &prompt.root; <userinput>mv /boot/<replaceable>kernel.good</replaceable> /boot/kernel</userinput></screen>
-
 
 	  </note>
 	</listitem>
