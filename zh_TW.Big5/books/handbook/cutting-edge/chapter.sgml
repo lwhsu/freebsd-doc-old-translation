@@ -1,11 +1,11 @@
 <!--
-     The FreeBSD Documentation Project
+     The FreeBSD Traditional Chinese Documentation Project
 
      $FreeBSD$
-     Original revision: 1.225
+     Original revision: 1.258
 -->
 
-<chapter id="cutting-edge">
+<chapter id="updating-upgrading">
   <chapterinfo>
     <authorgroup>
       <author>
@@ -15,20 +15,24 @@
       </author>
       <!-- Mar 2000 -->
     </authorgroup>
+
     <authorgroup>
       <author>
 	<firstname>Jordan</firstname>
 	<surname>Hubbard</surname>
 	<contrib>Original work by </contrib>
       </author>
+
       <author>
 	<firstname>Poul-Henning</firstname>
 	<surname>Kamp</surname>
       </author>
+
       <author>
 	<firstname>John</firstname>
 	<surname>Polstra</surname>
       </author>
+
       <author>
 	<firstname>Nik</firstname>
 	<surname>Clayton</surname>
@@ -37,47 +41,1240 @@
     <!-- with feedback from various others -->
   </chapterinfo>
 
-  <title>更新、升級 FreeBSD</title>
+  <title>更新、升級 &os;</title>
 
-  <sect1 id="cutting-edge-synopsis">
+  <sect1 id="updating-upgrading-synopsis">
     <title>概述</title>
 
-    <para>&os; 是個持續發展的作業系統。對於喜歡追求新鮮、刺激的使用者而言，
-      有很多方法可以使您的系統輕鬆更新為最新版。
-      注意：並非每個人都適合這麼做！　本章主要是協助您決定到底要跟開發版本，
+    <para>&os; 在每次釋出 (release) 前仍持續發展。有些人喜歡用官方釋出版，
+      也有人想一直用最新的開發版。不過即使是官方釋出
+      也常有安全方面及嚴重的修正更新。無論是用哪個版本，&os;
+      提供所有保持系統更新、輕鬆升級版本的必要工具。
+      本章將協助您決定到底要跟開發版本，
       或是要使用較穩定的釋出版。
-      </para>
+      The basic tools for keeping your system up to date are
+      also presented.</para>
 
     <para>讀完這章，您將了解︰</para>
 
     <itemizedlist>
-      <listitem><para>&os.stable; 與 &os.current;　這兩分支的不同之處；</para>
+      <listitem>
+	<para>What utilities may be used to update the system and
+	  the Ports Collection.</para>
       </listitem>
-      <listitem><para>如何以 
-	  <application>CSup</application>,
-	  <application>CVSup</application>,
+
+      <listitem>
+	<para>如何以
+	  <application>freebsd-update</application>、
+	  <application>CVSup</application>、
 	  <application>CVS</application> 或
-	  <application>CTM</application> 來更新你的系統</para>
+	  <application>CTM</application> 來更新你的系統。</para>
       </listitem>
+
+      <listitem>
+	<para>How to compare the state of an installed system against
+	  a known pristine copy.</para>
+      </listitem>
+
+      <listitem>
+	<para>How to keep your documentation up to date with
+	  <application>CVSup</application> or documentation ports<!--, and
+	  <application>Docsnap</application>-->.</para>
+      </listitem>
+
+      <listitem>
+	<para>&os.stable; 與 &os.current;　這兩分支的不同之處；</para>
+      </listitem>
+
       <listitem><para>如何以 <command>make buildworld</command> 
       等指令來重新編譯、安裝整個 base system。</para>
       </listitem>
-
     </itemizedlist>
 
-    <para>在開始閱讀這章之前，您需要︰</para>
+    <para>在閱讀這章之前，您需要︰</para>
 
     <itemizedlist>
-      <listitem><para>先設好你的網路(<xref linkend="advanced-networking">)。
-	</para>
+      <listitem>
+	<para>先設好你的網路 (<xref
+	  linkend="advanced-networking">)。</para>
       </listitem>
-      <listitem><para>知道如何透過 port/package 安裝軟體(<xref 
-	linkend="ports">)。</para></listitem>
+
+      <listitem>
+	<para>知道如何透過 port/package 安裝軟體(<xref 
+	  linkend="ports">)。</para>
+      </listitem>
     </itemizedlist>
+
+    <note>
+      <para>Throughout this chapter, the <command>cvsup</command> command is
+	used to obtain and update &os; sources.  To use it, you will need to
+	install the port or the package for <filename
+	role="package">net/cvsup</filename> (if you do not want to install
+	the graphical <command>cvsup</command> client, you can just install
+	the port <filename>net/cvsup-without-gui</filename>).
+	You may wish to substitute this
+	with &man.csup.1;, which is part of the base system.</para>
+    </note>
+  </sect1>
+
+  <sect1 id="updating-upgrading-freebsdupdate">
+    <sect1info>
+      <authorgroup>
+	<author>
+	  <firstname>Tom</firstname>
+	  <surname>Rhodes</surname>
+	  <contrib>Written by </contrib>
+	</author>
+      </authorgroup>
+      <authorgroup>
+	<author>
+	  <firstname>Colin</firstname>
+	  <surname>Percival</surname>
+	  <contrib>Based on notes provided by </contrib>
+	</author>
+      </authorgroup>
+    </sect1info>
+    <title>FreeBSD Update</title>
+
+    <indexterm><primary>Updating and Upgrading</primary></indexterm>
+    <indexterm>
+      <primary>freebsd-update</primary>
+      <see>updating-upgrading</see>
+    </indexterm>
+
+    <para>Applying security patches is an important part of maintaining
+      computer software, especially the operating system.  For the
+      longest time on &os; this process was not an easy one.  Patches
+      had to be applied to the source code, the code rebuilt into
+      binaries, and then the binaries had to be re-installed.</para>
+
+    <para>This is no longer the case as &os; now includes a utility
+      simply called <command>freebsd-update</command>.  This utility
+      provides two separate functions.  First, it allows for binary
+      security and errata updates to be applied to the &os; base system
+      without the build and install requirements.  Second, the utility
+      supports minor and major release upgrades.</para>
+
+    <note>
+      <para>Binary updates are available for all architectures and
+	releases currently supported by the security team.
+	Before updating to a new release, the current
+	release announcements should be reviewed as they may contain
+	important information pertinent to the desired release.  These
+	announcements may be viewed at the following link:
+	<ulink url="http://www.FreeBSD.org/releases/"></ulink>.</para>
+    </note>
+
+    <para>If a <command>crontab</command> utilizing the features
+      of <command>freebsd-update</command> exists, it must be
+      disabled before the following operation is started.</para>
+
+    <sect2 id="freebsdupdate-config-file">
+      <title>The Configuration File</title>
+
+      <para>Some users may wish to tweak the default configuration file
+	in <filename>/etc/freebsd-update.conf</filename>,
+	allowing better control of the process.  The options are
+	very well documented, but the following few may require a
+	bit more explanation:</para>
+
+      <programlisting># Components of the base system which should be kept updated.
+Components src world kernel</programlisting>
+
+      <para>This parameter controls what parts of &os; will be kept
+	up to date.  The default is to update the source code, the
+	entire base system, and the kernel.  Components are the
+	same as those available during the install, for instance,
+	adding <literal>world/games</literal> here would allow game patches to be
+	applied.  Using <literal>src/bin</literal> would allow the source code in
+	<filename class="directory">src/bin</filename> to be
+	updated.</para>
+
+      <para>The best option is to leave this at the default as
+	changing it to include specific items will require the user
+	to list every item they prefer to be updated.  This could
+	have disastrous consequences as source code and binaries may
+	become out of sync.</para>
+
+      <programlisting># Paths which start with anything matching an entry in an IgnorePaths
+# statement will be ignored.
+IgnorePaths</programlisting>
+
+      <para>Add paths, such as
+	<filename class="directory">/bin</filename> or
+	<filename class="directory">/sbin</filename> to leave these
+	specific directories untouched during the update
+	process.  This option may be used to prevent
+	<command>freebsd-update</command> from overwriting local
+	modifications.</para>
+
+      <programlisting># Paths which start with anything matching an entry in an UpdateIfUnmodified
+# statement will only be updated if the contents of the file have not been
+# modified by the user (unless changes are merged; see below).
+UpdateIfUnmodified /etc/ /var/ /root/ /.cshrc /.profile</programlisting>
+
+      <para>Update configuration files in the specified directories
+	only if they have not been modified.  Any changes made by the
+	user will invalidate the automatic updating of these files.
+	There is another option,
+	<literal>KeepModifiedMetadata</literal>, which will instruct
+	<command>freebsd-update</command> to save the changes during
+	the merge.</para>
+
+      <programlisting># When upgrading to a new &os; release, files which match MergeChanges
+# will have any local changes merged into the version from the new release.
+MergeChanges /etc/ /var/named/etc/</programlisting>
+
+      <para>List of directories with configuration files that
+	<command>freebsd-update</command> should attempt merges in.
+	The file merge process is a series of &man.diff.1; patches
+	similar to &man.mergemaster.8; with fewer options, the merges
+	are either accepted, open an editor, or
+	<command>freebsd-update</command> will abort.  When in doubt,
+	backup <filename class="directory">/etc</filename> and just
+	accept the merges. See <xref linkend="mergemaster"> for more
+	information about the <command>mergemaster</command>
+	command.</para>
+
+      <programlisting># Directory in which to store downloaded updates and temporary
+# files used by &os; Update.
+# WorkDir /var/db/freebsd-update</programlisting>
+
+      <para>This directory is where all patches and temporary
+	files will be placed.  In cases where the user is doing
+	a version upgrade, this location should have a least a
+	gigabyte of disk space available.</para>
+
+      <programlisting># When upgrading between releases, should the list of Components be
+# read strictly (StrictComponents yes) or merely as a list of components
+# which *might* be installed of which &os; Update should figure out
+# which actually are installed and upgrade those (StrictComponents no)?
+# StrictComponents no</programlisting>
+
+      <para>When set to <literal>yes</literal>,
+	<command>freebsd-update</command> will assume that the
+	<literal>Components</literal> list is complete and will not
+	attempt to make changes outside of the list.  Effectively,
+	<command>freebsd-update</command> will attempt to update
+	every file which belongs to the <literal>Components</literal>
+	list.</para>
+    </sect2>
+
+    <sect2 id="freebsdupdate-security-patches">
+      <title>Security Patches</title>
+
+      <para>Security patches are stored on a remote machine and
+	may be downloaded and installed using the following
+	command:</para>
+
+      <screen>&prompt.root; <userinput>freebsd-update fetch</userinput>
+&prompt.root; <userinput>freebsd-update install</userinput></screen>
+
+      <para>If any kernel patches have been applied the system will
+	need a reboot.  If all went well the system should be patched
+	and <command>freebsd-update</command> may be run as a nightly
+	&man.cron.8; job.  An entry in <filename>/etc/crontab</filename>
+	would be sufficient to accomplish this task:</para>
+
+      <programlisting>@daily                                  root    freebsd-update cron</programlisting>
+
+      <para>This entry states that once every day, the
+	<command>freebsd-update</command> utility will be run.  In this way,
+	using the <option>cron</option> argument,
+	<command>freebsd-update</command> will only check if updates
+	exist.  If patches exist, they will automatically be downloaded
+	to the local disk but not applied.  The
+	<username>root</username> user will be sent an email so they
+	may install them manually.</para>
+
+      <para>If anything went wrong, <command>freebsd-update</command>
+	has the ability to roll back the last set of changes with
+	the following command:</para>
+
+      <screen>&prompt.root; <userinput>freebsd-update rollback</userinput></screen>
+
+      <para>Once complete, the system should be restarted if the kernel
+	or any kernel modules were modified.  This will allow &os; to
+	load the new binaries into memory.</para>
+
+      <para>The <command>freebsd-update</command> utility can
+	automatically update the <filename>GENERIC</filename> kernel only.
+	If a custom kernel is in use, it will have to be rebuilt and
+	reinstalled after <command>freebsd-update</command> finishes
+	installing the rest of the updates.  However,
+	<command>freebsd-update</command> will detect and update the
+	<filename>GENERIC</filename> kernel in <filename
+	  class="directory">/boot/GENERIC</filename> (if it exists), even if
+	it is not the current (running) kernel of the system.</para>
+
+      <note>
+	<para>It is a good idea to always keep a copy of the
+	  <filename>GENERIC</filename> kernel in <filename
+	    class="directory">/boot/GENERIC</filename>.  It will be helpful
+	  in diagnosing a variety of problems, and in performing version
+	  upgrades using <command>freebsd-update</command> as described in
+	  <xref linkend="freebsdupdate-upgrade">.</para>
+      </note>
+
+      <para>Unless the default configuration in
+	<filename>/etc/freebsd-update.conf</filename> has been changed,
+	<command>freebsd-update</command> will install the updated kernel
+	sources along with the rest of the updates.  Rebuilding and
+	reinstalling your new custom kernel can then be performed in the usual
+	way.</para>
+
+      <note>
+	<para>The updates distributed via <command>freebsd-update</command>,
+	  do not always involve the kernel.  It will not be necessary to
+	  rebuild your custom kernel if the kernel sources have not been
+	  modified by the execution of
+	  <command>freebsd-update install</command>.  However,
+	  <command>freebsd-update</command> will always update the
+	  <filename>/usr/src/sys/conf/newvers.sh</filename> file.  The current
+	  patch level (as indicated by the <literal>-p</literal> number
+	  reported by <command>uname -r</command>) is
+	  obtained from this file.  Rebuilding your custom kernel, even if
+	  nothing else changed, will allow &man.uname.1; to accurately report
+	  the current patch level of the system.  This is particularly
+	  helpful when maintaining multiple systems, as it allows for a quick
+	  assessment of the updates installed in each one.</para>
+      </note>
+    </sect2>
+
+    <sect2 id="freebsdupdate-upgrade">
+      <title>Major and Minor Upgrades</title>
+
+      <para>This process will remove old object files and
+	libraries which will break most third party applications.
+	It is recommended that all installed ports either be removed
+	and re-installed or upgraded later using the
+	<filename role="package">ports-mgmt/portupgrade</filename>
+	utility.  Most users will want to run a test build using
+	the following command:</para>
+
+      <screen>&prompt.root; <userinput>portupgrade -af</userinput></screen>
+
+      <para>This will ensure everything will be re-installed
+	correctly.  Note that setting the
+	<makevar>BATCH</makevar> environment variable to
+	<literal>yes</literal> will answer <literal>yes</literal> to
+	any prompts during this process, removing the need for
+	manual intervention during the build process.</para>
+
+      <para>If a custom kernel is in use, the upgrade process is slightly
+	more involved.  A copy of the <filename>GENERIC</filename> kernel is
+	needed, and it should be placed in <filename
+	  class="directory">/boot/GENERIC</filename>.  If the
+	<filename>GENERIC</filename> kernel is not already present in the
+	system, it may be obtained using one of the following methods:</para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>If a custom kernel has only been built once, the kernel in
+	    <filename class="directory">/boot/kernel.old</filename> is
+	    actually the <filename>GENERIC</filename> one.  Simply rename this
+	    directory to
+	    <filename class="directory">/boot/GENERIC</filename>.</para>
+	</listitem>
+
+	<listitem>
+	  <para>Assuming physical access to the machine is possible, a copy
+	    of the <filename>GENERIC</filename> kernel can be installed from
+	    the CD-ROM media.  Insert your installation disc and use the
+	    following commands:</para>
+
+	  <screen>&prompt.root; <userinput>mount /cdrom</userinput>
+&prompt.root; <userinput>cd /cdrom/<replaceable>X.Y-RELEASE</replaceable>/kernels</userinput>
+&prompt.root; <userinput>./install.sh GENERIC</userinput></screen>
+
+	  <para>Replace <filename
+	      class="directory"><replaceable>X.Y-RELEASE</replaceable></filename>
+	    with the actual version of the release you are using.  The
+	    <filename>GENERIC</filename> kernel will be installed in <filename
+	      class="directory">/boot/GENERIC</filename> by default.</para>
+	</listitem>
+
+	<listitem>
+	  <para>Failing all the above, the <filename>GENERIC</filename> kernel
+	    may be rebuilt and installed from the sources:</para>
+
+	  <screen>&prompt.root; <userinput>cd /usr/src</userinput>
+&prompt.root; <userinput>env DESTDIR=/boot/GENERIC make kernel</userinput>
+&prompt.root; <userinput>mv /boot/GENERIC/boot/kernel/* /boot/GENERIC</userinput>
+&prompt.root; <userinput>rm -rf /boot/GENERIC/boot</userinput></screen>
+
+	  <para>For this kernel to be picked up as <filename>GENERIC</filename>
+	    by <command>freebsd-update</command>, the
+	    <filename>GENERIC</filename> configuration file must not have been
+	    modified in any way.  It is also suggested that it is built
+	    without any other special options (preferably with an empty
+	    <filename>/etc/make.conf</filename>).</para>
+	</listitem>
+      </itemizedlist>
+
+      <para>Rebooting to the <filename>GENERIC</filename> kernel is not
+	required at this stage.</para>
+
+      <para>Major and minor version updates may be performed by
+	providing <command>freebsd-update</command> with a release
+	version target, for example, the following command will
+	update to &os;&nbsp;8.1:</para>
+
+      <screen>&prompt.root; <userinput>freebsd-update -r 8.1-RELEASE upgrade</userinput></screen>
+
+      <para>After the command has been received,
+	<command>freebsd-update</command> will evaluate the
+	configuration file and current system in an attempt to gather
+	the information necessary to update the system.  A screen
+	listing will display what components have been detected and
+	what components have not been detected.  For example:</para>
+
+      <screen>Looking up update.FreeBSD.org mirrors... 1 mirrors found.
+Fetching metadata signature for 8.0-RELEASE from update1.FreeBSD.org... done.
+Fetching metadata index... done.
+Inspecting system... done.
+
+The following components of FreeBSD seem to be installed:
+kernel/smp src/base src/bin src/contrib src/crypto src/etc src/games
+src/gnu src/include src/krb5 src/lib src/libexec src/release src/rescue
+src/sbin src/secure src/share src/sys src/tools src/ubin src/usbin
+world/base world/info world/lib32 world/manpages
+
+The following components of FreeBSD do not seem to be installed:
+kernel/generic world/catpages world/dict world/doc world/games
+world/proflibs
+
+Does this look reasonable (y/n)? y</screen>
+
+      <para>At this point, <command>freebsd-update</command> will
+	attempt to download all files required for the upgrade.  In
+	some cases, the user may be prompted with questions regarding
+	what to install or how to proceed.</para>
+
+      <para>When using a custom kernel, the above step will produce a warning
+	similar to the following:</para>
+
+      <screen>WARNING: This system is running a "<replaceable>MYKERNEL</replaceable>" kernel, which is not a
+kernel configuration distributed as part of FreeBSD 8.0-RELEASE.
+This kernel will not be updated: you MUST update the kernel manually
+before running "/usr/sbin/freebsd-update install"</screen>
+
+      <para>This warning may be safely ignored at this point.  The updated
+	<filename>GENERIC</filename> kernel will be used as an intermediate
+	step in the upgrade process.</para>
+
+      <para>After all patches have been downloaded to the local
+	system, they will then be applied.  This process may take
+	a while depending on the speed and workload of the machine.
+	Configuration files will then be merged&nbsp;&mdash; this part
+	of the process requires some user intervention as a file may be
+	merged or an editor may appear on screen for a manual merge.
+	The results of every successful merge will be shown to the user
+	as the process continues.  A failed or ignored merge will cause
+	the process to abort.  Users may wish to make a backup of
+	<filename class="directory">/etc</filename> and manually merge
+	important files, such as <filename>master.passwd</filename>
+	or <filename>group</filename> at a later time.</para>
+
+      <note>
+	<para>The system is not being altered yet, all patching and
+	  merging is happening in another directory.  When all
+	  patches have been applied successfully, all configuration
+	  files have been merged and it seems the process will go
+	  smoothly, the changes will need to be committed by the
+	  user.</para>
+      </note>
+
+      <para>Once this process is complete, the upgrade may be committed
+	to disk using the following command.</para>
+
+      <screen>&prompt.root; <userinput>freebsd-update install</userinput></screen>
+
+      <para>The kernel and kernel modules will be patched first.  At
+	this point the  machine must be rebooted.  If the system was running
+	with a custom kernel, use the &man.nextboot.8; command to set the
+	kernel for the next boot to <filename
+	  class="directory">/boot/GENERIC</filename> (which was
+	updated):</para>
+
+      <screen>&prompt.root; <userinput>nextboot -k GENERIC</userinput></screen>
+
+      <warning>
+	<para>Before rebooting with the <filename>GENERIC</filename> kernel,
+	  make sure it contains all drivers required for your system to boot
+	  properly (and connect to the network, if the machine that is being
+	  updated is accessed remotely).  In particular, if the previously
+	  running custom kernel contained built-in functionality usually
+	  provided by kernel modules, make sure to temporarily load these
+	  modules into the <filename>GENERIC</filename> kernel using the
+	  <filename>/boot/loader.conf</filename> facility.  You may also wish
+	  to disable non-essential services, disk and network mounts, etc.
+	  until the upgrade process is complete.</para>
+      </warning>
+
+      <para>The machine should now be restarted with the updated kernel:</para>
+
+      <screen>&prompt.root; <userinput>shutdown -r now</userinput></screen>
+
+      <para>Once the system has come back online,
+	<command>freebsd-update</command> will need to be started
+	again.  The state of the process has been saved and thus,
+	<command>freebsd-update</command> will not start from the
+	beginning, but will remove all old shared libraries and object
+	files.  To continue to this stage, issue the following
+	command:</para>
+
+      <screen>&prompt.root; <userinput>freebsd-update install</userinput></screen>
+
+      <note>
+	<para>Depending on whether any libraries version numbers got
+	  bumped, there may only be two install phases instead of
+	  three.</para>
+      </note>
+
+      <para>All third party software will now need to be rebuilt and
+	re-installed.  This is required as installed software may
+	depend on libraries which have been removed during the upgrade
+	process.  The
+	<filename role="package">ports-mgmt/portupgrade</filename>
+	command may be used to automate this process.  The following
+	commands may be used to begin this process:</para>
+
+      <screen>&prompt.root; <userinput>portupgrade -f ruby</userinput>
+&prompt.root; <userinput>rm /var/db/pkg/pkgdb.db</userinput>
+&prompt.root; <userinput>portupgrade -f ruby18-bdb</userinput>
+&prompt.root; <userinput>rm /var/db/pkg/pkgdb.db /usr/ports/INDEX-*.db</userinput>
+&prompt.root; <userinput>portupgrade -af</userinput></screen>
+
+      <para>Once this has completed, finish the upgrade process with a
+	final call to <command>freebsd-update</command>.  Issue the
+	following command to tie up all loose ends in the upgrade
+	process:</para>
+
+      <screen>&prompt.root; <userinput>freebsd-update install</userinput></screen>
+
+      <para>If the <filename>GENERIC</filename> kernel was temporarily used,
+	this is the time to build and install a new custom kernel in the
+	usual way.</para>
+
+      <para>Reboot the machine into the new &os; version.  The process
+	is complete.</para>
+    </sect2>
+
+    <sect2 id="freebsdupdate-system-comparison">
+      <title>System State Comparison</title>
+
+      <para>The <command>freebsd-update</command> utility may be used
+	to test the state of the installed &os; version against a
+	known good copy.  This option evaluates the current version
+	of system utilities, libraries, and configuration files.
+	To begin the comparison, issue the following command:</para>
+
+      <screen>&prompt.root; <userinput>freebsd-update IDS &gt;&gt; outfile.ids</userinput></screen>
+
+      <warning>
+	<para>While the command name is <acronym>IDS</acronym> it should
+	  in no way be a replacement for an intrusion detection system
+	  such as <filename role="package">security/snort</filename>.
+	  As <command>freebsd-update</command> stores data on disk, the
+	  possibility of tampering is evident.  While this possibility
+	  may be reduced by using the
+	  <varname>kern.securelevel</varname> setting and storing the
+	  <command>freebsd-update</command> data on a read only file
+	  system when not in use, a better solution would be to
+	  compare the system against a secure disk, such as a
+	  <acronym>DVD</acronym> or securely stored external
+	  <acronym>USB</acronym> disk device.</para>
+      </warning>
+
+      <para>The system will now be inspected, and a list of files
+	along with their &man.sha256.1; hash values, both the known value
+	in the release and the current installed value, will be printed.  This is why
+	the output has been sent to the
+	<filename>outfile.ids</filename> file.  It scrolls by too
+	quickly for eye comparisons, and soon it fills up the console
+	buffer.</para>
+
+      <para>These lines are also extremely long, but the output format
+	may be parsed quite easily.  For instance, to obtain a list of
+	all files different from those in the release, issue the
+	following command:</para>
+
+      <screen>&prompt.root; <userinput>cat outfile.ids | awk '{ print $1 }' | more</userinput>
+/etc/master.passwd
+/etc/motd
+/etc/passwd
+/etc/pf.conf</screen>
+
+      <para>This output has been truncated, many more files exist.
+	Some of these files have natural modifications, the
+	<filename>/etc/passwd</filename> has been modified because
+	users have been added to the system.  In some cases, there
+	may be other files, such as kernel modules, which differ
+	as <command>freebsd-update</command> may have updated them.
+	To exclude specific files or directories, add them to the
+	<literal>IDSIgnorePaths</literal> option in
+	<filename>/etc/freebsd-update.conf</filename>.</para>
+
+      <para>This system may be used as part of an elaborate upgrade
+	method, aside from the previously discussed version.</para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="updating-upgrading-portsnap">
+    <sect1info>
+      <authorgroup>
+	<author>
+	  <firstname>Tom</firstname>
+	  <surname>Rhodes</surname>
+	  <contrib>Written by </contrib>
+	</author>
+      </authorgroup>
+      <authorgroup>
+	<author>
+	  <firstname>Colin</firstname>
+	  <surname>Percival</surname>
+	  <contrib>Based on notes provided by </contrib>
+	</author>
+      </authorgroup>
+    </sect1info>
+    <title>Portsnap: A Ports Collection Update Tool</title>
+
+    <indexterm><primary>Updating and Upgrading</primary></indexterm>
+    <indexterm>
+      <primary>Portsnap</primary>
+      <see>Updating and Upgrading</see>
+    </indexterm>
+
+    <para>The base system of &os; includes a utility for updating
+      the Ports Collection too: the &man.portsnap.8; utility.  Upon
+      execution, it will connect to a remote site, verify the secure
+      key, and download a new copy of the Ports Collection.  The key
+      is used to verify the integrity of all downloaded files, ensuring
+      they have not been modified in-flight.  To download the latest
+      Ports Collection files, issue the following command:</para>
+
+    <screen>&prompt.root; <userinput>portsnap fetch</userinput>
+Looking up portsnap.FreeBSD.org mirrors... 3 mirrors found.
+Fetching snapshot tag from portsnap1.FreeBSD.org... done.
+Fetching snapshot metadata... done.
+Updating from Wed Aug  6 18:00:22 EDT 2008 to Sat Aug 30 20:24:11 EDT 2008.
+Fetching 3 metadata patches.. done.
+Applying metadata patches... done.
+Fetching 3 metadata files... done.
+Fetching 90 patches.....10....20....30....40....50....60....70....80....90. done.
+Applying patches... done.
+Fetching 133 new ports or files... done.</screen>
+
+    <para>What this example shows is that &man.portsnap.8;
+      has found and verified
+      several patches to the current ports data.  This also indicates
+      that the utility was run previously, if it was a first time
+      run, the collection would have simply been downloaded.</para>
+
+    <para>When &man.portsnap.8; successfully completes
+      a <command>fetch</command> operation, the Ports Collection and
+      subsequent patches exist on the local system that have passed
+      verification.  The first time <command>portsnap</command> is executed,
+      you have to use <literal>extract</literal> to install the
+      downloaded files:</para>
+
+    <screen>&prompt.root; <userinput>portsnap extract</userinput>
+/usr/ports/.cvsignore
+/usr/ports/CHANGES
+/usr/ports/COPYRIGHT
+/usr/ports/GIDs
+/usr/ports/KNOBS
+/usr/ports/LEGAL
+/usr/ports/MOVED
+/usr/ports/Makefile
+/usr/ports/Mk/bsd.apache.mk
+/usr/ports/Mk/bsd.autotools.mk
+/usr/ports/Mk/bsd.cmake.mk
+<replaceable>...</replaceable></screen>
+
+    <para>To update an already installed Ports Collection use the command
+      <command>portsnap update</command>:</para>
+
+    <screen>&prompt.root; <userinput>portsnap update</userinput></screen>
+
+    <para>The process is now complete, and applications may be
+      installed or upgraded using the updated Ports Collection.</para>
+
+    <para>The <literal>fetch</literal> and <literal>extract</literal> or
+      <literal>update</literal> operations may be run consecutively, as
+      shown in the following example:</para>
+
+    <screen>&prompt.root; <userinput>portsnap fetch update</userinput></screen>
+
+    <para>This command will download the latest version of the
+      Ports Collection and update your local version under
+      <filename class="directory">/usr/ports</filename>.</para>
+  </sect1>
+
+  <sect1 id="updating-upgrading-documentation">
+    <title>Updating the Documentation Set</title>
+
+    <indexterm><primary>Updating and Upgrading</primary></indexterm>
+
+    <indexterm>
+      <primary>Documentation</primary>
+      <see>Updating and Upgrading</see>
+    </indexterm>
+
+    <para>Besides the base system and the Ports Collection,
+      documentation is an integral part of the &os; operating system.
+      While an up-to-date version of the &os; Documentation Set is
+      always available on the <ulink
+	url="http://www.freebsd.org/doc/">&os; web site</ulink>, some
+      users might have slow or no permanent network connectivity at all.
+      Fortunately, there are several ways to update the documentation
+      shipped with each release by maintaining a local copy of the
+      latest &os; Documentation Set.</para>
+
+    <sect2 id="csup-doc">
+      <title>Using CVSup to Update the Documentation</title>
+
+      <para>The sources and the installed copy of the &os; documentation
+        can be updated with <application>CVSup</application>, using a
+        mechanism similar to the one employed for the base system
+        sources (c.f. <xref linkend="makeworld">).  This section
+        describes:</para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>How to install the documentation toolchain, the tools
+	    that are required to rebuild the &os; documentation from its
+	    source.</para>
+	</listitem>
+
+	<listitem>
+	  <para>How to download a copy of the documentation source
+	    at <filename class="directory">/usr/doc</filename>,
+	    using <application>CVSup</application>.</para>
+	</listitem>
+
+	<listitem>
+	  <para>How to rebuild the &os; documentation from its source,
+	    and install it
+	    under <filename class="directory">/usr/share/doc</filename>.</para>
+	</listitem>
+
+	<listitem>
+	  <para>Some of the build options that are supported by the
+	    build system of the documentation, i.e., the options that
+	    build only some of the different language translations of
+	    the documentation or the options that select a specific
+	    output format.</para>
+	</listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 id="installing-documentation-toolchain">
+      <title>Installing CVSup and the Documentation Toolchain</title>
+
+      <para>Rebuilding the &os; documentation from source requires a
+	fairly large collection of tools.  These tools are not part of
+	the &os; base system, because they need a large amount of disk
+	space and they are not useful to all &os; users; they are only
+	useful to those users that are actively writing new
+	documentation for &os; or are frequently updating their
+	documentation from source.</para>
+
+      <para>All the required tools are available as part of the Ports
+	Collection.  The <filename
+	  role="package">textproc/docproj</filename> port is a master
+	port that has been developed by the &os; Documentation Project,
+	to ease the initial installation and future updates of these
+	tools.</para>
+
+      <note>
+	<para>When no &postscript; or PDF documentation required, one
+	  might consider installing the <filename
+	    role="package">textproc/docproj-nojadetex</filename> port
+	  instead.  This version of the documentation toolchain includes
+	  everything except the <application>teTeX</application>
+	  typesetting engine.  <application>teTeX</application> is a
+	  very large collection of tools, so it may be quite sensible to
+	  omit its installation if PDF output is not really
+	  necessary.</para>
+      </note>
+
+      <para>For more information on installing and using
+	<application>CVSup</application>, see <link
+	  linkend="cvsup">Using CVSup</link>.</para>
+    </sect2>
+
+    <sect2 id="updating-documentation-sources">
+      <title>Updating the Documentation Sources</title>
+
+      <para>The <application>CVSup</application> utility can fetch a
+	clean copy of the documentation sources, using
+	the <filename>/usr/share/examples/cvsup/doc-supfile</filename>
+	file as a configuration template.  The default update host is
+	set to a placeholder value in <filename>doc-supfile</filename>,
+	but &man.cvsup.1; accepts a host name through the command line,
+	so the documentation sources can be fetched from one of the
+	<application>CVSup</application> servers by typing:</para>
+
+      <screen>&prompt.root; <userinput>cvsup -h <replaceable>cvsup.FreeBSD.org</replaceable> -g -L 2 <filename>/usr/share/examples/cvsup/doc-supfile</filename></userinput></screen>
+
+      <para>Change <replaceable>cvsup.FreeBSD.org</replaceable> to the
+	nearest <application>CVSup</application> server.  See <xref
+	  linkend="cvsup-mirrors"> for a complete listing of mirror
+	sites.</para>
+
+      <para>The initial download of the documentation sources may take a
+	while.  Let it run until it completes.</para>
+
+      <para>Future updates of the documentation sources may be fetched
+	by running the same command.
+	The <application>CVSup</application> utility downloads and
+	copies only the updates since the last time it ran, so every run
+	of <application>CVSup</application> after the first complete run
+	should be pretty fast.</para>
+
+      <para>After checking out the sources, an alternative way of
+	updating the documentation is supported by the
+	<filename>Makefile</filename> of the <filename
+	  class="directory">/usr/doc</filename> directory.  By setting
+	<makevar>SUP_UPDATE</makevar>, <makevar>SUPHOST</makevar> and
+	<makevar>DOCSUPFILE</makevar> in the
+	<filename>/etc/make.conf</filename> file, it is possible to
+	run:</para>
+
+      <screen>&prompt.root; <userinput>cd /usr/doc</userinput>
+&prompt.root; <userinput>make update</userinput></screen>
+
+      <para>A typical set of these &man.make.1; options
+	for <filename>/etc/make.conf</filename> is:</para>
+
+      <programlisting>SUP_UPDATE= yes
+SUPHOST?= cvsup.freebsd.org
+DOCSUPFILE?= /usr/share/examples/cvsup/doc-supfile</programlisting>
+
+      <note>
+	<para>Setting the <makevar>SUPHOST</makevar>
+	  and <makevar>DOCSUPFILE</makevar> value
+	  with <literal>?=</literal> permits overriding them in the
+	  command-line of make.  This is the recommended way of adding
+	  options to <filename>make.conf</filename>, to avoid having to
+	  edit the file every time a different option value has to be
+	  tested.</para>
+      </note>
+    </sect2>
+
+    <sect2 id="updating-documentation-options">
+      <title>Tunable Options of the Documentation Sources</title>
+
+      <para>The updating and build system of the &os; documentation
+	supports a few options that ease the process of updating only
+	parts of the documentation, or the build of specific
+	translations.  These options can be set either as system-wide
+	options in the <filename>/etc/make.conf</filename> file, or as
+	command-line options passed to the &man.make.1; utility.</para>
+
+      <para>The following options are some of these:</para>
+
+      <variablelist>
+	<varlistentry>
+	  <term><makevar>DOC_LANG</makevar></term>
+
+	  <listitem>
+	    <para>The list of languages and encodings to build and
+	      install, e.g., <literal>en_US.ISO8859-1</literal> for the
+	      English documentation only.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><makevar>FORMATS</makevar></term>
+
+	  <listitem>
+	    <para>A single format or a list of output formats to be
+	      built.  Currently, <literal>html</literal>,
+	      <literal>html-split</literal>, <literal>txt</literal>,
+	      <literal>ps</literal>, <literal>pdf</literal>,
+	      and <literal>rtf</literal> are supported.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><makevar>SUPHOST</makevar></term>
+
+	  <listitem>
+	    <para>The hostname of the <application>CVSup</application>
+	      server to use when updating.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><makevar>DOCDIR</makevar></term>
+
+	  <listitem>
+	    <para>Where to install the documentation.  It defaults to
+	      <filename
+		class="directory">/usr/share/doc</filename>.</para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+
+      <para>For more make variables supported as system-wide options in
+	&os;, see &man.make.conf.5;.</para>
+
+      <para>For more make variables supported by the build system of the
+	&os; documentation, please refer to
+	the <ulink url="&url.doc.langbase;/books/fdp-primer">&os;
+	  Documentation Project Primer for New Contributors</ulink>.</para>
+    </sect2>
+
+    <sect2 id="updating-installed-documentation">
+      <title>Installing the &os; Documentation from Source</title>
+
+      <para>When an up-to-date snapshot of the documentation sources has
+	been fetched in <filename class="directory">/usr/doc</filename>,
+	everything is ready for an update of the installed
+	documentation.</para>
+
+      <para>A full update of all the languages defined in
+	the <makevar>DOC_LANG</makevar> makefile option may be done by
+	typing:</para>
+
+      <screen>&prompt.root; <userinput>cd /usr/doc</userinput>
+&prompt.root; <userinput>make install clean</userinput></screen>
+
+      <para>If <filename>make.conf</filename> has been set up with the
+	correct <makevar>DOCSUPFILE</makevar>, <makevar>SUPHOST</makevar>
+	and <makevar>SUP_UPDATE</makevar> options, the install step may
+	be combined with an update of the documentation sources by
+	typing:</para>
+
+      <screen>&prompt.root; <userinput>cd /usr/doc</userinput>
+&prompt.root; <userinput>make update install clean</userinput></screen>
+
+      <para>If an update of only a specific language is desired,
+	&man.make.1; can be invoked in a language specific subdirectory
+	of <filename class="directory">/usr/doc</filename>, i.e.:</para>
+
+      <screen>&prompt.root; <userinput>cd /usr/doc/en_US.ISO8859-1</userinput>
+&prompt.root; <userinput>make update install clean</userinput></screen>
+
+      <para>The output formats that will be installed may be specified
+	by setting the <makevar>FORMATS</makevar> make variable,
+	i.e.:</para>
+
+      <screen>&prompt.root; <userinput>cd /usr/doc</userinput>
+&prompt.root; <userinput>make FORMATS='html html-split' install clean</userinput></screen>
+    </sect2>
+
+    <sect2 id="doc-ports">
+      <sect2info>
+	<authorgroup>
+	  <author>
+	    <firstname>Marc</firstname>
+	    <surname>Fonvieille</surname>
+	    <contrib>Based on the work of </contrib>
+	  </author>
+	</authorgroup>
+      </sect2info>
+
+      <title>Using Documentation Ports</title>
+
+      <indexterm><primary>Updating and Upgrading</primary></indexterm>
+
+      <indexterm>
+	<primary>documentation package</primary>
+	<see>Updating and Upgrading</see>
+      </indexterm>
+
+      <para>In the previous section, we have presented a method for
+	updating the &os; documentation from sources.  Source based
+	updates may not be feasible or practical for all &os; systems
+	though.  Building the documentation sources requires a fairly
+	large collection of tools and utilities, the
+	<emphasis>documentation toolchain</emphasis>, a certain level of
+	familiarity with <application>CVS</application> and source
+	checkouts from a repository, and a few manual steps to build the
+	checked out sources.  In this section, we describe an
+	alternative way of updating the installed copies of the &os;
+	documentation; one that uses the Ports&nbsp;Collection and makes
+	it possible to:</para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>Download and install pre-built snaphots of the
+	    documentation, without having to locally build anything
+	    (eliminating this way the need for an installation of the
+	    entire documentation toolchain).</para>
+	</listitem>
+
+	<listitem>
+	  <para>Download the documentation sources and build them
+	    through the ports framework (making the checkout and build
+	    steps a bit eaiser).</para>
+	</listitem>
+      </itemizedlist>
+
+      <para>These two methods of updating the &os; documentation are
+	supported by a set of <emphasis>documentation ports</emphasis>,
+	updated by the &a.doceng; on a monthly basis.  These are listed
+	in the &os; Ports&nbsp;Collection, under the virtual category
+	named <ulink
+	  url="http://www.freshports.org/docs/">docs</ulink>.</para>
+
+      <sect3 id="doc-ports-install-make">
+	<title>Building and Installing Documentation Ports</title>
+
+	<para>The documentation ports use the ports building framework
+	  to make documentation builds easier.  They automate the
+	  process of checking out the documentation source, running
+	  &man.make.1; with the appropriate environment settings and
+	  command-line options, and they make the installation or
+	  deinstallation of documentation as easy as the installation of
+	  any other &os; port or package.</para>
+
+	<note>
+	  <para>As an extra feature, when the documentation ports are
+	    built locally, they record a dependency to the
+	    <emphasis>documentation toolchain</emphasis> ports, so the
+	    latter is automatically installed too.</para>
+	</note>
+
+	<para>Organization of the documentation ports is as follows:</para>
+
+	<itemizedlist>
+	  <listitem>
+	    <para>There is a <quote>master port</quote>, <filename
+		role="package">misc/freebsd-doc-en</filename>, where the
+	      documentation port files can be found.  It is the base of
+	      all documentation ports.  By default, it builds the
+	      English documentation only.</para>
+	  </listitem>
+
+	  <listitem>
+	    <para>There is an <quote>all in one port</quote>, <filename
+		role="package">misc/freebsd-doc-all</filename>, and it
+	      builds and installs all documentation in all available
+	      languages.</para>
+	  </listitem>
+
+	  <listitem>
+	    <para>Finally, there is a <quote>slave port</quote> for
+	      each translation, e.g.: <filename
+		role="package">misc/freebsd-doc-hu</filename> for the
+	      Hungarian-language documents.  All of them depend on the
+	      master port and install the translated documentation of
+	      the respective language.</para>
+	  </listitem>
+	</itemizedlist>
+
+	<para>To install a documentation port from source, issue the
+	  following commands (as <username>root</username>):</para>
+
+	<screen>&prompt.root; <userinput>cd /usr/ports/misc/freebsd-doc-en</userinput>
+&prompt.root; <userinput>make install clean</userinput></screen>
+
+	<para>This will build and install the English documentation in
+	  split <acronym>HTML</acronym> format (the same as used on <ulink
+	    url="http://www.FreeBSD.org"></ulink>) in the <filename
+	    class="directory">/usr/local/share/doc/freebsd</filename>
+	  directory.</para>
+
+	<sect4 id="doc-ports-options">
+	  <title>Common Knobs and Options</title>
+
+	  <para>There are many options for modifying the default
+	    behavior of the documentation ports.  The following is just
+	    a short list:</para>
+
+	  <variablelist>
+	    <varlistentry>
+	      <term><makevar>WITH_HTML</makevar></term>
+
+	      <listitem>
+		<para>Allows the build of the HTML format: a single HTML
+		  file per document.  The formatted documentation is
+		  saved to a file called
+		  <filename>article.html</filename>, or
+		  <filename>book.html</filename>, as appropriate, plus
+		  images.</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><makevar>WITH_PDF</makevar></term>
+
+	      <listitem>
+		<para>Allows the build of the &adobe; Portable Document
+		  Format, for use with &adobe; &acrobat.reader;,
+		  <application>Ghostscript</application> or other PDF
+		  readers.  The formatted documentation is saved to a
+		  file called <filename>article.pdf</filename> or
+		  <filename>book.pdf</filename>, as appropriate.</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><makevar>DOCBASE</makevar></term>
+
+	      <listitem>
+		<para>Where to install the documentation.  It defaults
+		  to <filename
+		    class="directory">/usr/local/share/doc/freebsd</filename>.</para>
+
+		<note>
+		  <para>Notice that the default target directory
+		    differs from the directory used by the
+		    <application>CVSup</application> method.  This is
+		    because we are installing a port, and ports are
+		    usually installed under the <filename
+		      class="directory">/usr/local</filename> directory.
+		    This can be overridden by adding the
+		    <makevar>PREFIX</makevar> variable.</para>
+		</note>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+
+	  <para>Here is a brief example on how to use the variables
+	    mentioned above to install the Hungarian documentation in
+	    Portable Document Format:</para>
+
+	  <screen>&prompt.root; cd /usr/ports/misc/freebsd-doc-hu
+&prompt.root; make -DWITH_PDF DOCBASE=share/doc/freebsd/hu install clean</screen>
+	</sect4>
+      </sect3>
+
+      <sect3 id="doc-ports-install-package">
+	<title>Using Documentation Packages</title>
+
+	<para>Building the documentation ports from source, as described
+	  in the previous section, requires a local installation of the
+	  documentation toolchain and a bit of disk space for the build
+	  of the ports.  When resources are not available to install the
+	  documentation toolchain, or because the build from sources
+	  would take too much disk space, it is still possible to
+	  install pre-built snapshots of the documentation ports.</para>
+
+	<para>The &a.doceng; prepares monthly snapshots of the &os;
+	  documentation packages.  These binary packages can be used
+	  with any of the bundled package tools, like &man.pkg.add.1;,
+	  &man.pkg.delete.1;, and so on.</para>
+
+	<note>
+	  <para>When binary packages are used, the &os; documentation
+	    will be installed in <emphasis>all</emphasis> available
+	    formats for the given language.</para>
+	</note>
+
+	<para>For example, the following command will install the latest
+	  pre-built package of the Hungarian documentation:</para>
+
+	<screen>&prompt.root; <userinput>pkg_add -r hu-freebsd-doc</userinput></screen>
+
+	<note>
+	  <para>Packages have the following name format that differs
+	    from the corresponding port's name:
+	    <literal><replaceable>lang</replaceable>-freebsd-doc</literal>.
+	    Here <replaceable>lang</replaceable> is the short format of
+	    the language code, i.e., <literal>hu</literal> for
+	    Hungarian, or <literal>zh_cn</literal> for Simplified
+	    Chinese.</para>
+	</note>
+      </sect3>
+
+      <sect3 id="doc-ports-update">
+	<title>Updating Documentation Ports</title>
+
+	<para>To update a previously installed documentation port, any
+	  tool suitable for updating ports is sufficient.  For example,
+	  the following command updates the installed Hungarian
+	  documentation via the <filename
+	    role="package">ports-mgmt/portupgrade</filename> tool by
+	  using packages only:</para>
+
+	<screen>&prompt.root; <userinput>portupgrade -PP hu-freebsd-doc</userinput></screen>
+      </sect3>
+    </sect2>
+
+<!-- FIXME: Waiting for a working docsnap server... -->
+<![ IGNORE [
+    <sect2 id="docsnap">
+      <sect2info>
+	<authorgroup>
+	  <author>
+	    <firstname>Pav</firstname>
+	    <surname>Lucistnik</surname>
+	    <contrib>Based on information provided by </contrib>
+	  </author>
+	</authorgroup>
+      </sect2info>
+
+      <title>Using Docsnap</title>
+
+      <indexterm><primary>Updating and Upgrading</primary></indexterm>
+
+      <indexterm>
+	<primary>Docsnap</primary>
+	<see>Updating and Upgrading</see>
+      </indexterm>
+
+      <para><application>Docsnap</application> is an &man.rsync.1;
+	repository for updating installed &os; Documentation in a
+	relatively easy and fast way.  A
+	<quote><application>Docsnap</application> server</quote> tracks
+	the documentation sources, and builds them in HTML format every
+	hour.  The <filename role="package">textproc/docproj</filename>
+	is unneeded with <application>Docsnap</application> as only
+	patches to the built documentation exist.</para>
+
+      <para>The only requirement for using this technique is
+	the <filename role="package">net/rsync</filename> port or
+	package.  To add it, use the following command:</para>
+
+      <screen>&prompt.root; <userinput>pkg_add -r rsync</userinput></screen>
+
+      <note>
+	<para><application>Docsnap</application> has been originally
+	  developed for updating documentation installed
+	  to <filename class="directory">/usr/share/doc</filename>, but
+	  the following examples could be adapted for other directories
+	  as well.  For user directories, it does not require
+	  <username>root</username> privileges.</para>
+      </note>
+
+      <para>To update the documentation set, issue the following
+	command:</para>
+
+      <screen>&prompt.root; <userinput>rsync -rltvz <replaceable>docsnap.sk.FreeBSD.org</replaceable>::docsnap <replaceable>/usr/share/doc</replaceable></userinput></screen>
+
+      <note>
+	<para>There is only one <application>Docsnap</application>
+	  server at the moment;
+	  the <hostid>docsnap.sk.FreeBSD.org</hostid> shown
+	  above.</para>
+      </note>
+
+      <para>Do not use the <option>--delete</option> flag here as there
+	are some items installed
+	into <filename class="directory">/usr/share/doc</filename>
+	during <command>make installworld</command>, which would
+	accidentally be removed.  To clean up, use this command
+	instead:</para>
+
+      <screen>&prompt.root; <userinput>rsync -rltvz --delete <replaceable>docsnap.sk.FreeBSD.org</replaceable>::docsnap/??_??\.\* <replaceable>/usr/share/doc</replaceable></userinput></screen>
+
+      <para>If a subset of documentation needs to be updated, for
+	example, the English documentation only, the following command
+	should be used:</para>
+
+      <screen>&prompt.root; <userinput>rsync -rltvz <replaceable>docsnap.sk.FreeBSD.org</replaceable>::docsnap/en_US.ISO8859-1 <replaceable>/usr/share/doc</replaceable></userinput></screen>
+    </sect2>
+]]>
   </sect1>
   
   <sect1 id="current-stable">
-    <title>&os.current; vs. &os.stable;</title>
+    <title>Tracking a Development Branch</title>
     <indexterm><primary>-CURRENT</primary></indexterm>
     <indexterm><primary>-STABLE</primary></indexterm>
 
@@ -90,8 +1287,8 @@
 
       <para>這裡再次強調，&os.current; 是 &os; 開發的 <quote>最前線</quote>。
 	&os.current; 使用者須有較強的技術能力，
-	而且應該要有能力自己解決困難的系統問題。  若您是 &os; 新手，
-	那麼請在安裝前最好先三思。</para>
+	而且應該要有能力自己解決困難的系統問題。若您是 &os; 新手，
+	安裝前請三思。</para>
 
       <sect3>
 	<title>什麼是 &os.current;？</title>
@@ -126,8 +1323,8 @@
 	  </listitem>
 
 	  <listitem>
-	    <para>只是關心或者想參考(比如，只是<emphasis>閱讀</emphasis>，
-	      而非執行)的人。
+	    <para>只是關心或者想參考 (例如只是<emphasis>閱讀</emphasis>
+	      而非執行) 的人。
 	      這些人有時也會做些註解，或貢獻原始碼。</para>
 	  </listitem>
 	</orderedlist>
@@ -169,26 +1366,28 @@
 
       <sect3>
 	<title>使用 &os.current;</title>
-      
+
 	<indexterm>
 	  <primary>-CURRENT</primary>
 	  <secondary>using</secondary>
 	</indexterm>
 	<orderedlist>
 	  <listitem>
-	    <para>加入 &a.current.name; 及 &a.cvsall.name; 論壇。
-	      這不單只是個建議，也是 <emphasis>必須</emphasis> 作的。
+	    <para>加入 &a.current.name; 及 &a.svn-src-head.name;
+	      論壇。這不單只是個建議，也是<emphasis>必須</emphasis>作的。
 	      若您沒訂閱 <emphasis>&a.current.name;</emphasis>
 	      ，那麼就會錯過別人對目前系統狀態的說明，而枯耗在別人已解的問題。
 	      更重要的是，可能會錯失一些對己身所管系統安危相當重要的公告。
 	      </para>
 
-	    <para>在 &a.cvsall.name; 上則可以看到每個 commit 紀錄，
+	    <para>在 &a.svn-src-head.name; 上則可以看到每個 commit 紀錄，
 	      因為這些記錄會連帶影響其他相關資訊。</para>
 
 	    <para>要訂閱這些論壇或其他論壇，請參考 &a.mailman.lists.link;
 	      並點選想訂閱的部分即可。  至於其他後續步驟如何進行，
-	      在那裡會有說明。</para>
+	      在那裡會有說明。 If you are interested
+	      in tracking changes for the whole source tree, we would
+	      recommend subscribing to the &a.svn-src-all.name; list.</para>
 	  </listitem>
 
 	  <listitem>
@@ -196,14 +1395,14 @@
 	      取得原始碼。  有兩種方式可以達成：</para>
 
 	    <orderedlist>
-              <indexterm>
-                <primary><command>cvsup</command></primary>
-              </indexterm>
-              <indexterm>
-                <primary><command>cron</command></primary>
-              </indexterm>
-              <indexterm>
-	        <primary>-CURRENT</primary>
+	      <indexterm>
+		<primary><command>cvsup</command></primary>
+	      </indexterm>
+	      <indexterm>
+		<primary><command>cron</command></primary>
+	      </indexterm>
+	      <indexterm>
+		<primary>-CURRENT</primary>
 		<secondary>Syncing with <application>CVSup</application></secondary>
 	      </indexterm>
 
@@ -221,16 +1420,33 @@
  		  您須要自訂前述的 <filename>supfile</filename> 範例檔，
 		  並針對自身網路環境以調整 <link linkend="cvsup">csup</link>
 		  或 <link linkend="cvsup">cvsup</link> 相關設定。</para>
+
+		<note>
+		  <para>The sample <filename>standard-supfile</filename> is
+		    intended for tracking a specific security branch of
+		    &os;, and not &os.current;.  You will need to edit this
+		    file and replace the following line:</para>
+
+		  <programlisting>*default release=cvs tag=RELENG_<replaceable>X</replaceable>_<replaceable>Y</replaceable></programlisting>
+
+		  <para>With this one:</para>
+
+		  <programlisting>*default release=cvs tag=.</programlisting>
+
+		  <para>For a detailed explanation of usable tags, please
+		    refer to the Handbook's <link
+		      linkend="cvs-tags">CVS Tags</link> section.</para>
+		</note>
 	      </listitem>
 
-              <indexterm>
-	        <primary>-CURRENT</primary>
+	      <indexterm>
+		<primary>-CURRENT</primary>
 		<secondary>Syncing with CTM</secondary>
 	      </indexterm>
 	      <listitem>
 		<para>使用 <application><link
-		  linkend="ctm">CTM</link></application> 工具。  若網路環境不佳
-		  (上網費用貴，或只能用 email 而已)
+		    linkend="ctm">CTM</link></application> 工具。
+		  若網路環境不佳 (上網費用貴，或只能用 email 而已)
 		  <application>CTM</application> 會比較適合您的需求。
 		  然而，這也有一些爭議並且常抓到一些有問題的檔案。  因此，
 		  很少人會用它。  這也註定了不能長期依賴這個更新方式。
@@ -247,10 +1463,10 @@
 	      因為大部分的 source code 都會相依到其他 source code 環節部分，
 	      若是您只編譯其中一部份，保證會很麻煩。</para>
 
-	  <indexterm>
-	    <primary>-CURRENT</primary>
-	    <secondary>compiling</secondary>
-	  </indexterm>
+	    <indexterm>
+	      <primary>-CURRENT</primary>
+	      <secondary>compiling</secondary>
+	    </indexterm>
 	    <para>在編譯 &os.current; 之前，請仔細閱讀
 	      <filename>/usr/src</filename> 內的 <filename>Makefile</filename>。
 	      儘管只是升級部分東西而已，您至少也要先 <link linkend="makeworld">
@@ -259,7 +1475,7 @@
 	      也是必須的，
 	      才能知道目前進度是怎樣以及下一版會有什麼新東西。</para>
 	  </listitem>
-	      
+
 	  <listitem>
 	    <para>熱血！若您正在跑 &os.current;，
 	      我們很想知道您對於它的想法是什麼，尤其是加強哪些功能，
@@ -269,7 +1485,7 @@
 	</orderedlist>
       </sect3>
     </sect2>
-  
+
     <sect2 id="stable">
       <title>使用最新的 &os; STABLE</title>
 
@@ -295,11 +1511,10 @@
 	  但不必僅僅因此而 <emphasis>需要</emphasis> 去用 &os.stable;。
 	  FreeBSD 每項 security advisory(安全公告)
 	  都會解說如何去修復有受到影響的版本
-	  <footnote><para>然而，這也不一定是正確，我們不可能永遠支援 FreeBSD
+	  <footnote><para>這也不完全正確，我們不可能永遠支援 FreeBSD
 	    昔日的各種發行版本，儘管每個發行版發佈之後，都仍會持續支援數年之久。
 	    若欲瞭解 FreeBSD 目前對於舊版的支援政策細節，請參閱 <ulink
-  	    url="&url.base;/security/">http://www.FreeBSD.org/security/</ulink>
-	    。</para>
+	      url="&url.base;/security/">http://www.FreeBSD.org/security/</ulink> 。</para>
 	  </footnote>
 	  ，若僅因為安全因素而去採用開發分支，雖然會解決現有已知問題，
 	  但也可能帶來一些潛藏的問題。</para>
@@ -321,7 +1536,7 @@
 
       <sect3>
 	<title>使用 &os.stable;</title>
-      
+
 	<indexterm>
 	  <primary>-STABLE</primary>
 	  <secondary>using</secondary>
@@ -334,17 +1549,24 @@
 	      給使用者有機會可以反應，
 	      看他們對所提的更改是否有什麼建議或問題。</para>
 
-	    <para>而 &a.cvsall.name; list 這邊可以看到每個 commit log，
-	      其中包括了許多中肯的資訊，例如一些可能發生的邊際效應等等。</para>
+	    <para>Join the relevant <application>SVN</application> list for
+	      the branch you are tracking.  For example, if you are tracking
+	      the 7-STABLE branch, join the &a.svn-src-stable-7.name; list.
+	      這樣就可以看到每個 commit log，
+	      其中包括了許多中肯的資訊，例如一些可能發生的副作用等等。</para>
 
 	    <para>想要加入這些通信論壇的話，只要到 &a.mailman.lists.link;
-	      點下想訂閱的 list 即可。  其餘的步驟在網頁上會有說明。</para>
+	      點下想訂閱的 list 即可。  其餘的步驟在網頁上會有說明。
+	      If you are interested
+	      in tracking changes for the whole source tree, we would
+	      recommend subscribing to the &a.svn-src-all.name; list.</para>
 	  </listitem>
 
 	  <listitem>
 	    <para>若打算要安裝一個全新的系統，並且希望裝  &os.stable;
 	      每月定期的 snapshot，那麼請參閱 <ulink
-	      url="&url.base;/snapshots/">Snapshots</ulink> 網頁以瞭解相關細節。
+		url="&url.base;/snapshots/">Snapshots</ulink>
+	      網頁瞭解詳情。
 	      此外，也可從 <link linkend="mirrors">mirror 站</link>
 	      來安裝最新的 &os.stable; 發行版，並透過下列的的說明來更新到最新的
 	      &os.stable; 原始碼。</para>
@@ -361,7 +1583,7 @@
 		<primary><command>cron</command></primary>
 	      </indexterm>
 	      <indexterm>
-	        <primary>-STABLE</primary>
+		<primary>-STABLE</primary>
 		<secondary>syncing with <application>CVSup</application></secondary>
 	      </indexterm>
 	      <listitem>
@@ -381,16 +1603,16 @@
 	      </listitem>
 
 	      <indexterm>
-	        <primary>-STABLE</primary>
+		<primary>-STABLE</primary>
 		<secondary>syncing with CTM</secondary>
 	      </indexterm>
 	      <listitem>
 		<para>使用 <application><link
-		  linkend="ctm">CTM</link></application> 更新工具。
+		    linkend="ctm">CTM</link></application> 更新工具。
 		  若網路不快或網路費用貴，那麼可以考慮採用。</para>
 	      </listitem>
-	   </orderedlist>
-	 </listitem>
+	    </orderedlist>
+	  </listitem>
 
 	  <listitem>
 	    <para>一般而言，若常需存取最新原始碼，而不計較網路頻寬的話，
@@ -407,7 +1629,7 @@
 	    <para>在編譯 &os.stable; 之前，請先仔細閱讀
 	      <filename>/usr/src</filename> 內的 <filename>Makefile</filename>
 	      檔。  儘管只是升級部分東西而已，您至少也要先 <link
-	      linkend="makeworld">裝新的 kernel 以及重新編譯 world</link>。
+		linkend="makeworld">裝新的 kernel 以及重新編譯 world</link>。
 	      此外，多多閱讀 &a.stable; 以及
 	      <filename>/usr/src/UPDATING</filename> 也是必備的，
 	      這樣才能知道目前進度是怎樣，以及下一版會有哪些新東西。</para>
@@ -419,8 +1641,8 @@
 
   <sect1 id="synching">
     <title>更新你的 Source</title>
-    
-    <para>&os; 計劃原始碼有許多透過網路(或 email)的方式來更新，
+
+    <para>&os; 計劃原始碼有許多透過網路 (或 email) 的方式來更新，
       無論是更新那一塊領域，這些全由您自行決定。  我們主要提供的是 <link
       linkend="anoncvs">Anonymous CVS</link>、<link linkend="cvsup">CVSup</link>
       、<link linkend="ctm">CTM</link>。</para>
@@ -474,9 +1696,9 @@
     <para>當然，這樣做也會帶來一些不便。  若不小心把您部份的程式清除掉了，
       <application>CVSup</application> 會偵測出來，並自動為您把不足的部份補齊。
       <application>CTM</application> 並不會為您做這些動作。
-      若清掉了您的部份 source (而且沒備份)，您可以從頭開始(從最新的 CVS
-      <quote>base delta</quote>)並用 <application>CTM</application> 來重建它們
-      ，或是用 <application>Anonymous CVS</application> 來完成，
+      若清掉了您的部份 source (而且沒備份)，您可以從頭開始 (從最新的 CVS
+      <quote>base delta</quote>)並用 <application>CTM</application>
+      來重建它們，或是用 <application>Anonymous CVS</application> 來完成，
       只要把不正確的地方砍掉，再重新做同步的動作即可。</para>
   </sect1>
 
@@ -487,8 +1709,7 @@
       <primary>Rebuilding <quote>world</quote></primary>
     </indexterm>
     <para>在更新 &os; 的 source tree 到最新之後(無論是 &os.stable;、
-      &os.current; 等等)，接下來就可以用這些 source tree 來重新編譯系統
-      。</para>
+      &os.current; 等等)，接下來就可以用這些 source tree 來重新編譯系統。</para>
 
     <warning>
       <title>做好備份</title>
@@ -532,17 +1753,193 @@
 	而該改用下面介紹的方式。</para>
     </warning>
 
-    <sect2>
+    <sect2 id="canonical-build">
       <title>更新系統的標準方式</title>
 
       <para>要升級系統前，一定要先查閱 <filename>/usr/src/UPDATING</filename>
 	文件，以瞭解 buildworld 之前需要作哪些事情或注意事項，
-	然後才用下列步驟：</para>
+	然後才用此處概敘的步驟。</para>
 
-      <screen>&prompt.root; <userinput>make buildworld</userinput>
+      <para>These upgrade steps assume that you are currently using an old
+	&os; version, consisting of an old compiler, old kernel, old world and
+	old configuration files.  By <quote>world</quote> here we mean the
+	core system binaries, libraries and programming files.  The compiler
+	is part of <quote>world</quote>, but has a few special concerns.</para>
+
+      <para>We also assume that you have already obtained the sources to a
+	newer system.  If the sources available on the particular system are
+	old too, see <xref linkend="synching"> for detailed help about
+	synchronizing them to a newer version.</para>
+
+      <para>Updating the system from sources is a bit more subtle than it
+	might initially seem to be, and the &os; developers have found it
+	necessary over the years to change the recommended approach fairly
+	dramatically as new kinds of unavoidable dependencies come to light.
+	The rest of this section describes the rationale behind the currently
+	recommended upgrade sequence.</para>
+
+      <para>Any successful update sequence must deal with the following
+	issues:</para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>The old compiler might not be able to compile the new
+	    kernel.  (Old compilers sometimes have bugs.)  So, the new
+	    kernel should be built with the new compiler.  In particular,
+	    the new compiler must be built before the new kernel is built.
+	    This does not necessarily mean that the new compiler must
+	    be <emphasis>installed</emphasis> before building the new
+	    kernel.</para>
+	</listitem>
+
+	<listitem>
+	  <para>The new world might rely on new kernel features.  So, the
+	    new kernel must be installed before the new world is
+	    installed.</para>
+	</listitem>
+      </itemizedlist>
+
+      <para>These first two issues are the basis for the
+	core <maketarget>buildworld</maketarget>,
+	<maketarget>buildkernel</maketarget>,
+	<maketarget>installkernel</maketarget>,
+	<maketarget>installworld</maketarget> sequence that we describe in
+	the following paragraphs.  This is not an exhaustive list of all the
+	reasons why you should prefer the currently recommended upgrade
+	process.  Some of the less obvious ones are listed below:</para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>The old world might not run correctly on the new kernel, so
+	    you must install the new world immediately upon installing the
+	    new kernel.</para>
+	</listitem>
+
+	<listitem>
+	  <para>Some configuration changes must be done before the new world
+	    is installed, but others might break the old world.  Hence, two
+	    different configuration upgrade steps are generally
+	    needed.</para>
+	</listitem>
+
+	<listitem>
+	  <para>For the most part, the update process only replaces or adds
+	    files; existing old files are not deleted.  In a few cases, this
+	    can cause problems.  As a result, the update procedure will
+	    sometimes specify certain files that should be manually deleted
+	    at certain steps.  This may or may not be automated in the
+	    future.</para>
+	</listitem>
+      </itemizedlist>
+
+      <para>These concerns have led to the following recommended sequence.
+	Note that the detailed sequence for particular updates may require
+	additional steps, but this core process should remain unchanged for
+	some time:</para>
+
+      <orderedlist>
+	<listitem>
+	  <para><command>make <maketarget>buildworld</maketarget></command></para>
+
+	  <para>This first compiles the new compiler and a few related
+	    tools, then uses the new compiler to compile the rest of the new
+	    world.  The result ends up
+	    in <filename class="directory">/usr/obj</filename>.</para>
+	</listitem>
+
+	<listitem>
+	  <para><command>make <maketarget>buildkernel</maketarget></command></para>
+
+	  <para>Unlike the older approach, using &man.config.8; and
+	    &man.make.1;, this uses the <emphasis>new</emphasis> compiler
+	    residing in <filename class="directory">/usr/obj</filename>.
+	    This protects you against compiler-kernel mismatches.</para>
+	</listitem>
+
+	<listitem>
+	  <para><command>make <maketarget>installkernel</maketarget></command></para>
+
+	  <para>Place the new kernel and kernel modules onto the disk,
+	    making it possible to boot with the newly updated kernel.</para>
+	</listitem>
+
+	<listitem>
+	  <para>Reboot into single user mode.</para>
+
+	  <para>Single user mode minimizes problems from updating software
+	    that's already running.  It also minimizes any problems from
+	    running the old world on a new kernel.</para>
+	</listitem>
+
+	<listitem>
+	  <para><command>mergemaster <option>-p</option></command></para>
+
+	  <para>This does some initial configuration file updates in
+	    preparation for the new world.  For instance it may add new user
+	    groups to the system, or new user names to the password database.
+	    This is often necessary when new groups or special system-user
+	    accounts have been added since the last update, so that
+	    the <maketarget>installworld</maketarget> step will be able to
+	    use the newly installed system user or system group names
+	    without problems.</para>
+	</listitem>
+
+	<listitem>
+	  <para><command>make <maketarget>installworld</maketarget></command></para>
+
+	  <para>Copies the world
+	    from <filename class="directory">/usr/obj</filename>.  You now
+	    have a new kernel and new world on disk.</para>
+	</listitem>
+
+	<listitem>
+	  <para><command>mergemaster</command></para>
+
+	  <para>Now you can update the remaining configuration files, since
+	    you have a new world on disk.</para>
+	</listitem>
+
+	<listitem>
+	  <para>Reboot.</para>
+
+	  <para>A full machine reboot is needed now to load the new kernel
+	    and new world with new configuration files.</para>
+	</listitem>
+      </orderedlist>
+
+      <para>Note that if you're upgrading from one release of the same &os;
+	branch to a more recent release of the same branch, i.e., from 7.0 to
+	7.1, then this procedure may not be absolutely necessary, since
+	you're unlikely to run into serious mismatches between compiler,
+	kernel, userland and configuration files.  The older approach
+	of <command>make <maketarget>world</maketarget></command> followed
+	by building and installing a new kernel might work well enough for
+	minor updates.</para>
+
+      <para>But, when upgrading across major releases, people who don't
+	follow this procedure should expect some problems.</para>
+
+      <para>It is also worth noting that many upgrades
+	(i.e.,&nbsp;4.<replaceable>X</replaceable> to 5.0) may require
+	specific additional steps (renaming or deleting specific files prior
+	to installworld, for instance).  Read
+	the <filename>/usr/src/UPDATING</filename> file carefully,
+	especially at the end, where the currently recommended upgrade
+	sequence is explicitly spelled out.</para>
+
+      <para>This procedure has evolved over time as the developers have
+	found it impossible to completely prevent certain kinds of mismatch
+	problems.  Hopefully, the current procedure will remain stable for a
+	long time.</para>
+
+      <para>To summarize, the currently recommended way of upgrading &os;
+	from sources is:</para>
+
+      <screen>&prompt.root; <userinput>cd /usr/src</userinput>
+&prompt.root; <userinput>make buildworld</userinput>
 &prompt.root; <userinput>make buildkernel</userinput>
 &prompt.root; <userinput>make installkernel</userinput>
-&prompt.root; <userinput>reboot</userinput></screen>
+&prompt.root; <userinput>shutdown -r now</userinput></screen>
 
       <note>
 	<para>在少數狀況，可能需要先在 <maketarget>buildworld</maketarget>
@@ -553,10 +1950,14 @@
       </note>
 
       <para>完成 <maketarget>installkernel</maketarget> 之後，需要重開機並切到
-	single user 模式(舉例：也可以在 loader 提示符號後面加上
+	single user 模式 (就是在 loader 提示符號後面加上
 	<command>boot -s</command>)。  接下來執行：</para>
 
-      <screen>&prompt.root; <userinput>mergemaster -p</userinput>
+      <screen>&prompt.root; <userinput>mount -u /</userinput>
+&prompt.root; <userinput>mount -a -t ufs</userinput>
+&prompt.root; <userinput>adjkerntz -i</userinput>
+&prompt.root; <userinput>mergemaster -p</userinput>
+&prompt.root; <userinput>cd /usr/src</userinput>
 &prompt.root; <userinput>make installworld</userinput>
 &prompt.root; <userinput>mergemaster</userinput>
 &prompt.root; <userinput>reboot</userinput></screen>
@@ -569,7 +1970,7 @@
       </warning>
     </sect2>
 
-    <sect2>
+    <sect2 id="src-updating">
       <title>閱讀 <filename>/usr/src/UPDATING</filename></title>
 
       <para>在作任何事情之前，請務必先閱讀
@@ -585,15 +1986,14 @@
       </important>
     </sect2>
 
-    <sect2>
+    <sect2 id="make-conf">
       <title>檢查 <filename>/etc/make.conf</filename></title>
       <indexterm>
-        <primary><filename>make.conf</filename></primary>
+	<primary><filename>make.conf</filename></primary>
       </indexterm>
 
       <para>檢查
-	<filename>/usr/share/examples/etc/make.conf</filename>
-	以及
+	<filename>/usr/share/examples/etc/make.conf</filename> 與
 	<filename>/etc/make.conf</filename>。  第一份文件乃是一些系統預設值
 	&ndash; 不過，大部分都被註解起來。  為了在重新編譯時能夠使用這些，
 	請把這些設定加到 <filename>/etc/make.conf</filename>。  請注意在
@@ -603,7 +2003,7 @@
 
       <para>一般使用者通常會從
 	<filename>/usr/share/examples/etc/make.conf</filename> 複製
-	<makevar>CFLAGS</makevar> 以及 <makevar>NO_PROFILE</makevar>
+	<makevar>CFLAGS</makevar>、<makevar>NO_PROFILE</makevar>
 	之類的設定到 <filename>/etc/make.conf</filename>，並解除相關註解印記
 	。</para>
 
@@ -611,7 +2011,7 @@
 	<makevar>NOPORTDOCS</makevar> 等等)，是否符合自己所需。</para>
     </sect2>
 
-    <sect2>
+    <sect2 id="updating-etc">
       <title>更新 <filename>/etc</filename> 內的設定檔</title>
 
       <para>在 <filename>/etc</filename> 目錄會有系統的相關設定檔，
@@ -632,18 +2032,12 @@
 	時發生失敗。</para>
 
       <para>解法是在 buildworld 階段之前，先執行 &man.mergemaster.8; 並搭配
-	<option>-p</option> 選項。  它會比對那些執行
+	<option>-p</option> 選項。它會比對那些執行
 	<maketarget>buildworld</maketarget> 或
-	<maketarget>installworld</maketarget> 所需之關鍵設定檔。
-	若你所用的是早期仍未支援 <option>-p</option> 的
-	<command>mergemaster</command> 版本，那麼直接使用 source tree
-	內的新版即可：</para>
-
-      <screen>&prompt.root; <userinput>cd /usr/src/usr.sbin/mergemaster</userinput>
-&prompt.root; <userinput>./mergemaster.sh -p</userinput></screen>
+	<maketarget>installworld</maketarget> 所需之關鍵設定檔。</para>
 
       <tip>
-	<para>若您是偏執狂(paranoid)，
+	<para>若您是偏執狂 (paranoid)，
 	  可以像下面這樣去試著檢查系統上有哪些檔案屬於已改名或被刪除的群組
 	  ：</para>
 
@@ -690,19 +2084,19 @@
 	改以可讀寫的模式掛載，以及 <filename>/etc/fstab</filename>
 	內所設定的其他 UFS 檔案系統，最後啟用 swap 磁區。</para>
 
+      <note>
+	<para>若 CMOS 時鐘是設為當地時間，而非 GMT 時區
+	  (若 &man.date.1; 指令沒顯示正確的時間、時區)，
+	  那可能需要再輸入下列指令：</para>
 
-        <note>
-          <para>若 CMOS 時鐘是設為當地時間，而非 GMT 時區(若 &man.date.1;
-	    指令沒顯示正確的時間、時區)，那可能需要再輸入下列指令：</para>
-<screen>&prompt.root; <userinput>adjkerntz -i</userinput></screen>
+	<screen>&prompt.root; <userinput>adjkerntz -i</userinput></screen>
 
-          <para>這步驟可以確認您的當地時區設定是否正確 &mdash;
-	    否則日後會造成一些問題。</para>
-        </note>
-
+	<para>這步驟可以確認您的當地時區設定是否正確 &mdash;
+	  否則日後會造成一些問題。</para>
+      </note>
     </sect2>
 
-    <sect2>
+    <sect2 id="cleaning-usr-obj">
       <title>移除 <filename>/usr/obj</filename></title>
 
       <para>在重新編譯系統的過程中，編譯結果會放到(預設情況)
@@ -722,7 +2116,7 @@
 &prompt.root; <userinput>rm -rf *</userinput></screen>
     </sect2>
 
-    <sect2 id="cutting-edge-compilebase">
+    <sect2 id="updating-upgrading-compilebase">
       <title>重新編譯 Base System</title>
 
       <sect3>
@@ -739,9 +2133,9 @@
 	  <userinput>exit</userinput> 即可離開。</para>
 
 	<screen>&prompt.root; <userinput>script /var/tmp/mw.out</userinput>
-Script started, output file is /var/tmp/mw.out	 
+Script started, output file is /var/tmp/mw.out
 &prompt.root; <userinput>make TARGET</userinput>
-<emphasis>&hellip; compile, compile, compile &hellip;</emphasis>	  
+<emphasis>&hellip; compile, compile, compile &hellip;</emphasis>
 &prompt.root; <userinput>exit</userinput>
 Script done, &hellip;</screen>
 
@@ -764,8 +2158,8 @@ Script done, &hellip;</screen>
 	<indexterm><primary><command>make</command></primary></indexterm>
 
 	<para>使用 &man.make.1; 指令來重新編譯 world。
-	  這指令會從 <filename>Makefile</filename> 檔(這檔會寫 &os;
-	  的程式該如何重新編譯、以哪些順序來編譯等等)去讀取相關指令。</para>
+	  這指令會從 <filename>Makefile</filename> 檔－－這檔會寫 &os;
+	  的程式該如何重新編譯、以哪些順序來編譯等等－－去讀取相關指令。</para>
 
 	<para>一般下指令的格式如下：</para>
 
@@ -787,7 +2181,7 @@ Script done, &hellip;</screen>
 	  這個例子中的意思是不去編譯 profiled libraries，效果就如同設定在
 	  <filename>/etc/make.conf</filename> 的</para>
 
-	<programlisting>NO_PROFILE=    true 	#    Avoid compiling profiled libraries</programlisting>
+	<programlisting>NO_PROFILE=    true     #    Avoid compiling profiled libraries</programlisting>
 
 	<para><replaceable>target</replaceable> 則是告訴 &man.make.1;
 	  該去做哪些。  每個 <filename>Makefile</filename> 都會定義不同的
@@ -801,8 +2195,8 @@ Script done, &hellip;</screen>
 	  sub-steps.</para>
 
 	<para>Most of the time you will not need to pass any parameters to
-	    &man.make.1;, and so your command like will look like
-	    this:</para>
+	  &man.make.1;, and so your command like will look like
+	  this:</para>
 
 	<screen>&prompt.root; <userinput>make <replaceable>target</replaceable></userinput></screen>
 
@@ -812,26 +2206,27 @@ Script done, &hellip;</screen>
 
 	<para>As the names imply, <maketarget>buildworld</maketarget>
 	  builds a complete new tree under <filename>/usr/obj</filename>,
-	  and <maketarget>installworld</maketarget>, another target, installs this tree on
-	  the current machine.</para>
+	  and <maketarget>installworld</maketarget>, another target,
+	  installs this tree on the current machine.</para>
 
-	<para>Having separate options is very useful for two reasons.  First, it allows you
-	  to do the build safe in the knowledge that no components of
-	  your running system will be affected.  The build is
+	<para>Having separate options is very useful for two reasons.  First,
+	  it allows you to do the build safe in the knowledge that no
+	  components of your running system will be affected.  The build is
 	  <quote>self hosted</quote>.  Because of this, you can safely
 	  run <maketarget>buildworld</maketarget> on a machine running
 	  in multi-user mode with no fear of ill-effects.  It is still
-	  recommended that you run the
-	  <maketarget>installworld</maketarget> part in single user
-	  mode, though.</para>
+	  recommended that you run the <maketarget>installworld</maketarget>
+	  part in single user mode, though.</para>
 
-	<para>Secondly, it allows you to use NFS mounts to upgrade 
+	<para>Secondly, it allows you to use NFS mounts to upgrade
 	  multiple machines on your network.  If you have three machines,
-	  <hostid>A</hostid>, <hostid>B</hostid> and <hostid>C</hostid> that you want to upgrade, run <command>make
-	  buildworld</command> and <command>make installworld</command> on
-	  <hostid>A</hostid>.  <hostid>B</hostid> and <hostid>C</hostid> should then NFS mount <filename>/usr/src</filename>
-	  and <filename>/usr/obj</filename> from <hostid>A</hostid>, and you can then run
-	  <command>make installworld</command> to install the results of 
+	  <hostid>A</hostid>, <hostid>B</hostid> and <hostid>C</hostid> that
+	  you want to upgrade, run <command>make buildworld</command> and
+	  <command>make installworld</command> on <hostid>A</hostid>.
+	  <hostid>B</hostid> and <hostid>C</hostid> should then NFS mount
+	  <filename>/usr/src</filename> and <filename>/usr/obj</filename>
+	  from <hostid>A</hostid>, and you can then run
+	  <command>make installworld</command> to install the results of
 	  the build on <hostid>B</hostid> and <hostid>C</hostid>.</para>
 
 	<para>Although the <maketarget>world</maketarget> target still exists,
@@ -840,16 +2235,16 @@ Script done, &hellip;</screen>
 	<para>Run</para>
 
 	<screen>&prompt.root; <userinput>make buildworld</userinput></screen>
- 
-        <para>It is possible to specify a <option>-j</option> option to
-          <command>make</command> which will cause it to spawn several
-          simultaneous processes.  This is most useful on multi-CPU machines.
-          However, since much of the compiling process is IO bound rather
-          than CPU bound it is also useful on single CPU machines.</para>
+
+	<para>It is possible to specify a <option>-j</option> option to
+	  <command>make</command> which will cause it to spawn several
+	  simultaneous processes.  This is most useful on multi-CPU machines.
+	  However, since much of the compiling process is IO bound rather
+	  than CPU bound it is also useful on single CPU machines.</para>
 
 	<para>On a typical single-CPU machine you would run:</para>
-	  
-	  <screen>&prompt.root; <userinput>make -j4 buildworld</userinput></screen>
+
+	<screen>&prompt.root; <userinput>make -j4 buildworld</userinput></screen>
 
 	<para>&man.make.1; will then have up to 4 processes running at any one
 	  time.  Empirical evidence posted to the mailing lists shows this
@@ -859,7 +2254,7 @@ Script done, &hellip;</screen>
 	  configured kernel try values between 6 and 10 and see how they speed
 	  things up.</para>
       </sect3>
-      
+
       <sect3>
 	<title>Timings</title>
 	<indexterm>
@@ -867,17 +2262,17 @@ Script done, &hellip;</screen>
 	  <secondary>timings</secondary>
 	</indexterm>
 
-        <para>Many factors influence the build time, but fairly recent
-          machines may only take a one or two hours to build
-          the &os.stable; tree, with no tricks or shortcuts used during the
-          process.  A &os.current; tree will take somewhat longer.</para>
+	<para>Many factors influence the build time, but fairly recent
+	  machines may only take a one or two hours to build
+	  the &os.stable; tree, with no tricks or shortcuts used during the
+	  process.  A &os.current; tree will take somewhat longer.</para>
       </sect3>
     </sect2>
-    
-    <sect2>
+
+    <sect2 id="new-kernel">
       <title>Compile and Install a New Kernel</title>
       <indexterm>
-        <primary>kernel</primary>
+	<primary>kernel</primary>
 	<secondary>compiling</secondary>
       </indexterm>
 
@@ -898,14 +2293,16 @@ Script done, &hellip;</screen>
 	file.</para>
 
       <para>On &os; it is important to <link
-        linkend="make-buildworld">build world</link> before building a
-        new kernel.</para>
+	  linkend="make-buildworld">build world</link> before building a
+	new kernel.</para>
 
-      <note><para>If you want to build a custom kernel, and already have a configuration
-	file, just use <literal>KERNCONF=<replaceable>MYKERNEL</replaceable></literal>
-	like this:</para>
+      <note>
+	<para>If you want to build a custom kernel, and already have a
+	  configuration file, just use
+	  <literal>KERNCONF=<replaceable>MYKERNEL</replaceable></literal>
+	  like this:</para>
 
-      <screen>&prompt.root; <userinput>cd /usr/src</userinput>
+	<screen>&prompt.root; <userinput>cd /usr/src</userinput>
 &prompt.root; <userinput>make buildkernel KERNCONF=<replaceable>MYKERNEL</replaceable></userinput>
 &prompt.root; <userinput>make installkernel KERNCONF=<replaceable>MYKERNEL</replaceable></userinput></screen>
       </note>
@@ -921,7 +2318,7 @@ Script done, &hellip;</screen>
 	about the various file flags.</para>
     </sect2>
 
-    <sect2>
+    <sect2 id="new-kernel-singleuser">
       <title>Reboot into Single User Mode</title>
       <indexterm><primary>single-user mode</primary></indexterm>
 
@@ -933,8 +2330,8 @@ Script done, &hellip;</screen>
     <sect2 id="make-installworld">
       <title>Install the New System Binaries</title>
 
-      <para>If you were building a version of &os; recent enough to have
-	used <command>make buildworld</command> then you should now use
+      <para>
+	You should now use
 	<maketarget>installworld</maketarget> to install the new system
 	binaries.</para>
 
@@ -944,13 +2341,13 @@ Script done, &hellip;</screen>
 &prompt.root; <userinput>make installworld</userinput></screen>
 
       <note>
-	<para>If you specified variables on the <command>make
-	    buildworld</command> command line, you must specify the same
-	  variables in the <command>make installworld</command> command
-	  line.  This does not necessarily hold true for other options;
-	  for example, <option>-j</option> must never be used with
+	<para>If you specified variables on the
+	  <command>make buildworld</command> command line, you must specify
+	  the same variables in the <command>make installworld</command>
+	  command line.  This does not necessarily hold true for other
+	  options; for example, <option>-j</option> must never be used with
 	  <maketarget>installworld</maketarget>.</para>
-	
+
 	<para>For example, if you ran:</para>
 
 	<screen>&prompt.root; <userinput>make -DNO_PROFILE buildworld</userinput></screen>
@@ -965,252 +2362,260 @@ Script done, &hellip;</screen>
       </note>
     </sect2>
 
-    <sect2>
+    <sect2 id="post-installworld-updates">
       <title>Update Files Not Updated by <command>make installworld</command></title>
-      
+
       <para>Remaking the world will not update certain directories (in
 	particular, <filename>/etc</filename>, <filename>/var</filename> and
-	<filename>/usr</filename>) with new or changed configuration files.</para>
+	<filename>/usr</filename>) with new or changed configuration
+	files.</para>
 
       <para>The simplest way to update these files is to use
-        &man.mergemaster.8;, though it is possible to do it manually
-        if you would prefer to do that.  Regardless of which way you
+	&man.mergemaster.8;, though it is possible to do it manually
+	if you would prefer to do that.  Regardless of which way you
 	choose, be sure to make a backup of <filename>/etc</filename> in
 	case anything goes wrong.</para>
 
-    <sect3 id="mergemaster">
-      <sect3info>
-	<authorgroup>
-	  <author>
-	    <firstname>Tom</firstname>
-	    <surname>Rhodes</surname>
-	    <contrib>Contributed by </contrib>
-	  </author>
-	</authorgroup>
-      </sect3info>
-      <title><command>mergemaster</command></title>
-        <indexterm><primary><command>mergemaster</command></primary></indexterm>
+      <sect3 id="mergemaster">
+	<sect3info>
+	  <authorgroup>
+	    <author>
+	      <firstname>Tom</firstname>
+	      <surname>Rhodes</surname>
+	      <contrib>Contributed by </contrib>
+	    </author>
+	  </authorgroup>
+	</sect3info>
+	<title><command>mergemaster</command></title>
+	<indexterm><primary><command>mergemaster</command></primary></indexterm>
 
-      <para>The &man.mergemaster.8; utility is a Bourne script that will
-        aid you in determining the differences between your configuration files
-        in <filename>/etc</filename>, and the configuration files in
-        the source tree <filename>/usr/src/etc</filename>. This is
-        the recommended solution for keeping the system configuration files up to date
-        with those located in the source tree.</para>
+	<para>The &man.mergemaster.8; utility is a Bourne script that will
+	  aid you in determining the differences between your configuration
+	  files in <filename>/etc</filename>, and the configuration files in
+	  the source tree <filename>/usr/src/etc</filename>.  This is
+	  the recommended solution for keeping the system configuration files
+	  up to date with those located in the source tree.</para>
 
-      <para>To begin simply type <command>mergemaster</command> at your prompt, and
-        watch it start going.  <command>mergemaster</command> will then build a
-        temporary root environment, from <filename>/</filename> down, and populate
-        it with various system configuration files.  Those files are then compared
-        to the ones currently installed in your system.  At this point, files that
-        differ will be shown in &man.diff.1; format, with the <option>+</option> sign
-        representing added or modified lines, and <option>-</option> representing
-        lines that will be either removed completely, or replaced with a new line.
-        See the &man.diff.1; manual page for more information about the &man.diff.1;
-        syntax and how file differences are shown.</para>
+	<para>To begin simply type <command>mergemaster</command> at your
+	  prompt, and watch it start going.  <command>mergemaster</command>
+	  will then build a temporary root environment, from
+	  <filename>/</filename> down, and populate it with various system
+	  configuration files.  Those files are then compared to the ones
+	  currently installed in your system.  At this point, files that
+	  differ will be shown in &man.diff.1; format, with the
+	  <option>+</option> sign representing added or modified lines, and
+	  <option>-</option> representing lines that will be either removed
+	  completely, or replaced with a new line.  See the &man.diff.1;
+	  manual page for more information about the &man.diff.1; syntax and
+	  how file differences are shown.</para>
 
-      <para>&man.mergemaster.8; will then show you each file that displays variances,
-        and at this point you will have the option of either deleting the new file (referred
-        to as the temporary file), installing the temporary file in its unmodified state,
-        merging the temporary file with the currently installed file, or viewing the
-        &man.diff.1; results again.</para>
+	<para>&man.mergemaster.8; will then show you each file that displays
+	  variances, and at this point you will have the option of either
+	  deleting the new file (referred to as the temporary file),
+	  installing the temporary file in its unmodified state, merging the
+	  temporary file with the currently installed file, or viewing the
+	  &man.diff.1; results again.</para>
 
-      <para>Choosing to delete the temporary file will tell &man.mergemaster.8; that we
-        wish to keep our current file unchanged, and to delete the new version.
-        This option is not recommended, unless you see no
-        reason to change the current file.  You can get help at any time by
-        typing <keycap>?</keycap> at the &man.mergemaster.8; prompt.  If the user
-        chooses to skip a file, it will be presented again after all other files
-        have been dealt with.</para>
+	<para>Choosing to delete the temporary file will tell
+	  &man.mergemaster.8; that we wish to keep our current file
+	  unchanged, and to delete the new version.  This option is not
+	  recommended, unless you see no reason to change the current file.
+	  You can get help at any time by typing <keycap>?</keycap> at the
+	  &man.mergemaster.8; prompt.  If the user chooses to skip a file,
+	  it will be presented again after all other files have been dealt
+	  with.</para>
 
-      <para>Choosing to install the unmodified temporary file will replace the
-        current file with the new one.  For most unmodified files, this is the best
-        option.</para>
+	<para>Choosing to install the unmodified temporary file will replace
+	  the current file with the new one.  For most unmodified files,
+	  this is the best option.</para>
 
-      <para>Choosing to merge the file will present you with a text editor,
-        and the contents of both files.  You can now merge them by
-        reviewing both files side by side on the screen, and choosing parts from
-        both to create a finished product.  When the files are compared side by side,
-        the <keycap>l</keycap> key will select the left contents and the
-        <keycap>r</keycap> key will select contents from your right.
-        The final output will be a file consisting of both parts, which can then be
-        installed.  This option is customarily used for files where settings have been
-        modified by the user.</para>
+	<para>Choosing to merge the file will present you with a text editor,
+	  and the contents of both files.  You can now merge them by
+	  reviewing both files side by side on the screen, and choosing parts
+	  from both to create a finished product.  When the files are
+	  compared side by side, the <keycap>l</keycap> key will select the
+	  left contents and the <keycap>r</keycap> key will select contents
+	  from your right.  The final output will be a file consisting of
+	  both parts, which can then be installed.  This option is
+	  customarily used for files where settings have been modified by
+	  the user.</para>
 
-      <para>Choosing to view the &man.diff.1; results again will show you the file differences
-        just like &man.mergemaster.8; did before prompting you for an option.</para>
+	<para>Choosing to view the &man.diff.1; results again will show you
+	  the file differences just like &man.mergemaster.8; did before
+	  prompting you for an option.</para>
 
-      <para>After &man.mergemaster.8; is done with the system files you will be
-        prompted for other options.  &man.mergemaster.8; may ask if you want to rebuild
-        the password file and will finish up with an option to
-        remove left-over temporary files.</para>
+	<para>After &man.mergemaster.8; is done with the system files you
+	  will be prompted for other options.  &man.mergemaster.8; may ask
+	  if you want to rebuild the password file and will finish up with
+	  an option to remove left-over temporary files.</para>
       </sect3>
 
       <sect3>
 	<title>Manual Update</title>
 
-      <para>If you wish to do the update manually, however,
-        you cannot just copy over the files from
-	<filename>/usr/src/etc</filename> to <filename>/etc</filename> and
-	have it work.  Some of these files must be <quote>installed</quote>
-	first.  This is because the <filename>/usr/src/etc</filename>
-	directory <emphasis>is not</emphasis> a copy of what your
-	<filename>/etc</filename> directory should look like.  In addition,
-	there are files that should be in <filename>/etc</filename> that are
-	not in <filename>/usr/src/etc</filename>.</para>
+	<para>If you wish to do the update manually, however,
+	  you cannot just copy over the files from
+	  <filename>/usr/src/etc</filename> to <filename>/etc</filename> and
+	  have it work.  Some of these files must be <quote>installed</quote>
+	  first.  This is because the <filename>/usr/src/etc</filename>
+	  directory <emphasis>is not</emphasis> a copy of what your
+	  <filename>/etc</filename> directory should look like.  In addition,
+	  there are files that should be in <filename>/etc</filename> that are
+	  not in <filename>/usr/src/etc</filename>.</para>
 
-      <para>If you are using &man.mergemaster.8; (as recommended),
-        you can skip forward to the <link linkend="cutting-edge-rebooting">next
-	section</link>.</para>
+	<para>If you are using &man.mergemaster.8; (as recommended),
+	  you can skip forward to the <link
+	    linkend="updating-upgrading-rebooting">next section</link>.</para>
 
-      <para>The simplest way to do this by hand is to install the
-	files into a new directory, and then work through them looking
-	for differences.</para>
-    
-      <warning>
-	<title>Backup Your Existing <filename>/etc</filename></title>
+	<para>The simplest way to do this by hand is to install the
+	  files into a new directory, and then work through them looking
+	  for differences.</para>
 
-	<para>Although, in theory, nothing is going to touch this directory
-	  automatically, it is always better to be sure.  So copy your
-	  existing <filename>/etc</filename> directory somewhere safe.
-	  Something like:</para>
+	<warning>
+	  <title>Backup Your Existing <filename>/etc</filename></title>
 
-	<screen>&prompt.root; <userinput>cp -Rp /etc /etc.old</userinput></screen>
+	  <para>Although, in theory, nothing is going to touch this directory
+	    automatically, it is always better to be sure.  So copy your
+	    existing <filename>/etc</filename> directory somewhere safe.
+	    Something like:</para>
 
-	<para><option>-R</option> does a recursive copy, <option>-p</option>
-	  preserves times, ownerships on files and suchlike.</para>
-      </warning>
-      
-      <para>You need to build a dummy set of directories to install the new
-	<filename>/etc</filename> and other files into.
-	<filename>/var/tmp/root</filename> is a reasonable choice, and
-	there are a number of subdirectories required under this as
-	well.</para>
+	  <screen>&prompt.root; <userinput>cp -Rp /etc /etc.old</userinput></screen>
 
-      <screen>&prompt.root; <userinput>mkdir /var/tmp/root</userinput>
+	  <para><option>-R</option> does a recursive copy, <option>-p</option>
+	    preserves times, ownerships on files and suchlike.</para>
+	</warning>
+
+	<para>You need to build a dummy set of directories to install the new
+	  <filename>/etc</filename> and other files into.
+	  <filename>/var/tmp/root</filename> is a reasonable choice, and
+	  there are a number of subdirectories required under this as
+	  well.</para>
+
+	<screen>&prompt.root; <userinput>mkdir /var/tmp/root</userinput>
 &prompt.root; <userinput>cd /usr/src/etc</userinput>
 &prompt.root; <userinput>make DESTDIR=/var/tmp/root distrib-dirs distribution</userinput></screen>
 
-      <para>This will build the necessary directory structure and install the
-	files.  A lot of the subdirectories that have been created under
-	<filename>/var/tmp/root</filename> are empty and should be deleted.
-	The simplest way to do this is to:</para>
-      
-      <screen>&prompt.root; <userinput>cd /var/tmp/root</userinput>
+	<para>This will build the necessary directory structure and install
+	  the files.  A lot of the subdirectories that have been created under
+	  <filename>/var/tmp/root</filename> are empty and should be deleted.
+	  The simplest way to do this is to:</para>
+
+	<screen>&prompt.root; <userinput>cd /var/tmp/root</userinput>
 &prompt.root; <userinput>find -d . -type d | xargs rmdir 2&gt;/dev/null</userinput></screen>
-      
-      <para>This will remove all empty directories.  (Standard error is
-        redirected to <filename>/dev/null</filename> to prevent the warnings
-        about the directories that are not empty.)</para>
 
-      <para><filename>/var/tmp/root</filename> now contains all the files that
-	should be placed in appropriate locations below
-	<filename>/</filename>.  You now have to go through each of these
-	files, determining how they differ with your existing files.</para>
-    
-      <para>Note that some of the files that will have been installed in
-	<filename>/var/tmp/root</filename> have a leading <quote>.</quote>.  At the
-	time of writing the only files like this are shell startup files in
-	<filename>/var/tmp/root/</filename> and
-	<filename>/var/tmp/root/root/</filename>, although there may be others
-	(depending on when you are reading this).  Make sure you use
-	<command>ls -a</command> to catch them.</para>
-    
-      <para>The simplest way to do this is to use &man.diff.1; to compare the
-	two files:</para>
-    
-      <screen>&prompt.root; <userinput>diff /etc/shells /var/tmp/root/etc/shells</userinput></screen>
-      
-      <para>This will show you the differences between your
-	<filename>/etc/shells</filename> file and the new
-	<filename>/var/tmp/root/etc/shells</filename> file.  Use these to decide whether to
-	merge in changes that you have made or whether to copy over your old
-	file.</para>
-    
-      <tip>
-	<title>Name the New Root Directory
-	  (<filename>/var/tmp/root</filename>) with a Time Stamp, so You Can
-	  Easily Compare Differences Between Versions</title>
+	<para>This will remove all empty directories.  (Standard error is
+	  redirected to <filename>/dev/null</filename> to prevent the warnings
+	  about the directories that are not empty.)</para>
 
-	<para>Frequently rebuilding the world means that you have to update
-	<filename>/etc</filename> frequently as well, which can be a bit of
-	  a chore.</para>
+	<para><filename>/var/tmp/root</filename> now contains all the files
+	  that should be placed in appropriate locations below
+	  <filename>/</filename>.  You now have to go through each of these
+	  files, determining how they differ with your existing files.</para>
 
-	<para>You can speed this process up by keeping a copy of the last set
-	  of changed files that you merged into <filename>/etc</filename>.
-	  The following procedure gives one idea of how to do this.</para>
+	<para>Note that some of the files that will have been installed in
+	  <filename>/var/tmp/root</filename> have a leading <quote>.</quote>.
+	  At the time of writing the only files like this are shell startup
+	  files in <filename>/var/tmp/root/</filename> and
+	  <filename>/var/tmp/root/root/</filename>, although there may be
+	  others (depending on when you are reading this).  Make sure you use
+	  <command>ls -a</command> to catch them.</para>
 
-	<procedure>
-	  <step>
-	    <para>Make the world as normal.  When you want to update
-	      <filename>/etc</filename> and the other directories, give the
-	      target directory a name based on the current date.  If you were
-	      doing this on the 14th of February 1998 you could do the
-	      following:</para>
-	  
-	    <screen>&prompt.root; <userinput>mkdir /var/tmp/root-19980214</userinput>
+	<para>The simplest way to do this is to use &man.diff.1; to compare
+	  the two files:</para>
+
+	<screen>&prompt.root; <userinput>diff /etc/shells /var/tmp/root/etc/shells</userinput></screen>
+
+	<para>This will show you the differences between your
+	  <filename>/etc/shells</filename> file and the new
+	  <filename>/var/tmp/root/etc/shells</filename> file.  Use these to
+	  decide whether to merge in changes that you have made or whether to
+	  copy over your old file.</para>
+
+	<tip>
+	  <title>Name the New Root Directory
+	    (<filename>/var/tmp/root</filename>) with a Time Stamp, so You Can
+	    Easily Compare Differences Between Versions</title>
+
+	  <para>Frequently rebuilding the world means that you have to update
+	    <filename>/etc</filename> frequently as well, which can be a bit
+	    of a chore.</para>
+
+	  <para>You can speed this process up by keeping a copy of the last
+	    set of changed files that you merged into
+	    <filename>/etc</filename>.  The following procedure gives one
+	    idea of how to do this.</para>
+
+	  <procedure>
+	    <step>
+	      <para>Make the world as normal.  When you want to update
+		<filename>/etc</filename> and the other directories, give the
+		target directory a name based on the current date.  If you
+		were doing this on the 14th of February 1998 you could do the
+		following:</para>
+
+	      <screen>&prompt.root; <userinput>mkdir /var/tmp/root-19980214</userinput>
 &prompt.root; <userinput>cd /usr/src/etc</userinput>
 &prompt.root; <userinput>make DESTDIR=/var/tmp/root-19980214 \
     distrib-dirs distribution</userinput></screen>
-	  </step>
-	  
-	  <step>
-	    <para>Merge in the changes from this directory as outlined
-	      above.</para>
-	    
-	    <para><emphasis>Do not</emphasis> remove the
-	      <filename>/var/tmp/root-19980214</filename> directory when you
-	      have finished.</para>
-	  </step>
-	  
-	  <step>
-	    <para>When you have downloaded the latest version of the source
-	      and remade it, follow step 1.  This will give you a new
-	      directory, which might be called
-	      <filename>/var/tmp/root-19980221</filename> (if you wait a week
-	      between doing updates).</para>
-	  </step>
-	  
-	  <step>
-	    <para>You can now see the differences that have been made in the
-	      intervening week using &man.diff.1; to create a recursive diff
-	      between the two directories:</para>
-	      
-	    <screen>&prompt.root; <userinput>cd /var/tmp</userinput>
-&prompt.root; <userinput>diff -r root-19980214 root-19980221</userinput></screen>
-	  
-	    <para>Typically, this will be a much smaller set of differences
-	      than those between
-	      <filename>/var/tmp/root-19980221/etc</filename> and
-	      <filename>/etc</filename>.  Because the set of differences is
-	      smaller, it is easier to migrate those changes across into your
-	      <filename>/etc</filename> directory.</para>
-	  </step>
-	  
-	  <step>
-	    <para>You can now remove the older of the two
-	      <filename>/var/tmp/root-*</filename> directories:</para>
-	      
-	    <screen>&prompt.root; <userinput>rm -rf /var/tmp/root-19980214</userinput></screen>
-	  </step>
-	  
-	  <step>
-	    <para>Repeat this process every time you need to merge in changes
-	      to <filename>/etc</filename>.</para>
-	  </step>
-	</procedure>
+	    </step>
 
-	<para>You can use &man.date.1; to automate the generation of the
-	  directory names:</para>
-	  
-	<screen>&prompt.root; <userinput>mkdir /var/tmp/root-`date "+%Y%m%d"`</userinput></screen>
-      </tip>
+	    <step>
+	      <para>Merge in the changes from this directory as outlined
+		above.</para>
+
+	      <para><emphasis>Do not</emphasis> remove the
+		<filename>/var/tmp/root-19980214</filename> directory when you
+		have finished.</para>
+	    </step>
+
+	    <step>
+	      <para>When you have downloaded the latest version of the source
+		and remade it, follow step 1.  This will give you a new
+		directory, which might be called
+		<filename>/var/tmp/root-19980221</filename> (if you wait a
+		week between doing updates).</para>
+	    </step>
+
+	    <step>
+	      <para>You can now see the differences that have been made in the
+		intervening week using &man.diff.1; to create a recursive
+		diff between the two directories:</para>
+
+	      <screen>&prompt.root; <userinput>cd /var/tmp</userinput>
+&prompt.root; <userinput>diff -r root-19980214 root-19980221</userinput></screen>
+
+	      <para>Typically, this will be a much smaller set of differences
+		than those between
+		<filename>/var/tmp/root-19980221/etc</filename> and
+		<filename>/etc</filename>.  Because the set of differences is
+		smaller, it is easier to migrate those changes across into
+		your <filename>/etc</filename> directory.</para>
+	    </step>
+
+	    <step>
+	      <para>You can now remove the older of the two
+		<filename>/var/tmp/root-*</filename> directories:</para>
+
+	      <screen>&prompt.root; <userinput>rm -rf /var/tmp/root-19980214</userinput></screen>
+	    </step>
+
+	    <step>
+	      <para>Repeat this process every time you need to merge in
+		changes to <filename>/etc</filename>.</para>
+	    </step>
+	  </procedure>
+
+	  <para>You can use &man.date.1; to automate the generation of the
+	    directory names:</para>
+
+	  <screen>&prompt.root; <userinput>mkdir /var/tmp/root-`date "+%Y%m%d"`</userinput></screen>
+	</tip>
       </sect3>
     </sect2>
-    
-    <sect2 id="cutting-edge-rebooting">
+
+    <sect2 id="updating-upgrading-rebooting">
       <title>Rebooting</title>
-      
+
       <para>You are now done.  After you have verified that everything appears
 	to be in the right place you can reboot the system.  A simple
 	&man.shutdown.8; should do it:</para>
@@ -1220,21 +2625,21 @@ Script done, &hellip;</screen>
 
     <sect2>
       <title>Finished</title>
-      
+
       <para>You should now have successfully upgraded your &os; system.
 	Congratulations.</para>
-      
+
       <para>If things went slightly wrong, it is easy to rebuild a particular
-        piece of the system.  For example, if you accidentally deleted
-        <filename>/etc/magic</filename> as part of the upgrade or merge of
-        <filename>/etc</filename>, the &man.file.1; command will stop working.
-        In this case, the fix would be to run:</para>
+	piece of the system.  For example, if you accidentally deleted
+	<filename>/etc/magic</filename> as part of the upgrade or merge of
+	<filename>/etc</filename>, the &man.file.1; command will stop working.
+	In this case, the fix would be to run:</para>
 
 	<screen>&prompt.root; <userinput>cd /usr/src/usr.bin/file</userinput>
 &prompt.root; <userinput>make all install</userinput></screen>
-    </sect2>    
-    
-    <sect2>
+    </sect2>
+
+    <sect2 id="updating-questions">
       <title>Questions</title>
 
       <qandaset>
@@ -1244,10 +2649,11 @@ Script done, &hellip;</screen>
 	  </question>
 
 	  <answer>
-            <para>There is no easy answer to this one, as it depends on the
-	      nature of the change.  For example, if you just ran <application>CVSup</application>, and
-	      it has shown the following files as being updated:</para>
-      
+	    <para>There is no easy answer to this one, as it depends on the
+	      nature of the change.  For example, if you just ran
+	      <application>CVSup</application>, and it has shown the
+	      following files as being updated:</para>
+
 	    <screen><filename>src/games/cribbage/instr.c</filename>
 <filename>src/games/sail/pl_main.c</filename>
 <filename>src/release/sysinstall/config.c</filename>
@@ -1262,13 +2668,13 @@ Script done, &hellip;</screen>
 	      re-make the world, or at least those parts of it that are
 	      statically linked (as well as anything else you might have added
 	      that is statically linked).</para>
-      
+
 	    <para>At the end of the day, it is your call.  You might be happy
 	      re-making the world every fortnight say, and let changes
 	      accumulate over that fortnight.  Or you might want to re-make
 	      just those things that have changed, and be confident you can
 	      spot all the dependencies.</para>
-      
+
 	    <para>And, of course, this all depends on how often you want to
 	      upgrade, and whether you are tracking &os.stable; or
 	      &os.current;.</para>
@@ -1280,19 +2686,18 @@ Script done, &hellip;</screen>
 	    <para>My compile failed with lots of signal 11 (or other signal
 	      number) errors.  What has happened?</para>
 	  </question>
-    <indexterm><primary>signal 11</primary></indexterm>
+	  <indexterm><primary>signal 11</primary></indexterm>
 
 	  <answer>
-
 	    <para>This is normally indicative of hardware problems.
 	      (Re)making the world is an effective way to stress test your
 	      hardware, and will frequently throw up memory problems.  These
 	      normally manifest themselves as the compiler mysteriously dying
 	      on receipt of strange signals.</para>
-      
+
 	    <para>A sure indicator of this is if you can restart the make and
 	      it dies at a different point in the process.</para>
-      
+
 	    <para>In this instance there is little you can do except start
 	      swapping around the components in your machine to determine
 	      which one is failing.</para>
@@ -1304,26 +2709,26 @@ Script done, &hellip;</screen>
 	    <para>Can I remove <filename>/usr/obj</filename> when I have
 	      finished?</para>
 	  </question>
-	  
+
 	  <answer>
 	    <para>The short answer is yes.</para>
-      
+
 	    <para><filename>/usr/obj</filename> contains all the object files
 	      that were produced during the compilation phase.  Normally, one
-	      of the first steps in the <command>make buildworld</command> process is to
-	      remove this directory and start afresh.  In this case, keeping
-	      <filename>/usr/obj</filename> around after you have finished
-	      makes little sense, and will free up a large chunk of disk space
-	      (currently about 340&nbsp;MB).</para>
-      
+	      of the first steps in the <command>make buildworld</command>
+	      process is to remove this directory and start afresh.  In this
+	      case, keeping <filename>/usr/obj</filename> around after you
+	      have finished makes little sense, and will free up a large
+	      chunk of disk space (currently about 2&nbsp;GB).</para>
+
 	    <para>However, if you know what you are doing you can have
-	      <command>make buildworld</command> skip this step.  This will make subsequent
-	      builds run much faster, since most of sources will not need to
-	      be recompiled.  The flip side of this is that subtle dependency
-	      problems can creep in, causing your build to fail in odd ways.
-	      This frequently generates noise on the &os; mailing lists,
-	      when one person complains that their build has failed, not
-	      realizing that it is because they have tried to cut
+	      <command>make buildworld</command> skip this step.  This will
+	      make subsequent builds run much faster, since most of sources
+	      will not need to be recompiled.  The flip side of this is that
+	      subtle dependency problems can creep in, causing your build to
+	      fail in odd ways.  This frequently generates noise on the &os;
+	      mailing lists, when one person complains that their build has
+	      failed, not realizing that it is because they have tried to cut
 	      corners.</para>
 	  </answer>
 	</qandaentry>
@@ -1338,13 +2743,13 @@ Script done, &hellip;</screen>
 	      you found a problem.</para>
 
 	    <para><emphasis>In general</emphasis> (and this is not a hard and
-	      fast rule) the <command>make buildworld</command> process builds new
-	      copies of essential tools (such as &man.gcc.1;, and
+	      fast rule) the <command>make buildworld</command> process
+	      builds new copies of essential tools (such as &man.gcc.1;, and
 	      &man.make.1;) and the system libraries.  These tools and
 	      libraries are then installed.  The new tools and libraries are
-	      then used to rebuild themselves, and are installed again. The
+	      then used to rebuild themselves, and are installed again.  The
 	      entire system (now including regular user programs, such as
-		&man.ls.1; or &man.grep.1;) is then rebuilt with the new
+	      &man.ls.1; or &man.grep.1;) is then rebuilt with the new
 	      system files.</para>
 
 	    <para>If you are at the last stage, and you know it (because you
@@ -1360,13 +2765,13 @@ Script done, &hellip;</screen>
 
 	    <para>If you see the message:</para>
 
-	      <screen>--------------------------------------------------------------
+	    <screen>--------------------------------------------------------------
 Building everything..
 --------------------------------------------------------------</screen>
 
 	    <para>in the <command>make buildworld</command> output then it is
 	      probably fairly safe to do so.</para>
-	    
+
 	    <para>If you do not see that message, or you are not sure, then it
 	      is always better to be safe than sorry, and restart the build
 	      from scratch.</para>
@@ -1376,92 +2781,94 @@ Building everything..
 	<qandaentry>
 	  <question>
 	    <para>How can I speed up making the world?</para>
-          </question>
+	  </question>
 
-          <answer>
+	  <answer>
 	    <itemizedlist>
 	      <listitem>
 		<para>Run in single user mode.</para>
 	      </listitem>
-	      
+
 	      <listitem>
 		<para>Put the <filename>/usr/src</filename> and
 		  <filename>/usr/obj</filename> directories on separate
 		  file systems held on separate disks.  If possible, put these
 		  disks on separate disk controllers.</para>
 	      </listitem>
-	      
+
 	      <listitem>
 		<para>Better still, put these file systems across multiple
 		  disks using the &man.ccd.4; (concatenated disk
 		  driver) device.</para>
 	      </listitem>
-	      
+
 	      <listitem>
-		<para>Turn off profiling (set <quote>NO_PROFILE=true</quote> in
-		  <filename>/etc/make.conf</filename>).  You almost certainly
-		  do not need it.</para>
+		<para>Turn off profiling (set <quote>NO_PROFILE=true</quote>
+		  in <filename>/etc/make.conf</filename>).  You almost
+		  certainly do not need it.</para>
 	      </listitem>
-	      
+
 	      <listitem>
 		<para>Also in <filename>/etc/make.conf</filename>, set
 		  <makevar>CFLAGS</makevar> to something like <option>-O
-		  -pipe</option>.  The optimization <option>-O2</option> is much
-		  slower, and the optimization difference between
+		    -pipe</option>.  The optimization <option>-O2</option>
+		  is much slower, and the optimization difference between
 		  <option>-O</option> and <option>-O2</option> is normally
 		  negligible.  <option>-pipe</option> lets the compiler use
 		  pipes rather than temporary files for communication, which
 		  saves disk access (at the expense of memory).</para>
 	      </listitem>
-	      
+
 	      <listitem>
-		<para>Pass the <option>-j<replaceable>n</replaceable></option> option to &man.make.1; to
-		  run multiple processes in parallel.  This usually helps 
-		  regardless of whether you have a single or a multi processor
-		  machine.</para>
+		<para>Pass the
+		  <option>-j<replaceable>n</replaceable></option> option to
+		  &man.make.1; to run multiple processes in parallel.  This
+		  usually helps regardless of whether you have a single or
+		  a multi processor machine.</para>
 	      </listitem>
-	      
-	      <listitem><para>The file system holding
-		  <filename>/usr/src</filename> can be mounted (or remounted)
-		  with the <option>noatime</option> option.  This prevents the
-		  file system from recording the file access time.  You probably
-		  do not need this information anyway.</para>
-		  
-		  <screen>&prompt.root; <userinput>mount -u -o noatime /usr/src</userinput></screen>
-		  
-		  <warning>
-		    <para>The example assumes <filename>/usr/src</filename> is
-		      on its own file system.  If it is not (if it is a part of
-		      <filename>/usr</filename> for example) then you will
-		      need to use that file system mount point, and not
-		      <filename>/usr/src</filename>.</para>
-		  </warning>
-	      </listitem>
-	      
+
 	      <listitem>
-		<para>The file system holding <filename>/usr/obj</filename> can
-		  be mounted (or remounted) with the <option>async</option>
-		  option.  This causes disk writes to happen asynchronously.
-		  In other words, the write completes immediately, and the
-		  data is written to the disk a few seconds later.  This
-		  allows writes to be clustered together, and can be a
-		  dramatic performance boost.</para>
+		<para>The file system holding <filename>/usr/src</filename>
+		  can be mounted (or remounted) with the
+		  <option>noatime</option> option.  This prevents the
+		  file system from recording the file access time.
+		  You probably do not need this information anyway.</para>
+
+		<screen>&prompt.root; <userinput>mount -u -o noatime /usr/src</userinput></screen>
+
+		<warning>
+		  <para>The example assumes <filename>/usr/src</filename> is
+		    on its own file system.  If it is not (if it is a part of
+		    <filename>/usr</filename> for example) then you will
+		    need to use that file system mount point, and not
+		    <filename>/usr/src</filename>.</para>
+		</warning>
+	      </listitem>
+
+	      <listitem>
+		<para>The file system holding <filename>/usr/obj</filename>
+		  can be mounted (or remounted) with the
+		  <option>async</option> option.  This causes disk writes to
+		  happen asynchronously.  In other words, the write completes
+		  immediately, and the data is written to the disk a few
+		  seconds later.  This allows writes to be clustered
+		  together, and can be a dramatic performance boost.</para>
 
 		<warning>
 		  <para>Keep in mind that this option makes your file system
 		    more fragile.  With this option there is an increased
 		    chance that, should power fail, the file system will be in
 		    an unrecoverable state when the machine restarts.</para>
-	   
+
 		  <para>If <filename>/usr/obj</filename> is the only thing on
 		    this file system then it is not a problem.  If you have
 		    other, valuable data on the same file system then ensure
 		    your backups are fresh before you enable this
 		    option.</para>
 		</warning>
-		
+
 		<screen>&prompt.root; <userinput>mount -u -o async /usr/obj</userinput></screen>
-		
+
 		<warning>
 		  <para>As above, if <filename>/usr/obj</filename> is not on
 		    its own file system, replace it in the example with the
@@ -1472,36 +2879,136 @@ Building everything..
 	  </answer>
 	</qandaentry>
 
-        <qandaentry>
-          <question>
-            <para>What do I do if something goes wrong?</para>
-          </question>
+	<qandaentry>
+	  <question>
+	    <para>What do I do if something goes wrong?</para>
+	  </question>
 
-          <answer>
-            <para>Make absolutely sure your environment has no
-              extraneous cruft from earlier builds.  This is simple
-              enough.</para>
+	  <answer>
+	    <para>Make absolutely sure your environment has no
+	      extraneous cruft from earlier builds.  This is simple
+	      enough.</para>
 
-            <screen>&prompt.root; <userinput>chflags -R noschg /usr/obj/usr</userinput>
+	    <screen>&prompt.root; <userinput>chflags -R noschg /usr/obj/usr</userinput>
 &prompt.root; <userinput>rm -rf /usr/obj/usr</userinput>
 &prompt.root; <userinput>cd /usr/src</userinput>
 &prompt.root; <userinput>make cleandir</userinput>
 &prompt.root; <userinput>make cleandir</userinput></screen>
 
-            <para>Yes, <command>make cleandir</command> really should
-              be run twice.</para>
+	    <para>Yes, <command>make cleandir</command> really should
+	      be run twice.</para>
 
-            <para>Then restart the whole process, starting
-              with <command>make buildworld</command>.</para>
+	    <para>Then restart the whole process, starting
+	      with <command>make buildworld</command>.</para>
 
-            <para>If you still have problems, send the error and the
-              output of <command>uname -a</command> to &a.questions;.
-              Be prepared to answer other questions about your
-              setup!</para>
-          </answer>
-        </qandaentry>
+	    <para>If you still have problems, send the error and the
+	      output of <command>uname -a</command> to &a.questions;.
+	      Be prepared to answer other questions about your
+	      setup!</para>
+	  </answer>
+	</qandaentry>
       </qandaset>
     </sect2>
+  </sect1>
+
+  <sect1 id="make-delete-old">
+    <sect1info>
+      <authorgroup>
+	<author>
+	  <firstname>Anton</firstname>
+	  <surname>Shterenlikht</surname>
+	  <contrib>Based on notes provided by </contrib>
+	</author>
+      </authorgroup>
+    </sect1info>
+    <title>Deleting obsolete files, directories and libraries</title>
+    <indexterm>
+      <primary>Deleting obsolete files, directories and libraries</primary>
+    </indexterm>
+
+    <para>As a part of the &os; development lifecycle, it happens from time
+      to time that files and their contents become obsolete.  This may be
+      because their functionality is implemented elsewhere, the version number
+      of the library has changed or it was removed from the system entirely.
+      This includes old files, libraries and directories, which should
+      be removed when updating the system.  The benefit for the user is that
+      the system is not cluttered with old files which take up unnecessary
+      space on the storage (and backup) medium.  Additionally, if the old
+      library had a security or stability issue, you should update to the
+      newer library to keep your system safe and prevent crashes caused by
+      the old library implementation.  The files, directories, and libraries
+      that are considered obsolete are listed in
+      <filename>/usr/src/ObsoleteFiles.inc</filename>.  The following
+      instructions will help you removing these obsolete files during the
+      system upgrade process.</para>
+
+    <para>We assume you are following the steps outlined in <xref
+      linkend="canonical-build">.  After the <command>make
+      <maketarget>installworld</maketarget></command> and the subsequent
+      <command>mergemaster</command> commands have finished successfully, you
+      should check for obsolete files and libraries as follows:</para>
+
+    <screen>&prompt.root; <userinput>cd /usr/src</userinput>
+&prompt.root; <userinput>make check-old</userinput></screen>
+
+    <para>If any obsolete files are found, they can be deleted using the
+      following commands:</para>
+
+    <screen>&prompt.root; <userinput>make delete-old</userinput></screen>
+
+    <tip>
+      <para>See <filename>/usr/src/Makefile</filename>
+        for more targets of interest.</para>
+    </tip>
+
+    <para>A prompt is displayed before deleting each obsolete file.  You can
+      skip the prompt and let the system remove these files automatically by
+      using the <makevar>BATCH_DELETE_OLD_FILES</makevar> make-variable as
+      follows:</para>
+
+    <screen>&prompt.root; <userinput>make -DBATCH_DELETE_OLD_FILES delete-old</userinput></screen>
+
+    <para>You can also achieve the same goal by piping these commands through
+      <command>yes</command> like this:</para>
+
+    <screen>&prompt.root; <userinput>yes|make delete-old</userinput></screen>
+
+    <warning>
+      <title>Warning</title>
+        <para>Deleting obsolete files will break applications that still
+          depend on those obsolete files.  This is especially true for old
+          libraries. In most cases, you need to recompile the programs, ports,
+          or libraries that used the old library before <command>make
+      <maketarget>delete-old-libs</maketarget></command> is executed.</para>
+    </warning>
+
+    <para>Utilities for checking shared library dependencies are available from
+      the Ports Collection in <filename
+      role="package">sysutils/libchk</filename> or <filename
+      role="package">sysutils/bsdadminscripts</filename>.</para>
+
+    <para>Obsolete shared libraries can conflict with newer libraries,
+      causing messages like these:</para>
+
+    <screen>/usr/bin/ld: warning: libz.so.4, needed by /usr/local/lib/libtiff.so, may conflict with libz.so.5
+/usr/bin/ld: warning: librpcsvc.so.4, needed by /usr/local/lib/libXext.so, may conflict with librpcsvc.so.5</screen>
+
+    <para>To solve these problems, determine which port installed the
+      library:</para>
+
+    <screen>&prompt.root; <userinput>pkg_info -W  /usr/local/lib/libtiff.so</userinput>
+/usr/local/lib/libtiff.so was installed by package tiff-3.9.4
+&prompt.root; <userinput>pkg_info -W /usr/local/lib/libXext.so</userinput>
+/usr/local/lib/libXext.so was installed by package libXext-1.1.1,1</screen>
+
+    <para>Then deinstall, rebuild and reinstall the port. The <filename
+      role="package">ports-mgmt/portmaster</filename> and <filename
+      role="package">ports-mgmt/portupgrade</filename> utilities can be used to
+      automate this process.  After you've made sure that all ports are rebuilt
+      and do not use the old libraries anymore, you can delete them using the
+      following command:</para>
+
+    <screen>&prompt.root; <userinput>make delete-old-libs</userinput></screen>
   </sect1>
 
   <sect1 id="small-lan">
@@ -1514,12 +3021,13 @@ Building everything..
 	</author>
       </authorgroup>
     </sect1info>
+
     <title>Tracking for Multiple Machines</title>
     <indexterm>
       <primary>NFS</primary>
       <secondary>installing multiple machines</secondary>
     </indexterm>
-    
+
     <para>If you have multiple machines that you want to track the
       same source tree, then having all of them download sources and
       rebuild everything seems like a waste of resources: disk space,
@@ -1537,7 +3045,7 @@ Building everything..
 	custom kernel, but they will be running the same userland
 	binaries.  From that set, choose a machine to be the
 	<emphasis>build machine</emphasis>.  It is going to be the
-	machine that the world and kernel are built on. Ideally, it
+	machine that the world and kernel are built on.  Ideally, it
 	should be a fast machine that has sufficient spare CPU to
 	run <command>make buildworld</command> and
 	<command>make buildkernel</command>.  You will also want to
@@ -1555,9 +3063,10 @@ Building everything..
 	as well.  If you have multiple build sets,
 	<filename>/usr/src</filename> should be on one build machine, and
 	NFS mounted on the rest.</para>
-	  
+
       <para>Finally make sure that
-	<filename>/etc/make.conf</filename> on all the machines in
+	<filename>/etc/make.conf</filename> and
+	<filename>/etc/src.conf</filename> on all the machines in
 	the build set agrees with the build machine.  That means that
 	the build machine must build all the parts of the base
 	system that any machine in the build set is going to
@@ -1571,12 +3080,12 @@ Building everything..
 	if it is going to build their kernels.</para>
     </sect2>
 
-    <sect2>
+    <sect2 id="small-lan-base-system">
       <title>The Base System</title>
 
       <para>Now that all that is done, you are ready to build
 	everything.  Build the kernel and world as described in <xref
-	linkend="make-buildworld"> on the build machine,
+	  linkend="make-buildworld"> on the build machine,
 	but do not install anything.  After the build has finished, go
 	to the test machine, and install the kernel you just
 	built.  If this machine mounts <filename>/usr/src</filename>
@@ -1595,7 +3104,7 @@ Building everything..
 	the build set.</para>
     </sect2>
 
-    <sect2>
+    <sect2 id="small-lan-ports">
       <title>Ports</title>
 
       <para>The same ideas can be used for the ports tree.  The first
@@ -1609,11 +3118,11 @@ Building everything..
 	local build directory.  Finally, if you are going to be
 	building and distributing packages, you should set
 	<makevar>PACKAGES</makevar> to a directory similar to
-	<makevar>DISTDIR</makevar>.</para> 
+	<makevar>DISTDIR</makevar>.</para>
     </sect2>
   </sect1>
 </chapter>
-<!-- 
+<!--
      Local Variables:
      mode: sgml
      sgml-declaration: "../chapter.decl"
@@ -1623,4 +3132,3 @@ Building everything..
      sgml-parent-document: ("../book.sgml" "part" "chapter")
      End:
 -->
-
