@@ -1,37 +1,40 @@
 <!--
-     The FreeBSD Documentation Project
+     The FreeBSD Traditional Chinese Documentation Project
 
      $FreeBSD$
-     Take translation from Kang-min Liu <gugod@gugod.org>
-     Original revision:  1.175
+     Take translation from Kang-min Liu <gugod@gugod.org> before v1.175
+     Original revision:  1.219
 -->
 
 <appendix id="eresources">
   <title>網際網路上的資源</title>
 
   <para>進展飛快的 FreeBSD 使得現有的印刷、平面媒體跟不上它的最新進度！
-    反而數位版本的資源，也許有時並不是最好，但通常是唯一一個跟上最新進展的方式。
+    數位版本的資源是跟上最新進展的最佳方式－－雖然通常不是唯一方式。
     正由於 FreeBSD 是來自於許多志工的努力，所以廣大的使用者群也通常扮演著 <quote>IT技術支援部門</quote> 的角色。
-    只要善用電子郵件和 USENET 新聞群組就可以很快速地聯繫這些社群了。</para>
+    只要善用電子郵件、網頁論壇、USENET 新聞群組就可以很快速地聯繫這些社群了。</para>
 
   <para>以下簡介與 FreeBSD 社群搭上線的主要方式。
     若你還知道其他這裡沒有列出的資源，請告知 &a.doc;，以便我們更新。</para>
 
   <sect1 id="eresources-mail">
-    <title>郵遞論壇(Mailing Lists)</title>
+    <title>郵遞論壇 (Mailing Lists)</title>
 
-    <para>雖然，大部份的 FreeBSD 開發人員都有看 USENET 新聞群組，
-      我們也不能保證我們永遠可以及時得知您的問題。
-      尤其是，若您只在 
-      <literal>comp.unix.bsd.freebsd.*</literal> 其中群組內發問的話。
-      建議您將問題發到適當的郵遞論壇(mailing list)上，不但可以同時讓 FreeBSD 
-      開發者和其他看倌們知道，通常也可以得到一個較好的(最起碼會比較快)的回應。</para>
+    <para>郵遞論壇是 FreeBSD 愛好者最直接的發問、發起討論串的管道，
+      論壇非常多元，有大量不同的 FreeBSD 主題。
+      在適當的郵遞論壇上發問將得到較快較準確的回應。</para>
 
     <para>本文後面介紹的是各式不同的郵遞論壇、討論規則(charter)。
       <emphasis>在訂閱任何 list 之前，請先閱讀討論規則。</emphasis>
       訂閱這些 list 的人們現在每天都會收到數百封 FreeBSD 相關信件。
       而討論規則的制訂，則有助於提升彼此討論品質。
       否則，這些討論 FreeBSD 的 list 終將陷入溝通不良，而失去其原本美意。</para>
+
+    <note>
+      <para><emphasis>If you wish to test your ability to send to
+	&os; lists, send a test message to &a.test.name;.</emphasis>
+	Please do not send test messages to any other list.</para>
+    </note>
 
     <para>對於該在哪個 list 發問覺得很疑惑的時候，就來看看 <ulink
       url="&url.articles.freebsd-questions;">《如何在 FreeBSD-questions mailing list 上得到正解》
@@ -44,10 +47,15 @@
 
     <para>全部的 mailing lists 討論記錄都可以在 <ulink url="&url.base;/search/index.html">
       FreeBSD WWW主機</ulink> 上找到。它提供了很棒的關鍵字搜尋功能，可讓您找到常用問答集(FAQ)
-      。而在 mailing lists 上發問之前，也請先搜尋是否已有解答。</para>
+      。而在 mailing lists 上發問之前，也請先搜尋是否已有解答。
+      Note that this
+      also means that messages sent to FreeBSD mailing lists are
+      archived in perpetuity.  When protecting privacy is a
+      concern, consider using a disposable secondary email address and
+      posting only public information.</para>
 
     <sect2 id="eresources-summary">
-      <title>List 一覽表</title>
+      <title>List 一覽</title>
 
       <para><emphasis>一般論壇：</emphasis> 以下的 list 都是一般性質，而且大家可以自由地參與，
         我們也鼓勵大家訂閱：</para>
@@ -62,11 +70,6 @@
 	  </thead>
 
 	  <tbody>
-	    <row>
-	      <entry>&a.cvsall.name;</entry>
-	      <entry>所有的 FreeBSD 提交(commit)記錄</entry>
-	    </row>
-
 	    <row>
 	      <entry>&a.advocacy.name;</entry>
 	      <entry>FreeBSD 惡魔福音電台</entry>
@@ -95,6 +98,11 @@
 	    <row>
 	      <entry>&a.chat.name;</entry>
 	      <entry>非技術交流的 FreeBSD 社群聊天區</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.chromium.name;</entry>
+	      <entry>FreeBSD-specific Chromium issues</entry>
 	    </row>
 
 	    <row>
@@ -170,11 +178,6 @@
 	    </row>
 
 	    <row>
-	      <entry>&a.alpha.name;</entry>
-	      <entry>移植 FreeBSD 到 Alpha 系統架構</entry>
-	    </row>
-
-	    <row>
 	      <entry>&a.amd64.name;</entry>
 	      <entry>移植 FreeBSD 到 AMD64 系統架構</entry>
 	    </row>
@@ -192,11 +195,6 @@
 	    <row>
 	      <entry>&a.atm.name;</entry>
 	      <entry>在 FreeBSD 上使用 ATM 網路</entry>
-	    </row>
-
-	    <row>
-	      <entry>&a.audit.name;</entry>
-	      <entry>Source code 的稽核(audit)計劃</entry>
 	    </row>
 
 	    <row>
@@ -225,6 +223,11 @@
 	    </row>
 
 	    <row>
+	      <entry>&a.desktop.name;</entry>
+	      <entry>使用暨改進 &os; 桌面環境</entry>
+	    </row>
+
+	    <row>
 	      <entry>&a.doc.name;</entry>
 	      <entry>撰寫 FreeBSD 相關文件</entry>
 	    </row>
@@ -240,6 +243,17 @@
 	    </row>
 
 	    <row>
+	      <entry>&a.embedded.name;</entry>
+	      <entry>FreeBSD 在嵌入式環境的應用</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.eol.name;</entry>
+	      <entry>Peer support of FreeBSD-related software that
+		is no longer supported by the FreeBSD project.</entry>
+	    </row>
+
+	    <row>
 	      <entry>&a.emulation.name;</entry>
 	      <entry>在 FreeBSD 上模擬其他系統，如：Linux、&ms-dos;、&windows;</entry>
 	    </row>
@@ -252,6 +266,11 @@
 	    <row>
 	      <entry>&a.fs.name;</entry>
 	      <entry>檔案系統的探討、研發</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.gecko.name;</entry>
+	      <entry><application>Gecko Rendering Engine</application> issues</entry>
 	    </row>
 
 	    <row>
@@ -300,6 +319,11 @@
 	    </row>
 
 	    <row>
+	      <entry>&a.jail.name;</entry>
+	      <entry>Discussion about the &man.jail.8; facility</entry>
+	    </row>
+
+	    <row>
 	      <entry>&a.java.name;</entry>
 	      <entry>&java; 程式開發者以及移植 &jdk;s 到 FreeBSD 上</entry>
 	    </row>
@@ -315,11 +339,6 @@
 	    </row>
 
 	    <row>
-	      <entry>&a.libh.name;</entry>
-	      <entry>新世代的安裝、打包套件機制</entry>
-	    </row>
-
-	    <row>
 	      <entry>&a.mips.name;</entry>
 	      <entry>移植 FreeBSD 到 &mips;</entry>
 	    </row>
@@ -327,6 +346,11 @@
 	    <row>
 	      <entry>&a.mobile.name;</entry>
 	      <entry>關於各類 mobile computing(比如：筆記型電腦)的研討</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.mono.name;</entry>
+	      <entry>Mono and C# applications on FreeBSD</entry>
 	    </row>
 
 	    <row>
@@ -350,14 +374,13 @@
 	    </row>
 
 	    <row>
-	      <entry>&a.openoffice.name;</entry>
-	      <entry>移植 <application>OpenOffice.org</application> 及
-		<application>&staroffice;</application> 到 FreeBSD</entry>
+	      <entry>&a.office.name;</entry>
+	      <entry>&os; 辦公應用程式</entry>
 	    </row>
 
 	    <row>
 	      <entry>&a.performance.name;</entry>
-	      <entry>在高效能/負荷環境下的效能調校(tuning)議題</entry>
+	      <entry>在高效能／負荷環境下的效能調校 (tuning) 議題</entry>
 	    </row>
 
 	    <row>
@@ -381,6 +404,11 @@
 	    </row>
 
 	    <row>
+	      <entry>&a.ports-announce.name;</entry>
+	      <entry>Important news and instructions about the Ports Collection</entry>
+	    </row>
+
+	    <row>
 	      <entry>&a.ports-bugs.name;</entry>
 	      <entry>ports 相關的 bugs/PRs</entry>
 	    </row>
@@ -401,11 +429,6 @@
 	    </row>
 
 	    <row>
-	      <entry>&a.qa.name;</entry>
-	      <entry>QA(Quality Assurance)討論，通常會決定是否已經到達可以 release 的程度</entry>
-	    </row>
-
-	    <row>
 	      <entry>&a.rc.name;</entry>
 	      <entry><filename>rc.d</filename> 機制的討論、研發</entry>
 	    </row>
@@ -413,6 +436,11 @@
 	    <row>
 	      <entry>&a.realtime.name;</entry>
 	      <entry>FreeBSD 上 realtime extensions 的研發</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.ruby.name;</entry>
+	      <entry>FreeBSD-specific Ruby discussions</entry>
 	    </row>
 
 	    <row>
@@ -427,12 +455,8 @@
 
 	    <row>
 	      <entry>&a.small.name;</entry>
-	      <entry>在嵌入式硬體環境的應用、探討</entry>
-	    </row>
-
-	    <row>
-	      <entry>&a.smp.name;</entry>
-	      <entry>CPU 對稱多工處理(SMP, [A]Symmetric Multiprocessing)的應用、研討</entry>
+	      <entry>在嵌入式環境的應用
+		(已停用，改用 &a.embedded.name;)</entry>
 	    </row>
 
 	    <row>
@@ -446,13 +470,18 @@
 	    </row>
 
 	    <row>
+	      <entry>&a.sysinstall.name;</entry>
+	      <entry>&man.sysinstall.8; 開發</entry>
+	    </row>
+
+	    <row>
 	      <entry>&a.threads.name;</entry>
 	      <entry>FreeBSD 上的 Threading 運用、探討</entry>
 	    </row>
 
 	    <row>
-	      <entry>&a.testing.name;</entry>
-	      <entry>FreeBSD 的效能與穩定性測試</entry>
+	      <entry>&a.tilera.name;</entry>
+	      <entry>Porting FreeBSD to the Tilera family of CPUs</entry>
 	    </row>
 
 	    <row>
@@ -461,8 +490,18 @@
 	    </row>
 
 	    <row>
+	      <entry>&a.toolchain.name;</entry>
+	      <entry>Maintenance of &os;'s integrated toolchain</entry>
+	    </row>
+
+	    <row>
 	      <entry>&a.usb.name;</entry>
 	      <entry>&os; 的 USB 支援的應用、探討</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.virtualization.name;</entry>
+	      <entry>討論 &os; 支援的各種虛擬化技術</entry>
 	    </row>
 
 	    <row>
@@ -473,6 +512,22 @@
 	    <row>
 	      <entry>&a.x11.name;</entry>
 	      <entry>X11 在 FreeBSD 的運用</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.xen.name;</entry>
+	      <entry>Discussion of the &os; port to &xen; &mdash; implementation and usage</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.xfce.name;</entry>
+	      <entry><application>XFCE</application> for &os; &mdash; porting and maintaining</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.zope.name;</entry>
+	      <entry><application>Zope</application> for &os; &mdash;
+		porting and maintaining</entry>
 	    </row>
 	  </tbody>
 	</tgroup>
@@ -509,6 +564,17 @@
 	    </row>
 
 	    <row>
+	      <entry>&a.wip-status.name;</entry>
+	      <entry>FreeBSD Work-In-Progress Status</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.wireless.name;</entry>
+	      <entry>Discussions of 802.11 stack, tools, device driver
+		development</entry>
+	    </row>
+
+	    <row>
 	      <entry>&a.www.name;</entry>
 	      <entry><ulink url="&url.base;/index.html">www.FreeBSD.org</ulink> 的管理維護</entry>
 	    </row>
@@ -519,9 +585,9 @@
       <para><emphasis>論壇的摘要版：</emphasis> 上述的各 lists 都有摘要版(digest)，
         在訂閱 list 之後，就可以先以自己帳號登入，然後個人訂閱選項那邊改為摘要版即可。</para>
 
-      <para><emphasis>CVS lists:</emphasis> 以下的 lists 是提供給想要看各個 tree 的提交(commit)紀錄，
-	請注意：他們是 <emphasis>唯讀(Read-Only)</emphasis> 性質的 list
-	，而且不能寄信給這。</para>
+      <para><emphasis>CVS &amp; SVN lists:</emphasis> 以下的 lists 是提供給想要看各個 tree 的提交 (commit) 紀錄，
+	請注意：他們是<emphasis>唯讀 (Read-Only)</emphasis> 性質的 list
+	，而且不能寄信到這。</para>
 
       <informaltable frame="none" pgwide="1">
 	<tgroup cols="3">
@@ -536,8 +602,8 @@
 	  <tbody>
 	    <row>
 	      <entry>&a.cvsall.name;</entry>
-	      <entry><filename>/usr/(CVSROOT|doc|ports|projects|src)</filename></entry>
-	      <entry>全部的變更記錄(包括各類 CVS commit)</entry>
+	      <entry><filename>/usr/(CVSROOT|doc|ports)</filename></entry>
+	      <entry>全部的變更記錄 (包括各類 CVS commit)</entry>
 	    </row>
 
 	    <row>
@@ -561,7 +627,112 @@
 	    <row>
 	      <entry>&a.cvs-src.name;</entry>
 	      <entry><filename>/usr/src</filename></entry>
-	      <entry>src tree 的所有變更紀錄</entry>
+	      <entry>src tree 的所有變更紀錄 (由 svn-to-cvs
+		匯入 commits 產生</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-all.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the Subversion repository (except
+		for <filename>user</filename>
+		and <filename>projects</filename>)</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-head.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the <quote>head</quote> branch of
+		the Subversion repository (the &os;-CURRENT
+		branch)</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-projects.name;</entry>
+	      <entry><filename>/usr/projects</filename></entry>
+	      <entry>All changes to the <filename>projects</filename>
+		area of the src Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-release.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the <filename>releases</filename>
+		area of the src Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-releng.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the <filename>releng</filename>
+		branches of the src Subversion repository (the
+		security&nbsp;/ release engineering branches)</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-stable.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the all stable branches of the src
+		Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-stable-6.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the <filename>stable/6</filename>
+		branch of the src Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-stable-7.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the <filename>stable/7</filename>
+		branch of the src Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-stable-8.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the <filename>stable/8</filename>
+		branch of the src Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-stable-9.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the <filename>stable/9</filename>
+		branch of the src Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-stable-other.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the
+		older <filename>stable</filename> branches of the src
+		Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-svnadmin.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the administrative scripts, hooks,
+		and other configuration data of the src Subversion
+		repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-user.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the
+		experimental <filename>user</filename> area of the src
+		Subversion repository</entry>
+	    </row>
+
+	    <row>
+	      <entry>&a.svn-src-vendor.name;</entry>
+	      <entry><filename>/usr/src</filename></entry>
+	      <entry>All changes to the vendor work area of the src
+		Subversion repository</entry>
 	    </row>
 	  </tbody>
 	</tgroup>
@@ -575,7 +746,7 @@
         或是到 &a.mailman.lists.link; 然後即可挑選有興趣的 list 來訂閱了，
         該網頁會指示你如何進行訂閱的步驟。</para>
 
-      <para>To actually post to a given list you simply send mail to
+      <para>To actually post to a given list, send mail to
 	<email><replaceable>listname</replaceable>@FreeBSD.org</email>.  It will then
 	be redistributed to mailing list members world-wide.</para>
 
@@ -610,7 +781,7 @@
       <itemizedlist>
 	<listitem>
 	  <para>The topic of any posting should adhere to the basic charter of
-	    the list it is posted to, e.g. if the list is about technical
+	    the list it is posted to, e.g., if the list is about technical
 	    issues then your posting should contain technical discussion.
 	    Ongoing irrelevant chatter or flaming only detracts from the value
 	    of the mailing list for everyone on it and will not be tolerated.
@@ -728,29 +899,6 @@
 	</varlistentry>
 
 	<varlistentry>
-	  <term>&a.audit.name;</term>
-
-	  <listitem>
-	    <para><emphasis>Source code audit project</emphasis></para>
-
-	    <para>This is the mailing list for the FreeBSD source code
-	      audit project.  Although this was originally intended for
-	      security-related changes, its charter has been expanded to
-	      review any code changes.</para>
-
-	    <para>This list is very heavy on patches, and is probably of no
-	      interest to the average FreeBSD user.  Security discussions
-	      not related to a particular code change are held on
-	      freebsd-security.  Conversely, all developers are encouraged
-	      to send their patches here for review, especially if they
-	      touch a part of the system where a bug may adversely affect
-	      the integrity of the system.</para>
-
-<!-- I can't actually find a charter for this, but there's this email: http://www.FreeBSD.org/cgi/getmsg.cgi?fetch=223347+225804+/usr/local/www/db/text/2000/cvs-all/20001210.cvs-all -->
-	  </listitem>
-	</varlistentry>
-
-	<varlistentry>
 	  <term>&a.binup.name;</term>
 
 	  <listitem>
@@ -827,6 +975,18 @@
 	</varlistentry>
 
 	<varlistentry>
+	  <term>&a.chromium.name;</term>
+
+	  <listitem>
+	    <para><emphasis>FreeBSD-specific Chromium issues</emphasis></para>
+
+	    <para>This is a list for the discussion of Chromium
+	      support for FreeBSD.  This is a technical list to discuss
+	      development and installation of Chromium.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
 	  <term>&a.core.name;</term>
 
 	  <listitem>
@@ -863,6 +1023,19 @@
 
 	    <para>Technical discussions about use, development and maintenance
 	      of FreeBSD-CVSweb.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.desktop.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Using and improving &os; on the desktop</emphasis></para>
+
+	    <para>This is a forum for discussion of &os; on the
+	      desktop.  It is primarily a place for desktop porters
+	      and users to discuss issues and improve &os;'s desktop
+	      support.</para>
 	  </listitem>
 	</varlistentry>
 
@@ -921,6 +1094,26 @@
 	</varlistentry>
 
 	<varlistentry>
+	  <term>&a.embedded.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Using FreeBSD in embedded
+	      applications</emphasis></para>
+
+	    <para>This list discusses topics related to using FreeBSD in
+	      embedded systems.  This is a technical mailing list for which
+	      strictly technical content is expected.  For the purpose of
+	      this list we define embedded systems as those computing
+	      devices which are not desktops and which usually serve a
+	      single purpose as opposed to being general computing
+	      environments.  Examples include, but are not limited to,
+	      all kinds of phone handsets, network equipment such as
+	      routers, switches and PBXs, remote measuring equipment,
+	      PDAs, Point Of Sale systems, and so on.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
 	  <term>&a.emulation.name;</term>
 
 	  <listitem>
@@ -930,6 +1123,20 @@
 	    <para>This is a forum for technical discussions related to
 	      running programs written for other operating systems on &os;.
 	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.eol.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Peer support of FreeBSD-related software that is
+	      no longer supported by the FreeBSD project.</emphasis></para>
+
+	    <para>This list is for those interested in providing or making use
+	      of peer support of FreeBSD-related software for which the
+	      FreeBSD project no longer provides official support (e.g., in
+	      the form of security advisories and patches).</para>
 	  </listitem>
 	</varlistentry>
 
@@ -958,6 +1165,21 @@
 	    <para>Discussions concerning FreeBSD file systems.  This is a
 	      technical mailing list for which strictly technical content is
 	      expected.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.gecko.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Gecko Rendering Engine</emphasis></para>
+
+	    <para>This is a forum about <application>Gecko</application>
+	      applications using &os;.</para>
+
+	    <para>Discussion centers around Gecko Ports applications,
+	      their installation, their development and their support
+	      within &os;.</para>
 	  </listitem>
 	</varlistentry>
 
@@ -1042,7 +1264,7 @@
 	    <para><emphasis>Jobs offered and sought</emphasis></para>
 
 	    <para>This is a forum for posting employment notices and
-	      resumes specifically related to &os;, e.g. if you are
+	      resumes specifically related to &os;, e.g., if you are
 	      seeking &os;-related employment or have a job involving
 	      &os; to advertise then this is the right place.  This is
 	      <emphasis>not</emphasis> a mailing list for general
@@ -1131,14 +1353,31 @@
 	</varlistentry>
 
 	<varlistentry>
-	  <term>&a.openoffice.name;</term>
+	  <term>&a.mono.name;</term>
 
 	  <listitem>
-	    <para><emphasis>OpenOffice.org</emphasis></para>
+	    <para><emphasis>Mono and C# applications on
+	      FreeBSD</emphasis></para>
 
-	    <para>Discussions concerning the porting and maintenance
-	      of <application>OpenOffice.org</application> and
-	      <application>&staroffice;</application>.</para>
+	    <para>This is a list for discussions related to the Mono
+	      development framework on &os;.  This is a technical
+	      mailing list.  It is for individuals actively working on
+	      porting Mono or C# applications to &os;, to bring up
+	      problems or discuss alternative solutions.  Individuals
+	      interested in following the technical discussion are also
+	      welcome.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.office.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Office applications on &os;</emphasis></para>
+
+	    <para>Discussion centers around office applications,
+	      their installation, their development and their support
+	      within &os;.</para>
 	   </listitem>
 	</varlistentry>
 
@@ -1222,6 +1461,23 @@
 	</varlistentry>
 
 	<varlistentry>
+	  <term>&a.ports-announce.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Important news and instructions about the
+	      &os;&nbsp;<quote>Ports Collection</quote></emphasis></para>
+
+	    <para>Important news for developers, porters, and users of
+	      the <quote>Ports Collection</quote> (<filename
+		role="directory">/usr/ports</filename>), including
+	      architecture/infrastructure changes, new capabilities,
+	      critical upgrade instructions, and release engineering
+	      information.  This is a low-volume mailing list, intended
+	      for announcements.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
 	  <term>&a.ports-bugs.name;</term>
 
 	  <listitem>
@@ -1279,6 +1535,23 @@
 	</varlistentry>
 
 	<varlistentry>
+	  <term>&a.ruby.name;</term>
+
+	  <listitem>
+	    <para><emphasis>FreeBSD-specific Ruby
+	      discussions</emphasis></para>
+
+	    <para>This is a list for discussions related to the Ruby
+	      support on FreeBSD.  This is a technical mailing
+	      list.  It is for individuals working on Ruby ports,
+	      3rd party libraries and frameworks.</para>
+
+	    <para>Individuals interested in the technical discussion
+	      are also welcome.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
 	  <term>&a.scsi.name;</term>
 
 	  <listitem>
@@ -1327,6 +1600,11 @@
 	    <para>This list discusses topics related to unusually small and
 	      embedded FreeBSD installations.  This is a technical mailing
 	      list for which strictly technical content is expected.</para>
+
+	    <note>
+	      <para>This list has been obsoleted by &a.embedded.name;.</para>
+	    </note>
+
 	  </listitem>
 	</varlistentry>
 
@@ -1394,6 +1672,107 @@
 	  </listitem>
 	</varlistentry>
 
+	<varlistentry>
+	  <term>&a.virtualization.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Discussion of various virtualization
+	      techniques supported by &os;</emphasis></para>
+
+	    <para>A list to discuss the various virtualization
+	    techniques supported by &os;. On one hand the focus will
+	    be on the implementation of the basic functionality as
+	    well as adding new features. On the other hand users
+	    will have a forum to ask for help in case of problems
+	    or to discuss their use cases.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.wip-status.name;</term>
+
+	  <listitem>
+	    <para><emphasis>&os; Work-In-Progress Status</emphasis></para>
+
+	    <para>This mailing list can be used to announce creation
+	      and progress of your &os; related work.  Messages
+	      will be moderated.  It is suggested to send the message
+	      "To:" a more topical &os; list and only "BCC:"
+	      this list.  This way your WIP can also be discussed on
+	      the topical list, as no discussion is allowed on this
+	      list.</para>
+
+	    <para>Look inside the archives for examples of suitable
+	      messages.</para>
+
+	    <para>An editorial digest of the messages to this list
+	      might be posted to the &os; website every few month
+	      as part of the Status Reports
+		<footnote><para><ulink url="http://www.freebsd.org/news/status/"></ulink></para></footnote>.
+	      You can find more
+	      examples and past reports there, too.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.wireless.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Discussions of 802.11 stack, tools device
+	      driver development</emphasis></para>
+
+	    <para>The FreeBSD-wireless list focuses on 802.11 stack
+	      (sys/net80211), device driver and tools development.
+	      This includes bugs, new features and maintenance.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.xen.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Discussion of the &os; port to &xen;
+	      &mdash; implementation and usage</emphasis></para>
+
+	    <para>A list that focuses on the &os; &xen; port. The
+	      anticipated traffic level is small enough that it is
+	      intended as a forum for both technical discussions of
+	      the implementation and design details as well as
+	      administrative deployment issues.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.xfce.name;</term>
+
+	  <listitem>
+	    <para><emphasis>XFCE</emphasis></para>
+
+	    <para>This is a forum for discussions related to bring the
+	      <application>XFCE</application> environment to &os;.  This
+	      is a technical mailing list.  It is for individuals actively
+	      working on porting <application>XFCE</application> to &os;,
+	      to bring up problems or discuss alternative solutions.
+	      Individuals interested in following the technical discussion
+	      are also welcome.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>&a.zope.name;</term>
+
+	  <listitem>
+	    <para><emphasis>Zope</emphasis></para>
+
+	    <para>This is a forum for discussions related to bring the
+	      <application>Zope</application> environment to &os;.  This
+	      is a technical mailing list.  It is for individuals actively
+	      working on porting <application>Zope</application> to &os;,
+	      to bring up problems or discuss alternative solutions.
+	      Individuals interested in following the technical discussion
+	      are also welcome.</para>
+	  </listitem>
+	</varlistentry>
       </variablelist>
     </sect2>
     <sect2 id="eresources-mailfiltering">
@@ -1508,6 +1887,11 @@
 	<listitem>
 	  <para><ulink
 	    url="news:it.comp.os.freebsd">it.comp.os.freebsd</ulink> (Italian)</para>
+	</listitem>
+
+	<listitem>
+	  <para><ulink
+	    url="news:tw.bbs.comp.386bsd">tw.bbs.comp.386bsd</ulink> (正體中文)</para>
 	</listitem>
       </itemizedlist>
     </sect2>
@@ -1632,7 +2016,35 @@
   <sect1 id="eresources-web">
     <title>World Wide Web Servers</title>
 
-    &chap.eresources.www.inc;
+    <sect2 id="eresources-web-social">
+      <title>Forums, Blogs, and Social Networks</title>
+
+      <itemizedlist>
+        <listitem><para><ulink url="http://forums.freebsd.org/">The
+          FreeBSD Forums</ulink> provide a web based discussion forum
+          for FreeBSD questions and technical
+          discussion.</para></listitem>
+
+	<listitem><para><ulink
+	  url="http://planet.freebsdish.org/">Planet FreeBSD</ulink>
+	  offers an aggregation feed of dozens of blogs written by
+	  FreeBSD developers.  Many developers use this to post quick
+	  notes about what they are working on, new patches, and other
+	  works in progress.</para></listitem>
+
+	<listitem><para>The <ulink
+	  url="http://www.youtube.com/bsdconferences">BSDConferences
+	  YouTube Channel</ulink> provides a collection of high
+	  quality videos from BSD Conferences around the world.  This
+	  is a great way to watch key developers give presentations
+	  about new work in FreeBSD.</para></listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 id="eresources-web-mirrors">
+      <title>Official Mirrors</title>
+      &chap.eresources.www.inc;
+    </sect2>
   </sect1>
 
   <sect1 id="eresources-email">
@@ -1657,41 +2069,9 @@
 	  <row>
 	    <entry>ukug.uk.FreeBSD.org</entry>
 	    <entry>Forwarding only</entry>
-	    <entry><email>freebsd-users@uk.FreeBSD.org</email></entry>
+	    <entry><email>ukfreebsd@uk.FreeBSD.org</email></entry>
 	    <entry>Lee Johnston
 	      <email>lee@uk.FreeBSD.org</email></entry>
-	  </row>
-	</tbody>
-      </tgroup>
-    </informaltable>
-  </sect1>
-
-  <sect1 id="eresources-shell">
-    <title>Shell Accounts</title>
-
-    <para>The following user groups provide shell accounts for people who are
-      actively supporting the FreeBSD project.  The listed administrator
-      reserves the right to cancel the account if it is abused in any
-      way.</para>
-
-    <informaltable frame="none" pgwide="1">
-      <tgroup cols="4">
-	<thead>
-	  <row>
-	    <entry>Host</entry>
-	    <entry>Access</entry>
-	    <entry>Facilities</entry>
-	    <entry>Administrator</entry>
-          </row>
-	</thead>
-
-	<tbody>
-	  <row>
-	    <entry>dogma.freebsd-uk.eu.org</entry>
-	    <entry>Telnet/FTP/SSH</entry>
-	    <entry>Email, Web space, Anonymous FTP</entry>
-            <entry>Lee Johnston
-		<email>lee@uk.FreeBSD.org</email></entry>
 	  </row>
 	</tbody>
       </tgroup>

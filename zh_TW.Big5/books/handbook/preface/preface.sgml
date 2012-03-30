@@ -1,6 +1,6 @@
 <!--
      $FreeBSD$
-     Original revision: 1.30
+     Original revision: 1.50
 -->
 
 <preface id="book-preface">
@@ -8,24 +8,66 @@
   
   <bridgehead id="preface-audience" renderas=sect1>給讀者的話</bridgehead>
 
-  <para>若您是第一次接觸 FreeBSD 的新手，可以在本書第一部分找到 FreeBSD 的安裝方法，同時會逐步介紹 &unix; 
+  <para>若您是第一次接觸 &os; 的新手，可以在本書第一部分找到 &os; 的安裝方法，同時會逐步介紹 &unix; 
     的基礎概念與一些常用、共通的東西。而閱讀這部分並不難，只需要您有探索的精神和接受新概念。</para>
 
-  <para>讀完這些之後，手冊中的第二部分花很長篇幅介紹的各種廣泛主題，相當值得系統管理者去注意。
+  <para>讀完這些之後，手冊中的第二部分花很長篇幅介紹的各種廣泛主題，相當值得 &os; 系統管理者注意。
   	在閱讀這些章節的內容時所需要的背景知識，都註釋在該章的大綱裡面，若不熟的話，可在閱讀前先預習一番。</para>
 
   <para>延伸閱讀方面，可參閱 <xref
     linkend="bibliography">。</para>
 
-  <bridgehead id="preface-changes-from2" renderas=sect1>第三版的主要修訂</bridgehead>
+  <bridgehead id="preface-changes-from3" renderas=sect1>Changes from the
+  Third Edition</bridgehead>
 
-  <para>您目前看到的這本手冊第三版是 FreeBSD 文件計劃的成員歷時兩年完成的心血之作。
-  	新版的主要修訂部分，如下：</para>
+  <para>The current online version of the Handbook represents the
+    cumulative effort of many hundreds of contributors over the past
+    10 years.  The following are some of the significant changes since
+    the two volume third edition was published in 2004:</para>
+
+  <itemizedlist>
+      <listitem>
+	<para><xref linkend="dtrace">, &dtrace;, has been added with
+	  information about the powerful &dtrace; performance analysis
+	  tool.</para>
+      </listitem>
+
+      <listitem>
+	<para><xref linkend="filesystems">, File Systems Support, has
+	  been added with information about non-native file systems in
+	  &os;, such as ZFS from &sun;.</para>
+      </listitem>
+
+      <listitem>
+	<para><xref linkend="audit">, Security Event Auditing, has
+	  been added to cover the new auditing capabilities in &os;
+	  and explain its use.</para>
+      </listitem>
+
+      <listitem>
+        <para><xref linkend="virtualization">, Virtualization, has
+          been added with information about installing &os; on
+          virtualization software.</para>
+      </listitem>
+
+      <listitem>
+	<para><xref linkend="bsdinstall">, Installing
+	  &os;&nbsp;9.<replaceable>x</replaceable> and Later, has been
+	  added to cover installation of &os; using the new
+	  installation utility,
+	  <application>bsdinstall</application>.</para>
+      </listitem>
+  </itemizedlist>
+
+  <bridgehead id="preface-changes-from2" renderas=sect1>第三版的主要修訂 (2004)</bridgehead>
+
+  <para>您目前看到的這本手冊第三版是 &os; 文件計劃的成員歷時兩年完成的心血之作，
+     印出來的頁數多到需要拆成兩卷發行。新版主要修訂部分如下：</para>
 
   <itemizedlist>
       <listitem>
 	<para><xref linkend="config-tuning">, 設定與效能調校(Tuning)，該章節針對新內容作更新，比如：
-	  ACPI 電源管理、cron、以及其他更多的 kernel tuning 選項說明內容。</para>
+	  ACPI 電源管理、<command>cron</command>等 kernel tuning 選項說明內容。</para>
       </listitem>
 
       <listitem>
@@ -34,17 +76,17 @@
       </listitem>
 
       <listitem>
-	<para><xref linkend="mac">, 集權式存取控制(MAC)是本版所增加的章節。本章介紹：什麼是 MAC 機制？以及如何運用它來使您的 FreeBSD 系統更安全。</para>
+	<para><xref linkend="mac">, 集權式存取控制(MAC)是本版所增加的章節。本章介紹：什麼是 MAC 機制？以及如何運用它來使您的 &os; 系統更安全。</para>
       </listitem>
 
       <listitem>
-	<para><xref linkend="disks">, 儲存設備篇，新增了像是：USB 隨身碟、檔案系統快照(snapshot)、檔案系統配額(quota)
-	、檔案及網路的備援檔案系統、以及如何對硬碟分割區作加密等詳解。</para>
+	<para><xref linkend="disks">, 儲存設備篇，新增了像是：USB 隨身碟、檔案系統快照(snapshot)、檔案系統配額
+	(quota)、檔案及網路的備援檔案系統、以及如何對硬碟分割區作加密等詳解。</para>
       </listitem>
 
       <listitem>
-	<para><xref linkend="vinum-vinum">Vinum是本版所新增的章節。本章介紹：如何運用 Vinum 這種邏輯磁碟(device-independent)
-	，以及軟體 RAID-0, RAID-1 和 RAID-5 。</para>
+	<para><xref linkend="vinum-vinum">Vinum是本版所新增的章節。本章介紹：如何運用 Vinum
+	這種邏輯磁碟 (device-independent)，以及軟體 RAID-0、RAID-1、RAID-5。</para>
       </listitem>
 
       <listitem>
@@ -53,17 +95,22 @@
       </listitem>
 
       <listitem>
-	<para><xref linkend="mail">電子郵件一章中新增有關如何使用其它的 MTA 程式、SMTP 認証、UUCP、fecthmail、procmail 的運用以及其它進階專題。</para>
+	<para><xref linkend="mail">電子郵件一章中新增有關如何使用其它的 MTA 程式、SMTP 認証、UUCP、<application>fecthmail</application>、<application>procmail</application> 的運用以及其它進階專題。</para>
       </listitem>
 
       <listitem>
-	<para><xref linkend="network-servers">, 網路伺服器篇，是新版中全新的一章。這一章介紹了如何架設 Apache HTTP 伺服器、FTPd，以及用於支援 
-	  Microsoft Windows client 的 Samba 伺服器。其中有些段落來自原先的<xref linkend="advanced-networking">進階網路應用一章。</para>
+	<para><xref linkend="network-servers">, 網路伺服器篇，是新版中全新的一章。
+	  這一章介紹了如何架設 <application>Apache HTTP</application>
+	  伺服器、<application>ftpd</application>，以及用於支援 
+	  &microsoft; &windows; client 的
+	  <application>Samba</application>。其中有些段落來自原先的 <xref
+	  linkend="advanced-networking">進階網路應用一章。</para>
       </listitem>
 
       <listitem>
-	<para><xref linkend="advanced-networking">進階網路應用一章新增有關在 FreeBSD 中使用藍芽設備、安裝無線網路以及使用 ATM(Asynchronous Transfer Mode) 
-	  網路的介紹。</para>
+	<para><xref linkend="advanced-networking">進階網路應用一章新增有關在 &os;
+	  中使用藍芽 (&bluetooth;) 設備、安裝無線網路以及使用
+	  ATM (Asynchronous Transfer Mode) 網路的介紹。</para>
       </listitem>
 
       <listitem>
@@ -75,9 +122,10 @@
       </listitem>
     </itemizedlist>
 
-  <bridgehead id="preface-changes" renderas=sect1>第二版的主要修訂</bridgehead>
+  <bridgehead id="preface-changes" renderas=sect1>第二版的主要修訂 (2001)</bridgehead>
 
-    <para>本手冊的第二版是 FreeBSD 文件計劃的成員歷時兩年完成的心血之作。第二版包含了如下的主要變動︰</para>
+    <para>本手冊的第二版是 &os; 文件計劃的成員歷時兩年完成的心血之作。
+      以下為此版主要變動︰</para>
 
 <!-- Talk a little about justification and other stylesheet changes? -->
 
@@ -96,8 +144,8 @@
 	<quote>附錄</quote>。</para>
       </listitem>
       <listitem>
-	<para><xref linkend="install"> (<quote>安裝 FreeBSD</quote>) 已經重新改寫，並加入許多說明圖片，
-	讓第一次接觸 FreeBSD 的人，直接看圖就很清楚明瞭重點(一圖抵千字的效果)。</para>
+	<para><xref linkend="install"> (<quote>安裝 &os;</quote>) 已經重新改寫，並加入許多說明圖片，
+	讓新手直接看圖就很清楚明瞭重點 (一圖抵千字的效果)。</para>
       </listitem>
       <listitem>
 	<para><xref linkend="basics">(<quote>&unix; 基礎概念篇</quote>)新增了 processes, daemons 
@@ -111,14 +159,14 @@
 	  <application>KDE</application> 和 <application>GNOME</application> 。</para>
       </listitem>
       <listitem>
-	<para><xref linkend="boot"> (<quote>FreeBSD 開機流程篇</quote>)更新相關內容。</para>
+	<para><xref linkend="boot"> (<quote>&os; 開機流程篇</quote>)更新相關內容。</para>
       </listitem>
       <listitem>
         <para><xref linkend="disks"> (<quote>儲存設備篇(Storage)</quote>) 分別以兩個章節 <quote>Disks</quote>
         與 <quote>Backups</quote> 來撰寫。我們認為這樣子會比單一章節來得容易瞭解。還有關於 RAID(包含硬體、軟體RAID) 的段落也新增上去了。</para>
       </listitem>
       <listitem>
-	<para><xref linkend="serialcomms">(<quote>Serial 通訊篇</quote>)架構重新改寫，並更新至 FreeBSD 4.X/5.X 的內容。</para>
+	<para><xref linkend="serialcomms">(<quote>Serial 通訊篇</quote>)架構重新改寫，並更新至 &os; 4.X/5.X 的內容。</para>
       </listitem>
       <listitem>
 	<para><xref linkend="ppp-and-slip"> (<quote>PPP 及 SLIP</quote>)有相當程度的更新。</para>
@@ -149,52 +197,64 @@
 
   <bridgehead id="preface-overview" renderas=sect1>本書架構</bridgehead>
 
-  <para>本書主要分為五大部分，第一部份『開始使用』：介紹 FreeBSD 的安裝、基本操作。
+  <para>本書主要分為五大部分，第一部份『開始使用』：介紹 &os; 的安裝、基本操作。
   讀者可根據自己的程度，循序或者跳過一些熟悉的主題來閱讀；
   第二部分『常用操作』：介紹 FreeBSD 常用功能，這部分可以不按順序來讀。
   每章前面都會有概述，概述會描述本章節涵蓋的內容和讀者應該已知的，
   這主要是讓讀者可以挑喜歡的章節閱讀；
-  第三部分『系統管理』：介紹 FreeBSD 老手所感興趣的各種專題部分；
-  第四部分『網路通訊』：則包括網路和各式 Server 專題；而第五部分『附錄』：是各種有關 FreeBSD 的資源。</para>
+  第三部分『系統管理』：介紹 &os; 老手所感興趣的各種專題部分；
+  第四部分『網路通訊』：則包括網路和各式 Server 專題；
+  第五部分『附錄』：參考資訊。</para>
 
   <variablelist>
 
 <!-- Part I - Introduction -->
 
     <varlistentry>
-      <term><emphasis><xref linkend="introduction">, 簡介篇</emphasis></term>
+      <term><emphasis><xref linkend="introduction">, 簡介</emphasis></term>
       <listitem>
-	<para>向新手介紹 FreeBSD。該篇說明了 FreeBSD 計劃的歷史、目標和開發模式。</para>
+	<para>向新手介紹 &os;。該篇說明了 &os; 計劃的歷史、目標和開發模式。</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="install">, 安裝篇</emphasis></term>
+      <term><emphasis><xref linkend="install">, 安裝
+	&os;&nbsp;8.<replaceable>x</replaceable> 暨更早版本</emphasis></term>
       <listitem>
-	<para>介紹安裝程序。其中還有介紹一些進階的安裝主題，包括像是如何透過 serial console 來安裝。</para>
+	<para>介紹使用 <application>sysinstall</application> 安裝
+	  &os;&nbsp;8.<replaceable>x</replaceable> 暨更早版本的完整程序，
+	  也包含一些進階安裝主題，像是透過 serial console 來安裝。</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="basics">, &unix; 基礎概念篇</emphasis></term>
+      <term><emphasis><xref linkend="bsdinstall">, 安裝
+	&os;&nbsp;9.<replaceable>x</replaceable> 暨之後版本</emphasis></term>
+      <listitem>
+	<para>介紹使用 <application>bsdinstall</application> 安裝
+	  &os;&nbsp;8.<replaceable>x</replaceable> 暨之後版本的完整程序。</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><emphasis><xref linkend="basics">, &unix; 基礎概念</emphasis></term>
       <listitem>
 	<para>Covers the basic commands and functionality of the
-	FreeBSD operating system.  If you are familiar with &linux; or
+	&os; operating system.  If you are familiar with &linux; or
 	another flavor of &unix; then you can probably skip this
 	chapter.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="ports">, 軟體套件管理篇</emphasis></term>
+      <term><emphasis><xref linkend="ports">, 軟體套件管理</emphasis></term>
       <listitem>
 	<para>Covers the installation of third-party software with
-	both FreeBSD's innovative <quote>Ports Collection</quote> and standard
+	both &os;'s innovative <quote>Ports Collection</quote> and standard
 	binary packages.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="x11">, X Window 視窗系統篇</emphasis></term>
+      <term><emphasis><xref linkend="x11">, X Window 系統</emphasis></term>
       <listitem>
 	<para>Describes the X Window System in general and using
-	X11 on FreeBSD in particular.  Also describes common
+	X11 on &os; in particular.  Also describes common
 	desktop environments such as <application>KDE</application> and <application>GNOME</application>.</para>
       </listitem>
     </varlistentry>
@@ -202,22 +262,22 @@
 <!-- Part II Common Tasks -->
 
     <varlistentry>
-      <term><emphasis><xref linkend="desktop">, Desktop Applications</emphasis></term>
+      <term><emphasis><xref linkend="desktop">, 桌面應用程式</emphasis></term>
       <listitem>
         <para>Lists some common desktop applications, such as web browsers
          and productivity suites, and describes how to install them on
-         FreeBSD.</para>
+         &os;.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="multimedia">, Multimedia</emphasis></term>
+      <term><emphasis><xref linkend="multimedia">, 多媒體</emphasis></term>
       <listitem>
       <para>Shows how to set up sound and video playback support for your
       system.  Also describes some sample audio and video applications.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="kernelconfig">, Configuring the FreeBSD
+      <term><emphasis><xref linkend="kernelconfig">, Configuring the &os;
       Kernel</emphasis></term>
       <listitem>
 	<para>Explains why you might need to configure a new kernel
@@ -226,9 +286,9 @@
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="printing">, 列印篇</emphasis></term>
+      <term><emphasis><xref linkend="printing">, 列印</emphasis></term>
       <listitem>
-	<para>Describes managing printers on FreeBSD, including
+	<para>Describes managing printers on &os;, including
 	information about banner pages, printer accounting, and
 	initial setup.</para>
       </listitem>
@@ -236,9 +296,9 @@
     <varlistentry>
       <term><emphasis><xref linkend="linuxemu">, &linux; Binary Compatibility</emphasis></term>
       <listitem>
-	<para>Describes the &linux; compatibility features of FreeBSD.
+	<para>Describes the &linux; compatibility features of &os;.
 	Also provides detailed installation instructions for many
-	popular &linux; applications such as <application>&oracle;</application>, <application>&sap.r3;</application>, and
+	popular &linux; applications such as <application>&oracle;</application> and
 	  <application>&mathematica;</application>.</para>
       </listitem>
     </varlistentry>
@@ -246,24 +306,23 @@
 <!-- Part III - System Administration -->
 
     <varlistentry>
-      <term><emphasis><xref linkend="config-tuning">, Configuration and Tuning</emphasis></term>
+      <term><emphasis><xref linkend="config-tuning">, 設定校調</emphasis></term>
       <listitem>
 	<para>Describes the parameters available for system
-	administrators to tune a FreeBSD system for optimum
+	administrators to tune a &os; system for optimum
 	performance.  Also describes the various configuration files
-	used in FreeBSD and where to find them.</para>
+	used in &os; and where to find them.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="boot">, Booting Process</emphasis></term>
+      <term><emphasis><xref linkend="boot">, 開機程序</emphasis></term>
       <listitem>
-	<para>Describes the FreeBSD boot process and explains
+	<para>Describes the &os; boot process and explains
 	how to control this process with configuration options.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="users">, Users and Basic Account
-      Management</emphasis></term>
+      <term><emphasis><xref linkend="users">, 使用者與基礎帳號管理</emphasis></term>
       <listitem>
 	<para>Describes the creation and manipulation of user
 	  accounts.  Also discusses resource limitations that can be
@@ -271,24 +330,39 @@
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="security">, Security</emphasis></term>
+      <term><emphasis><xref linkend="security">, 安全</emphasis></term>
       <listitem>
 	<para>Describes many different tools available to help keep your
-	FreeBSD system secure, including Kerberos, IPsec and OpenSSH.</para>
+	&os; system secure, including Kerberos, IPsec and OpenSSH.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><emphasis><xref linkend="jails">, Jails</emphasis></term>
+      <listitem>
+	<para>Describes the jails framework, and the improvements of jails
+	  over the traditional chroot support of &os;.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term><emphasis><xref linkend="mac">, Mandatory Access Control</emphasis></term>
       <listitem>
 	<para>Explains what Mandatory Access Control (MAC) is and how this
-	mechanism can be used to secure a FreeBSD system.</para>
+	mechanism can be used to secure a &os; system.</para>
       </listitem>
     </varlistentry>
+    <varlistentry>
+      <term><emphasis><xref linkend="audit">, Security Event Auditing</emphasis></term>
+      <listitem>
+	<para>Describes what &os; Event Auditing is, how it can be installed,
+	  configured, and how audit trails can be inspected or monitored.</para>
+      </listitem>
+    </varlistentry>
+
     <varlistentry>
       <term><emphasis><xref linkend="disks">, Storage</emphasis></term>
       <listitem>
 	<para>Describes how to manage storage media and filesystems
-  	  with FreeBSD.  This includes physical disks, RAID arrays,
+  	  with &os;.  This includes physical disks, RAID arrays,
   	  optical and tape media, memory-backed disks, and network
   	  filesystems.</para>
       </listitem>
@@ -296,8 +370,15 @@
     <varlistentry>
       <term><emphasis><xref linkend="geom">, GEOM</emphasis></term>
       <listitem>
-	<para>Describes what the GEOM framework in FreeBSD is and how
+	<para>Describes what the GEOM framework in &os; is and how
 	  to configure various supported RAID levels.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><emphasis><xref linkend="filesystems">, File Systems Support</emphasis></term>
+      <listitem>
+	<para>Examines support of non-native file systems in &os;, like the Z
+	  File System from &sun;.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
@@ -309,20 +390,36 @@
       </listitem>
     </varlistentry>
     <varlistentry>
+      <term><emphasis><xref linkend="virtualization">, Virtualization</emphasis></term>
+      <listitem>
+	<para>Describes what virtualization systems offer, and how they
+	  can be used with &os;.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
       <term><emphasis><xref linkend="l10n">, Localization</emphasis></term>
       <listitem>
-	<para>Describes how to use FreeBSD in languages other than
+	<para>Describes how to use &os; in languages other than
 	English.  Covers both system and application level
 	localization.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="cutting-edge">, The Cutting Edge</emphasis></term>
+      <term><emphasis><xref linkend="updating-upgrading">, Updating and Upgrading &os;</emphasis></term>
       <listitem>
-	<para>Explains the differences between FreeBSD-STABLE,
-	FreeBSD-CURRENT, and FreeBSD releases.  Describes which users
+	<para>Explains the differences between &os;-STABLE,
+	&os;-CURRENT, and &os; releases.  Describes which users
 	would benefit from tracking a development system and outlines
-	that process.</para>
+	that process.  Covers the methods users may take to update their
+	system to the latest security release.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><emphasis><xref linkend="dtrace">, &dtrace;</emphasis></term>
+      <listitem>
+	<para>Describes how to configure and use the &dtrace; tool from &sun;
+	  in &os;.  Dynamic tracing can help locate performance issues, by
+	  performing real time system analysis.</para>
       </listitem>
     </varlistentry>
 
@@ -332,18 +429,18 @@
       <term><emphasis><xref linkend="serialcomms">, Serial Communications</emphasis></term>
       <listitem>
 	<para>Explains how to connect terminals and modems to your
-  	FreeBSD system for both dial in and dial out connections.</para>
+  	&os; system for both dial in and dial out connections.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term><emphasis><xref linkend="ppp-and-slip">, PPP and SLIP</emphasis></term>
       <listitem>
 	<para>Describes how to use PPP, SLIP, or PPP over Ethernet to
-	connect to remote systems with FreeBSD.</para>
+	connect to remote systems with &os;.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="mail">, Electronic Mail</emphasis></term>
+      <term><emphasis><xref linkend="mail">, 電子郵件</emphasis></term>
       <listitem>
 	<para>Explains the different components of an email server and
 	dives into simple configuration topics for the most popular
@@ -352,20 +449,20 @@
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="network-servers">, Network Servers</emphasis></term>
+      <term><emphasis><xref linkend="network-servers">, 網路伺服器</emphasis></term>
       <listitem>
 	<para>Provides detailed instructions and example configuration
-	  files to set up your FreeBSD machine as a network filesystem
+	  files to set up your &os; machine as a network filesystem
 	  server, domain name server, network information system
 	  server, or time synchronization server.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><emphasis><xref linkend="firewalls">, Firewalls</emphasis></term>
+      <term><emphasis><xref linkend="firewalls">, 防火牆</emphasis></term>
       <listitem>
         <para>Explains the philosophy behind software-based firewalls and
           provides detailed information about the configuration of the
-          different firewalls available for FreeBSD.</para>
+          different firewalls available for &os;.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
@@ -373,7 +470,7 @@
       <listitem>
 	<para>Describes many networking topics, including sharing an
 	Internet connection with other computers on your LAN, advanced
-	routing topics, wireless networking, bluetooth, ATM, IPv6, and
+	routing topics, wireless networking, &bluetooth;, ATM, IPv6, and
 	much more.</para>
       </listitem>
     </varlistentry>
@@ -381,11 +478,11 @@
 <!-- Part V - Appendices -->
 
     <varlistentry>
-      <term><emphasis><xref linkend="mirrors">, Obtaining FreeBSD </emphasis></term>
+      <term><emphasis><xref linkend="mirrors">, Obtaining &os; </emphasis></term>
       <listitem>
-	<para>Lists different sources for obtaining FreeBSD media on CDROM
+	<para>Lists different sources for obtaining &os; media on CDROM
 	or DVD as well as different sites on the Internet that allow
-	you to download and install FreeBSD.</para>
+	you to download and install &os;.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
@@ -400,15 +497,15 @@
     <varlistentry>
       <term><emphasis><xref linkend="eresources">, Resources on the Internet</emphasis></term>
       <listitem>
-	<para>Describes the many forums available for FreeBSD users to
+	<para>Describes the many forums available for &os; users to
 	post questions and engage in technical conversations about
-	FreeBSD.</para>
+	&os;.</para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term><emphasis><xref linkend="pgpkeys">, PGP Keys</emphasis></term>
       <listitem>
-	<para>Lists the PGP fingerprints of several FreeBSD Developers.</para>
+	<para>Lists the PGP fingerprints of several &os; Developers.</para>
       </listitem>
     </varlistentry>
   </variablelist>
@@ -421,24 +518,25 @@
 
   <variablelist>
     <varlistentry>
-      <term><emphasis>斜體字(Italic)</emphasis></term>
+      <term><emphasis>斜體 (Italic)</emphasis></term>
       <listitem>
-	<para><emphasis>斜體字型(Italic)</emphasis> 用於：檔名、目錄、網址(URL)、
-	  強調語氣、以及第一次提及的技術詞彙。</para>
+	<para><emphasis>斜體</emphasis>字型用於：檔名、目錄、網址 (URL)、
+	  強調語氣、第一次提及的技術詞彙。</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><literal>定寬字(Monospace)</literal></term>
+      <term><literal>等寬 (Monospace)</literal></term>
       <listitem>
-	  <para><literal>定寬字(Monospace)</literal> 用於：
-	  錯誤訊息、指令、環境變數、port 名稱、主機名稱(hostname)、帳號、群組、設備(device)名稱、變數、
-	  程式碼等。</para>
+	  <para><literal>等寬</literal>字型用於：
+	  錯誤訊息、指令、環境變數、port 名稱、主機名稱
+	  (hostname)、使用者名稱、群組名稱、設備 (device)
+	  名稱、變數、程式碼等。</para>
       </listitem>
     </varlistentry>
     <varlistentry>
-      <term><application>粗體字型(Bold)</application></term>
+      <term><application>粗體 (Bold)</application></term>
       <listitem>
-	<para>以<application>粗體字</application>表示：應用程式、命令、按鍵。</para>
+	<para>以<application>粗體</application>字型表示：應用程式、命令、按鍵。</para>
       </listitem>
     </varlistentry>
   </variablelist>
@@ -447,7 +545,7 @@
   <bridgehead id="preface-conv-commands"
   renderas=sect2>使用者輸入</bridgehead>
 
-  <para>鍵盤輸入以 <keycap>粗體字(Bold)</keycap> 表示，以便與一般文字做區隔。
+  <para>鍵盤輸入以 <keycap>粗體</keycap> 表示，以便與一般文字做區隔。
       組合鍵是指同時按下一些按鍵，我們以 `<literal>+</literal>' 來表示連接，像是：</para>
 
   <para>
@@ -461,7 +559,7 @@
   <para>也就是說，一起按 <keycap>Ctrl</keycap> 鍵、
     <keycap>Alt</keycap> 鍵，以及 <keycap>Del</keycap> 鍵。</para>
 
-  <para>若要逐一按鍵，那麼會以逗號(,)來表示，像是：</para>
+  <para>若要逐一按鍵，那麼會以逗號 (,) 來表示，像是：</para>
 
   <para>
     <keycombo action="simul">
@@ -482,18 +580,18 @@
   renderas=sect2>舉個實例</bridgehead>
 
   <para>下面例子以 <devicename>E:\&gt;</devicename>
-  為開頭的代表 &ms-dos; 指令部分。  若沒有特殊情況的話，這些指令應該是在 &microsoft.windows; 環境的 
-  <quote>命令提示字元(Command Prompt)</quote> 內執行。</para>
+  為開頭的代表 &ms-dos; 指令部分。若沒有特殊情況的話，這些指令應該是在 &microsoft.windows; 環境的 <quote>命令提示字元 (Command Prompt)</quote> 內執行。</para>
 
   <screen><prompt>E:\&gt;</prompt> <userinput>tools\fdimage floppies\kern.flp A:</userinput></screen>
 
-  <para>例子若是先以 &prompt.root; 為開頭再接指令的話，就是指在 FreeBSD 中以 root 權限來下命令。
-    你可以先以 <username>root</username>登入系統並下指令，或是以你自己的帳號登入，並使用 
-    &man.su.1; 來取得 root 權限。</para>
+  <para>例子若是先以 &prompt.root; 為開頭再接指令的話，就是指在 &os;
+    中以超級使用者權限來下命令。你可以先以 <username>root</username>
+    登入系統並下指令，或是以你自己的帳號登入，並使用 
+    &man.su.1; 來取得超級使用者權限。</para>
 
   <screen>&prompt.root; <userinput>dd if=kern.flp of=/dev/fd0</userinput></screen>
 
-  <para>例子若是先以 &prompt.user; 為開頭再接指令的話，就是指在 FreeBSD 中以一般帳號來下命令即可。
+  <para>例子若是先以 &prompt.user; 為開頭再接指令的話，就是指以一般帳號來下命令即可。
     除非有提到其他用法，否則都是預設為 C-shell(csh/tcsh) 語法，用來設定環境變數以及下其他指令的意思。</para>
 
   <screen>&prompt.user; <userinput>top</userinput></screen>
@@ -506,10 +604,10 @@
 
   <para>也有一些公司透過提供資金讓作者專注於撰稿、提供出版資金等模式來支持文件的寫作。
     其中，BSDi (之後併入 <ulink url="http://www.windriver.com">Wind River Systems</ulink>)
-    資助 FreeBSD 文件計劃成員來專職改善這本書直到 2000 年 3 月第一版的出版。(ISBN 1-57176-241-8)
+    資助 &os; 文件計劃成員來專職改善這本書直到 2000 年 3 月第一版的出版。(ISBN 1-57176-241-8)
     Wind River Systems 同時資助其他作者來對輸出架構做很多改進，以及給文章增加一些附加章節。這項工作結束於 
     2001 年 11 月第二版。(ISBN 1-57176-303-1)
-    在 2003-2004 兩年中，<ulink url="http://www.freebsdmall.com">FreeBSD Mall</ulink> 把報酬支付給改進這本手冊以使第三版印刷版本能夠出版的志工。
+    在 2003-2004 兩年中，<ulink url="http://www.freebsdmall.com">&os; Mall</ulink> 把報酬支付給改進這本手冊以使第三版印刷版本能夠出版的志工。
 </para>
 
 </preface>

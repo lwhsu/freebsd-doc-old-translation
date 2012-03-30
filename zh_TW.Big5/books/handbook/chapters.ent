@@ -7,7 +7,7 @@
      Chapters should be listed in the order in which they are referenced.
  
      $FreeBSD$
-     Original revision: 1.33
+     Original revision: 1.40
 -->
 
 <!ENTITY chap.preface			SYSTEM "preface/preface.sgml">
@@ -15,6 +15,7 @@
 <!-- Part one -->
 <!ENTITY chap.introduction		SYSTEM "introduction/chapter.sgml">
 <!ENTITY chap.install			SYSTEM "install/chapter.sgml">
+<!ENTITY chap.bsdinstall		SYSTEM "bsdinstall/chapter.sgml">
 <!ENTITY chap.basics			SYSTEM "basics/chapter.sgml">
 <!ENTITY chap.ports			SYSTEM "ports/chapter.sgml">
 <!ENTITY chap.x11			SYSTEM "x11/chapter.sgml">
@@ -36,10 +37,12 @@
 <!ENTITY chap.audit			SYSTEM "audit/chapter.sgml">
 <!ENTITY chap.disks			SYSTEM "disks/chapter.sgml">
 <!ENTITY chap.geom			SYSTEM "geom/chapter.sgml">
+<!ENTITY chap.filesystems		SYSTEM "filesystems/chapter.sgml">
 <!ENTITY chap.vinum			SYSTEM "vinum/chapter.sgml">
 <!ENTITY chap.virtualization		SYSTEM "virtualization/chapter.sgml">
 <!ENTITY chap.l10n			SYSTEM "l10n/chapter.sgml">
 <!ENTITY chap.cutting-edge		SYSTEM "cutting-edge/chapter.sgml">
+<!ENTITY chap.dtrace			SYSTEM "dtrace/chapter.sgml">
 
 <!-- Part four -->
 <!ENTITY chap.serialcomms		SYSTEM "serialcomms/chapter.sgml">
